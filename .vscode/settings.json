@@ -1,0 +1,51 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.organizeImports": "always"
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.autoSave": "onFocusChange",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ],
+  "prettier.requireConfig": true,
+  "eslint.format.enable": true,
+  "prettier.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.format.enable": true,
+  "editor.trimAutoWhitespace": true,
+  "cSpell.words": [
+    "Lucide",
+    "Prisma",
+    "DTO",
+    "middlewares",
+    "PostgreSQL",
+    "postgres",
+    "NestJS"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    "twMerge\\(([^)]*)\\)",
+    "cn\\(([^)]*)\\)"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggestSelection": "first",
+  "window.zoomLevel": 0,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "prettier.bracketSameLine": true,
+  "prettier.experimentalTernaries": false,
+  "vs-code-prettier-eslint.prettierLast": false
+}
