@@ -1,13 +1,11 @@
 "use client"
 
-import { BackButton } from "@/components/common"
+import { Asterisk, BackButton, TermsAndConditions } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ChevronRight } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { z } from "zod"
@@ -109,51 +107,51 @@ export default function PrePaymentPage() {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="cardNumber">
-                  Número do cartão<span className="text-red-500">*</span>
+                  Número do cartão <Asterisk />
                 </Label>
                 <Input
                   id="cardNumber"
                   placeholder="**** **** **** ****"
                   value={formData.cardNumber}
                   onChange={(e) => handleInputChange("cardNumber", e.target.value)}
-                  className={errors.cardNumber ? "border-red-500" : ""}
+                  className={errors.cardNumber ? "border-error-5" : ""}
                 />
-                {errors.cardNumber && <p className="text-xs text-red-500">{errors.cardNumber}</p>}
+                {errors.cardNumber && <p className="text-xs text-error-5">{errors.cardNumber}</p>}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="expiryDate">
-                    Data de validade<span className="text-red-500">*</span>
+                    Data de validade <Asterisk />
                   </Label>
                   <Input
                     id="expiryDate"
                     placeholder="MM/AA"
                     value={formData.expiryDate}
                     onChange={(e) => handleInputChange("expiryDate", e.target.value)}
-                    className={errors.expiryDate ? "border-red-500" : ""}
+                    className={errors.expiryDate ? "border-error-5" : ""}
                   />
-                  {errors.expiryDate && <p className="text-xs text-red-500">{errors.expiryDate}</p>}
+                  {errors.expiryDate && <p className="text-xs text-error-5">{errors.expiryDate}</p>}
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="cvv">
-                    CVV<span className="text-red-500">*</span>
+                    CVV <Asterisk />
                   </Label>
                   <Input
                     id="cvv"
                     placeholder="123"
                     value={formData.cvv}
                     onChange={(e) => handleInputChange("cvv", e.target.value)}
-                    className={errors.cvv ? "border-red-500" : ""}
+                    className={errors.cvv ? "border-error-5" : ""}
                   />
-                  {errors.cvv && <p className="text-xs text-red-500">{errors.cvv}</p>}
+                  {errors.cvv && <p className="text-xs text-error-5">{errors.cvv}</p>}
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="email">
-                  E-mail<span className="text-red-500">*</span>
+                  E-mail <Asterisk />
                 </Label>
                 <Input
                   id="email"
@@ -161,38 +159,20 @@ export default function PrePaymentPage() {
                   placeholder="email@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className={errors.email ? "border-red-500" : ""}
+                  className={errors.email ? "border-error-5" : ""}
                 />
-                {errors.email && <p className="text-xs text-red-500">{errors.email}</p>}
+                {errors.email && <p className="text-xs text-error-5">{errors.email}</p>}
               </div>
 
               <p className="text-sm text-gray-600">
                 Sua assinatura será renovada automaticamente, você tem este método de pagamento recorrente.
               </p>
 
-              <div className="rounded-md border border-gray-200 bg-gray-50 p-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Termos e condições</span>
-                  <ChevronRight className="h-4 w-4 text-gray-500" />
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="terms"
-                  checked={formData.termsAccepted}
-                  onCheckedChange={(checked) => handleInputChange("termsAccepted", checked === true)}
-                />
-                <label
-                  htmlFor="terms"
-                  className={`text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ${
-                    errors.termsAccepted ? "text-red-500" : ""
-                  }`}
-                >
-                  Li e concordo com os termos de uso
-                </label>
-              </div>
-              {errors.termsAccepted && <p className="text-xs text-red-500">{errors.termsAccepted}</p>}
+              <TermsAndConditions
+                checked={formData.termsAccepted || false}
+                onCheckedChange={(checked) => handleInputChange("termsAccepted", checked === true)}
+                error={errors.termsAccepted}
+              />
             </div>
 
             <Button onClick={handleNext} className="w-full">

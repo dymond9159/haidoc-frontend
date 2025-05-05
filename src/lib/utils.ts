@@ -104,3 +104,12 @@ export async function exportElementAsPdf(elementId: string, fileName: string): P
     console.error("Error exporting as PDF:", error)
   }
 }
+
+export const getPageTitleFromPath = (pageTitles: Record<string, string>, path: string): string => {
+  // Sort paths by length (DESC) to match the most specific path first
+  const match = Object.keys(pageTitles)
+    .sort((a, b) => b.length - a.length)
+    .find((key) => path.startsWith(key))
+
+  return match ? pageTitles[match] : ""
+}

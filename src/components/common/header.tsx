@@ -1,17 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
-import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
-import {
-  ChevronDown,
-  CircleUserRoundIcon,
-  LogOutIcon,
-  Menu,
-  ShoppingBag,
-} from "lucide-react"
+import { ChevronDown, CircleUserRoundIcon, LogOutIcon, Menu, ShoppingBag } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -27,50 +19,30 @@ import { NotificationsDropdown } from "./notifications-dropdown"
 
 import { useAppDispatch } from "@/hooks/use-dispatch"
 import { useScreen } from "@/hooks/use-screen"
-import { cn } from "@/lib/utils"
+import { cn, getPageTitleFromPath } from "@/lib/utils"
 import { RootState } from "@/store"
 import { setSideBarOpen, toggleCollapse } from "@/store/reducers/settings-slice"
+import { usePathname } from "next/navigation"
+import { useRouter } from "nextjs-toploader/app"
 
 export function Header() {
   const router = useRouter()
-  const dispatch = useAppDispatch()
   const pathname = usePathname()
+  const dispatch = useAppDispatch()
   const { isMobile, isTablet, isDesktop } = useScreen()
-  const [pageTitle, setPageTitle] = useState("Home")
 
-  const isCollapse = useSelector(
-    (state: RootState) => state.settings.isCollapse,
-  )
+  const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
-  useEffect(() => {
-    // Set default page title based on pathname
-    const pageTitles: Record<string, string> = {
-      "/admin/dashboard": "Dashboard",
-      "/admin/users": "Gerenciamento de Usuários",
-      "/admin/applications": "Aplicações de usuários business",
-      "/admin/deliveries": "Entregas",
-      "/admin/pre-assessments": "Pré-avaliações",
-      "/admin/finances": "Finanças",
-      "/admin/activity-log": "Log de Atividades",
-      "/admin/taxes": "Taxas",
-      "/admin/notifications": "Notificações",
-      "/admin": "Home",
-    }
+  const pageTitles: Record<string, string> = {
+    "/professional/agenda": "Agenda",
+    "/professional/consultations": "Consultas",
+    "/professional/chat": "Chat rápido",
+    "/professional/support": "Suporte",
+    "/professional/notifications": "Notificações",
+    "/professional": "Home",
+  }
 
-    // Sort paths by length DESC so more specific ones match first
-    Object.keys(pageTitles).sort((a, b) => b.length - a.length)
-
-    // Find the most relevant prefix match
-    const match = Object.keys(pageTitles).find((key) =>
-      pathname.startsWith(key),
-    )
-
-    if (match) {
-      setPageTitle(pageTitles[match])
-    } else {
-      setPageTitle("")
-    }
-  }, [pathname])
+  const pageTitle = getPageTitleFromPath(pageTitles, pathname)
 
   const MenuButton = () => (
     <Button
@@ -95,17 +67,14 @@ export function Header() {
   )
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-2 px-4">
+    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-2 px-6">
       <div className="flex items-center">
         <MenuButton />
         <h1 className="text-xl font-semibold">{pageTitle}</h1>
       </div>
 
       <div className="flex items-center gap-4">
-        <Link
-          href="#"
-          className="hidden md:flex items-center text-primary-9 gap-2"
-        >
+        <Link href="#" className="hidden md:flex items-center text-primary-9 gap-2">
           <ShoppingBag className="h-5 w-5" />
           <span className="text-sm">Visitar loja</span>
         </Link>
@@ -114,15 +83,9 @@ export function Header() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button
-              variant="outline"
-              size="lg"
-              className="flex items-center gap-2 rounded-full !pl-1 !pr-2 py-2"
-            >
+            <Button variant="outline" size="lg" className="flex items-center gap-2 rounded-full !pl-1 !pr-2 py-2">
               <Avatar className="h-8 w-8">
-                <AvatarFallback className="bg-system-3 text-system-11">
-                  AD
-                </AvatarFallback>
+                <AvatarFallback className="bg-system-3 text-system-11">AD</AvatarFallback>
               </Avatar>
               <div className="hidden text-xs md:block text-left">
                 <span className="block font-medium">Nome do usuário</span>
