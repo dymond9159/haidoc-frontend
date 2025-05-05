@@ -30,7 +30,7 @@ export default function SubscriptionPage() {
   const selectedPrice = priceOptions.find((option) => option.value === selectedOption)
 
   const handleNext = () => {
-    router.push("/payment/subscription/payment-method")
+    router.push("/subscription/payment-method")
   }
 
   return (
@@ -42,7 +42,7 @@ export default function SubscriptionPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-sm font-medium text-gray-500">Plano escolhido</h2>
-              <p className="text-lg font-medium text-blue-500">HaiDoc Business Plus</p>
+              <p className="text-lg font-medium text-secondary">HaiDoc Business Plus</p>
             </div>
 
             <div>

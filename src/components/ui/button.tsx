@@ -1,6 +1,6 @@
-import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
@@ -9,21 +9,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary-10",
+        default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary-10",
         destructive:
           "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
           "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground dark:hover:bg-accent/50",
-        "ghost-destructive":
-          "hover:bg-error-2 hover:text-error-5 dark:hover:bg-error-2/90",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground dark:hover:bg-accent/50",
+        "ghost-destructive": "hover:bg-error-2 hover:text-error-5 dark:hover:bg-error-2/90",
         link: "text-primary underline-offset-4 hover:underline",
-        primary:
-          "shadow-xs hover:bg-primary/90 h-12 bg-primary-9 hover:bg-primary-10 text-white font-medium",
+        primary: "shadow-xs hover:bg-primary/90 h-12 bg-primary-9 hover:bg-primary-10 text-white font-medium",
         white: "bg-white font-medium text-primary-9 hover:bg-white/90",
         "primary-outline": "bg-background border-primary-9 text-primary-9",
       },
@@ -35,7 +30,7 @@ const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: "primary",
       size: "default",
     },
   },
@@ -56,10 +51,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(
-        "cursor-pointer",
-        buttonVariants({ variant, size, className }),
-      )}
+      className={cn("cursor-pointer", buttonVariants({ variant, size, className }))}
       {...props}
     />
   )

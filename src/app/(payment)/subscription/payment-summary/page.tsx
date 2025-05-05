@@ -32,7 +32,7 @@ export default function PaymentSummaryPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-sm font-medium text-gray-500">Plano escolhido</h2>
-              <p className="text-lg font-medium text-blue-500">HaiDoc Business Plus</p>
+              <p className="text-lg font-medium text-secondary">HaiDoc Business Plus</p>
             </div>
 
             <div>

@@ -2,28 +2,23 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 
-import { ArrowLeftIcon, ArrowRightIcon, ChevronLeft } from "lucide-react"
 import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  CalendarDaysIcon,
+  ChevronLeft,
   ClockIcon,
-  DashboardIcon,
-  DollarIcon,
-  Edit1Icon,
   HomeIcon,
-  TaxIcon,
+  MessageSquareTextIcon,
+  StethoscopeIcon,
   TruckIcon,
   UserCheckIcon,
-  UserSettingsIcon,
-} from "../icons"
+} from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-} from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import { Logo } from "../logo"
 import { LogoNoText } from "../logo_no_text"
 import { Separator } from "../ui/separator"
@@ -34,44 +29,36 @@ import { cn } from "@/lib/utils"
 import { RootState } from "@/store"
 import { setSideBarOpen, toggleCollapse } from "@/store/reducers/settings-slice"
 import { useSelector } from "react-redux"
+import { DashboardIcon, DollarIcon, Edit1Icon, SupportAgentIcon, TaxIcon, UserSettingsIcon } from "../icons"
 import { ScrollArea, ScrollBar } from "../ui"
-interface NavItem {
-  icon: React.ElementType
+
+const iconMap: Record<string, React.ElementType | null> = {
+  HomeIcon: HomeIcon,
+  DashboardIcon: DashboardIcon,
+  UserSettingsIcon: UserSettingsIcon,
+  UserCheckIcon: UserCheckIcon,
+  TruckIcon: TruckIcon,
+  Edit1Icon: Edit1Icon,
+  DollarIcon: DollarIcon,
+  ClockIcon: ClockIcon,
+  TaxIcon: TaxIcon,
+  CalendarDaysIcon: CalendarDaysIcon,
+  StethoscopeIcon: StethoscopeIcon,
+  MessageSquareTextIcon: MessageSquareTextIcon,
+  SupportAgentIcon: SupportAgentIcon,
+}
+export interface NavItem {
   label: string
   href: string
+  iconName?: keyof typeof iconMap
+}
+interface SidebarProps {
+  navItems: NavItem[]
+  homeLink: string
+  bottomCanvasImage: string
 }
 
-const navItems: NavItem[] = [
-  { icon: HomeIcon, label: "Home", href: "/admin" },
-  { icon: DashboardIcon, label: "Dashboard", href: "/admin/dashboard" },
-  {
-    icon: UserSettingsIcon,
-    label: "Gerenciamento de usuários",
-    href: "/admin/users",
-  },
-  {
-    icon: UserCheckIcon,
-    label: "Aplicações Business",
-    href: "/admin/applications",
-  },
-  { icon: TruckIcon, label: "Entregas", href: "/admin/deliveries" },
-  { icon: Edit1Icon, label: "Pré-avaliações", href: "/admin/pre-assessments" },
-  { icon: DollarIcon, label: "Finanças", href: "/admin/finances" },
-  { icon: ClockIcon, label: "Log de Atividades", href: "/admin/activity-log" },
-  { icon: TaxIcon, label: "Taxas", href: "/admin/taxes" },
-]
-
-const homeLink = "/admin"
-
-const backgroundStyle = {
-  backgroundImage: "url('/images/side-bottom-canvas.svg')",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "bottom left",
-  backgroundSize: "100% auto",
-}
-const backgroundHeightClass = "h-[120px]"
-
-export function Sidebar() {
+export function Sidebar({ navItems = [], homeLink, bottomCanvasImage }: SidebarProps) {
   const dispatch = useAppDispatch()
   const pathname = usePathname()
 
@@ -81,6 +68,14 @@ export function Sidebar() {
   // Use Redux store instead of local state
   const isCollapsed = useSelector((state: RootState) => state.settings.isCollapse)
   const isSideBarOpen = useSelector((state: RootState) => state.settings.isSideBarOpen)
+
+  const backgroundStyle = {
+    backgroundImage: `url(${bottomCanvasImage})`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom left",
+    backgroundSize: "100% auto",
+  }
+  const backgroundHeightClass = "h-[120px]"
 
   useEffect(() => {
     // Keep sidebar open on non-mobile unless manually closed
@@ -99,11 +94,8 @@ export function Sidebar() {
     isTabletView: boolean
     closeSheet?: () => void
   }) => {
-    const isActive =
-      item.href === "/admin"
-        ? pathname === item.href
-        : pathname.startsWith(item.href)
-    const Icon = item.icon
+    const isActive = item.href === homeLink ? pathname === item.href : pathname.startsWith(item.href)
+    const Icon = item?.iconName ? iconMap[item.iconName] : null
     return (
       <Link
         key={item.href}
@@ -111,43 +103,34 @@ export function Sidebar() {
         className={cn(
           "flex h-12 px-[14px] py-3 items-center rounded-md transition-colors",
           !isTabletView && "gap-3 text-sm",
-          isActive
-            ? "bg-secondary-4 text-secondary font-medium"
-            : "text-system-11 hover:bg-system-3",
+          isActive ? "bg-secondary-4 text-secondary font-medium" : "text-system-11 hover:bg-system-3",
         )}
         title={isTabletView ? item.label : undefined}
         onClick={closeSheet}
       >
-        <Icon className="h-5 w-5 flex-shrink-0" />
+        {Icon && <Icon className="h-5 w-5 flex-shrink-0" />}
         {!isTabletView && <span className="break-words">{item.label}</span>}
       </Link>
     )
   }
 
   // Shared "Recolher" (Collapse/Back) Button
-  const BackButton = ({
-    isTabletView,
-    closeSheet,
-  }: {
-    isTabletView: boolean
-    closeSheet?: () => void
-    }) => {
-
+  const BackButton = ({ isTabletView, closeSheet }: { isTabletView: boolean; closeSheet?: () => void }) => {
     const RecolherButton = () => {
       if (isMobile) {
-        return <ChevronLeft size={16} className="flex-shrink-0" />;
+        return <ChevronLeft size={16} className="flex-shrink-0" />
       }
 
       if (isTablet) {
-        return <ArrowLeftIcon size={16} className="flex-shrink-0" />;
+        return <ArrowLeftIcon size={16} className="flex-shrink-0" />
       }
 
       return isCollapsed ? (
         <ArrowRightIcon size={16} className="flex-shrink-0" />
       ) : (
         <ArrowLeftIcon size={16} className="flex-shrink-0" />
-      );
-    };
+      )
+    }
 
     return (
       <Button
@@ -171,10 +154,7 @@ export function Sidebar() {
     return (
       <>
         <Sheet open={isSideBarOpen} onOpenChange={(open) => dispatch(setSideBarOpen(open))}>
-          <SheetContent
-            side="left"
-            className="flex flex-col h-full p-0 w-[240px] border-r-0 bg-white"
-          >
+          <SheetContent side="left" className="flex flex-col h-full p-0 w-[240px] border-r-0 bg-white">
             <SheetHeader className="px-3 pt-6 pb-3 border-b">
               <SheetTitle>
                 <Logo size="sm" href={homeLink} className="-ml-1" />
@@ -193,16 +173,10 @@ export function Sidebar() {
                 ))}
               </nav>
               <Separator className="my-3" />
-              <BackButton
-                isTabletView={false}
-                closeSheet={() => dispatch(setSideBarOpen(false))}
-              />
+              <BackButton isTabletView={false} closeSheet={() => dispatch(setSideBarOpen(false))} />
             </div>
 
-            <div
-              className={cn("w-full flex-shrink-0", backgroundHeightClass)}
-              style={backgroundStyle}
-            />
+            <div className={cn("w-full flex-shrink-0", backgroundHeightClass)} style={backgroundStyle} />
           </SheetContent>
         </Sheet>
       </>
@@ -226,15 +200,8 @@ export function Sidebar() {
   }
 
   return (
-    <div
-        className={cn(
-        "hidden md:block h-screen border-r border-system-5 bg-white",
-        sidebarWidth,
-      )}
-    >
-      <div
-        className={cn("fixed h-full flex flex-col bg-white border-r z-50 overflow-hidden", sidebarWidth)}
-      >
+    <div className={cn("hidden md:block h-screen border-r border-system-5 bg-white", sidebarWidth)}>
+      <div className={cn("fixed h-full flex flex-col bg-white border-r z-50 overflow-hidden", sidebarWidth)}>
         <div className={cn("px-2", isTabletViewMode ? "px-1" : "px-3")}>
           <div className="flex items-center border-b py-6 h-[89px]">
             {isTabletViewMode ? (
@@ -250,18 +217,11 @@ export function Sidebar() {
           <div className="flex-1 px-2 py-4">
             <nav className="space-y-1">
               {navItems.map((item) => (
-                <NavLink
-                  key={item.href}
-                  item={item}
-                  isTabletView={isTabletViewMode}
-                />
+                <NavLink key={item.href} item={item} isTabletView={isTabletViewMode} />
               ))}
             </nav>
             <Separator className="my-3" />
-            <BackButton
-              isTabletView={isTabletViewMode}
-              closeSheet={() => dispatch(toggleCollapse())}
-            />
+            <BackButton isTabletView={isTabletViewMode} closeSheet={() => dispatch(toggleCollapse())} />
           </div>
           <ScrollBar orientation="vertical" />
         </ScrollArea>
@@ -281,10 +241,7 @@ export function Sidebar() {
             closeSheet={() => dispatch(toggleCollapse())}
           />
         </div> */}
-        <div
-          className={cn("w-full flex-shrink-0", backgroundHeightClass)}
-          style={backgroundStyle}
-        />
+        <div className={cn("w-full flex-shrink-0", backgroundHeightClass)} style={backgroundStyle} />
       </div>
     </div>
   )

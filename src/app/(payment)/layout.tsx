@@ -1,15 +1,15 @@
-import { Logo } from "@/components/logo"
+import { Loading } from "@/components/common/loading-page"
+import { PaymentHeader } from "@/components/common/payment-header"
 import type React from "react"
+import { Suspense } from "react"
 
 export default function PaymentLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto p-4">
-        <div className="py-4">
-          <Logo />
-        </div>
-        <main>{children}</main>
-      </div>
+    <div className="w-screen h-screen flex-1 flex flex-col">
+      <PaymentHeader />
+      <Suspense fallback={<Loading text="Carregando..." />}>
+        <main className="flex-1 overflow-y-auto">{children}</main>
+      </Suspense>
     </div>
   )
 }

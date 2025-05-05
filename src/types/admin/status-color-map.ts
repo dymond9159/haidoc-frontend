@@ -1,3 +1,4 @@
+import { RequestConsultationCategory } from "../provider/professional/types"
 import { DeliverStatus, HarvestType, PatientStatus } from "./enum-status"
 
 /*
@@ -20,4 +21,8 @@ export const statusColorMap: Record<string, string> = {
 
   [HarvestType.Laboratory]: "bg-warning-2 text-warning-5",
   [HarvestType.Home]: "bg-success-2 text-success-6",
+
+  [RequestConsultationCategory.Home]: "bg-success-2 text-success-6",
+  [RequestConsultationCategory.Chat]: "bg-warning-2 text-warning-5",
+  [RequestConsultationCategory.Teleconsultation]: "bg-info-2 text-info-5",
 }

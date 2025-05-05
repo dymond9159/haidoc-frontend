@@ -1,15 +1,12 @@
 "use client"
 
-import { ChevronRight, ReceiptTextIcon } from "lucide-react"
-import Link from "next/link"
 import { useRouter } from "nextjs-toploader/app"
 import type React from "react"
 import { useState } from "react"
 
 import { RegistrationSteps } from "@/components/auth/registration-step"
-import { Asterisk } from "@/components/common"
+import { Asterisk, TermsAndConditions } from "@/components/common"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -193,29 +190,11 @@ export default function ProviderProfessionalDetailsPage() {
           </p>
         </div>
 
-        <div className="bg-secondary-3 border border-secondary-3 rounded-md p-4">
-          <div className="flex justify-between items-center mb-2">
-            <div className="flex items-center gap-2 text-secondary -ml-0.5">
-              <ReceiptTextIcon size={20} />
-              <h3 className="text-sm font-medium">Termos e condições</h3>
-            </div>
-            <Link href={""}>
-              <ChevronRight size={20} className="text-secondary-11" />
-            </Link>
-          </div>
-          <div className="flex items-start space-x-2 mt-2">
-            <Checkbox
-              id="terms"
-              checked={formData.termsAccepted}
-              onCheckedChange={(checked) => handleChange("termsAccepted", checked)}
-              className={errors.termsAccepted ? "border-error-5" : ""}
-            />
-            <Label htmlFor="terms" className="text-xs font-normal leading-tight">
-              Li e concordo com os termos de uso
-            </Label>
-          </div>
-          {errors.termsAccepted && <p className="text-xs text-error-5 mt-1">{errors.termsAccepted}</p>}
-        </div>
+        <TermsAndConditions
+          checked={formData.termsAccepted}
+          onCheckedChange={(checked) => handleChange("termsAccepted", checked)}
+          error={errors.termsAccepted}
+        />
 
         <Button onClick={handleNext} className="w-full">
           Próximo

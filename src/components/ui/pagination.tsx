@@ -1,9 +1,9 @@
 "use client"
 
-import * as React from "react"
-import Link, { LinkProps } from "next/link"
-import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import Link, { LinkProps } from "next/link"
+import * as React from "react"
 // Import useMobile instead of useMediaQuery
 import { useMobile } from "@/hooks/use-mobile" // <-- Adjust path as needed
 import {
@@ -18,19 +18,15 @@ import {
 // --- No changes needed in these sub-components from the previous version ---
 // --- (Keep your corrected versions of PaginationLink, PaginationPrevious, PaginationNext if you plan to use them elsewhere) ---
 
-const PaginationContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      "flex w-full items-center justify-center gap-1 md:gap-2",
-      className,
-    )} // Use md: breakpoint
-    {...props}
-  />
-))
+const PaginationContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
+  ({ className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={cn("flex w-full items-center justify-center gap-1 md:gap-2", className)} // Use md: breakpoint
+      {...props}
+    />
+  ),
+)
 PaginationContent.displayName = "PaginationContent"
 
 const PaginationItem = React.forwardRef<
@@ -53,10 +49,7 @@ const PaginationItem = React.forwardRef<
 ))
 PaginationItem.displayName = "PaginationItem"
 
-type PaginationLinkProps = Omit<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  keyof LinkProps
-> &
+type PaginationLinkProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> &
   LinkProps & { active?: boolean }
 
 const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
@@ -75,70 +68,55 @@ const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
 )
 PaginationLink.displayName = "PaginationLink"
 
-const PaginationEllipsis = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
-  <span
-    ref={ref}
-    aria-hidden
-    className={cn(
-      "flex h-8 w-8 select-none items-center justify-center text-sm font-medium",
-      className,
-    )}
-    {...props}
-  >
-    <MoreHorizontal className="h-4 w-4" />
-    <span className="sr-only">More pages</span>
-  </span>
-))
+const PaginationEllipsis = React.forwardRef<HTMLSpanElement, React.HTMLAttributes<HTMLSpanElement>>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      aria-hidden
+      className={cn("flex h-8 w-8 select-none items-center justify-center text-sm font-medium", className)}
+      {...props}
+    >
+      <MoreHorizontal className="h-4 w-4" />
+      <span className="sr-only">More pages</span>
+    </span>
+  ),
+)
 PaginationEllipsis.displayName = "PaginationEllipsis"
 
-type PaginationPreviousProps = Omit<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  keyof LinkProps
-> &
-  LinkProps
+type PaginationPreviousProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & LinkProps
 
-const PaginationPrevious = React.forwardRef<
-  HTMLAnchorElement,
-  PaginationPreviousProps
->(({ className, ...props }, ref) => (
-  <Link
-    ref={ref}
-    aria-label="Go to previous page"
-    className={cn(
-      "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background p-0 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
-      className,
-    )}
-    {...props}
-  >
-    <ChevronLeft className="h-4 w-4" />
-  </Link>
-))
-PaginationPrevious.displayName = "PaginationPrevious"
-
-type PaginationNextProps = Omit<
-  React.AnchorHTMLAttributes<HTMLAnchorElement>,
-  keyof LinkProps
-> &
-  LinkProps
-
-const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNextProps>(
+const PaginationPrevious = React.forwardRef<HTMLAnchorElement, PaginationPreviousProps>(
   ({ className, ...props }, ref) => (
     <Link
       ref={ref}
-      aria-label="Go to next page"
+      aria-label="Go to previous page"
       className={cn(
         "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background p-0 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
         className,
       )}
       {...props}
     >
-      <ChevronRight className="h-4 w-4" />
+      <ChevronLeft className="h-4 w-4" />
     </Link>
   ),
 )
+PaginationPrevious.displayName = "PaginationPrevious"
+
+type PaginationNextProps = Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof LinkProps> & LinkProps
+
+const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNextProps>(({ className, ...props }, ref) => (
+  <Link
+    ref={ref}
+    aria-label="Go to next page"
+    className={cn(
+      "flex h-8 w-8 items-center justify-center rounded-md border border-input bg-background p-0 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+      className,
+    )}
+    {...props}
+  >
+    <ChevronRight className="h-4 w-4" />
+  </Link>
+))
 PaginationNext.displayName = "PaginationNext"
 
 // --- Main Pagination Component (Using useMobile) ---
@@ -149,12 +127,7 @@ interface PaginationProps {
   className?: string
 }
 
-function Pagination({
-  currentPage = 1,
-  totalPages,
-  onPageChange,
-  className,
-}: PaginationProps) {
+function Pagination({ currentPage = 1, totalPages, onPageChange, className }: PaginationProps) {
   // Use your custom useMobile hook
   const isMobile = useMobile() // Returns true if window.innerWidth < 768
 
@@ -169,11 +142,8 @@ function Pagination({
         pageNumbers.push(i)
       }
     } else {
-      const showEllipsisStart =
-        currentPage >
-        Math.ceil(maxPagesToShow / 2) + (maxPagesToShow % 2 === 0 ? 0 : 0)
-      const showEllipsisEnd =
-        currentPage < totalPages - Math.floor(maxPagesToShow / 2)
+      const showEllipsisStart = currentPage > Math.ceil(maxPagesToShow / 2) + (maxPagesToShow % 2 === 0 ? 0 : 0)
+      const showEllipsisEnd = currentPage < totalPages - Math.floor(maxPagesToShow / 2)
 
       pageNumbers.push(1)
       if (showEllipsisStart) pageNumbers.push(-1)
@@ -252,10 +222,7 @@ function Pagination({
           {/* Adjusted gap */}
           {getPageNumbers().map((pageNumber, index) =>
             pageNumber === -1 ? (
-              <PaginationEllipsis
-                key={`ellipsis-${index}`}
-                className="h-8 w-8"
-              />
+              <PaginationEllipsis key={`ellipsis-${index}`} className="h-8 w-8" />
             ) : (
               <PaginationItem
                 key={pageNumber}
@@ -297,9 +264,9 @@ function Pagination({
 export {
   Pagination,
   PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-  PaginationEllipsis,
-  PaginationPrevious,
   PaginationNext,
+  PaginationPrevious,
 }
