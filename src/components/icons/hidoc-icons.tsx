@@ -22,7 +22,7 @@ export function LogoNoTextIcon(props: LucideProps) {
 
 export function LogoIcon(props: LucideProps) {
   return (
-    <svg width="183" height="48" viewBox="15 0 183 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg width="183" height="48" viewBox="0 0 183 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
         d="M20.9965 44.8107C10.7557 44.8107 2.45391 36.5089 2.45391 26.2682C2.45391 16.0274 10.7557 7.72559 20.9965 7.72559C31.2373 7.72559 39.5391 16.0274 39.5391 26.2682C39.5391 31.6752 37.2247 36.5417 33.5326 39.9311L34.6594 46.2746L28.8039 43.0919C26.4309 44.1949 23.7856 44.8107 20.9965 44.8107Z"
         stroke="#FF4141"
