@@ -15,7 +15,8 @@ import LinkButton from "@/components/ui/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Months, WeekDays } from "@/lib/constants/index"
-import { mockAppointments, mockMessages } from "@/lib/mock-data/professional/home"
+import { mockHistoryMessages } from "@/lib/mock-data/professional/chat"
+import { mockAppointments } from "@/lib/mock-data/professional/home"
 import { useRouter } from "nextjs-toploader/app"
 
 export default function ProfessionalHomePage() {
@@ -68,20 +69,22 @@ export default function ProfessionalHomePage() {
           </CardHeader>
           <CardContent className="flex-1">
             <div className="divide-y">
-              {mockMessages.map((message, index) => (
+              {mockHistoryMessages.map((message, index) => (
                 <MessageItem
                   key={index}
-                  sender={message.sender}
+                  id={message.id}
+                  name={message.name}
                   message={message.message}
                   time={message.time}
                   unreadCount={message.unreadCount}
+                  avatar={message.avatar}
                 />
               ))}
             </div>
           </CardContent>
           <Separator className="my-0" />
           <CardFooter className="p-0 flex justify-end">
-            <LinkButton href="/professional/messages">Ver Mensagens</LinkButton>
+            <LinkButton href="/professional/chat">Ver Mensagens</LinkButton>
           </CardFooter>
         </Card>
 

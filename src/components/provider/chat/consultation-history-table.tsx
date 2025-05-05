@@ -13,7 +13,7 @@ import { ConsultationType } from "@/types/provider/professional/types"
 import { DateFilterModal } from "./date-filter-modal"
 
 interface filterOption {
-  id?: string
+  id: string
   consultationType?: ConsultationType
   value?: number
   date?: string
@@ -22,7 +22,13 @@ interface filterOption {
 export function ConsultationHistoryTable() {
   const [allData, setAllData] = useState<ConsultationHistoryColumns[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [filters, setFilters] = useState<filterOption>({}) // Initialize filter state
+  const [filters, setFilters] = useState<filterOption>({
+    id: "",
+    consultationType: undefined,
+    value: 0,
+    date: "",
+  }) // Initialize filter state
+
   const [isDateFilterOpen, setIsDateFilterOpen] = useState(false)
 
   const handleFilterChange = useCallback((filterKey: string, value: any) => {
@@ -74,14 +80,15 @@ export function ConsultationHistoryTable() {
       {
         type: "search",
         label: "Pesquisar",
+        value: filters.id,
         accessorKey: "id",
         placeholder: "Pesquisar",
-        value: filters.id,
         onChange: (value) => handleFilterChange("id", value),
       },
       {
         type: "select",
         label: "Tipo de Consulta",
+        value: filters.consultationType,
         accessorKey: "consultationType",
         options: Object.values(ConsultationType).map((type) => ({
           label: type,
@@ -93,9 +100,10 @@ export function ConsultationHistoryTable() {
         type: "date-filter",
         label: "Data",
         accessorKey: "date",
-        placeholder: "Selecione uma Data",
+        placeholder: "Data",
         value: filters.date,
         onChange: (value) => handleFilterChange("date", value),
+        onClick: () => setIsDateFilterOpen(true),
       },
     ],
     [filters, handleFilterChange],

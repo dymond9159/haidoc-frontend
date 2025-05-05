@@ -1,4 +1,5 @@
 import { ChatMessage, MessageGroups } from "@/types/provider/chat/interfaces"
+import { MessageItem } from "@/types/provider/chat/types"
 import { ConsultationHistoryColumns } from "@/types/provider/professional/interface-columns"
 import { ConsultationType } from "@/types/provider/professional/types"
 import { UserRole } from "@/types/user"
@@ -40,6 +41,8 @@ export const mockChats: MessageGroups = {
   read: generateChat("read", 18),
   finished: generateChat("finished", 5),
 }
+
+export const mockHistoryMessages: MessageItem[] = generateChat("history", 5, true)
 
 export const mockConsultationHistory: ConsultationHistoryColumns[] = Array.from({ length: 30 }, (_, i) => {
   const { date, time } = getRandomDateInPast3Months()

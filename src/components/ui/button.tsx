@@ -28,15 +28,6 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
-      color: {
-        success: "bg-transparent text-success-6 hover:bg-success-2 hover:text-success-6 hover:border-success-6",
-        error: "hover:bg-error-2 bg-transparent text-error-5 hover:text-error-5 hover:border-error-5",
-        warning: "hover:bg-warning-2 bg-transparent text-warning-5 hover:text-warning-5 hover:border-warning-5",
-        info: "hover:bg-info-2 bg-transparent text-info-5 hover:text-info-5 hover:border-info-5",
-        default: "hover:bg-system-6 bg-transparent text-system-11 hover:text-system-11 hover:border-system-11",
-        primary: "hover:bg-primary bg-primary-11 text-white hover:text-white",
-        secondary: "hover:bg-secondary bg-transparent text-white hover:text-secondary-foreground",
-      },
     },
     defaultVariants: {
       variant: "primary",
@@ -49,7 +40,6 @@ function Button({
   className,
   variant,
   size,
-  color,
   asChild = false,
   ...props
 }: React.ComponentProps<"button"> &
@@ -61,7 +51,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn("cursor-pointer", buttonVariants({ variant, size, color, className }))}
+      className={cn("cursor-pointer", buttonVariants({ variant, size, className }))}
       {...props}
     />
   )
