@@ -11,12 +11,7 @@ interface LogoProps {
   onClick?: () => void
 }
 
-export function Logo({
-  className,
-  size = "md",
-  href = "/",
-  onClick,
-}: LogoProps) {
+export function Logo({ className, size = "md", href = "/", onClick }: LogoProps) {
   const sizeClasses = {
     xs: "h-8",
     sm: "h-10",
@@ -43,10 +38,7 @@ export function Logo({
   }
 
   return (
-    <div
-      onClick={onClick}
-      className={cn("cursor-pointer", { "cursor-default": !onClick })}
-    >
+    <div onClick={onClick} className={cn("cursor-pointer", { "cursor-default": !onClick })}>
       {LogoContent}
     </div>
   )

@@ -26,7 +26,7 @@ export default function ProfessionalHomePage() {
   const currentWeekDates = [4, 5, 6, 7, 8, 9, 10]
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="space-y-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Hi, doctor!</h1>
         <Button className="gap-2">

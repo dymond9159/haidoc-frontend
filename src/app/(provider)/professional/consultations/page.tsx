@@ -3,7 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, PlusIcon, SlidersHorizontalIcon } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -99,7 +99,7 @@ export default function ConsultationsPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="space-y-8">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="flex justify-between items-center mb-6">
           <TabsList>
@@ -108,29 +108,16 @@ export default function ConsultationsPage() {
           </TabsList>
 
           <div className="flex items-center gap-4">
-            <Button variant="outline" className="gap-2">
-              Disponibilidade
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M8 3.33334V12.6667"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M3.33331 8H12.6666"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </Button>
-            <Button className="bg-primary-9 hover:bg-primary-10 text-white gap-2">
-              Novo agendamento
-              <span className="text-lg">+</span>
-            </Button>
+            <div className="flex items-center gap-4 mt-4">
+              <Button variant="outline" className="gap-2">
+                Disponibilidade
+                <SlidersHorizontalIcon />
+              </Button>
+              <Button className="gap-2">
+                <PlusIcon />
+                Novo agendamento
+              </Button>
+            </div>
           </div>
         </div>
 

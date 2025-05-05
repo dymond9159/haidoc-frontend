@@ -118,23 +118,25 @@ export default function AgendaPage() {
   ]
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="space-y-8">
       <div className="flex justify-between items-center mb-6">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList>
-            <TabsTrigger value="agenda">Agenda</TabsTrigger>
-            <TabsTrigger value="historico">Histórico</TabsTrigger>
-          </TabsList>
+          <div className="flex justify-between items-center mb-6">
+            <TabsList>
+              <TabsTrigger value="agenda">Agenda</TabsTrigger>
+              <TabsTrigger value="historico">Histórico</TabsTrigger>
+            </TabsList>
 
-          <div className="flex items-center gap-4 mt-4">
-            <Button variant="outline" className="gap-2">
-              Disponibilidade
-              <SlidersHorizontalIcon />
-            </Button>
-            <Button className="gap-2">
-              <PlusIcon />
-              Novo agendamento
-            </Button>
+            <div className="flex items-center gap-4 mt-4">
+              <Button variant="outline" className="gap-2">
+                Disponibilidade
+                <SlidersHorizontalIcon />
+              </Button>
+              <Button className="gap-2">
+                <PlusIcon />
+                Novo agendamento
+              </Button>
+            </div>
           </div>
 
           <TabsContent value="agenda" className="mt-4">
