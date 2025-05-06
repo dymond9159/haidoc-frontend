@@ -20,32 +20,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { TimeSlots } from "@/lib/constants/app"
 import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
 import { toast } from "sonner"
-
-const timeSlots = [
-  "7:00",
-  "7:30",
-  "8:00",
-  "8:30",
-  "9:00",
-  "9:30",
-  "10:30",
-  "11:00",
-  "11:30",
-  "12:00",
-  "12:30",
-  "13:00",
-  "13:30",
-  "14:00",
-  "14:30",
-  "15:00",
-  "15:30",
-  "16:00",
-  "16:30",
-  "17:00",
-  "17:30",
-]
 
 export default function NovoAgendamentoPage() {
   const router = useRouter()
@@ -125,7 +102,7 @@ export default function NovoAgendamentoPage() {
               Horários disponíveis<span className="text-error-5">*</span>
             </Label>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2">
-              {timeSlots.map((time) => (
+              {TimeSlots.map((time) => (
                 <Button
                   key={time}
                   type="button"

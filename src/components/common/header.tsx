@@ -36,6 +36,7 @@ export function Header() {
   const pageTitles: Record<string, string> = {
     "/professional/agenda": "Agenda",
     "/professional/consultations": "Consultas",
+    "/professional/consultation-online": "Consulta online",
     "/professional/chat": "Chat rápido",
     "/professional/support": "Suporte",
     "/professional/notifications": "Notificações",
@@ -96,14 +97,14 @@ export function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
-            <DropdownMenuItem asChild>
-              <Link href="/admin/profile" className="flex items-center gap-2">
+            <DropdownMenuItem asChild disabled>
+              <Link href="/professional/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
                 Informações Pessoais
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push("/admin/login")}>
+            <DropdownMenuItem onClick={() => router.push("/login")}>
               <LogOutIcon size="14" />
               Sair
             </DropdownMenuItem>

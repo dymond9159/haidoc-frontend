@@ -6,12 +6,11 @@ import { StatusLabel } from "@/components/common"
 import { ColumnDef } from "@/components/common/data-table"
 import { EnhancedTable } from "@/components/common/enhanced-table" // Import EnhancedTable
 import { FilterConfig } from "@/components/common/table-filter"
-import { Button } from "@/components/ui"
 import { ConsultationCategoryList } from "@/lib/constants/consultations"
 import { mockConsultationRequests } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
 import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
-import { CheckIcon, HistoryIcon, MessageSquareTextIcon, X } from "lucide-react"
+import { RequestConsultationActions } from "../consultation"
 
 interface RequestConsultationTableProps {
   maxRecords?: number
@@ -80,24 +79,7 @@ export function RequestConsultationTable({
         accessorKey: "actions",
         header: "OPÇÕES",
         cell: (row) =>
-          row?.isAccepted ? (
-            <span className="text-sm">Aceito</span>
-          ) : (
-            <div className="flex items-center gap-1 justify-center">
-              <Button variant="outline" colorVariant="success" size="icon" className="size-8 rounded-full">
-                <CheckIcon />
-              </Button>
-              <Button variant="outline" colorVariant="error" size="icon" className="size-8 rounded-full">
-                <X />
-              </Button>
-              <Button variant="outline" colorVariant="default" size="icon" className="size-8 rounded-full">
-                <MessageSquareTextIcon />
-              </Button>
-              <Button variant="outline" colorVariant="info" size="icon" className="size-8 rounded-full">
-                <HistoryIcon />
-              </Button>
-            </div>
-          ),
+          row?.isAccepted ? <span className="text-sm">Aceito</span> : <RequestConsultationActions consultation={row} />,
       },
     ],
     [],

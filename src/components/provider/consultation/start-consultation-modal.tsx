@@ -51,7 +51,7 @@ export function StartConsultationModal({ isOpen, onClose, consultationType, onPr
               por quaisquer tentativas de contato com provedores de saúde fora da nossa plataforma. Recomendamos
               enfaticamente que todas as interações, consultas, transações e comunicações sejam conduzidas
               exclusivamente através da nossa plataforma, a fim de evitar fraudes, danos morais e outros inconvenientes.
-              Ao clicar em "Próximo", você afirma estar ciente do aviso.
+              Ao clicar em &quot;Próximo&quot;, você afirma estar ciente do aviso.
             </p>
           </div>
         </div>
