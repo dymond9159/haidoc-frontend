@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useState, useMemo, useEffect, useCallback } from "react"
-import { DataTable, ColumnDef } from "./data-table" // Assuming your DataTable component
+import React, { useCallback, useEffect, useMemo, useState } from "react"
+import { ColumnDef, DataTable } from "./data-table" // Assuming your DataTable component
 import { FilterConfig, TableFilters } from "./table-filter"
 
 interface Props<T> {
@@ -20,6 +20,7 @@ interface Props<T> {
   maxRecords?: number
   getRowId?: (row: T, index: number) => string | number
   onViewMoreClick?: () => void
+  onRowClick?: (row: T) => void
 }
 
 export function EnhancedTable<T>({
@@ -38,6 +39,7 @@ export function EnhancedTable<T>({
   maxRecords,
   getRowId = (row: T, index: number) => (row as any)?.id ?? index,
   onViewMoreClick,
+  onRowClick,
 }: Props<T>) {
   const [filters, setFilters] = useState(initialFilters)
   const [filteredData, setFilteredData] = useState(initialData)
@@ -48,28 +50,18 @@ export function EnhancedTable<T>({
 
     filterConfigs.forEach((filterConfig) => {
       const filterValue = filters[filterConfig.accessorKey as string]
-      if (
-        filterValue !== undefined &&
-        filterValue !== null &&
-        filterValue !== ""
-      ) {
+      if (filterValue !== undefined && filterValue !== null && filterValue !== "") {
         newData = newData.filter((item) => {
           if (filterConfig.type === "search" && filterConfig.accessorKey) {
             const value = item[filterConfig.accessorKey]
-            return (
-              typeof value === "string" &&
-              value.toLowerCase().includes(String(filterValue).toLowerCase())
-            )
+            return typeof value === "string" && value.toLowerCase().includes(String(filterValue).toLowerCase())
           } else if (filterConfig.type === "date" && filterConfig.accessorKey) {
             const value = item[filterConfig.accessorKey]
             if (value instanceof Date && filterValue instanceof Date) {
               return value.toDateString() === filterValue.toDateString()
             }
             return false
-          } else if (
-            filterConfig.type === "select" &&
-            filterConfig.accessorKey
-          ) {
+          } else if (filterConfig.type === "select" && filterConfig.accessorKey) {
             return item[filterConfig.accessorKey] === filterValue
           }
           // Add logic for other filter types as needed
@@ -91,9 +83,7 @@ export function EnhancedTable<T>({
   }, [])
 
   const hasActiveFilters = useMemo(() => {
-    return Object.values(filters).some(
-      (value) => value !== undefined && value !== null && value !== "",
-    )
+    return Object.values(filters).some((value) => value !== undefined && value !== null && value !== "")
   }, [filters])
 
   // Prepare filterConfigs with updated onChange handlers and values
@@ -101,8 +91,7 @@ export function EnhancedTable<T>({
     return filterConfigs.map((config) => ({
       ...config,
       value: filters[config.accessorKey as string],
-      onChange: (value: any) =>
-        handleFilterChange(config.accessorKey as string, value),
+      onChange: (value: any) => handleFilterChange(config.accessorKey as string, value),
     }))
   }, [filterConfigs, filters, handleFilterChange])
 
@@ -126,6 +115,7 @@ export function EnhancedTable<T>({
         viewAllText={viewMoreButtonText}
         getRowId={getRowId}
         onViewMoreClick={onViewMoreClick}
+        onRowClick={onRowClick}
       />
     </div>
   )

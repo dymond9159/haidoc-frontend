@@ -10,6 +10,7 @@ import { ConsultationCategoryList } from "@/lib/constants/consultations"
 import { mockConsultationRequests } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
 import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
+import { useRouter } from "nextjs-toploader/app"
 import { RequestConsultationActions } from "../consultation"
 
 interface RequestConsultationTableProps {
@@ -30,6 +31,7 @@ export function RequestConsultationTable({
   maxRecords,
   onViewMoreClick,
 }: RequestConsultationTableProps) {
+  const router = useRouter()
   const [allData, setAllData] = useState<RequestConsultationColumns[]>([])
   const [filters, setFilters] = useState<FilterOption>({}) // Initialize filter state
   const [isLoading, setIsLoading] = useState(true)
@@ -111,6 +113,10 @@ export function RequestConsultationTable({
     [filters, handleFilterChange],
   )
 
+  const handleShowDetailsForRequesting = (row: RequestConsultationColumns) => {
+    router.push(`/professional/consultations/details/requested/${row.id}`)
+  }
+
   return (
     <div className="space-y-4">
       <EnhancedTable
@@ -122,6 +128,7 @@ export function RequestConsultationTable({
         viewMore={viewMore}
         maxRecords={maxRecords}
         onViewMoreClick={onViewMoreClick}
+        onRowClick={handleShowDetailsForRequesting}
       />
     </div>
   )

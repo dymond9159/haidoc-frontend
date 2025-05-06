@@ -11,8 +11,9 @@ import { ConsultationCategoryList, ConsultationTypeList } from "@/lib/constants/
 import { mockConsultations } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
 import { ConsultationColumns } from "@/types/provider/professional/interface-columns"
-import { ConsultationCategory } from "@/types/provider/professional/types"
+import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
 import { useRouter } from "nextjs-toploader/app"
+import { ConsultationDetailsModal } from "../consultation/consultation-details-modal"
 import { StartConsultationModal } from "../consultation/start-consultation-modal"
 
 interface ConsultationTableProps {
@@ -42,6 +43,7 @@ export function ConsultationHomeTable({
 
   const [selectedConsultation, setSelectedConsultation] = useState<ConsultationColumns | null>(null)
   const [showStartModal, setShowStartModal] = useState(false)
+  const [showDetailsModal, setShowDetailsModal] = useState(false)
 
   const handleFilterChange = useCallback((filterKey: keyof FilterOption, value: any) => {
     setFilters((prevFilters) => ({ ...prevFilters, [filterKey]: value }))
@@ -93,7 +95,13 @@ export function ConsultationHomeTable({
         accessorKey: "actions",
         header: "OPÇÕES",
         cell: (row) => (
-          <Button variant="link" onClick={() => handleStartConsultation(row)}>
+          <Button
+            variant="link"
+            onClick={(e) => {
+              e.stopPropagation()
+              handleStartConsultation(row)
+            }}
+          >
             Iniciar consulta
           </Button>
         ),
@@ -164,6 +172,25 @@ export function ConsultationHomeTable({
     }
   }
 
+  const mockAppointment = {
+    id: "1",
+    patientName: "Nome do paciente",
+    patientId: "1234567890",
+    type: ConsultationType.Urgent,
+    date: "2021-01-01",
+    startTime: new Date(2025, 3, 22, 8, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    endTime: new Date(2025, 3, 22, 9, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    specialty: "Cardiologia",
+    doctorName: "Nome do Médico",
+    price: "250,00",
+    reason: "Motivo da consulta informada pelo paciente.",
+  }
+
+  const handleShowDetails = (consultation: ConsultationColumns) => {
+    setSelectedConsultation(consultation)
+    setShowDetailsModal(true)
+  }
+
   return (
     <div className="space-y-4">
       <EnhancedTable
@@ -176,6 +203,7 @@ export function ConsultationHomeTable({
         viewMore={viewMore}
         maxRecords={maxRecords}
         onViewMoreClick={onViewMoreClick}
+        onRowClick={handleShowDetails}
       />
       {selectedConsultation && (
         <StartConsultationModal
@@ -183,6 +211,23 @@ export function ConsultationHomeTable({
           onClose={() => setShowStartModal(false)}
           consultationType={selectedConsultation.category}
           onProceed={handleProceedWithConsultation}
+        />
+      )}
+
+      {selectedConsultation && (
+        <ConsultationDetailsModal
+          isOpen={showDetailsModal}
+          onClose={() => setShowDetailsModal(false)}
+          appointment={
+            {
+              ...mockAppointment,
+              patientName: selectedConsultation.name,
+              type: selectedConsultation.consultationType,
+            } as any
+          }
+          onMarkAsCompleted={() => {}}
+          onReschedule={() => {}}
+          onCancel={() => {}}
         />
       )}
     </div>

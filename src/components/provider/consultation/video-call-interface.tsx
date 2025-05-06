@@ -20,23 +20,27 @@ export function VideoCallInterface({
   onEndCall,
 }: VideoCallInterfaceProps) {
   // Mock video streams with placeholder images
-  const patientVideoUrl = "/placeholder.svg?height=720&width=1280&text=Patient"
-  const doctorVideoUrl = "/placeholder.svg?height=720&width=1280&text=Doctor"
+  const patientVideoUrl = "/images/placeholder.svg?height=720&width=1280&text=Patient"
+  const doctorVideoUrl = "/images/placeholder.svg?height=720&width=1280&text=Doctor"
 
   return (
     <div className="relative w-full h-full">
       {/* Main video (patient) */}
       <div className="absolute inset-0 bg-black">
-        <img src={patientVideoUrl || "/placeholder.svg"} alt="Patient video" className="w-full h-full object-cover" />
+        {/* <img
+          src={patientVideoUrl || "/images/placeholder.svg"}
+          alt="Patient video"
+          className="w-full h-full object-cover"
+        /> */}
       </div>
 
       {/* Doctor video (small window) */}
-      <div className="absolute top-4 left-4 w-[120px] h-[160px] bg-gray-800 rounded-lg overflow-hidden shadow-lg border-2 border-white z-10">
-        <img
-          src={doctorVideoUrl || "/placeholder.svg"}
+      <div className="absolute top-4 left-4 w-[160px] h-[160px] bg-gray-800 rounded-lg overflow-hidden shadow-lg border-1 border-white z-10">
+        {/* <img
+          src={doctorVideoUrl || "/images/placeholder.svg"}
           alt="Doctor video"
           className={cn("w-full h-full object-cover", !isVideoOn && "opacity-50 blur-sm")}
-        />
+        /> */}
         {!isVideoOn && (
           <div className="absolute inset-0 flex items-center justify-center">
             <VideoOff className="h-8 w-8 text-white opacity-70" />

@@ -1,14 +1,8 @@
 "use client"
 
 import { Pagination } from "@/components/ui/pagination"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { cn } from "@/lib/utils"
 import { ArrowRightIcon, Loader2 } from "lucide-react"
 import * as React from "react"
 import { useMemo, useState } from "react"
@@ -34,6 +28,7 @@ interface DataTableProps<T> {
   viewAllText?: string
   getRowId?: (row: T, index: number) => string | number // Function to get a unique ID for the row key (optional, defaults to index)
   onViewMoreClick?: () => void
+  onRowClick?: (row: T) => void
 }
 
 export function DataTable<T>({
@@ -46,6 +41,7 @@ export function DataTable<T>({
   viewMore = false,
   viewAllText = "Ver tudo",
   getRowId,
+  onRowClick,
   onViewMoreClick,
 }: DataTableProps<T>) {
   const [currentPage, setCurrentPage] = useState(1)
@@ -67,16 +63,10 @@ export function DataTable<T>({
   const defaultGetRowId = (row: T, index: number): string | number => {
     // Try common id fields, otherwise fallback to index
     if (typeof row === "object" && row !== null) {
-      if (
-        "id" in row &&
-        (typeof row.id === "string" || typeof row.id === "number")
-      ) {
+      if ("id" in row && (typeof row.id === "string" || typeof row.id === "number")) {
         return row.id
       }
-      if (
-        "_id" in row &&
-        (typeof row._id === "string" || typeof row._id === "number")
-      ) {
+      if ("_id" in row && (typeof row._id === "string" || typeof row._id === "number")) {
         return row._id
       }
     }
@@ -112,7 +102,11 @@ export function DataTable<T>({
             </TableRow>
           ) : paginatedData.length > 0 ? (
             paginatedData.map((row, rowIndex) => (
-              <TableRow key={effectiveGetRowId(row, rowIndex)} className="h-15">
+              <TableRow
+                key={effectiveGetRowId(row, rowIndex)}
+                className={cn("h-15", onRowClick && "cursor-pointer")}
+                onClick={() => onRowClick?.(row)}
+              >
                 {columns.map((column) => {
                   // Determine the cell content
                   let cellContent: React.ReactNode
@@ -125,10 +119,7 @@ export function DataTable<T>({
                     const key = column.accessorKey as keyof T
                     const value = row[key]
                     // Handle potential non-primitive values if needed (e.g., format dates)
-                    cellContent =
-                      typeof value === "string" || typeof value === "number"
-                        ? value
-                        : JSON.stringify(value)
+                    cellContent = typeof value === "string" || typeof value === "number" ? value : JSON.stringify(value)
                   } else {
                     // Default for 'actions' if no cell renderer provided (likely an error in config)
                     cellContent = null
@@ -158,11 +149,7 @@ export function DataTable<T>({
       {!isLoading &&
         totalPages > 1 && ( // Only show pagination if not loading and needed
           <div className="p-4 border-t">
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
           </div>
         )}
       {!isLoading && viewMore && (
