@@ -153,13 +153,13 @@ export function ConsultationHomeTable({
     // Navigate based on consultation type
     switch (selectedConsultation.category) {
       case ConsultationCategory.Teleconsultation:
-        router.push("/professional/consultation-online")
+        router.push("/professional/consultations/online")
         break
       case ConsultationCategory.Chat:
-        router.push("/professional/chat")
+        router.push("/professional/consultations/chat")
         break
       case ConsultationCategory.Home:
-        router.push("/professional/consultation-home")
+        router.push("/professional/consultations/home")
         break
     }
   }

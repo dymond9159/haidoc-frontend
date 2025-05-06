@@ -225,22 +225,6 @@ export function Sidebar({ navItems = [], homeLink, bottomCanvasImage }: SidebarP
           </div>
           <ScrollBar orientation="vertical" />
         </ScrollArea>
-        {/* <div className="flex-1 overflow-y-auto px-2 py-4">
-          <nav className="space-y-1">
-            {navItems.map((item) => (
-              <NavLink
-                key={item.href}
-                item={item}
-                isTabletView={isTabletViewMode}
-              />
-            ))}
-          </nav>
-          <Separator className="my-3" />
-          <BackButton
-            isTabletView={isTabletViewMode}
-            closeSheet={() => dispatch(toggleCollapse())}
-          />
-        </div> */}
         <div className={cn("w-full flex-shrink-0", backgroundHeightClass)} style={backgroundStyle} />
       </div>
     </div>
