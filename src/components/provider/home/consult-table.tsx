@@ -7,13 +7,13 @@ import { ColumnDef } from "@/components/common/data-table"
 import { EnhancedTable } from "@/components/common/enhanced-table" // Import EnhancedTable
 import { FilterConfig } from "@/components/common/table-filter"
 import { Button } from "@/components/ui"
-import { ConsultationCategoryList } from "@/lib/constants/consultations"
-import { mockConsultationRequests } from "@/lib/mock-data/professional/home"
+import { ConsultationCategoryList, ConsultationTypeList } from "@/lib/constants/consultations"
+import { mockConsultations } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
-import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
+import { ConsultationColumns } from "@/types/provider/professional/interface-columns"
 import { CheckIcon, HistoryIcon, MessageSquareTextIcon, X } from "lucide-react"
 
-interface RequestConsultationTableProps {
+interface ConsultationTableProps {
   maxRecords?: number
   filterable?: boolean
   viewMore?: boolean
@@ -23,15 +23,16 @@ interface RequestConsultationTableProps {
 interface FilterOption {
   name?: string
   category?: string
+  consultationType?: string
 }
 
-export function RequestConsultationTable({
+export function ConsultationTable({
   filterable = true,
   viewMore = false,
   maxRecords,
   onViewMoreClick,
-}: RequestConsultationTableProps) {
-  const [allData, setAllData] = useState<RequestConsultationColumns[]>([])
+}: ConsultationTableProps) {
+  const [allData, setAllData] = useState<ConsultationColumns[]>([])
   const [filters, setFilters] = useState<FilterOption>({}) // Initialize filter state
   const [isLoading, setIsLoading] = useState(true)
 
@@ -45,9 +46,9 @@ export function RequestConsultationTable({
       setIsLoading(true)
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      let data: RequestConsultationColumns[] = []
+      let data: ConsultationColumns[] = []
 
-      data = mockConsultationRequests
+      data = mockConsultations
 
       setAllData(data)
       setIsLoading(false)
@@ -55,7 +56,7 @@ export function RequestConsultationTable({
     fetchData()
   }, [])
 
-  const columns: ColumnDef<RequestConsultationColumns>[] = useMemo(
+  const columns: ColumnDef<ConsultationColumns>[] = useMemo(
     () => [
       {
         accessorKey: "name",
@@ -65,6 +66,11 @@ export function RequestConsultationTable({
         accessorKey: "category",
         header: "CATEGORIA",
         cell: (row) => <StatusLabel status={row?.category} />,
+      },
+      {
+        accessorKey: "consultationType",
+        header: "TIPO DE CONSULTA",
+        cell: (row) => <StatusLabel status={row?.consultationType} />,
       },
       {
         accessorKey: "date",
@@ -103,7 +109,7 @@ export function RequestConsultationTable({
     [],
   )
 
-  const filterConfigs: FilterConfig<RequestConsultationColumns>[] = useMemo(
+  const filterConfigs: FilterConfig<ConsultationColumns>[] = useMemo(
     () => [
       {
         type: "search",
@@ -125,6 +131,18 @@ export function RequestConsultationTable({
           value: category,
         })),
       },
+      {
+        type: "select",
+        label: "Tipo de Consulta",
+        accessorKey: "consultationType",
+        placeholder: "Selecione um tipo de consulta",
+        value: filters.consultationType,
+        onChange: (value) => handleFilterChange("consultationType", value),
+        options: ConsultationTypeList.map((type) => ({
+          label: type,
+          value: type,
+        })),
+      },
     ],
     [filters, handleFilterChange],
   )
@@ -134,7 +152,7 @@ export function RequestConsultationTable({
       <EnhancedTable
         data={allData}
         columns={columns}
-        filterConfigs={filterable ? filterConfigs : []} // Pass filterConfigs conditionally
+        filterConfigs={filterable ? filterConfigs : []}
         isLoading={isLoading}
         getRowId={(row) => row.id}
         viewMore={viewMore}

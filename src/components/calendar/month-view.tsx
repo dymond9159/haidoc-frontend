@@ -1,7 +1,5 @@
 "use client"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Appointment {
   id: string
@@ -56,33 +54,6 @@ export function MonthView({ month, year, appointments, onDateClick, onMonthChang
   const monthData = getMonthData(month, year)
   const weeks = Array.from({ length: monthData.length / 7 }, (_, i) => monthData.slice(i * 7, (i + 1) * 7))
 
-  const monthNames = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro",
-  ]
-
-  const handlePrevMonth = () => {
-    const newMonth = month === 0 ? 11 : month - 1
-    const newYear = month === 0 ? year - 1 : year
-    onMonthChange?.(newMonth, newYear)
-  }
-
-  const handleNextMonth = () => {
-    const newMonth = month === 11 ? 0 : month + 1
-    const newYear = month === 11 ? year + 1 : year
-    onMonthChange?.(newMonth, newYear)
-  }
-
   const getAppointmentsForDate = (date: Date) => {
     return appointments.filter(
       (appointment) =>
@@ -99,21 +70,7 @@ export function MonthView({ month, year, appointments, onDateClick, onMonthChang
     date.getFullYear() === today.getFullYear()
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={handlePrevMonth}>
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <span className="font-medium">
-            {monthNames[month]}, {year}
-          </span>
-          <Button variant="ghost" size="icon" onClick={handleNextMonth}>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
+    <div className={cn("w-full bg-white rounded-md", className)}>
       <div className="grid grid-cols-7 border rounded-t-md">
         {weekDays.map((day, index) => (
           <div

@@ -1,7 +1,5 @@
 "use client"
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Appointment {
   id: string
@@ -21,18 +19,6 @@ interface DayViewProps {
 export function DayView({ date, appointments, onAppointmentClick, onDateChange, className }: DayViewProps) {
   const hours = Array.from({ length: 14 }, (_, i) => i + 7) // 7:00 to 20:00
 
-  const handlePrevDay = () => {
-    const newDate = new Date(date)
-    newDate.setDate(newDate.getDate() - 1)
-    onDateChange?.(newDate)
-  }
-
-  const handleNextDay = () => {
-    const newDate = new Date(date)
-    newDate.setDate(newDate.getDate() + 1)
-    onDateChange?.(newDate)
-  }
-
   const getAppointmentsForHour = (hour: number) => {
     return appointments.filter((appointment) => appointment.startTime.getHours() === hour)
   }
@@ -51,21 +37,7 @@ export function DayView({ date, appointments, onAppointmentClick, onDateChange, 
   const currentTimePosition = currentHour - 7 + currentMinutes / 60 // Relative to 7:00 start
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={handlePrevDay}>
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <span className="font-medium">
-            {dayOfWeek}, {date.toLocaleDateString("pt-BR", { day: "numeric", month: "long", year: "numeric" })}
-          </span>
-          <Button variant="ghost" size="icon" onClick={handleNextDay}>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
+    <div className={cn("w-full bg-white rounded-md", className)}>
       <div className="border rounded-md relative">
         {hours.map((hour) => {
           const hourAppointments = getAppointmentsForHour(hour)

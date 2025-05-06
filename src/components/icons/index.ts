@@ -22,9 +22,9 @@ export * from "./truck-icon"
 export * from "./user-check-icon"
 export * from "./user-settings-icon"
 
-export * from "./support-agent-icon"
-
+export * from "./calling-center-icon"
 export * from "./dollar-right-image-icon"
 export * from "./invoice-left-image-icon"
 export * from "./invoice-right-image-icon"
 export * from "./plan-right-image-icon"
+export * from "./support-agent-icon"

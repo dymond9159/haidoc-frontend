@@ -30,7 +30,7 @@ export default function ProfessionalHomePage() {
     <div className="space-y-8">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Hi, doctor!</h1>
-        <Button className="gap-2">
+        <Button className="gap-2" onClick={() => router.push("/professional/consultations/new-appointment")}>
           <PlusIcon size={16} />
           Novo agendamento
         </Button>
@@ -142,7 +142,7 @@ export default function ProfessionalHomePage() {
         <RequestConsultationTable
           maxRecords={5}
           viewMore
-          onViewMoreClick={() => router.push("/professional/consultation-requests")}
+          onViewMoreClick={() => router.push("/professional/consultations?tab=request")}
           filterable={false}
         />
       </div>

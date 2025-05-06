@@ -9,13 +9,14 @@ import { FilterConfig } from "@/components/common/table-filter"
 import { mockConsultationHistory } from "@/lib/mock-data/professional/chat"
 import { formatDate } from "@/lib/utils"
 import { ConsultationHistoryColumns } from "@/types/provider/professional/interface-columns"
-import { ConsultationType } from "@/types/provider/professional/types"
+import { ConsultationStatus, ConsultationType } from "@/types/provider/professional/types"
 import { DateFilterModal } from "./date-filter-modal"
 
 interface filterOption {
   id: string
   consultationType?: ConsultationType
   value?: number
+  status?: ConsultationStatus
   date?: string
 }
 
@@ -27,7 +28,7 @@ export function ConsultationHistoryTable() {
     consultationType: undefined,
     value: 0,
     date: "",
-  }) // Initialize filter state
+  })
 
   const [isDateFilterOpen, setIsDateFilterOpen] = useState(false)
 
@@ -60,6 +61,11 @@ export function ConsultationHistoryTable() {
         cell: (row) => <StatusLabel status={row?.consultationType} />,
       },
       { accessorKey: "value", header: "VALOR" },
+      {
+        accessorKey: "status",
+        header: "STATUS",
+        cell: (row) => <StatusLabel status={row?.status} />,
+      },
       {
         accessorKey: "date",
         header: "DATA E HORA",
@@ -95,6 +101,17 @@ export function ConsultationHistoryTable() {
           value: type,
         })),
         onChange: (value) => handleFilterChange("consultationType", value),
+      },
+      {
+        type: "select",
+        label: "Status",
+        value: filters.status,
+        accessorKey: "status",
+        options: Object.values(ConsultationStatus).map((status) => ({
+          label: status,
+          value: status,
+        })),
+        onChange: (value) => handleFilterChange("status", value),
       },
       {
         type: "date-filter",

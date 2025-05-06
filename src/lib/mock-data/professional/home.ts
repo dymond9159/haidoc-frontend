@@ -1,32 +1,45 @@
-import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
-import { RequestConsultationCategory } from "@/types/provider/professional/types"
+import { ConsultationColumns, RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
+import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
 
-export const mockMessages = [
-  {
-    sender: "Elisângelo Magalhães",
-    message: "Olá, gostaria de tirar uma dúvida...",
-    time: "14:32",
-    unreadCount: 2,
-  },
-  {
-    sender: "Elisângelo Magalhães",
-    message: "Olá, gostaria de tirar uma dúvida...",
-    time: "14:32",
-    unreadCount: 1,
-  },
-  {
-    sender: "Elisângelo Magalhães",
-    message: "Olá, gostaria de tirar uma dúvida...",
-    time: "14:32",
-    unreadCount: 2,
-  },
-  {
-    sender: "Elisângelo Magalhães",
-    message: "Olá, gostaria de tirar uma dúvida...",
-    time: "14:32",
-    unreadCount: 2,
-  },
-]
+import { faker } from "@faker-js/faker"
+
+function generateMockConsultationRequests(count: number = 10): RequestConsultationColumns[] {
+  return Array.from({ length: count }).map((_, i) => ({
+    id: (i + 1).toString(),
+    name: faker.company.name() + ", " + faker.person.fullName(),
+    category: faker.helpers.arrayElement([
+      ConsultationCategory.Teleconsultation,
+      ConsultationCategory.Chat,
+      ConsultationCategory.Home,
+    ]),
+    date: faker.date.soon().toLocaleDateString("pt-BR"),
+    time: faker.date.soon().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    isAccepted: faker.datatype.boolean(),
+  }))
+}
+
+export const mockConsultationRequests = generateMockConsultationRequests(20)
+
+function generateMockConsultations(count: number = 10): ConsultationColumns[] {
+  return Array.from({ length: count }).map((_, i) => ({
+    id: (i + 1).toString(),
+    name: `${faker.company.name()}, ${faker.person.fullName()}`,
+    category: faker.helpers.arrayElement([
+      ConsultationCategory.Teleconsultation,
+      ConsultationCategory.Chat,
+      ConsultationCategory.Home,
+    ]),
+    consultationType: faker.helpers.arrayElement([
+      ConsultationType.Normal,
+      ConsultationType.Urgent,
+      ConsultationType.FollowUp,
+    ]),
+    date: faker.date.future().toLocaleDateString("pt-BR"),
+    time: faker.date.soon().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+  }))
+}
+
+export const mockConsultations = generateMockConsultations(20)
 
 export const mockAppointments = [
   {
@@ -49,44 +62,5 @@ export const mockAppointments = [
     doctorName: "Dr. João Silva",
     startTime: "8:00",
     endTime: "9:00",
-  },
-]
-
-export const mockConsultationRequests: RequestConsultationColumns[] = [
-  {
-    id: "1",
-    name: "Nome da clínica, do médico, ou do paciente",
-    category: RequestConsultationCategory.Teleconsultation,
-    date: "08/07/24",
-    time: "18:45",
-  },
-  {
-    id: "2",
-    name: "Nome da clínica, do médico, ou do paciente",
-    category: RequestConsultationCategory.Chat,
-    date: "08/07/24",
-    time: "18:45",
-  },
-  {
-    id: "3",
-    name: "Nome da clínica, do médico, ou do paciente",
-    category: RequestConsultationCategory.Home,
-    date: "08/07/24",
-    time: "18:45",
-    isAccepted: true,
-  },
-  {
-    id: "4",
-    name: "Nome da clínica, do médico, ou do paciente",
-    category: RequestConsultationCategory.Teleconsultation,
-    date: "08/07/24",
-    time: "18:45",
-  },
-  {
-    id: "5",
-    name: "Nome da clínica, do médico, ou do paciente",
-    category: RequestConsultationCategory.Teleconsultation,
-    date: "08/07/24",
-    time: "18:45",
   },
 ]

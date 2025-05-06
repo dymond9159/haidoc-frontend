@@ -19,7 +19,7 @@ export default function PaymentSummaryPage() {
 
     // Redirect to home page after successful payment
     setTimeout(() => {
-      router.push("/professional/home")
+      router.push("/professional")
     }, 1500)
   }
 

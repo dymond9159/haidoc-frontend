@@ -10,7 +10,7 @@ export default function RegisterProviderSuccess() {
 
   const handleAccess = () => {
     // In a real app, you would set authentication tokens here
-    router.push("/professional")
+    router.push("/plan")
   }
 
   return (

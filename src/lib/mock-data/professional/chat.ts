@@ -1,7 +1,7 @@
 import { ChatMessage, MessageGroups } from "@/types/provider/chat/interfaces"
 import { MessageItem } from "@/types/provider/chat/types"
 import { ConsultationHistoryColumns } from "@/types/provider/professional/interface-columns"
-import { ConsultationType } from "@/types/provider/professional/types"
+import { ConsultationStatus, ConsultationType } from "@/types/provider/professional/types"
 import { UserRole } from "@/types/user"
 import { faker } from "@faker-js/faker"
 
@@ -42,6 +42,11 @@ export const mockChats: MessageGroups = {
   finished: generateChat("finished", 5),
 }
 
+const getRandomStatus = () => {
+  const statuses = Object.values(ConsultationStatus)
+  return statuses[Math.floor(Math.random() * statuses.length)]
+}
+
 export const mockHistoryMessages: MessageItem[] = generateChat("history", 5, true)
 
 export const mockConsultationHistory: ConsultationHistoryColumns[] = Array.from({ length: 30 }, (_, i) => {
@@ -50,6 +55,7 @@ export const mockConsultationHistory: ConsultationHistoryColumns[] = Array.from(
     id: (i + 1).toString(),
     consultationType: getRandomType(),
     value: Math.floor(Math.random() * 200) + 50, // Between 50 and 250
+    status: getRandomStatus(),
     date,
     time,
   }

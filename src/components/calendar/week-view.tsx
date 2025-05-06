@@ -1,8 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import React from "react"
 
 interface Appointment {
@@ -38,18 +36,6 @@ export function WeekView({ startDate, appointments, onAppointmentClick, onWeekCh
 
   const weekDates = getWeekDates(startDate)
 
-  const handlePrevWeek = () => {
-    const newStartDate = new Date(startDate)
-    newStartDate.setDate(newStartDate.getDate() - 7)
-    onWeekChange?.(newStartDate)
-  }
-
-  const handleNextWeek = () => {
-    const newStartDate = new Date(startDate)
-    newStartDate.setDate(newStartDate.getDate() + 7)
-    onWeekChange?.(newStartDate)
-  }
-
   const getAppointmentsForDateAndHour = (date: Date, hour: number) => {
     return appointments.filter(
       (appointment) =>
@@ -75,21 +61,7 @@ export function WeekView({ startDate, appointments, onAppointmentClick, onWeekCh
   const currentTimePosition = currentHour - 7 + currentMinutes / 60 // Relative to 7:00 start
 
   return (
-    <div className={cn("w-full", className)}>
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={handlePrevWeek}>
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <span className="font-medium">
-            {startDate.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}
-          </span>
-          <Button variant="ghost" size="icon" onClick={handleNextWeek}>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      </div>
-
+    <div className={cn("w-full bg-white rounded-md", className)}>
       <div className="grid grid-cols-8 border rounded-t-md">
         <div className="py-2 text-xs font-medium text-center"></div>
         {weekDates.map((date, index) => (

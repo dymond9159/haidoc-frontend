@@ -1,4 +1,4 @@
-import { RequestConsultationCategory } from "../provider/professional/types"
+import { ConsultationCategory, ConsultationStatus, ConsultationType } from "../provider/professional/types"
 import { DeliverStatus, HarvestType, PatientStatus } from "./enum-status"
 
 /*
@@ -22,7 +22,14 @@ export const statusColorMap: Record<string, string> = {
   [HarvestType.Laboratory]: "bg-warning-2 text-warning-5",
   [HarvestType.Home]: "bg-success-2 text-success-6",
 
-  [RequestConsultationCategory.Home]: "bg-success-2 text-success-6",
-  [RequestConsultationCategory.Chat]: "bg-warning-2 text-warning-5",
-  [RequestConsultationCategory.Teleconsultation]: "bg-info-2 text-info-5",
+  [ConsultationCategory.Home]: "bg-success-2 text-success-6",
+  [ConsultationCategory.Chat]: "bg-warning-2 text-warning-5",
+  [ConsultationCategory.Teleconsultation]: "bg-info-2 text-info-5",
+
+  [ConsultationType.Normal]: "bg-info-2 text-info-5",
+  [ConsultationType.Urgent]: "bg-error-2 text-error-5",
+  [ConsultationType.FollowUp]: "bg-success-2 text-success-6",
+
+  [ConsultationStatus.Completed]: "bg-success-2 text-success-6",
+  [ConsultationStatus.Rescheduled]: "bg-warning-2 text-warning-5",
 }
