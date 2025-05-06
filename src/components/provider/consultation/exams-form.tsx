@@ -1,5 +1,6 @@
 "use client"
 
+import { Asterisk } from "@/components/common"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -117,15 +118,15 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
   return (
     <div className="h-full overflow-y-auto">
       <div className="p-4">
-        <h3 className="text-base font-medium mb-4">Exames</h3>
+        <h3 className="text-sm font-medium mb-2">Exames</h3>
 
         <Accordion type="multiple" className="w-full space-y-2" defaultValue={["biochemistry"]}>
           {examCategories.map((category) => (
             <AccordionItem key={category.id} value={category.id} className="border rounded-md overflow-hidden">
               <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-gray-50">
-                <span className="font-medium text-blue-600">{category.name}</span>
+                <span className="font-medium text-secondary">{category.name}</span>
               </AccordionTrigger>
-              <AccordionContent className="px-4 py-2 border-t space-y-2">
+              <AccordionContent className="px-0 py-2 border-t space-y-2">
                 {category.exams.map((exam) => (
                   <div key={exam.id} className="flex items-center space-x-2">
                     <Checkbox
@@ -149,7 +150,7 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
 
       <div className="p-4 border-t">
         <label className="text-sm font-medium mb-1 block">
-          Instrução de uso<span className="text-red-500">*</span>
+          Instrução de uso <Asterisk />
         </label>
         <Textarea
           value={instructions}
@@ -160,8 +161,8 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
         <p className="text-xs text-gray-500 mt-1">1000 caracteres</p>
       </div>
 
-      <div className="p-4 border-t">
-        <Button onClick={handleSubmit} className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+      <div className="p-4 ">
+        <Button onClick={handleSubmit} className="w-full">
           Enviar
         </Button>
       </div>

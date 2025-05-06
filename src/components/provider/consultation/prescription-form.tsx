@@ -1,12 +1,12 @@
 "use client"
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Asterisk } from "@/components/common"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { Plus } from "lucide-react"
+import { LucideCheckCircle2 } from "lucide-react"
 import { useState } from "react"
 
 interface PrescriptionFormProps {
@@ -62,56 +62,16 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
 
   return (
     <div className="h-full overflow-y-auto p-4 space-y-4">
-      {medications.length > 0 && (
-        <Accordion type="multiple" className="w-full mb-4">
-          {medications.map((medication, index) => (
-            <AccordionItem key={medication.id} value={`medication-${medication.id}`} className="border rounded-md mb-2">
-              <AccordionTrigger className="px-3 py-2 hover:no-underline">
-                <span className="font-medium">Medicamento {index + 1}</span>
-              </AccordionTrigger>
-              <AccordionContent className="px-3 pb-3">
-                <div className="text-sm space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Nome:</span>
-                    <span>{medication.medicationName}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Dosagem:</span>
-                    <span>
-                      {medication.quantity} {medication.dosageUnit}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Duração:</span>
-                    <span>
-                      {medication.treatmentDuration} {medication.durationUnit}
-                    </span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Via:</span>
-                    <span>{medication.administrationRoute}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-500">Forma:</span>
-                    <span>{medication.pharmaceuticalForm}</span>
-                  </div>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      )}
-
       <div>
         <label className="text-sm font-medium mb-1 block">
-          Nome do medicamento<span className="text-red-500">*</span>
+          Nome do medicamento <Asterisk />
         </label>
         <Input
           value={currentMedication.medicationName}
           onChange={(e) => handleChange("medicationName", e.target.value)}
           placeholder="Digite aqui"
         />
-        <p className="text-xs text-gray-500 mt-1">Opte por adicionar preferencialmente o nome genérico.</p>
+        <p className="text-xs text-gray-500 mt-1 ml-1">Opte por adicionar preferencialmente o nome genérico.</p>
       </div>
 
       <div>
@@ -120,7 +80,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
           <div>
             <label className="text-xs text-gray-500 mb-1 block">Quantidade</label>
             <Select value={currentMedication.quantity} onValueChange={(value) => handleChange("quantity", value)}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -134,7 +94,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
           <div>
             <label className="text-xs text-gray-500 mb-1 block">Dosagem</label>
             <Select value={currentMedication.dosageUnit} onValueChange={(value) => handleChange("dosageUnit", value)}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -157,7 +117,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
               value={currentMedication.treatmentDuration}
               onValueChange={(value) => handleChange("treatmentDuration", value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -175,7 +135,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
               value={currentMedication.durationUnit}
               onValueChange={(value) => handleChange("durationUnit", value)}
             >
-              <SelectTrigger>
+              <SelectTrigger className="w-full">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -194,7 +154,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
           value={currentMedication.administrationRoute}
           onValueChange={(value) => handleChange("administrationRoute", value)}
         >
-          <SelectTrigger>
+          <SelectTrigger className="w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -213,7 +173,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
           value={currentMedication.pharmaceuticalForm}
           onValueChange={(value) => handleChange("pharmaceuticalForm", value)}
         >
-          <SelectTrigger>
+          <SelectTrigger className="w-full">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -229,7 +189,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
 
       <div>
         <label className="text-sm font-medium mb-1 block">
-          Instrução de uso<span className="text-red-500">*</span>
+          Instrução de uso <Asterisk />
         </label>
         <Textarea
           value={currentMedication.instructions}
@@ -240,30 +200,21 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
         <p className="text-xs text-gray-500 mt-1">1000 caracteres</p>
       </div>
 
-      <div className="bg-blue-50 border border-blue-100 rounded-md p-4">
-        <div className="flex items-start gap-2">
-          <Checkbox
-            id="signature"
-            checked={currentMedication.signatureAdded}
-            onCheckedChange={(checked) => handleChange("signatureAdded", checked)}
-          />
-          <div>
-            <label htmlFor="signature" className="text-sm font-medium">
-              Assinatura e carimbo adicionados
-            </label>
-            <p className="text-xs text-gray-500 mt-1">
-              Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.
-            </p>
-          </div>
-        </div>
-      </div>
+      <Alert variant="info">
+        <AlertTitle className="flex items-center gap-2">
+          <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
+          Assinatura e carimbo adicionados
+        </AlertTitle>
+        <AlertDescription>
+          Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.
+        </AlertDescription>
+      </Alert>
 
       <div className="space-y-2 pt-4">
-        <Button onClick={handleSubmit} className="w-full bg-blue-500 hover:bg-blue-600 text-white">
+        <Button onClick={handleSubmit} className="w-full">
           Enviar
         </Button>
         <Button variant="outline" className="w-full" onClick={handleAddMedication}>
-          <Plus className="h-4 w-4 mr-2" />
           Adicionar outro medicamento
         </Button>
       </div>

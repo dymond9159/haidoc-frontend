@@ -1,21 +1,21 @@
 "use client"
 
+import { StatusLabel } from "@/components/common"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { cn } from "@/lib/utils"
+import { ConsultationType } from "@/types/provider/professional/types"
 import { Calendar, Clock } from "lucide-react"
 import { useState } from "react"
 
-interface AppointmentDetailsModalProps {
+interface ConsultationDetailsModalProps {
   isOpen: boolean
   onClose: () => void
   appointment: {
     id: string
     patientName: string
     patientId: string
-    type: "Urgente" | "Normal" | "Seguimento"
+    type: ConsultationType
     date: string
     startTime: string
     endTime: string
@@ -29,14 +29,14 @@ interface AppointmentDetailsModalProps {
   onCancel: () => void
 }
 
-export function AppointmentDetailsModal({
+export function ConsultationDetailsModal({
   isOpen,
   onClose,
   appointment,
   onMarkAsCompleted,
   onReschedule,
   onCancel,
-}: AppointmentDetailsModalProps) {
+}: ConsultationDetailsModalProps) {
   const [showCancelConfirm, setShowCancelConfirm] = useState(false)
   const [cancelReason, setCancelReason] = useState("")
 
@@ -86,11 +86,11 @@ export function AppointmentDetailsModal({
 
   const getTypeColor = () => {
     switch (appointment.type) {
-      case "Urgente":
+      case ConsultationType.Urgent:
         return "bg-error-1 text-error-5"
-      case "Normal":
+      case ConsultationType.Normal:
         return "bg-system-3 text-system-9"
-      case "Seguimento":
+      case ConsultationType.FollowUp:
         return "bg-info-1 text-info-5"
       default:
         return "bg-system-3 text-system-9"
@@ -110,11 +110,11 @@ export function AppointmentDetailsModal({
         <DialogHeader>
           <DialogTitle>Informações da consulta</DialogTitle>
         </DialogHeader>
-        <div className="py-4 space-y-6">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <Avatar className="h-10 w-10">
-                <AvatarImage src={`/placeholder.svg?text=${patientInitials}`} alt={appointment.patientName} />
+        <div className="space-y-6">
+          <div className="py-4">
+            <div className="flex items-center gap-3 mb-6">
+              <Avatar className="h-12 w-12">
+                <AvatarImage src={`/images/placeholder.svg?text=${patientInitials}`} alt={appointment.patientName} />
                 <AvatarFallback>{patientInitials}</AvatarFallback>
               </Avatar>
               <div>
@@ -122,30 +122,28 @@ export function AppointmentDetailsModal({
                 <p className="text-xs text-system-9">ID do paciente: #{appointment.patientId}</p>
               </div>
             </div>
-            <Badge variant="outline" className={cn("px-2 py-1 w-full justify-center", getTypeColor())}>
-              {appointment.type}
-            </Badge>
+            <StatusLabel status={appointment.type} className="w-full h-10 justify-center rounded-md" />
           </div>
 
           <div className="grid grid-cols-3 gap-4">
             <div>
               <p className="text-xs text-system-9 mb-1">Data da consulta</p>
               <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-system-9" />
+                <Calendar className="h-4 w-4" />
                 <span className="text-sm">{appointment.date}</span>
               </div>
             </div>
             <div>
               <p className="text-xs text-system-9 mb-1">Hora inicial</p>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-system-9" />
+                <Clock className="h-4 w-4 text-secondary-9" />
                 <span className="text-sm">{appointment.startTime}</span>
               </div>
             </div>
             <div>
               <p className="text-xs text-system-9 mb-1">Hora final</p>
               <div className="flex items-center gap-2">
-                <Clock className="h-4 w-4 text-system-9" />
+                <Clock className="h-4 w-4 text-secondary-9" />
                 <span className="text-sm">{appointment.endTime}</span>
               </div>
             </div>
@@ -173,13 +171,10 @@ export function AppointmentDetailsModal({
           </div>
         </div>
         <div className="space-y-2">
-          <Button className="w-full bg-success-5 hover:bg-success-6 text-white" onClick={onMarkAsCompleted}>
-            Marcar como realizada
+          <Button className="w-full" onClick={onReschedule}>
+            Iniciar Consulta
           </Button>
-          <Button variant="outline" className="w-full" onClick={onReschedule}>
-            Reagendar Consulta
-          </Button>
-          <Button variant="ghost" className="w-full text-error-5 hover:text-error-6" onClick={handleCancel}>
+          <Button variant="link" className="w-full" onClick={handleCancel}>
             Cancelar Consulta
           </Button>
         </div>

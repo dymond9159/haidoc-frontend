@@ -1,4 +1,5 @@
 export * from "./chat-panel"
+export * from "./consultation-feature-bar"
 export * from "./exams-form"
 export * from "./medical-report-modal"
 export * from "./more-options-modal"

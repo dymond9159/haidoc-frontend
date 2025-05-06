@@ -1,7 +1,7 @@
 import { LucideProps } from "lucide-react"
 
 export function SupportAgentIcon(props: LucideProps) {
-  const color = props?.fill || "currentColor"
+  const color = props?.color || "currentColor"
   return (
     <svg
       width={props?.size || "24"}

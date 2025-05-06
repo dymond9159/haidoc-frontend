@@ -138,7 +138,7 @@ export function ChatConversation({ chat, isFinished = false }: ChatConversationP
               </Avatar>
               <div className="flex flex-col max-w-[70%]">
                 <div
-                  className={`relative p-3 rounded-2xl break-words ${
+                  className={`w-full relative p-3 rounded-2xl break-words ${
                     msg.sender === UserRole.Professional
                       ? "bg-secondary-11 text-white rounded-br-none ml-auto"
                       : "bg-system-3 text-foreground rounded-bl-none"

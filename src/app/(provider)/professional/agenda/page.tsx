@@ -16,8 +16,8 @@ import { DayView } from "@/components/calendar/day-view"
 import { MonthView } from "@/components/calendar/month-view"
 import { WeekView } from "@/components/calendar/week-view"
 import { StatCard } from "@/components/common"
-import { AppointmentDetailsModal } from "@/components/provider/agenda/appointment-details-dialog"
 import { ConsultationHistoryTable } from "@/components/provider/chat/consultation-history-table"
+import { ConsultationDetailsModal } from "@/components/provider/consultation/consultation-details-modal"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -318,7 +318,7 @@ export default function AgendaPage() {
         </Tabs>
       </div>
       {selectedAppointment && (
-        <AppointmentDetailsModal
+        <ConsultationDetailsModal
           isOpen={isAppointmentModalOpen}
           onClose={() => setIsAppointmentModalOpen(false)}
           appointment={selectedAppointment}
