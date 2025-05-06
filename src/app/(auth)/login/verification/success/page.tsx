@@ -9,7 +9,7 @@ export default function VerificationSuccess() {
 
   const handleAccess = () => {
     // In a real app, you would set authentication tokens here
-    router.push("/admin")
+    router.push("/professional")
   }
 
   return (
