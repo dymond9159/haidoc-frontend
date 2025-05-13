@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CreditCardIcon, EllipsisIcon } from "lucide-react"
-import { ReactNode } from "react"
+import { ReactNode, useState } from "react"
 import { Button } from "../ui"
 
 interface PaymentMethodCardProps {
@@ -33,6 +33,7 @@ export function PaymentMethodCard({
   onDelete,
   onSetDefault,
 }: PaymentMethodCardProps) {
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <Card className={isDefault ? "border-secondary ring-1 ring-secondary" : ""}>
       <CardContent className="p-0 md:p-4">
@@ -51,21 +52,30 @@ export function PaymentMethodCard({
               <p className="text-xs text-muted-foreground">{cardNumber}</p>
             </div>
             <div>
-              <DropdownMenu>
+              <DropdownMenu onOpenChange={setIsOpen} open={isOpen}>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="h-8 w-8">
                     <EllipsisIcon className="cursor-pointer h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => onEdit(id)}>Editar</DropdownMenuItem>
-                  {onSetDefault &&
-                    !isDefault && ( // Show "Set as Default" only if not already default
-                      <DropdownMenuItem onClick={() => onSetDefault(id)}>Definir como padrão</DropdownMenuItem>
-                    )}
+                  <DropdownMenuItem
+                    onClick={() => {
+                      setIsOpen(false)
+                      onEdit(id)
+                    }}
+                  >
+                    Editar
+                  </DropdownMenuItem>
+                  {onSetDefault && !isDefault && (
+                    <DropdownMenuItem onClick={() => onSetDefault(id)}>Definir como padrão</DropdownMenuItem>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    onClick={() => onDelete(id)}
+                    onClick={() => {
+                      setIsOpen(false)
+                      onDelete(id)
+                    }}
                     className="text-destructive focus:text-destructive focus:bg-destructive/10"
                   >
                     Excluir
