@@ -5,7 +5,7 @@ import { cn, formatFileSize } from "@/lib/utils"
 import { FileTextIcon, Plus, UploadIcon, X } from "lucide-react"
 import { DragEvent, useRef, useState } from "react"
 
-type UploadedFile = {
+export type UploadedFile = {
   id: string // Consider using a more robust ID like a UUID if needed
   name: string
   size: number

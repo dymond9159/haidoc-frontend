@@ -9,7 +9,7 @@ interface FeatureItemProps {
   text: string
 }
 
-const FeatureItem: React.FC<FeatureItemProps> = ({ text }) => {
+export const FeatureItem: React.FC<FeatureItemProps> = ({ text }) => {
   return (
     <div className="flex items-start gap-2">
       <CheckCircle className="flex-shrink-0 w-3 h-3 text-success-5 mt-1" />

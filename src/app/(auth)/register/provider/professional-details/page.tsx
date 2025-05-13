@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+import { cn, formatNUIT } from "@/lib/utils"
 
-enum ProviderOptions {
+export enum ProviderOptions {
   Professional = "professional",
   Laboratory = "laboratory",
   Clinic = "clinic",
@@ -44,20 +44,6 @@ export default function ProviderProfessionalDetailsPage() {
       const newErrors = { ...errors }
       delete newErrors[field]
       setErrors(newErrors)
-    }
-  }
-
-  const formatNUIT = (value: string) => {
-    // Remove non-digits
-    const digits = value.replace(/\D/g, "")
-
-    // Format with dots
-    if (digits.length <= 3) {
-      return digits
-    } else if (digits.length <= 6) {
-      return `${digits.slice(0, 3)}.${digits.slice(3)}`
-    } else {
-      return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}`
     }
   }
 

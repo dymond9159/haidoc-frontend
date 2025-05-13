@@ -97,8 +97,8 @@ export function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
-            <DropdownMenuItem asChild disabled>
-              <Link href="/professional/profile" className="flex items-center gap-2">
+            <DropdownMenuItem asChild>
+              <Link href="/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
                 Informações Pessoais
               </Link>

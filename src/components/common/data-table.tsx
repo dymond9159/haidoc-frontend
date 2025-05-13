@@ -26,6 +26,7 @@ interface DataTableProps<T> {
   loadingMessage?: React.ReactNode // Message while loading
   viewMore?: boolean
   viewAllText?: string
+  borderable?: boolean
   getRowId?: (row: T, index: number) => string | number // Function to get a unique ID for the row key (optional, defaults to index)
   onViewMoreClick?: () => void
   onRowClick?: (row: T) => void
@@ -40,6 +41,7 @@ export function DataTable<T>({
   loadingMessage = "Carregando dados...", // Default loading message
   viewMore = false,
   viewAllText = "Ver tudo",
+  borderable = true,
   getRowId,
   onRowClick,
   onViewMoreClick,
@@ -76,14 +78,14 @@ export function DataTable<T>({
   const effectiveGetRowId = getRowId ?? defaultGetRowId
 
   return (
-    <div className="bg-white rounded-md border overflow-hidden">
+    <div className={cn("bg-white rounded-md overflow-hidden", borderable && "border")}>
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className="hover:bg-transparent">
             {columns.map((column) => (
               <TableHead
                 key={String(column.accessorKey)}
-                className={column.headerClassName ?? "text-secondary"} // Apply specific or default class
+                className={cn("text-secondary", column.headerClassName)} // Apply specific or default class
               >
                 {column.header}
               </TableHead>
@@ -104,7 +106,7 @@ export function DataTable<T>({
             paginatedData.map((row, rowIndex) => (
               <TableRow
                 key={effectiveGetRowId(row, rowIndex)}
-                className={cn("h-15", onRowClick && "cursor-pointer")}
+                className={cn("h-12", onRowClick && "cursor-pointer")}
                 onClick={() => onRowClick?.(row)}
               >
                 {columns.map((column) => {

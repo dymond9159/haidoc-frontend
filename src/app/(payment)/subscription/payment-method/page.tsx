@@ -5,10 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { PaymentMethod } from "@/types"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-type PaymentMethod = "card" | "mpesa" | "emola" | "paypal"
 
 interface PaymentOption {
   label: string

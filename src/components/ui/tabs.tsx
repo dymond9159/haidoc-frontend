@@ -28,7 +28,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "flex items-center justify-center w-fit h-9 bg-transparent text-muted-foreground rounded-lg p-[3px] gap-1",
+        "flex flex-wrap items-center justify-center w-fit bg-transparent text-muted-foreground rounded-lg p-[3px] gap-1",
         orientation === "vertical" && "h-fit flex-col items-start",
         className,
       )}
@@ -47,14 +47,14 @@ const tabTriggerVariants = cva(
   {
     variants: {
       variant: {
-        default: "inline-flex items-center justify-center",
+        default: "flex items-center justify-center",
         button:
           "flex border border-system-5 justify-start bg-background hover:text-secondary hover:border-secondary data-[state=active]:text-secondary data-[state=active]:border-secondary",
         border:
           "border-t-0 border-r-0 border-l-0 border-b-2 border-system-5 rounded-none hover:text-secondary hover:border-secondary data-[state=active]:text-secondary data-[state=active]:border-secondary",
       },
       size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        default: "h-fit px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
         lg: "h-12 rounded-md px-5 has-[>svg]:px-4",
         xl: "h-15 rounded-md py-6 px-6 has-[>svg]:px-4",

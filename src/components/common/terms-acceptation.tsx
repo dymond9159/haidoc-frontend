@@ -1,22 +1,18 @@
 import { Checkbox } from "@/components/ui/checkbox" // Assuming these are your UI components
 import { Label } from "@/components/ui/label"
+import { CheckboxProps } from "@radix-ui/react-checkbox"
 import { ChevronRight, ReceiptTextIcon } from "lucide-react"
 import Link from "next/link"
 import React, { AnchorHTMLAttributes } from "react"
 
-interface TermsAndConditionsProps {
-  checked: boolean
-  onCheckedChange: (checked: boolean) => void
+interface TermsAndConditionsProps extends CheckboxProps {
+  // checked: boolean
+  // onCheckedChange: (checked: boolean) => void
   error?: string // Optional error message
   termsLink?: string // Optional link to full terms, default empty
 }
 
-export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
-  checked,
-  onCheckedChange,
-  error,
-  termsLink = "",
-}) => {
+export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLink = "", error, ...props }) => {
   const LinkComponent: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href, ...props }) => {
     return (
       <Link href={href || ""} {...props}>
@@ -39,17 +35,12 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
         )}
       </div>
       <div className="flex items-start space-x-2 mt-2">
-        <Checkbox
-          id="terms"
-          checked={checked}
-          onCheckedChange={onCheckedChange}
-          className={error ? "border-error-5" : ""} // Use red-500
-        />
+        <Checkbox id="terms" {...props} />
         <Label htmlFor="terms" className="text-xs font-normal leading-tight">
           Li e concordo com os termos de uso
         </Label>
       </div>
-      {error && <p className="text-xs text-error-5 mt-1">{error}</p>}
+      {/* {error && <p className="text-xs text-error-5 mt-1">{error}</p>} */}
     </div>
   )
 }

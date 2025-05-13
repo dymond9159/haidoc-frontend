@@ -5,7 +5,7 @@ import { useRouter } from "nextjs-toploader/app"
 
 import { PlanCard } from "@/components/cards"
 import { PlanList } from "@/lib/constants"
-import { PlanType } from "@/types/common"
+import { PlanType } from "@/types"
 
 export default function PlansPage() {
   const router = useRouter()

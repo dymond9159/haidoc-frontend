@@ -5,7 +5,7 @@ import { useRef, useState } from "react"
 
 import { RegistrationSteps } from "@/components/auth/registration-step"
 import { Asterisk } from "@/components/common"
-import { FileUploadBox } from "@/components/common/file-upload-box"
+import { FileUploadBox, UploadedFile } from "@/components/common/file-upload-box"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -15,12 +15,6 @@ import { Separator } from "@/components/ui/separator"
 enum DocumentationOptions {
   License = "license",
   Address = "address",
-}
-
-interface UploadedFile {
-  id: string
-  name: string
-  size: number
 }
 
 export default function ProviderDocumentationPage() {

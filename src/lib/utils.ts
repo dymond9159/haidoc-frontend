@@ -5,6 +5,20 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const formatNUIT = (value: string) => {
+  // Remove non-digits
+  const digits = value.replace(/\D/g, "")
+
+  // Format with dots
+  if (digits.length <= 3) {
+    return digits
+  } else if (digits.length <= 6) {
+    return `${digits.slice(0, 3)}.${digits.slice(3)}`
+  } else {
+    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}`
+  }
+}
+
 export function formatFileSize(size: number) {
   const kb = size / 1024
   const mb = kb / 1024
