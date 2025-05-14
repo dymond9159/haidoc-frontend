@@ -6,7 +6,11 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 import { cva } from "class-variance-authority"
 
-function Tabs({ className, orientation = "horizontal", ...props }: React.ComponentProps<typeof TabsPrimitive.Root>) {
+function Tabs({
+  className,
+  orientation = "horizontal",
+  ...props
+}: React.ComponentProps<typeof TabsPrimitive.Root> & {}) {
   return (
     <TabsPrimitive.Root
       data-slot="tabs"
@@ -20,9 +24,11 @@ function Tabs({ className, orientation = "horizontal", ...props }: React.Compone
 function TabsList({
   className,
   orientation = "horizontal",
+  variant = "default",
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List> & {
   orientation?: "horizontal" | "vertical"
+  variant?: "default" | "button" | "card"
 }) {
   return (
     <TabsPrimitive.List
@@ -30,6 +36,9 @@ function TabsList({
       className={cn(
         "flex flex-wrap items-center justify-center w-fit bg-transparent text-muted-foreground rounded-lg p-[3px] gap-1",
         orientation === "vertical" && "h-fit flex-col items-start",
+        variant === "default" && "flex-row gap-4",
+        variant === "button" && "flex-row gap-4",
+        variant === "card" && "border bg-white p-3 md:p-6",
         className,
       )}
       {...props}

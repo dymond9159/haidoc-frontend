@@ -16,7 +16,7 @@ const profileOptions = [
     description: "Atualize suas informações pessoais e senha",
   },
   {
-    href: "/profile/public-profile",
+    href: "/profile/public",
     icon: <LucideLayers2 />,
     title: "Perfil público",
     description: "Veja como seu perfil aparece para outros usuários",

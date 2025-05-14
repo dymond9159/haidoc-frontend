@@ -57,6 +57,7 @@ export const calculateTrend = (data: { timeframe: string; value: number }[]) => 
 //   }).format(today)
 // }
 
+import { TabItemType } from "@/types"
 import html2canvas from "html2canvas"
 import { jsPDF } from "jspdf"
 
@@ -126,4 +127,10 @@ export const getPageTitleFromPath = (pageTitles: Record<string, string>, path: s
     .find((key) => path.startsWith(key))
 
   return match ? pageTitles[match] : ""
+}
+
+export const getActiveTabFromPath = (tabItems: TabItemType[], path: string) => {
+  const sortedTabItems = [...tabItems].sort((a, b) => b.href.length - a.href.length)
+  const match = sortedTabItems.find((tab) => path.startsWith(tab.href))
+  return match?.value
 }

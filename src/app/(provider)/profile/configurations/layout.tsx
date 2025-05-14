@@ -3,9 +3,12 @@
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useMobile } from "@/hooks/use-mobile"
+import { getActiveTabFromPath } from "@/lib/utils"
+import { TabItemType } from "@/types"
 import { ChevronRightIcon, CircleDollarSignIcon, FolderIcon, ReceiptIcon, UserRoundIcon } from "lucide-react"
+import { usePathname } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const enum ConfigurationTabOptions {
   DataRegistration = "Dados cadastrais",
@@ -14,7 +17,7 @@ const enum ConfigurationTabOptions {
   Signature = "Minha assinatura",
 }
 
-const tabItems = [
+const tabItems: TabItemType<ConfigurationTabOptions>[] = [
   {
     value: ConfigurationTabOptions.DataRegistration,
     icon: <UserRoundIcon />,
@@ -47,6 +50,15 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
   const isMobile = useMobile()
   const tabOrientation = isMobile ? "horizontal" : "vertical"
 
+  const currentPath = usePathname()
+  const initialTab = getActiveTabFromPath(tabItems, currentPath)
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab as ConfigurationTabOptions)
+    }
+  }, [initialTab])
+
   return (
     <div className="space-y-6">
       <Tabs
@@ -58,7 +70,7 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
         }}
         orientation={tabOrientation}
       >
-        <TabsList className="mb-3" orientation={tabOrientation}>
+        <TabsList variant="card" className="mb-3" orientation={tabOrientation}>
           {tabItems.map(({ value, icon, label }) => (
             <TabsTrigger key={value} value={value} className="w-full">
               <div className="w-full flex flex-row items-center justify-between gap-2">
