@@ -1,7 +1,7 @@
 "use client"
 
+import { BackButton } from "@/components/common"
 import { ChatConversation, ChatList, ChatPlaceholder } from "@/components/provider/chat"
-import LinkButton from "@/components/ui/link"
 import { MessageItem } from "@/types/provider/chat/types"
 import { useState } from "react"
 
@@ -14,10 +14,8 @@ export default function ChatPage() {
       style={{ height: "-webkit-fill-available", maxHeight: "-webkit-fill-available" }}
     >
       <div className="w-[400px] border-r flex flex-col">
-        <div className="pb-2">
-          <LinkButton variant="default" direction="left" href="/professional/">
-            Suas Conversas
-          </LinkButton>
+        <div>
+          <BackButton text="Suas Conversas" />
         </div>
         <ChatList onSelectChat={setSelectedChat} selectedChat={selectedChat} />
       </div>

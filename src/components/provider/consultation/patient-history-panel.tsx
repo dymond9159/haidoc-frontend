@@ -50,16 +50,16 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
         type="single"
         collapsible
         defaultValue={PatientHistoryPanelSections.History}
-        className="w-full space-y-2 p-4"
+        className="w-full p-4"
         onValueChange={(value) => setActiveSection(value as PatientHistoryPanelSections)}
       >
-        <AccordionItem value={PatientHistoryPanelSections.Vitals} className="border rounded-md overflow-hidden">
+        <AccordionItem value={PatientHistoryPanelSections.Vitals} className="border rounded-md overflow-hidden mb-4">
           <AccordionTrigger className="px-4 py-3 hover:no-underline rounded-none">
             <div className="flex items-center gap-2">
               <span className="font-medium">Pré avaliação do paciente</span>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="px-0 pt-2 pb-3 cursor-default">
+          <AccordionContent className="px-0 cursor-default">
             <Separator className="mb-4" />
             <div className="space-y-4">
               <div className="flex items-center justify-between">
@@ -125,13 +125,13 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
           </AccordionContent>
         </AccordionItem>
 
-        <AccordionItem value={PatientHistoryPanelSections.History} className="border rounded-md overflow-hidden">
-          <AccordionTrigger className="px-4 pt-2 pb-3 hover:no-underline rounded-none">
+        <AccordionItem value={PatientHistoryPanelSections.History} className="border rounded-md overflow-hidden mb-0">
+          <AccordionTrigger className="px-4 py-3 hover:no-underline rounded-none">
             <div className="flex items-center gap-2">
               <span className="font-medium ">Histórico médico</span>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="px-0 py-3 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down cursor-default">
+          <AccordionContent className="px-0 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down cursor-default">
             <Separator className="mb-4" />
             <div className="space-y-4">
               <div className="flex items-center justify-between">

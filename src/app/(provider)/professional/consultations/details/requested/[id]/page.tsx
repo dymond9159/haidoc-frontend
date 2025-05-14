@@ -1,10 +1,9 @@
 "use client"
 
-import { StatusLabel } from "@/components/common"
+import { BackButton, StatusLabel } from "@/components/common"
 import { RequestConsultationActions } from "@/components/provider/consultation"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Card } from "@/components/ui/card"
-import LinkButton from "@/components/ui/link"
 import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
 import { useParams, useRouter } from "next/navigation"
 
@@ -19,9 +18,7 @@ export default function RequestedConsultationPage() {
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <LinkButton href="" direction="left" variant="default" onClick={() => router.back()}>
-          Consulta Solicitada
-        </LinkButton>
+        <BackButton text="Consulta Solicitada" />
       </div>
 
       <Card className="space-y-6">

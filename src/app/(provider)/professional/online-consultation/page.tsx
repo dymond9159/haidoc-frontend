@@ -20,7 +20,7 @@ export default function OnlineConsultationPage() {
     console.log("Medical report submitted:", data)
     // In a real app, you would send this data to your backend
     // Then redirect to a summary page or back to the consultations list
-    window.location.href = "/professional/consultas"
+    window.location.href = "/professional/consultations"
   }
 
   return (

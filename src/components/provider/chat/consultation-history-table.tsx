@@ -94,6 +94,7 @@ export function ConsultationHistoryTable() {
       {
         type: "select",
         label: "Tipo de Consulta",
+        placeholder: "Selecione uma tipo de consulta",
         value: filters.consultationType,
         accessorKey: "consultationType",
         options: Object.values(ConsultationType).map((type) => ({
@@ -105,6 +106,7 @@ export function ConsultationHistoryTable() {
       {
         type: "select",
         label: "Status",
+        placeholder: "Selecione uma status",
         value: filters.status,
         accessorKey: "status",
         options: Object.values(ConsultationStatus).map((status) => ({
@@ -116,8 +118,8 @@ export function ConsultationHistoryTable() {
       {
         type: "date-filter",
         label: "Data",
+        placeholder: "Selecione uma data",
         accessorKey: "date",
-        placeholder: "Data",
         value: filters.date,
         onChange: (value) => handleFilterChange("date", value),
         onClick: () => setIsDateFilterOpen(true),

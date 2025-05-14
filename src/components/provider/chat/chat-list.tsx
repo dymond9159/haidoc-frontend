@@ -28,7 +28,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
       style={{ height: "calc(100vh - 140px)", minHeight: "calc(100vh - 140px)", maxHeight: "calc(100vh - 140px)" }}
       onValueChange={(value) => setActiveTab(value as ChatListTabOptions)}
     >
-      <TabsList className="grid grid-cols-2 h-12 w-full">
+      <TabsList className="grid grid-cols-2 h-12 w-full gap-0 p-0">
         <TabsTrigger variant="border" value={ChatListTabOptions.InProgress}>
           Em andamento
         </TabsTrigger>

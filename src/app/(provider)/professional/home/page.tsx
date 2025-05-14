@@ -44,7 +44,7 @@ export default function ProfessionalHomePage() {
           icon={<CalendarClockIcon />}
           action={
             <Select value={selectedMonth} onValueChange={setSelectedMonth}>
-              <SelectTrigger className="w-[100px] h-8 text-xs border-none">
+              <SelectTrigger className="w-[100px] h-8 text-xs">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>

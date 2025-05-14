@@ -13,7 +13,7 @@ export default function ConsultaDomicilioPage() {
     <div className="space-y-8">
       <div className="flex flex-row gap-6">
         <div className="flex-1">
-          <Card>
+          <Card className="gap-6">
             <Alert variant="info">
               <AlertTitle className="flex items-center gap-2">
                 <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
@@ -26,7 +26,7 @@ export default function ConsultaDomicilioPage() {
               </AlertDescription>
             </Alert>
 
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center gap-4">
               <Avatar className="h-16 w-16 border">
                 <AvatarImage src="/images/placeholder.svg?height=64&width=64" alt="Nome do Paciente" />
                 <AvatarFallback>NP</AvatarFallback>
@@ -36,18 +36,18 @@ export default function ConsultaDomicilioPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-              <div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card className="p-4 gap-2">
                 <h3 className="text-sm text-gray-500 mb-1">Segunda</h3>
                 <p className="text-base font-medium">03 Setembro, 2024</p>
-              </div>
-              <div>
+              </Card>
+              <Card className="p-4 gap-2">
                 <h3 className="text-sm text-gray-500 mb-1">Horário</h3>
                 <p className="text-base font-medium">09:00 - 10:00</p>
-              </div>
+              </Card>
             </div>
 
-            <div className="mb-6">
+            <div>
               <h3 className="text-sm text-gray-500 mb-1">Link do endereço</h3>
               <Link
                 href="https://maps.google.com"
@@ -60,7 +60,7 @@ export default function ConsultaDomicilioPage() {
               </Link>
             </div>
 
-            <div className="mb-6">
+            <div>
               <h3 className="text-sm text-gray-500 mb-1">Contato</h3>
               <p className="text-base flex items-center gap-1">+258 00 00 0000</p>
             </div>

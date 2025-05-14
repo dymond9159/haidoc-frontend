@@ -92,7 +92,7 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
             {filter.type === "date-filter" && (
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="flex items-start justify-start gap-2 w-full">
+                  <Button variant="outline" className="flex items-start justify-start gap-2 w-full font-normal">
                     <CalendarIcon className="h-4 w-4" />
                     {filter.value ? (
                       <span>{filter.value}</span>
@@ -136,6 +136,7 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
               })}
           </div>
         ))}
+      </div>
         {hasActiveFilters && (
           <div className="flex-shrink-0 self-end">
             <Button variant="outline" size="sm" onClick={onClearFilters} className="flex items-center gap-1">
@@ -144,7 +145,6 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
             </Button>
           </div>
         )}
-      </div>
     </div>
   )
 }
