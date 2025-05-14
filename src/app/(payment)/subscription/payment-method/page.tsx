@@ -16,17 +16,17 @@ interface PaymentOption {
 
 export default function PaymentMethodPage() {
   const router = useRouter()
-  const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>("card")
+  const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>(PaymentMethod.Card)
 
   const paymentOptions: PaymentOption[] = [
-    { label: "Cartões de crédito e/ou débito", value: "card" },
-    { label: "M-Pesa", value: "mpesa" },
-    { label: "E-Mola", value: "emola" },
-    { label: "Paypal", value: "paypal" },
+    { label: "Cartões de crédito e/ou débito", value: PaymentMethod.Card },
+    { label: "M-Pesa", value: PaymentMethod.Mpesa },
+    { label: "E-Mola", value: PaymentMethod.Emola },
+    { label: "Paypal", value: PaymentMethod.Paypal },
   ]
 
   const handleNext = () => {
-    if (selectedMethod === "card") {
+    if (selectedMethod === PaymentMethod.Card) {
       router.push("/subscription/pre-payment")
     } else {
       // Handle other payment methods

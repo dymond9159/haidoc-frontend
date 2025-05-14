@@ -178,7 +178,7 @@ export default function PaymentDetailsConfigurationsPage() {
         <div className="text-center text-muted-foreground py-8 border border-dashed rounded-md">
           <WalletMinimal size={48} className="mx-auto mb-2 opacity-50" />
           <p>Nenhum método de pagamento cadastrado.</p>
-          <p className="text-xs mt-1">Clique em "Cadastrar novo método" para adicionar um.</p>
+          <p className="text-xs mt-1">Clique em &quot;Cadastrar novo método&quot; para adicionar um.</p>
         </div>
       )}
       <div>
