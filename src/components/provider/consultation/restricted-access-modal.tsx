@@ -13,7 +13,7 @@ export function RestrictedAccessModal({ isOpen, onClose }: RestrictedAccessModal
   const router = useRouter()
   const handleUpdatePlan = () => {
     // Navigate to plan upgrade page
-    router.push("/plan")
+    router.push("/plans")
     onClose()
   }
 

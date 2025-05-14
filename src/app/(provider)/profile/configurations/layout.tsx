@@ -1,6 +1,5 @@
 "use client"
 
-import { BackButton } from "@/components/common"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useMobile } from "@/hooks/use-mobile"
@@ -50,9 +49,6 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
 
   return (
     <div className="space-y-6">
-      <div className="mb-6">
-        <BackButton text="Informações Cadastrais" />
-      </div>
       <Tabs
         defaultValue={ConfigurationTabOptions.DataRegistration}
         value={activeTab}

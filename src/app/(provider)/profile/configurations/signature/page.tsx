@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
 import { PlanType } from "@/types"
+import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 const currentPlan = {
@@ -24,6 +25,7 @@ const currentPlan = {
 
 export default function MySignatureConfigurationsPage() {
   const { toast } = useToast()
+  const router = useRouter()
 
   const [isCancelSignatureModalOpen, setIsCancelSignatureModalOpen] = useState(false)
   const [isCancelSignatureWithPasswordModalOpen, setIsCancelSignatureWithPasswordModalOpen] = useState(false)
@@ -121,7 +123,7 @@ export default function MySignatureConfigurationsPage() {
               Eleve seu negócio a um novo patamar! Faça um upgrade e acesse ferramentas avançadas para otimizar seus
               serviços e alcançar mais clientes.
             </p>
-            <Button>Conhecer os planos</Button>
+            <Button onClick={() => router.push("/plans")}>Conhecer os planos</Button>
           </Card>
         </div>
       </div>

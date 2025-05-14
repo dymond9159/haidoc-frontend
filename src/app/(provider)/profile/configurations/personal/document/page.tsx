@@ -155,7 +155,7 @@ export default function PersonalDocument() {
       </Card>
       <div className="mt-6 flex justify-end gap-4">
         <div className="w-full flex items-center gap-4 justify-between">
-          <Button variant="outline" className="gap-2" onClick={() => router.back()} disabled>
+          <Button variant="outline" className="gap-2" onClick={() => router.back()}>
             <ChevronLeft />
             Voltar
           </Button>
