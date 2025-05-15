@@ -21,11 +21,23 @@ import { ConsultationDetailsModal } from "@/components/provider/consultation/con
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useToast } from "@/hooks/use-toast"
+import { useSearchParams } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
+
+enum AgendaTabOptions {
+  Agenda = "agenda",
+  History = "history",
+}
 
 export default function AgendaPage() {
   const router = useRouter()
-  const [activeTab, setActiveTab] = useState("agenda")
+  const { toast } = useToast()
+  const query = useSearchParams()
+  const [activeTab, setActiveTab] = useState(
+    query.get("tab") === AgendaTabOptions.History ? AgendaTabOptions.History : AgendaTabOptions.Agenda,
+  )
+
   const [calendarView, setCalendarView] = useState("month")
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
@@ -82,6 +94,11 @@ export default function AgendaPage() {
     },
   ]
 
+  const handleTabChange = (value: AgendaTabOptions) => {
+    setActiveTab(value)
+    router.push(`/professional/agenda?tab=${value}`)
+  }
+
   const handleAppointmentClick = (appointment: any) => {
     setSelectedAppointment({
       ...appointment,
@@ -100,12 +117,17 @@ export default function AgendaPage() {
 
   const handleMarkAsCompleted = () => {
     // Handle marking appointment as completed
+    toast({
+      title: "Consulta marcada como realizada",
+      description: "A consulta foi marcada como realizada com sucesso",
+    })
     setIsAppointmentModalOpen(false)
   }
 
   const handleReschedule = () => {
     // Handle rescheduling appointment
     setIsAppointmentModalOpen(false)
+    router.push("/professional/consultations/details/reschedule/123")
   }
 
   const handleCancel = () => {
@@ -131,11 +153,15 @@ export default function AgendaPage() {
   return (
     <div className="space-y-8">
       <div className="flex justify-between items-center mb-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) => handleTabChange(value as AgendaTabOptions)}
+          className="w-full"
+        >
           <div className="flex justify-between items-center mb-6">
             <TabsList>
-              <TabsTrigger value="agenda">Agenda</TabsTrigger>
-              <TabsTrigger value="historico">Histórico</TabsTrigger>
+              <TabsTrigger value={AgendaTabOptions.Agenda}>Agenda</TabsTrigger>
+              <TabsTrigger value={AgendaTabOptions.History}>Histórico</TabsTrigger>
             </TabsList>
 
             <div className="flex items-center gap-4 mt-4">
@@ -150,7 +176,7 @@ export default function AgendaPage() {
             </div>
           </div>
 
-          <TabsContent value="agenda" className="mt-4">
+          <TabsContent value={AgendaTabOptions.Agenda} className="mt-4">
             {/* Metrics Section */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <StatCard title="Consultas à Domicílio" value="300" icon={<HomeIcon />} />
@@ -312,13 +338,14 @@ export default function AgendaPage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="historico" className="mt-4">
+          <TabsContent value={AgendaTabOptions.History} className="mt-4">
             <ConsultationHistoryTable />
           </TabsContent>
         </Tabs>
       </div>
       {selectedAppointment && (
         <ConsultationDetailsModal
+          type="appointment"
           isOpen={isAppointmentModalOpen}
           onClose={() => setIsAppointmentModalOpen(false)}
           appointment={selectedAppointment}

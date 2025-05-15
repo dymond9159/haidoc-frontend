@@ -22,9 +22,18 @@ export default function ConsultationsPage() {
     query.get("tab") === ConsultationOptions.Request ? ConsultationOptions.Request : ConsultationOptions.Consultation,
   )
 
+  const handleTabChange = (value: ConsultationOptions) => {
+    setActiveTab(value)
+    router.push(`/professional/consultations?tab=${value}`)
+  }
+
   return (
     <div className="space-y-8">
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as ConsultationOptions)} className="w-full">
+      <Tabs
+        value={activeTab}
+        onValueChange={(value) => handleTabChange(value as ConsultationOptions)}
+        className="w-full"
+      >
         <div className="flex justify-between items-center mb-6">
           <TabsList>
             <TabsTrigger value={ConsultationOptions.Consultation}>Consultas</TabsTrigger>

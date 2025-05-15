@@ -107,7 +107,10 @@ export function DataTable<T>({
               <TableRow
                 key={effectiveGetRowId(row, rowIndex)}
                 className={cn("h-12", onRowClick && "cursor-pointer")}
-                onClick={() => onRowClick?.(row)}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onRowClick?.(row)
+                }}
               >
                 {columns.map((column) => {
                   // Determine the cell content

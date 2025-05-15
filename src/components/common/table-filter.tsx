@@ -1,16 +1,14 @@
 "use client"
 
-import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { CalendarIcon, Search, X } from "lucide-react"
+import { Search, X } from "lucide-react"
 import { useState } from "react"
 import { Button } from "../ui"
-import { Calendar } from "../ui/calendar"
 import { Input } from "../ui/input"
 import { Label } from "../ui/label"
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select"
+import { DateFilterOption, DateRange, SelectDatepicker } from "../ui/select-datepicker"
 
 // Define the structure for status options
 export interface StatusOption<T> {
@@ -19,7 +17,7 @@ export interface StatusOption<T> {
 }
 
 export interface FilterConfig<T> {
-  type: "search" | "date" | "select" | "custom" | "date-filter"
+  type: "search" | "date" | "date-range" | "date-filter" | "select" | "custom"
   label: string
   accessorKey?: keyof T
   placeholder?: string
@@ -40,11 +38,16 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
   return (
     <div className="space-y-4 mb-4">
       <div className="flex flex-wrap items-end gap-4">
-        {filters.map((filter) => (
+        {filters.map((filter, index) => (
           <div
-            key={filter.label}
+            key={index}
             className={`flex-grow min-w-[200px] ${
-              filter.type === "date" || filter.type === "select" ? "flex-shrink-0 w-full sm:w-auto" : ""
+              filter.type === "date" ||
+              filter.type === "select" ||
+              filter.type === "date-range" ||
+              filter.type === "date-filter"
+                ? "flex-shrink-0 w-full sm:w-auto"
+                : ""
             }`}
           >
             <label htmlFor={`filter-${filter.label}`} className="mb-1 block text-sm font-medium">
@@ -63,53 +66,34 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
               </div>
             )}
             {filter.type === "date" && (
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    id={`filter-${filter.label}-trigger`}
-                    variant="outline"
-                    className="w-full justify-start text-left font-normal border"
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {filter.value ? (
-                      format(filter.value, "dd/MM/yyyy", { locale: ptBR })
-                    ) : (
-                      <span>{filter.placeholder || "Selecione uma Data"}</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={filter.value}
-                    onSelect={filter.onChange}
-                    initialFocus
-                    locale={ptBR}
-                  />
-                </PopoverContent>
-              </Popover>
+              <SelectDatepicker
+                variant="default"
+                date={filter.value}
+                setDate={(date) => filter.onChange(date)}
+                className="w-full"
+                placeholder={filter.placeholder || "Selecione uma Data"}
+                locale={ptBR}
+              />
+            )}
+            {filter.type === "date-range" && (
+              <SelectDatepicker
+                variant="range"
+                dateRange={filter.value as DateRange}
+                setDateRange={(range) => filter.onChange(range)}
+                className="w-full"
+                placeholder={filter.placeholder || "Selecione um período"}
+                locale={ptBR}
+              />
             )}
             {filter.type === "date-filter" && (
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button variant="outline" className="flex items-start justify-start gap-2 w-full font-normal">
-                    <CalendarIcon className="h-4 w-4" />
-                    {filter.value ? (
-                      <span>{filter.value}</span>
-                    ) : (
-                      <span>{filter.placeholder || "Selecione uma Data"}</span>
-                    )}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <DateFilterPopoverContent
-                    onApply={(value) => {
-                      filter.onChange(value)
-                    }}
-                    onClear={() => filter.onChange(null)}
-                  />
-                </PopoverContent>
-              </Popover>
+              <SelectDatepicker
+                variant="filter"
+                filterValue={filter.value as DateFilterOption}
+                setFilterValue={(value) => filter.onChange(value)}
+                className="w-full"
+                placeholder={filter.placeholder || "Filtrar por data"}
+                locale={ptBR}
+              />
             )}
             {filter.type === "select" && filter.options && (
               <Select value={filter.value as string} onValueChange={(value) => filter.onChange(value as any)}>
@@ -132,19 +116,18 @@ export function TableFilters<T>({ filters, hasActiveFilters, onClearFilters }: T
                 onChange: filter.onChange,
                 placeholder: filter.placeholder,
                 options: filter.options,
-                // Add other relevant props
               })}
           </div>
         ))}
       </div>
-        {hasActiveFilters && (
-          <div className="flex-shrink-0 self-end">
-            <Button variant="outline" size="sm" onClick={onClearFilters} className="flex items-center gap-1">
-              <X className="h-4 w-4" />
-              Limpar filtros
-            </Button>
-          </div>
-        )}
+      {hasActiveFilters && (
+        <div className="flex-shrink-0 self-end">
+          <Button variant="outline" size="sm" onClick={onClearFilters} className="flex items-center gap-1">
+            <X className="h-4 w-4" />
+            Limpar filtros
+          </Button>
+        </div>
+      )}
     </div>
   )
 }

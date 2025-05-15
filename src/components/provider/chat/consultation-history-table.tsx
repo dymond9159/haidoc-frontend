@@ -9,15 +9,14 @@ import { FilterConfig } from "@/components/common/table-filter"
 import { mockConsultationHistory } from "@/lib/mock-data/professional/chat"
 import { formatDate } from "@/lib/utils"
 import { ConsultationHistoryColumns } from "@/types/provider/professional/interface-columns"
-import { ConsultationStatus, ConsultationType } from "@/types/provider/professional/types"
+import { ConsultationStatus } from "@/types/provider/professional/types"
 import { DateFilterModal } from "./date-filter-modal"
 
 interface filterOption {
   id: string
-  consultationType?: ConsultationType
   value?: number
   status?: ConsultationStatus
-  date?: string
+  dateFilter?: string
 }
 
 export function ConsultationHistoryTable() {
@@ -25,9 +24,8 @@ export function ConsultationHistoryTable() {
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<filterOption>({
     id: "",
-    consultationType: undefined,
     value: 0,
-    date: "",
+    dateFilter: "",
   })
 
   const [isDateFilterOpen, setIsDateFilterOpen] = useState(false)
@@ -93,18 +91,6 @@ export function ConsultationHistoryTable() {
       },
       {
         type: "select",
-        label: "Tipo de Consulta",
-        placeholder: "Selecione uma tipo de consulta",
-        value: filters.consultationType,
-        accessorKey: "consultationType",
-        options: Object.values(ConsultationType).map((type) => ({
-          label: type,
-          value: type,
-        })),
-        onChange: (value) => handleFilterChange("consultationType", value),
-      },
-      {
-        type: "select",
         label: "Status",
         placeholder: "Selecione uma status",
         value: filters.status,
@@ -117,12 +103,11 @@ export function ConsultationHistoryTable() {
       },
       {
         type: "date-filter",
-        label: "Data",
-        placeholder: "Selecione uma data",
+        label: "Filtrar por Data",
+        placeholder: "Filtrar por data",
         accessorKey: "date",
-        value: filters.date,
-        onChange: (value) => handleFilterChange("date", value),
-        onClick: () => setIsDateFilterOpen(true),
+        value: filters.dateFilter,
+        onChange: (value) => handleFilterChange("dateFilter", value),
       },
     ],
     [filters, handleFilterChange],

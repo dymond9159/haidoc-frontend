@@ -1,23 +1,20 @@
 "use client"
 
 import { cn } from "@/lib/utils"
-import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { CalendarIcon, InfoIcon } from "lucide-react"
+import { InfoIcon } from "lucide-react"
 import { useRouter } from "next/navigation"
 import type React from "react"
 import { useState } from "react"
 
-import { Asterisk } from "@/components/common"
+import { Asterisk, BackButton } from "@/components/common"
 import { RestrictedAccessModal } from "@/components/provider/consultation/restricted-access-modal"
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
-import LinkButton from "@/components/ui/link"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { SelectDatepicker } from "@/components/ui/select-datepicker"
 import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { TimeSlots } from "@/lib/constants/app"
@@ -52,9 +49,7 @@ export default function NovoAgendamentoPage() {
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <LinkButton href="" onClick={() => router.back()} direction="left" variant="default">
-          Novo Agendamento
-        </LinkButton>
+        <BackButton text="Novo Agendamento" />
       </div>
 
       <Card>
@@ -80,20 +75,13 @@ export default function NovoAgendamentoPage() {
               <Label className="block text-sm font-medium mb-1">
                 Data<span className="text-error-5">*</span>
               </Label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {date ? format(date, "PPP", { locale: ptBR }) : "Selecione uma Data"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0">
-                  <Calendar mode="single" selected={date} onSelect={setDate} initialFocus locale={ptBR} />
-                </PopoverContent>
-              </Popover>
+              <SelectDatepicker
+                date={date}
+                setDate={setDate}
+                className="w-full"
+                placeholder="Selecione uma Data"
+                locale={ptBR}
+              />
             </div>
           </div>
 

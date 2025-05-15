@@ -36,7 +36,7 @@ export function Header() {
   const pageTitles: Record<string, string> = {
     "/professional/agenda": "Agenda",
     "/professional/consultations": "Consultas",
-    "/professional/consultation-online": "Consulta online",
+    "/professional/online-consultation": "Consulta online",
     "/professional/chat": "Chat rápido",
     "/professional/support": "Suporte",
     "/professional/notifications": "Notificações",

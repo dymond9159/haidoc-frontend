@@ -1,19 +1,15 @@
 "use client"
 
-import { Asterisk, StatusLabel } from "@/components/common"
+import { Asterisk, BackButton, StatusLabel } from "@/components/common"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
 import { Card } from "@/components/ui/card"
-import LinkButton from "@/components/ui/link"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { SelectDatepicker } from "@/components/ui/select-datepicker"
 import { Textarea } from "@/components/ui/textarea"
 import { TimeSlots } from "@/lib/constants/app"
 import { cn } from "@/lib/utils"
 import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
-import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
-import { CalendarIcon } from "lucide-react"
 import { useParams } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
@@ -51,9 +47,7 @@ export default function RescheduleConsultationPage() {
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <LinkButton href="" direction="left" variant="default" onClick={() => router.back()}>
-          Reagendar Consulta
-        </LinkButton>
+        <BackButton text="Reagendar Consulta" />
       </div>
 
       <Card className="space-y-6">
@@ -65,21 +59,21 @@ export default function RescheduleConsultationPage() {
             </Avatar>
             <div>
               <h2 className="text-lg font-medium">Nome do paciente</h2>
-              <p className="text-sm text-gray-500">ID do paciente: #44825</p>
+              <p className="text-sm">ID do paciente: #44825</p>
             </div>
           </div>
           <div>
-            <h3 className="text-sm text-gray-500 mb-2">Tipo de Consulta:</h3>
+            <h3 className="text-sm mb-2">Tipo de Consulta:</h3>
             <StatusLabel status={ConsultationType.Urgent} className="m-0" />
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           <div>
-            <h3 className="text-sm text-gray-500 mb-2">Especialidade</h3>
+            <h3 className="text-sm mb-2">Especialidade</h3>
             <p className="text-base font-medium">Cardiologia</p>
           </div>
           <div>
-            <h3 className="text-sm text-gray-500 mb-2">Médico</h3>
+            <h3 className="text-sm mb-2">Médico</h3>
             <div className="flex items-center gap-2">
               <Avatar className="h-6 w-6">
                 <AvatarImage src="/images/placeholder.svg?height=24&width=24" alt="Nome do Médico" />
@@ -89,17 +83,17 @@ export default function RescheduleConsultationPage() {
             </div>
           </div>
           <div>
-            <h3 className="text-sm text-gray-500 mb-2">Valor</h3>
+            <h3 className="text-sm mb-2">Valor</h3>
             <p className="text-base font-medium">250,00 MZN</p>
           </div>
           <div>
-            <h3 className="text-sm text-gray-500 mb-2">Categoria</h3>
+            <h3 className="text-sm mb-2">Categoria</h3>
             <StatusLabel status={ConsultationCategory.Teleconsultation} className="m-0" />
           </div>
         </div>
 
         <div className="mb-6">
-          <h3 className="text-sm text-gray-500 mb-2">Motivo da Consulta</h3>
+          <h3 className="text-sm mb-2">Motivo da Consulta</h3>
           <p className="text-base font-medium">Motivo da consulta do paciente</p>
         </div>
 
@@ -107,17 +101,7 @@ export default function RescheduleConsultationPage() {
           <label className="text-sm font-medium mb-1 block">
             Data <Asterisk />
           </label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("justify-start text-left font-normal", !date && "text-gray-400")}>
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                {date ? format(date, "PPP", { locale: ptBR }) : "Selecione uma Data"}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-auto p-0">
-              <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-            </PopoverContent>
-          </Popover>
+          <SelectDatepicker date={date} setDate={setDate} placeholder="Selecione uma Data" locale={ptBR} />
         </div>
 
         <div className="mb-6">
@@ -142,7 +126,7 @@ export default function RescheduleConsultationPage() {
             ))}
           </div>
           {selectedTimeSlots.length === 2 && (
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm mt-2">
               Horário selecionado: {selectedTimeSlots[0]} - {selectedTimeSlots[1]}
             </p>
           )}

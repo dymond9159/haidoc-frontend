@@ -180,6 +180,7 @@ export function ConsultationHomeTable({
     date: "2021-01-01",
     startTime: new Date(2025, 3, 22, 8, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
     endTime: new Date(2025, 3, 22, 9, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    category: ConsultationCategory.Home,
     specialty: "Cardiologia",
     doctorName: "Nome do Médico",
     price: "250,00",
@@ -216,6 +217,7 @@ export function ConsultationHomeTable({
 
       {selectedConsultation && (
         <ConsultationDetailsModal
+          type="consultation"
           isOpen={showDetailsModal}
           onClose={() => setShowDetailsModal(false)}
           appointment={
@@ -223,10 +225,10 @@ export function ConsultationHomeTable({
               ...mockAppointment,
               patientName: selectedConsultation.name,
               type: selectedConsultation.consultationType,
+              category: selectedConsultation.category,
             } as any
           }
-          onMarkAsCompleted={() => {}}
-          onReschedule={() => {}}
+          onStartConsultation={handleStartConsultation}
           onCancel={() => {}}
         />
       )}
