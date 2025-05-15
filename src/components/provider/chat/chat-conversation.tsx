@@ -117,8 +117,8 @@ export function ChatConversation({ chat, isFinished = false }: ChatConversationP
         </div>
 
         {/* Chat messages */}
-        <div className="flex-1 p-4 pr-0">
-          <ScrollArea className="h-full pr-1">
+        <div className="flex-1 p-4 pr-0 overflow-hidden">
+          <ScrollArea className="pr-1 h-full">
             {mockMessages.map((msg) => (
               <div
                 key={msg.id}
