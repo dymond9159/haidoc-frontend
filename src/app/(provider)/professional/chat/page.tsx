@@ -10,10 +10,10 @@ export default function ChatPage() {
 
   return (
     <div
-      className="grid grid-cols-[400px_1fr] flex-1"
+      className="grid grid-cols-[320px_1fr] flex-1"
       style={{ height: "-webkit-fill-available", maxHeight: "-webkit-fill-available" }}
     >
-      <div className="w-[400px] border-r flex flex-col">
+      <div className="w-[320px] border-r flex flex-col">
         <div>
           <BackButton text="Suas Conversas" />
         </div>

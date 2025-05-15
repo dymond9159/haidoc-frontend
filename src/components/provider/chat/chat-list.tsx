@@ -41,9 +41,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
         <ScrollArea className="flex-1 h-full">
           {mockChats.unread.length > 0 && (
             <>
-              <h3 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
-                Mensagens não lidas
-              </h3>
+              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens não lidas</h3>
               {mockChats.unread.map((chat) => (
                 <ChatItem
                   key={chat.id}
@@ -58,7 +56,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
 
           {mockChats.read.length > 0 && (
             <>
-              <h3 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens lidas</h3>
+              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens lidas</h3>
               {mockChats.read.map((chat) => (
                 <ChatItem
                   key={chat.id}
@@ -102,7 +100,7 @@ function ChatItem({ chat, onClick, isSelected, unread }: ChatItemProps) {
   return (
     <div
       className={cn(
-        "flex items-center gap-3 px-4 py-3 cursor-pointer group transition-all border-l-4 border-transparent hover:bg-secondary-1",
+        "flex items-center gap-3 px-2 py-3 cursor-pointer group transition-all border-l-4 border-transparent hover:bg-secondary-1",
         isSelected && "bg-secondary-3 border-l-secondary hover:bg-secondary-3 hover:border-l-secondary",
       )}
       onClick={onClick}
@@ -120,8 +118,8 @@ function ChatItem({ chat, onClick, isSelected, unread }: ChatItemProps) {
           <div className="flex flex-col justify-end items-end">
             <p className="text-xs text-gray-500 truncate">{chat.time}</p>
             {chat.unreadCount > 0 && (
-              <div className="flex-shrink-0 h-4 w-4 bg-primary rounded-full flex items-center justify-center">
-                <span className="text-xs text-white font-bold">{chat.unreadCount}</span>
+              <div className="flex-shrink-0 h-3.5 w-3.5 bg-primary rounded-full flex items-center justify-center">
+                <span className="text-[10px] text-white">{chat.unreadCount}</span>
               </div>
             )}
           </div>
