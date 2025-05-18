@@ -1,5 +1,6 @@
 "use client"
 
+import { BackButton } from "@/components/common"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useMobile } from "@/hooks/use-mobile"
@@ -61,6 +62,9 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
 
   return (
     <div className="space-y-6">
+      <div className="mb-6">
+        <BackButton text="Configurações" />
+      </div>
       <Tabs
         defaultValue={ConfigurationTabOptions.DataRegistration}
         value={activeTab}
@@ -74,7 +78,7 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
           {tabItems.map(({ value, icon, label }) => (
             <TabsTrigger key={value} value={value} className="w-full">
               <div className="w-full flex flex-row items-center justify-between gap-2">
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 items-center">
                   {icon}
                   <span>{label}</span>
                 </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { MetricCard } from "@/components/cards/metric-card"
+import { BackButton } from "@/components/common"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -50,6 +51,9 @@ export default function PublicProfileLayout({ children }: { children: React.Reac
 
   return (
     <div className="space-y-8">
+      <div className="mb-6">
+        <BackButton text="Perfil público" />
+      </div>
       <div className="relative h-25 mb-6 rounded-lg bg-secondary-9 bg-[url('/images/public-profile-banner.svg')] bg-center p-6"></div>
       <div className="relative px-6 -mt-12">
         <div className="space-y-4 flex flex-row gap-6 justify-between">
@@ -98,7 +102,7 @@ export default function PublicProfileLayout({ children }: { children: React.Reac
           {tabItems.map(({ value, icon, label }) => (
             <TabsTrigger key={value} value={value} className="w-full">
               <div className="w-full flex flex-row items-center justify-between gap-2">
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-row gap-2 items-center">
                   {icon}
                   <span>{label}</span>
                 </div>

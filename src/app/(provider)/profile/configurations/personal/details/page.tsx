@@ -2,13 +2,13 @@
 
 import { SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-import { ProviderOptions } from "@/app/(auth)/register/provider/professional-details/page"
 import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select } from "@/components/ui/select"
-import { cn, formatNUIT } from "@/lib/utils"
+import { cn, formatCardNumber } from "@/lib/utils"
+import { ProviderOptions } from "@/types/enum-tab-options"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
@@ -19,7 +19,7 @@ export default function PersonalDetails() {
     providerType: ProviderOptions.Professional,
     specialty: "",
     institutionName: "",
-    nuit: "",
+    cardNumber: "",
     termsAccepted: false,
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -35,9 +35,9 @@ export default function PersonalDetails() {
     }
   }
 
-  const handleNUITChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatNUIT(e.target.value)
-    handleChange("nuit", formatted)
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCardNumber(e.target.value)
+    handleChange("cardNumber", formatted)
   }
 
   return (
@@ -79,19 +79,20 @@ export default function PersonalDetails() {
           {errors.specialty && <p className="text-xs text-error-5">{errors.specialty}</p>}
         </div>
         <div className="space-y-2">
-          <Label htmlFor="nuit" className="text-sm font-medium">
-            NUIT <Asterisk />
+          <Label htmlFor="cardNumber" className="text-sm font-medium">
+            {formData.providerType === ProviderOptions.Professional ? "Número de Carteira Profissional" : "NUIT"}{" "}
+            <Asterisk />
           </Label>
           <Input
-            id="nuit"
-            value={formData.nuit}
-            onChange={handleNUITChange}
-            placeholder="123.456.789"
-            maxLength={11}
-            className={errors.nuit ? "border-error-5" : ""}
+            id="cardNumber"
+            value={formData.cardNumber}
+            onChange={handleCardNumberChange}
+            placeholder={formData.providerType === ProviderOptions.Professional ? "123456789" : "123456789"}
+            maxLength={9}
+            className={errors.cardNumber ? "border-error-5" : ""}
             disabled
           />
-          {errors.nuit && <p className="text-xs text-error-5">{errors.nuit}</p>}
+          {errors.cardNumber && <p className="text-xs text-error-5">{errors.cardNumber}</p>}
         </div>
       </div>
       <div className="w-full flex items-center gap-4 justify-between">

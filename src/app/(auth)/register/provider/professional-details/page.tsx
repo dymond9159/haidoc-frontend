@@ -11,13 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn, formatCardNumber } from "@/lib/utils"
-
-export enum ProviderOptions {
-  Professional = "professional",
-  Laboratory = "laboratory",
-  Clinic = "clinic",
-  Pharmacy = "pharmacy",
-}
+import { ProviderOptions } from "@/types"
 
 export default function ProviderProfessionalDetailsPage() {
   const router = useRouter()

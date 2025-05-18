@@ -11,7 +11,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -40,6 +39,10 @@ export function Header() {
     "/professional/chat": "Chat rápido",
     "/professional/support": "Suporte",
     "/professional/notifications": "Notificações",
+    "/profile/configurations": "Configurações",
+    "/profile/public": "Perfil público",
+    "/profile": "Minha conta",
+    "/my-activity": "Log de Atividades",
     "/professional": "Home",
   }
 
@@ -96,11 +99,11 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Minha Conta</DropdownMenuLabel> */}
             <DropdownMenuItem asChild>
               <Link href="/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
-                Informações Pessoais
+                Minha conta
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

@@ -1,9 +1,12 @@
 "use client"
 
+import { Asterisk } from "@/components/common"
 import { Document, DocumentList } from "@/components/common/document-list"
 import { FileUploadBox, UploadedFile } from "@/components/common/file-upload-box"
-import { Button } from "@/components/ui"
-import { PlusIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { useToast } from "@/hooks/use-toast"
 import { useRef, useState } from "react"
 
 const mockDocuments: Document[] = [
@@ -31,16 +34,22 @@ const mockDocuments: Document[] = [
 ]
 
 export default function FilesConfigurationsPage() {
+  const { toast } = useToast()
   const fileInputRef = useRef<HTMLInputElement>(null)
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
+  const [uploadedStampFiles, setUploadedStampFiles] = useState<UploadedFile[]>([])
+  const [uploadedDigitalSignatureFiles, setUploadedDigitalSignatureFiles] = useState<UploadedFile[]>([])
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  const handleFileUpload = (files: FileList) => {
+  const handleFileUpload = (type: "stamp" | "digitalSignature", files: FileList) => {
     if (files.length > 0) {
       const newFiles: UploadedFile[] = []
 
       Array.from(files).forEach((file) => {
-        if (uploadedFiles.length + newFiles.length < 5) {
+        if (
+          type === "stamp"
+            ? uploadedStampFiles.length + newFiles.length < 5
+            : uploadedDigitalSignatureFiles.length + newFiles.length < 5
+        ) {
           newFiles.push({
             id: Math.random().toString(36).substring(2, 9),
             name: file.name,
@@ -49,7 +58,11 @@ export default function FilesConfigurationsPage() {
         }
       })
 
-      setUploadedFiles([...uploadedFiles, ...newFiles])
+      if (type === "stamp") {
+        setUploadedStampFiles([...uploadedStampFiles, ...newFiles])
+      } else {
+        setUploadedDigitalSignatureFiles([...uploadedDigitalSignatureFiles, ...newFiles])
+      }
 
       // Clear file input
       if (fileInputRef.current) {
@@ -65,31 +78,85 @@ export default function FilesConfigurationsPage() {
     }
   }
 
-  const handleRemoveFile = (id: string) => {
-    setUploadedFiles(uploadedFiles.filter((file) => file.id !== id))
+  const handleRemoveFile = (type: "stamp" | "digitalSignature", id: string) => {
+    if (type === "stamp") {
+      setUploadedStampFiles(uploadedStampFiles.filter((file) => file.id !== id))
+    } else {
+      setUploadedDigitalSignatureFiles(uploadedDigitalSignatureFiles.filter((file) => file.id !== id))
+    }
+  }
+
+  const handleStampFileUpload = (files: FileList) => {
+    handleFileUpload("stamp", files)
+  }
+
+  const handleStampFileRemove = (id: string) => {
+    handleRemoveFile("stamp", id)
+  }
+
+  const handleDigitalSignatureFileUpload = (files: FileList) => {
+    handleFileUpload("digitalSignature", files)
+  }
+
+  const handleDigitalSignatureFileRemove = (id: string) => {
+    handleRemoveFile("digitalSignature", id)
+  }
+
+  const handleCancel = () => {
+    setUploadedStampFiles([])
+    setUploadedDigitalSignatureFiles([])
+  }
+
+  const handleSave = () => {
+    toast({
+      title: "Arquivos salvos com sucesso",
+    })
   }
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-medium text-secondary">Ficheiros</h3>
-        <Button className="gap-2">
-          <PlusIcon className="w-4 h-4" />
-          Novo ficheiro
-        </Button>
-      </div>
-      <div className="space-y-4">
+      <DocumentList documents={mockDocuments} />
+      <Card className="space-y-4">
+        <div>
+          <h3 className="text-lg font-medium text-secondary">
+            Cadastro de assinatura para prescrição de receita digital
+          </h3>
+        </div>
         <div className="space-y-2">
+          <Label>
+            Carimbo <Asterisk />
+          </Label>
           <FileUploadBox
             multiple
-            uploadedFiles={uploadedFiles}
-            onUpload={handleFileUpload}
-            onRemove={handleRemoveFile}
+            className="stamp"
+            uploadedFiles={uploadedStampFiles}
+            onUpload={handleStampFileUpload}
+            onRemove={handleStampFileRemove}
             error={errors?.files}
           />
         </div>
-        <DocumentList documents={mockDocuments} />
-      </div>
+        <div className="space-y-2">
+          <Label>
+            Assinatura digital <Asterisk />
+          </Label>
+          <p className="text-sm text-muted-foreground">
+            Cartão da Ordem dos Médicos, Carteira Profissional, ou Alvará da Instutuição
+          </p>
+          <FileUploadBox
+            className="digitalSignature"
+            uploadedFiles={uploadedDigitalSignatureFiles}
+            onUpload={handleDigitalSignatureFileUpload}
+            onRemove={handleDigitalSignatureFileRemove}
+            error={errors?.files}
+          />
+        </div>
+        <div className="flex gap-2 items-center justify-end">
+          <Button variant="outline" onClick={handleCancel}>
+            Cancelar
+          </Button>
+          <Button onClick={handleSave}>Salvar</Button>
+        </div>
+      </Card>
     </div>
   )
 }

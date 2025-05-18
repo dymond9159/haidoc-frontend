@@ -66,7 +66,7 @@ export function DocumentList({ documents }: DocumentListProps) {
       cell: (row) => {
         const icon = getDocumentIcon(row.type)
         return (
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 items-center">
             {icon}
             <span className="truncate">{row.name}</span>
           </div>
