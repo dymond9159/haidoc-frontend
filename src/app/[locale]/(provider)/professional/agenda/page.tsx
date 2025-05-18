@@ -104,9 +104,9 @@ export default function AgendaPage() {
       ...appointment,
       patientId: "44825",
       type: "Urgente",
-      date: appointment.date.toLocaleDateString("pt-BR"),
-      startTime: appointment.startTime.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
-      endTime: appointment.endTime.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+      date: appointment.date.toLocaleDateString("pt-PT"),
+      startTime: appointment.startTime.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
+      endTime: appointment.endTime.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
       specialty: "Cardiologia",
       doctorName: "Nome do Médico",
       price: "250,00",
@@ -222,7 +222,7 @@ export default function AgendaPage() {
                       <span className="font-medium">
                         {calendarView === "month"
                           ? `${monthNames[currentMonth]}, ${currentYear}`
-                          : currentDate.toLocaleDateString("pt-BR", { month: "long", year: "numeric" })}
+                          : currentDate.toLocaleDateString("pt-PT", { month: "long", year: "numeric" })}
                       </span>
 
                       <Button

@@ -20,7 +20,7 @@ export function formatFileSize(size: number) {
 }
 
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString("pt-BR", {
+  return date.toLocaleDateString("pt-PT", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -44,7 +44,7 @@ export const calculateTrend = (data: { timeframe: string; value: number }[]) => 
 
 // const getFormattedDate = (): string => {
 //   const today = new Date()
-//   return new Intl.DateTimeFormat("pt-BR", {
+//   return new Intl.DateTimeFormat("pt-PT", {
 //     day: "2-digit",
 //     month: "2-digit",
 //     year: "numeric",

@@ -6,8 +6,8 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "jsx": "preserve",
     "resolveJsonModule": true,
@@ -29,6 +29,6 @@
       "@config/*": ["./src/config/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.js", "middleware.mts"],
   "exclude": ["node_modules", ".next", "dist"]
 }

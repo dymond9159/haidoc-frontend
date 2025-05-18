@@ -1,6 +1,6 @@
 "use client"
 
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/providers/theme-provider"
 import type { ReactNode } from "react"
 import { Provider } from "react-redux"
 import { PersistGate } from "redux-persist/integration/react"
@@ -14,7 +14,7 @@ interface ProvidersProps {
   children: ReactNode
 }
 
-export function Providers({ children }: ProvidersProps) {
+export function ClientProviders({ children }: ProvidersProps) {
   return (
     <Provider store={store}>
       <PersistGate loading={<Loading text="Carregando..." />} persistor={persistor}>

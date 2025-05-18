@@ -1,0 +1,27 @@
+{
+  "common": {
+    "menu": "Menu",
+    "notifications": "Notifications",
+    "myAccount": "My Account",
+    "logout": "Logout",
+    "language": "Language"
+  },
+  "profile": {
+    "title": "My Account",
+    "configurations": "Settings",
+    "publicProfile": "Public Profile",
+    "myActivities": "My Activities",
+    "shareServices": "Share Services",
+    "address": "Address",
+    "legalId": "Legal ID",
+    "nuit": "NUIT",
+    "uploadImage": "Upload Image",
+    "removeImage": "Remove Image",
+    "success": "Success",
+    "error": "Error",
+    "uploadSuccess": "Profile image updated successfully!",
+    "uploadError": "An error occurred while uploading the image.",
+    "fileTooLarge": "File is too large. Maximum size allowed is 5MB.",
+    "removeSuccess": "Profile image removed successfully!"
+  }
+}

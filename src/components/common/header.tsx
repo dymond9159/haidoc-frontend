@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useSelector } from "react-redux"
 
-import { ChevronDown, CircleUserRoundIcon, LogOutIcon, Menu, ShoppingBag } from "lucide-react"
+import { ChevronDown, CircleUserRoundIcon, LogOutIcon, Menu } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { LanguageSwitcher } from "./language-switcher"
 import { NotificationsDropdown } from "./notifications-dropdown"
 
 import { useAppDispatch } from "@/hooks/use-dispatch"
@@ -78,11 +79,7 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link href="#" className="hidden md:flex items-center text-primary-9 gap-2">
-          <ShoppingBag className="h-5 w-5" />
-          <span className="text-sm">Visitar loja</span>
-        </Link>
-
+        <LanguageSwitcher />
         <NotificationsDropdown />
 
         <DropdownMenu>
