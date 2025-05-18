@@ -96,7 +96,7 @@ export default function ProposalPage() {
 
       // Redirect to home page after successful submission
       setTimeout(() => {
-        router.push("/professional/home")
+        router.push("/professional")
       }, 1500)
     }
   }

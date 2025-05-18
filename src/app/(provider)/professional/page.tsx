@@ -9,11 +9,15 @@ import { Button } from "@/components/ui/button"
 
 import { AppointmentCard1 } from "@/components/cards"
 import { StatCard } from "@/components/common"
+import { ProfileApprovedIcon, ProfilePendingIcon } from "@/components/icons"
 import { RequestConsultationTable } from "@/components/provider/home/request-consult-table"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
 import LinkButton from "@/components/ui/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
+import { Switch } from "@/components/ui/switch"
 import { Months, WeekDays } from "@/lib/constants/index"
 import { mockHistoryMessages } from "@/lib/mock-data/professional/chat"
 import { mockAppointments } from "@/lib/mock-data/professional/home"
@@ -23,11 +27,52 @@ export default function ProfessionalHomePage() {
   const router = useRouter()
   const [selectedMonth, setSelectedMonth] = useState("Agosto")
   const [selectedDate, setSelectedDate] = useState(9) // Current date in the calendar
+  const [approvedAccount, setApprovedAccount] = useState(false)
 
   const currentWeekDates = [4, 5, 6, 7, 8, 9, 10]
 
   return (
     <div className="space-y-8">
+      <div>
+        {approvedAccount ? (
+          <Alert variant="success">
+            <div className="flex flex-row items-center gap-2 w-full">
+              <ProfileApprovedIcon size={84} className="alert-icon" />
+              <div className="space-y-1">
+                <AlertTitle>Sucesso!</AlertTitle>
+                <AlertDescription className="flex flex-col md:flex-row gap-2">
+                  <p>
+                    Seu perfil foi aprovado! Agora você pode usar sua conta, completar e ajustar todas as configurações
+                    necessárias. Certifique-se de revisar suas informações para garantir uma boa experiência.
+                  </p>
+                  <Button variant="secondary" size="sm" onClick={() => router.push("/profile/public")}>
+                    Personalizar meu perfil
+                  </Button>
+                </AlertDescription>
+              </div>
+            </div>
+          </Alert>
+        ) : (
+          <Alert variant="warning">
+            <div className="flex flex-row items-center gap-2 w-full">
+              <ProfilePendingIcon size={84} className="alert-icon" />
+              <div className="space-y-1">
+                <AlertTitle>Cadastro concluído!</AlertTitle>
+                <AlertDescription>
+                  <p>
+                    Seus dados foram enviados para que o administrador da plataforma possa aprovar. A aprovação pode
+                    levar até <b>48 horas</b>, e notificaremos você assim que seu cadastro for aprovado!
+                  </p>
+                </AlertDescription>
+              </div>
+            </div>
+          </Alert>
+        )}
+        <div className="flex flex-row items-center gap-2 mt-4 justify-end">
+          <Label>This is a switch for test. will be disappear after integrating with backend</Label>
+          <Switch checked={approvedAccount} onCheckedChange={() => setApprovedAccount(!approvedAccount)} />
+        </div>
+      </div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Hi, doctor!</h1>
         <Button className="gap-2" onClick={() => router.push("/professional/consultations/new-appointment")}>

@@ -13,7 +13,7 @@ export default function PlansPage() {
   const handleContinue = (type: PlanType) => {
     switch (type) {
       case PlanType.Business:
-        router.push("/professional/home")
+        router.push("/professional")
         break
       case PlanType.BusinessPlus:
         router.push("/subscription")
