@@ -1,6 +1,5 @@
 "use client"
 
-import { LogoIcon } from "@/components/icons/hidoc-icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { EyeIcon, EyeOffIcon } from "lucide-react"
@@ -8,6 +7,8 @@ import Link from "next/link"
 import { useRouter } from "nextjs-toploader/app"
 import type React from "react"
 import { useState } from "react"
+
+import { Logo } from "../logo"
 
 export const LoginForm = () => {
   const router = useRouter()
@@ -28,7 +29,7 @@ export const LoginForm = () => {
   return (
     <div className="login-form">
       <div className="flex justify-center">
-        <LogoIcon />
+        <Logo size="md" />
       </div>
 
       <h1 className="text-2xl font-bold mt-10 mb-8">Faça seu Login!</h1>

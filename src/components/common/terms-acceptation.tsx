@@ -12,7 +12,11 @@ interface TermsAndConditionsProps extends CheckboxProps {
   termsLink?: string // Optional link to full terms, default empty
 }
 
-export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLink = "", error, ...props }) => {
+export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
+  termsLink = "/terms-of-service",
+  error,
+  ...props
+}) => {
   const LinkComponent: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href, ...props }) => {
     return (
       <Link href={href || ""} {...props}>
@@ -29,7 +33,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLin
           <h3 className="text-sm font-medium">Termos e condições</h3>
         </div>
         {termsLink && ( // Only render the link if termsLink is provided
-          <LinkComponent href={termsLink}>
+          <LinkComponent href={termsLink} target="_blank">
             <ChevronRight size={18} className="text-secondary-11" />
           </LinkComponent>
         )}

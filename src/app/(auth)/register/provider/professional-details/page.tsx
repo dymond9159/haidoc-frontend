@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { cn, formatNUIT } from "@/lib/utils"
+import { cn, formatCardNumber } from "@/lib/utils"
 
 export enum ProviderOptions {
   Professional = "professional",
@@ -25,7 +25,7 @@ export default function ProviderProfessionalDetailsPage() {
     providerType: ProviderOptions.Professional,
     specialty: "",
     institutionName: "",
-    nuit: "",
+    cardNumber: "",
     termsAccepted: false,
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -47,9 +47,9 @@ export default function ProviderProfessionalDetailsPage() {
     }
   }
 
-  const handleNUITChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formatted = formatNUIT(e.target.value)
-    handleChange("nuit", formatted)
+  const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatCardNumber(e.target.value)
+    handleChange("cardNumber", formatted)
   }
 
   const validateForm = () => {
@@ -70,11 +70,17 @@ export default function ProviderProfessionalDetailsPage() {
       newErrors.institutionName = "Nome da instituição é obrigatório"
     }
 
-    // Validate NUIT
-    if (!formData.nuit) {
-      newErrors.nuit = "NUIT é obrigatório"
-    } else if (formData.nuit.replace(/\D/g, "").length !== 9) {
-      newErrors.nuit = "NUIT deve ter 9 dígitos"
+    // Validate card number/NUIT
+    if (!formData.cardNumber) {
+      newErrors.cardNumber =
+        formData.providerType === ProviderOptions.Professional
+          ? "Número de Carteira Profissional é obrigatório"
+          : "NUIT é obrigatório"
+    } else if (formData.cardNumber.replace(/\D/g, "").length !== 9) {
+      newErrors.cardNumber =
+        formData.providerType === ProviderOptions.Professional
+          ? "Número de Carteira Profissional deve ter 9 dígitos"
+          : "NUIT deve ter 9 dígitos"
     }
 
     // Validate terms
@@ -155,24 +161,26 @@ export default function ProviderProfessionalDetailsPage() {
         )}
 
         <div className="space-y-2">
-          <Label htmlFor="nuit" className="text-sm font-medium">
-            NUIT <Asterisk />
+          <Label htmlFor="cardNumber" className="text-sm font-medium">
+            {formData.providerType === ProviderOptions.Professional ? "Número de Carteira Profissional" : "NUIT"}{" "}
+            <Asterisk />
           </Label>
           <Input
-            id="nuit"
-            value={formData.nuit}
-            onChange={handleNUITChange}
-            placeholder="123.456.789"
-            maxLength={11}
-            className={errors.nuit ? "border-error-5" : ""}
+            id="cardNumber"
+            value={formData.cardNumber}
+            onChange={handleCardNumberChange}
+            placeholder={formData.providerType === ProviderOptions.Professional ? "123456789" : "123456789"}
+            maxLength={9}
+            className={errors.cardNumber ? "border-error-5" : ""}
           />
-          {errors.nuit && <p className="text-xs text-error-5">{errors.nuit}</p>}
+          {errors.cardNumber && <p className="text-xs text-error-5">{errors.cardNumber}</p>}
         </div>
 
         <div className="bg-warning-2 border border-warning-3 rounded-md p-4 text-sm font-medium text-warning-5">
           <p>
-            As informações de tipo de provedor de saúde, especialidade e o seu NUIT serão permanentes. Caso necessite de
-            alterações futuras, entre em contato com o suporte.
+            {formData.providerType === ProviderOptions.Professional
+              ? "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte."
+              : "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte."}
           </p>
         </div>
 

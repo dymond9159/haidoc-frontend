@@ -5,18 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const formatNUIT = (value: string) => {
+export const formatCardNumber = (value: string) => {
   // Remove non-digits
   const digits = value.replace(/\D/g, "")
-
-  // Format with dots
-  if (digits.length <= 3) {
-    return digits
-  } else if (digits.length <= 6) {
-    return `${digits.slice(0, 3)}.${digits.slice(3)}`
-  } else {
-    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}`
-  }
+  // Remove dots
+  const cleanDigits = digits.replace(/\./g, "")
+  return cleanDigits
 }
 
 export function formatFileSize(size: number) {
