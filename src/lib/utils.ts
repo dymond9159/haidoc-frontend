@@ -118,7 +118,7 @@ export const getPageTitleFromPath = (pageTitles: Record<string, string>, path: s
   // Sort paths by length (DESC) to match the most specific path first
   const match = Object.keys(pageTitles)
     .sort((a, b) => b.length - a.length)
-    .find((key) => path.startsWith(key))
+    .find((key) => path.replace("/pt/", "/").startsWith(key))
 
   return match ? pageTitles[match] : ""
 }

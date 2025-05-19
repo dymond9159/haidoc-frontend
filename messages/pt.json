@@ -1,27 +1,18 @@
 {
-  "common": {
-    "menu": "Menu",
+  "common": {},
+  "pages": {
+    "agenda": "Agenda",
+    "consultations": "Consultas",
+    "onlineConsultation": "Consulta online",
+    "quickChat": "Chat rápido",
+    "finances": "Finanças",
+    "support": "Suporte",
     "notifications": "Notificações",
-    "myAccount": "Minha conta",
-    "logout": "Sair",
-    "language": "Idioma"
-  },
-  "profile": {
-    "title": "Minha conta",
     "configurations": "Configurações",
     "publicProfile": "Perfil público",
-    "myActivities": "Minhas Atividades",
-    "shareServices": "Compartilhar serviços",
-    "address": "Endereço",
-    "legalId": "Identidade Legal",
-    "nuit": "NUIT",
-    "uploadImage": "Substituir imagem",
-    "removeImage": "Remover imagem",
-    "success": "Sucesso",
-    "error": "Erro",
-    "uploadSuccess": "Imagem de perfil atualizada com sucesso!",
-    "uploadError": "Ocorreu um erro ao fazer upload da imagem.",
-    "fileTooLarge": "O arquivo é muito grande. O tamanho máximo permitido é 5MB.",
-    "removeSuccess": "Imagem de perfil removida com sucesso!"
+    "myAccount": "Minha conta",
+    "activityLog": "Log de Atividades",
+    "home": "Home",
+    "collapse": "Recolher"
   }
 }

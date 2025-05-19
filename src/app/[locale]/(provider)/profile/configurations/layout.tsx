@@ -63,7 +63,7 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <BackButton text="Configurações" />
+        <BackButton text="Configurações" onClick={() => router.push("/profile")} />
       </div>
       <Tabs
         defaultValue={ConfigurationTabOptions.DataRegistration}

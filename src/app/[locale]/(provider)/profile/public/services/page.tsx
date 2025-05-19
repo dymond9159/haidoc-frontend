@@ -58,7 +58,7 @@ export default function PublicProfileServicesPage() {
     if (service.id === 4) {
       setEditingService(true)
     } else {
-      router.push(`/profile/public/services/edit/${service.id}`)
+      router.push(`/profile/public/services/edit/${service.name}`)
     }
   }
 

@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 
@@ -30,22 +31,23 @@ export function Header() {
   const pathname = usePathname()
   const dispatch = useAppDispatch()
   const { isMobile, isTablet, isDesktop } = useScreen()
+  const t = useTranslations("pages")
 
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
   const pageTitles: Record<string, string> = {
-    "/professional/agenda": "Agenda",
-    "/professional/consultations": "Consultas",
-    "/professional/online-consultation": "Consulta online",
-    "/professional/chat": "Chat rápido",
-    "/professional/finances": "Finanças",
-    "/professional/support": "Suporte",
-    "/professional/notifications": "Notificações",
-    "/profile/configurations": "Configurações",
-    "/profile/public": "Perfil público",
-    "/profile": "Minha conta",
-    "/my-activity": "Log de Atividades",
-    "/professional": "Home",
+    "/professional/agenda": t("agenda"),
+    "/professional/consultations": t("consultations"),
+    "/professional/online-consultation": t("onlineConsultation"),
+    "/professional/chat": t("quickChat"),
+    "/professional/finances": t("finances"),
+    "/professional/support": t("support"),
+    "/professional/notifications": t("notifications"),
+    "/profile/configurations": t("configurations"),
+    "/profile/public": t("publicProfile"),
+    "/profile": t("myAccount"),
+    "/my-activity": t("activityLog"),
+    "/professional": t("home"),
   }
 
   const pageTitle = getPageTitleFromPath(pageTitles, pathname)

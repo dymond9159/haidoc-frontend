@@ -165,7 +165,7 @@ export default function AgendaPage() {
             </TabsList>
 
             <div className="flex items-center gap-4 mt-4">
-              <Button variant="outline" className="gap-2">
+              <Button variant="outline" className="gap-2" onClick={() => router.push("/profile/public/services")}>
                 Disponibilidade
                 <SlidersHorizontalIcon />
               </Button>

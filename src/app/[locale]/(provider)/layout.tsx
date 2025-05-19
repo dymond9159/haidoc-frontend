@@ -1,4 +1,4 @@
-import { Header, Loading, NavItem, Sidebar } from "@/components/common"
+import { Header, Loading, Sidebar } from "@/components/common"
 import type { Metadata } from "next"
 import { Suspense, type ReactNode } from "react"
 
@@ -15,21 +15,12 @@ export const metadata: Metadata = {
   publisher: "HaiDoc",
 }
 
-const navItems: NavItem[] = [
-  { iconName: "HomeIcon", label: "Home", href: "/professional" },
-  { iconName: "CalendarDaysIcon", label: "Agenda", href: "/professional/agenda" },
-  { iconName: "StethoscopeIcon", label: "Consultas", href: "/professional/consultations" },
-  { iconName: "MessageSquareTextIcon", label: "Chat rápido ", href: "/professional/chat" },
-  { iconName: "DollarIcon", label: "Finanças", href: "/professional/finances" },
-  { iconName: "SupportAgentIcon", label: "Suporte", href: "/professional/support" },
-]
-
 const homeLink = "/professional"
 
 export default async function ProfessionalLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex flex-row min-h-screen bg-system-2">
-      <Sidebar navItems={navItems} homeLink={homeLink} bottomCanvasImage="/images/side-bottom-canvas.svg" />
+      <Sidebar homeLink={homeLink} bottomCanvasImage="/images/side-bottom-canvas.svg" />
       <div className="w-screen h-screen flex-1 flex flex-col">
         <Header />
         <Suspense fallback={<Loading text="Carregando..." />}>

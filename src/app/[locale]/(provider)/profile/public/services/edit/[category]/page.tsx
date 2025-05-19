@@ -130,7 +130,7 @@ export default function EditServiceCategoryPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {days.slice(0, 4).map((day) => (
+              {days.map((day) => (
                 <ServiceCategoryCard
                   key={day.id}
                   day={day}
@@ -142,6 +142,15 @@ export default function EditServiceCategoryPage() {
           </TabsContent>
 
           <TabsContent value={ServiceTabOptions.HomeConsultation} className="space-y-6">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
+                <Switch id="allow-teleconsulta" defaultChecked />
+                <Label htmlFor="allow-teleconsulta" className="ml-2">
+                  Permitir consultas à domicílio
+                </Label>
+              </div>
+            </div>
+
             {/* Similar content for domicilio tab */}
             <div className="space-y-2">
               <Label htmlFor="price-domicilio" className="flex items-center">
@@ -151,7 +160,7 @@ export default function EditServiceCategoryPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-              {days.slice(4).map((day) => (
+              {days.map((day) => (
                 <ServiceCategoryCard
                   key={day.id}
                   day={day}

@@ -28,6 +28,7 @@ import { useScreen } from "@/hooks/use-screen"
 import { cn } from "@/lib/utils"
 import { RootState } from "@/store"
 import { setSideBarOpen, toggleCollapse } from "@/store/reducers/settings-slice"
+import { useTranslations } from "next-intl"
 import { useSelector } from "react-redux"
 import { DashboardIcon, DollarIcon, Edit1Icon, SupportAgentIcon, TaxIcon, UserSettingsIcon } from "../icons"
 import { ScrollArea, ScrollBar } from "../ui"
@@ -53,17 +54,25 @@ export interface NavItem {
   iconName?: keyof typeof iconMap
 }
 interface SidebarProps {
-  navItems: NavItem[]
   homeLink: string
   bottomCanvasImage: string
 }
 
-export function Sidebar({ navItems = [], homeLink, bottomCanvasImage }: SidebarProps) {
+export function Sidebar({ homeLink, bottomCanvasImage }: SidebarProps) {
+  const t = useTranslations("pages")
   const dispatch = useAppDispatch()
-  const pathname = usePathname()
-
-  // Use screen hook instead of local state
   const { isMobile, isTablet } = useScreen()
+
+  const pathname = usePathname().replace("/pt/", "/")
+
+  const navItems: NavItem[] = [
+    { iconName: "HomeIcon", label: t("home"), href: "/professional" },
+    { iconName: "CalendarDaysIcon", label: t("agenda"), href: "/professional/agenda" },
+    { iconName: "StethoscopeIcon", label: t("consultations"), href: "/professional/consultations" },
+    { iconName: "MessageSquareTextIcon", label: t("quickChat"), href: "/professional/chat" },
+    { iconName: "DollarIcon", label: t("finances"), href: "/professional/finances" },
+    { iconName: "SupportAgentIcon", label: t("support"), href: "/professional/support" },
+  ]
 
   // Use Redux store instead of local state
   const isCollapsed = useSelector((state: RootState) => state.settings.isCollapse)
@@ -139,13 +148,13 @@ export function Sidebar({ navItems = [], homeLink, bottomCanvasImage }: SidebarP
           "w-full flex !px-4 py-3 items-center rounded-md text-system-11 hover:bg-system-3 h-12",
           !isTabletView && "gap-3 justify-start text-sm",
         )}
-        title={isTabletView ? "Recolher" : undefined}
+        title={isTabletView ? t("collapse") : undefined}
         onClick={() => {
           if (closeSheet) closeSheet()
         }}
       >
         <RecolherButton />
-        {!isTabletView && <span>Recolher</span>}
+        {!isTabletView && <span>{t("collapse")}</span>}
       </Button>
     )
   }
