@@ -1,8 +1,8 @@
 "use client"
 
+import { NavigationCard } from "@/components/cards"
 import { DiagnosisIcon, DollarRightImageIcon, PlanRightImageIcon, ReceiptIcon } from "@/components/icons"
 import { ThemeColor } from "@/lib/constants"
-import { NavigationCard } from "../navigation-card"
 
 interface FinanceNavigationCardProps {
   type: "plans" | "reports"

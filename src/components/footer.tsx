@@ -1,4 +1,5 @@
 import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react"
+import Link from "next/link"
 import { Logo } from "./logo"
 
 export function Footer() {
@@ -16,24 +17,24 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-medium">Links Rápidos</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/home" className="text-system-11 hover:text-primary-9">
+                <Link href="/home" className="text-system-11 hover:text-primary-9">
                   Início
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="text-system-11 hover:text-primary-9">
+                <Link href="/about" className="text-system-11 hover:text-primary-9">
                   Sobre Nós
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/services" className="text-system-11 hover:text-primary-9">
+                <Link href="/services" className="text-system-11 hover:text-primary-9">
                   Serviços
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/contact" className="text-system-11 hover:text-primary-9">
+                <Link href="/contact" className="text-system-11 hover:text-primary-9">
                   Contato
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -41,37 +42,37 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-medium">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/privacy-policy" className="text-system-11 hover:text-primary-9">
+                <Link href="/privacy-policy" className="text-system-11 hover:text-primary-9">
                   Política de Privacidade
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms-of-service" className="text-system-11 hover:text-primary-9">
+                <Link href="/terms-of-service" className="text-system-11 hover:text-primary-9">
                   Termos de Serviço
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cookie-policy" className="text-system-11 hover:text-primary-9">
+                <Link href="/cookie-policy" className="text-system-11 hover:text-primary-9">
                   Política de Cookies
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div>
             <h3 className="mb-4 text-sm font-medium">Contate-nos</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-system-11 hover:text-primary-9">
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Twitter</span>
                 <TwitterIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-system-11 hover:text-primary-9">
+              </Link>
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Facebook</span>
                 <FacebookIcon className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-system-11 hover:text-primary-9">
+              </Link>
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Instagram</span>
                 <InstagramIcon className="h-5 w-5" />
-              </a>
+              </Link>
             </div>
             <div className="mt-4">
               <p className="text-sm text-system-10">Contate-nos em:</p>

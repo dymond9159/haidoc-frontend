@@ -1,5 +1,6 @@
 import TOSSection from "@/components/tos-section"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "HaiDoc | Privacy Policy",
@@ -63,9 +64,9 @@ export default function PrivacyPolicyPage() {
         <p className="mb-6">
           We also collect information through cookies and similar technologies. Please see our{" "}
           {/* Assuming you might have a separate Cookie Policy page */}
-          <a href="/cookie-policy" className="text-blue-600 hover:underline">
+          <Link href="/cookie-policy" className="text-blue-600 hover:underline">
             Cookie Policy
-          </a>{" "}
+          </Link>{" "}
           for more information.
         </p>
       </TOSSection>
@@ -162,9 +163,9 @@ export default function PrivacyPolicyPage() {
         <div className="space-y-1">
           <p>
             <strong className="font-medium">Email:</strong>{" "}
-            <a href="mailto:privacy@hai-doc.com" className="text-blue-600 hover:underline">
+            <Link href="mailto:privacy@hai-doc.com" className="text-blue-600 hover:underline">
               privacy@hai-doc.com
-            </a>
+            </Link>
           </p>
           <p>
             <strong className="font-medium">Phone:</strong> +258 123 456 789

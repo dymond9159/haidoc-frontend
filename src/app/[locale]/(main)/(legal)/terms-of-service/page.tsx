@@ -1,5 +1,6 @@
 import TOSSection from "@/components/tos-section"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "HaiDoc | Terms of Service",
@@ -271,9 +272,9 @@ export default function TermsOfServicePage() {
         <div className="space-y-1">
           <p>
             <strong className="font-medium text-gray-800">Email:</strong>{" "}
-            <a href="mailto:legal@hai-doc.com" className="text-blue-600 hover:underline">
+            <Link href="mailto:legal@hai-doc.com" className="text-blue-600 hover:underline">
               legal@hai-doc.com
-            </a>
+            </Link>
           </p>
           <p>
             <strong className="font-medium text-gray-800">Phone:</strong> +258 123 456 789

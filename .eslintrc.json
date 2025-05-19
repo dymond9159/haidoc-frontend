@@ -5,12 +5,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "parserOptions": {
@@ -32,6 +27,7 @@
     "@typescript-eslint/no-empty-object-type": "warn",
     "no-empty-pattern": "warn",
     "no-case-declarations": "off",
+    "react/no-unescaped-entities": "off",
     "no-debugger": "error",
     "react/react-in-jsx-scope": "off" // not needed in Next.js
   },

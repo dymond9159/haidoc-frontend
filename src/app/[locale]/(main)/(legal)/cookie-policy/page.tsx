@@ -1,5 +1,6 @@
 import TOSSection from "@/components/tos-section"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "HaiDoc | Cookie Policy",
@@ -158,9 +159,9 @@ export default function CookiePolicyPage() {
         </p>
         <p className="mt-2">
           Email:{" "}
-          <a href="mailto:privacy@hai-doc.com" className="text-blue-600 underline">
+          <Link href="mailto:privacy@hai-doc.com" className="text-blue-600 underline">
             privacy@hai-doc.com
-          </a>
+          </Link>
           <br />
           Phone: +258 123 456 789
           <br />

@@ -26,14 +26,6 @@ enum ServiceTabOptions {
   HomeConsultation = "domicilio",
 }
 
-export interface DayAvailability {
-  id: string
-  name: string
-  enabled: boolean
-  startTime: string
-  endTime: string
-}
-
 export default function EditServiceCategoryPage() {
   const { toast } = useToast()
 
