@@ -38,7 +38,7 @@ export const ConsultationFeatureBar = () => {
             onValueChange={(value) => setActiveTab(value as ConsultationFeatureBarTabs)}
           >
             <div className="h-12">
-              <TabsList className="grid grid-cols-3 p-0 h-12 border-b rounded-bl-none rounded-br-none ">
+              <TabsList className="grid grid-cols-3 p-0 h-12 border-b rounded-bl-none rounded-br-none gap-0">
                 <TabsTrigger
                   value={ConsultationFeatureBarTabs.History}
                   className="h-full rounded-bl-none rounded-br-none rounded-tr-none"

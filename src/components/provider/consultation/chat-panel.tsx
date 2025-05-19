@@ -65,7 +65,7 @@ export function ChatPanel({ isOpen, onClose }: ChatPanelProps) {
   }
 
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })
+    return date.toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" })
   }
 
   return (

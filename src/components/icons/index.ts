@@ -37,3 +37,6 @@ export * from "./lung-icon"
 export * from "./scale-icon"
 export * from "./spo2-icon"
 export * from "./star-fill-icon"
+
+export * from "./profile-approved-icon"
+export * from "./profile-pending-icon"

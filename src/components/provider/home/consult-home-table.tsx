@@ -102,7 +102,7 @@ export function ConsultationHomeTable({
               handleStartConsultation(row)
             }}
           >
-            Iniciar consulta
+            {row?.category === ConsultationCategory.Teleconsultation ? "Iniciar chamada" : "Iniciar consulta"}
           </Button>
         ),
       },
@@ -178,8 +178,8 @@ export function ConsultationHomeTable({
     patientId: "1234567890",
     type: ConsultationType.Urgent,
     date: "2021-01-01",
-    startTime: new Date(2025, 3, 22, 8, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
-    endTime: new Date(2025, 3, 22, 9, 0).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    startTime: new Date(2025, 3, 22, 8, 0).toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
+    endTime: new Date(2025, 3, 22, 9, 0).toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
     category: ConsultationCategory.Home,
     specialty: "Cardiologia",
     doctorName: "Nome do Médico",

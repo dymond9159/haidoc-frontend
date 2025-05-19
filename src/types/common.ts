@@ -12,3 +12,11 @@ export type TabItemType<T = string> = {
   value: T
   href: string
 }
+
+export interface DayAvailability {
+  id: string
+  name: string
+  enabled: boolean
+  startTime: string
+  endTime: string
+}

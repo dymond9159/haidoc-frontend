@@ -1,0 +1,18 @@
+{
+  "common": {},
+  "pages": {
+    "home": "Home",
+    "agenda": "Schedule",
+    "consultations": "Consultations",
+    "onlineConsultation": "Online Consultation",
+    "quickChat": "Quick Chat",
+    "finances": "Finances",
+    "support": "Support",
+    "notifications": "Notifications",
+    "configurations": "Settings",
+    "publicProfile": "Public Profile",
+    "myAccount": "My Account",
+    "activityLog": "Activity Log",
+    "collapse": "Collapse"
+  }
+}

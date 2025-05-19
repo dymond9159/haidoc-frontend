@@ -1,9 +1,9 @@
-import { DayAvailability } from "@/app/(provider)/profile/public/services/edit/[category]/page"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
+import { DayAvailability } from "@/types"
 
 interface ServiceCategoryCardProps {
   day: DayAvailability

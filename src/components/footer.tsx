@@ -1,40 +1,40 @@
-import { Icon } from "@/components/icons/icons"
+import { FacebookIcon, InstagramIcon, TwitterIcon } from "lucide-react"
+import Link from "next/link"
 import { Logo } from "./logo"
 
 export function Footer() {
   return (
     <footer className="border-t border-system-5 bg-system-2 py-8">
-      <div className="container px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <Logo size="sm" />
+            <Logo size="sm" className="-ml-4 mb-4" />
             <p className="text-sm text-system-10">
-              Providing quality healthcare services and solutions for patients
-              and healthcare providers.
+              Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde.
             </p>
           </div>
           <div>
-            <h3 className="mb-4 text-sm font-medium">Quick Links</h3>
+            <h3 className="mb-4 text-sm font-medium">Links Rápidos</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Home
-                </a>
+                <Link href="/home" className="text-system-11 hover:text-primary-9">
+                  Início
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  About Us
-                </a>
+                <Link href="/about" className="text-system-11 hover:text-primary-9">
+                  Sobre Nós
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Services
-                </a>
+                <Link href="/services" className="text-system-11 hover:text-primary-9">
+                  Serviços
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Contact
-                </a>
+                <Link href="/contact" className="text-system-11 hover:text-primary-9">
+                  Contato
+                </Link>
               </li>
             </ul>
           </div>
@@ -42,46 +42,46 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-medium">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Privacy Policy
-                </a>
+                <Link href="/privacy-policy" className="text-system-11 hover:text-primary-9">
+                  Política de Privacidade
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Terms of Service
-                </a>
+                <Link href="/terms-of-service" className="text-system-11 hover:text-primary-9">
+                  Termos de Serviço
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-system-11 hover:text-primary-9">
-                  Cookie Policy
-                </a>
+                <Link href="/cookie-policy" className="text-system-11 hover:text-primary-9">
+                  Política de Cookies
+                </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 text-sm font-medium">Connect With Us</h3>
+            <h3 className="mb-4 text-sm font-medium">Contate-nos</h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-system-11 hover:text-primary-9">
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Twitter</span>
-                <Icon name="message-square" className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-system-11 hover:text-primary-9">
+                <TwitterIcon className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Facebook</span>
-                <Icon name="heart" className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-system-11 hover:text-primary-9">
+                <FacebookIcon className="h-5 w-5" />
+              </Link>
+              <Link href="#" className="text-system-11 hover:text-primary-9">
                 <span className="sr-only">Instagram</span>
-                <Icon name="info" className="h-5 w-5" />
-              </a>
+                <InstagramIcon className="h-5 w-5" />
+              </Link>
             </div>
             <div className="mt-4">
-              <p className="text-sm text-system-10">Contact us at:</p>
-              <p className="text-sm font-medium">support@haidoc.com</p>
+              <p className="text-sm text-system-10">Contate-nos em:</p>
+              <p className="text-sm font-medium">support@hai-doc.com</p>
             </div>
           </div>
         </div>
         <div className="mt-8 border-t border-system-5 pt-8 text-center text-sm text-system-10">
-          <p>&copy; {new Date().getFullYear()} HaiDoc. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} HaiDoc. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

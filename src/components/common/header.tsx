@@ -1,9 +1,10 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useSelector } from "react-redux"
 
-import { ChevronDown, CircleUserRoundIcon, LogOutIcon, Menu, ShoppingBag } from "lucide-react"
+import { ChevronDown, CircleUserRoundIcon, LogOutIcon, Menu } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -11,10 +12,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { LanguageSwitcher } from "./language-switcher"
 import { NotificationsDropdown } from "./notifications-dropdown"
 
 import { useAppDispatch } from "@/hooks/use-dispatch"
@@ -30,17 +31,23 @@ export function Header() {
   const pathname = usePathname()
   const dispatch = useAppDispatch()
   const { isMobile, isTablet, isDesktop } = useScreen()
+  const t = useTranslations("pages")
 
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
   const pageTitles: Record<string, string> = {
-    "/professional/agenda": "Agenda",
-    "/professional/consultations": "Consultas",
-    "/professional/online-consultation": "Consulta online",
-    "/professional/chat": "Chat rápido",
-    "/professional/support": "Suporte",
-    "/professional/notifications": "Notificações",
-    "/professional": "Home",
+    "/professional/agenda": t("agenda"),
+    "/professional/consultations": t("consultations"),
+    "/professional/online-consultation": t("onlineConsultation"),
+    "/professional/chat": t("quickChat"),
+    "/professional/finances": t("finances"),
+    "/professional/support": t("support"),
+    "/professional/notifications": t("notifications"),
+    "/profile/configurations": t("configurations"),
+    "/profile/public": t("publicProfile"),
+    "/profile": t("myAccount"),
+    "/my-activity": t("activityLog"),
+    "/professional": t("home"),
   }
 
   const pageTitle = getPageTitleFromPath(pageTitles, pathname)
@@ -75,11 +82,7 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-4">
-        <Link href="#" className="hidden md:flex items-center text-primary-9 gap-2">
-          <ShoppingBag className="h-5 w-5" />
-          <span className="text-sm">Visitar loja</span>
-        </Link>
-
+        <LanguageSwitcher />
         <NotificationsDropdown />
 
         <DropdownMenu>
@@ -96,11 +99,11 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>Minha Conta</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Minha Conta</DropdownMenuLabel> */}
             <DropdownMenuItem asChild>
               <Link href="/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
-                Informações Pessoais
+                Minha conta
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />

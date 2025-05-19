@@ -5,18 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export const formatNUIT = (value: string) => {
+export const formatCardNumber = (value: string) => {
   // Remove non-digits
   const digits = value.replace(/\D/g, "")
-
-  // Format with dots
-  if (digits.length <= 3) {
-    return digits
-  } else if (digits.length <= 6) {
-    return `${digits.slice(0, 3)}.${digits.slice(3)}`
-  } else {
-    return `${digits.slice(0, 3)}.${digits.slice(3, 6)}.${digits.slice(6, 9)}`
-  }
+  // Remove dots
+  const cleanDigits = digits.replace(/\./g, "")
+  return cleanDigits
 }
 
 export function formatFileSize(size: number) {
@@ -26,7 +20,7 @@ export function formatFileSize(size: number) {
 }
 
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString("pt-BR", {
+  return date.toLocaleDateString("pt-PT", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -50,7 +44,7 @@ export const calculateTrend = (data: { timeframe: string; value: number }[]) => 
 
 // const getFormattedDate = (): string => {
 //   const today = new Date()
-//   return new Intl.DateTimeFormat("pt-BR", {
+//   return new Intl.DateTimeFormat("pt-PT", {
 //     day: "2-digit",
 //     month: "2-digit",
 //     year: "numeric",
@@ -124,7 +118,7 @@ export const getPageTitleFromPath = (pageTitles: Record<string, string>, path: s
   // Sort paths by length (DESC) to match the most specific path first
   const match = Object.keys(pageTitles)
     .sort((a, b) => b.length - a.length)
-    .find((key) => path.startsWith(key))
+    .find((key) => path.replace("/pt/", "/").startsWith(key))
 
   return match ? pageTitles[match] : ""
 }

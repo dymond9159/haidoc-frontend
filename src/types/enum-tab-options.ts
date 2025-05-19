@@ -10,3 +10,10 @@ export enum RegistrationType {
   Patient = "patient",
   Provider = "provider",
 }
+
+export enum ProviderOptions {
+  Professional = "professional",
+  Laboratory = "laboratory",
+  Clinic = "clinic",
+  Pharmacy = "pharmacy",
+}

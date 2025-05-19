@@ -12,8 +12,8 @@ function generateMockConsultationRequests(count: number = 10): RequestConsultati
       ConsultationCategory.Chat,
       ConsultationCategory.Home,
     ]),
-    date: faker.date.soon().toLocaleDateString("pt-BR"),
-    time: faker.date.soon().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    date: faker.date.soon().toLocaleDateString("pt-PT"),
+    time: faker.date.soon().toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
     isAccepted: faker.datatype.boolean(),
   }))
 }
@@ -34,8 +34,8 @@ function generateMockConsultations(count: number = 10): ConsultationColumns[] {
       ConsultationType.Urgent,
       ConsultationType.FollowUp,
     ]),
-    date: faker.date.future().toLocaleDateString("pt-BR"),
-    time: faker.date.soon().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" }),
+    date: faker.date.future().toLocaleDateString("pt-PT"),
+    time: faker.date.soon().toLocaleTimeString("pt-PT", { hour: "2-digit", minute: "2-digit" }),
   }))
 }
 
