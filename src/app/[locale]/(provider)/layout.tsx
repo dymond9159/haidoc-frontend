@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
   { iconName: "CalendarDaysIcon", label: "Agenda", href: "/professional/agenda" },
   { iconName: "StethoscopeIcon", label: "Consultas", href: "/professional/consultations" },
   { iconName: "MessageSquareTextIcon", label: "Chat rápido ", href: "/professional/chat" },
+  { iconName: "DollarIcon", label: "Finanças", href: "/professional/finances" },
   { iconName: "SupportAgentIcon", label: "Suporte", href: "/professional/support" },
 ]
 

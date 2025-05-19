@@ -201,13 +201,15 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
       </div>
 
       <Alert variant="info">
-        <AlertTitle className="flex items-center gap-2">
-          <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
-          Assinatura e carimbo adicionados
-        </AlertTitle>
-        <AlertDescription>
-          Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.
-        </AlertDescription>
+        <div>
+          <AlertTitle className="flex items-center gap-2">
+            <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
+            Assinatura e carimbo adicionados
+          </AlertTitle>
+          <AlertDescription>
+            Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.
+          </AlertDescription>
+        </div>
       </Alert>
 
       <div className="space-y-2 pt-4">

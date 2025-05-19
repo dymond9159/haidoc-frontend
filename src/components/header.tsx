@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { useRouter } from "nextjs-toploader/app"
 import { useMobile } from "../hooks/use-mobile"
+import { LanguageSwitcher } from "./common/language-switcher"
 import { Logo } from "./logo"
 
 interface NavItem {
@@ -63,6 +64,7 @@ export function Header() {
           )}
         </div>
         <div className="flex items-center gap-4">
+          <LanguageSwitcher />
           <Button onClick={() => router.push("/login")}>Login</Button>
           <Button variant="ghost" onClick={() => router.push("/register")}>
             Cadastro

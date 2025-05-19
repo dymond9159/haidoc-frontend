@@ -75,7 +75,6 @@ export default function PaymentDetailsConfigurationsPage() {
   }
 
   const handleFormSubmit = (data: PaymentMethodFormValues, id?: string) => {
-    alert(1)
     const maskedCardNumber = `**** **** **** ${data.cardNumber?.slice(-4) || "****"}`
     const cardBrand = "Visa"
 

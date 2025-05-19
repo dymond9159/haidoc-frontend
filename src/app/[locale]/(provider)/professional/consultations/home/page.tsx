@@ -15,15 +15,17 @@ export default function ConsultaDomicilioPage() {
         <div className="flex-1">
           <Card className="gap-6">
             <Alert variant="info">
-              <AlertTitle className="flex items-center gap-2">
-                <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
-                Consulta a domicílio
-              </AlertTitle>
-              <AlertDescription>
-                Por favor, dirija-se ao endereço indicado no horário agendado para a consulta. Lembre-se de revisar
-                todas as informações antes de sair para garantir que tenha tudo o que precisa para o atendimento
-                domiciliar.
-              </AlertDescription>
+              <div>
+                <AlertTitle className="flex items-center gap-2">
+                  <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
+                  Consulta a domicílio
+                </AlertTitle>
+                <AlertDescription>
+                  Por favor, dirija-se ao endereço indicado no horário agendado para a consulta. Lembre-se de revisar
+                  todas as informações antes de sair para garantir que tenha tudo o que precisa para o atendimento
+                  domiciliar.
+                </AlertDescription>
+              </div>
             </Alert>
 
             <div className="flex items-center gap-4">

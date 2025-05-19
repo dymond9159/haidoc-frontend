@@ -114,7 +114,6 @@ export function RequestConsultationTable({
   )
 
   const handleShowDetailsForRequesting = (row: RequestConsultationColumns) => {
-    alert(2)
     router.push(`/professional/consultations/details/requested/${row.id}`)
   }
 

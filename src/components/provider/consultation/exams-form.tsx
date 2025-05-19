@@ -1,17 +1,17 @@
 "use client"
 
-import { Asterisk } from "@/components/common"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Textarea } from "@/components/ui/textarea"
+import { ExamCategories } from "@/lib/constants/exam"
+import { SpecialtiesCategories } from "@/lib/constants/specialties"
 import { useState } from "react"
 
 interface ExamsFormProps {
   onClose?: () => void
 }
 
-interface ExamCategory {
+export interface ExamCategory {
   id: string
   name: string
   exams: {
@@ -21,73 +21,29 @@ interface ExamCategory {
   }[]
 }
 
-export function ExamsForm({ onClose }: ExamsFormProps) {
-  const [examCategories, setExamCategories] = useState<ExamCategory[]>([
-    {
-      id: "biochemistry",
-      name: "Bioquímica",
-      exams: [
-        { id: "arterial-gasometry", name: "Gasometria arterial", isSelected: true },
-        { id: "venous-gasometry", name: "Gasometria venosa", isSelected: false },
-        { id: "glucose", name: "Glicose", isSelected: true },
-      ],
-    },
-    {
-      id: "hematology",
-      name: "Hematologia",
-      exams: [
-        { id: "complete-blood-count", name: "Hemograma completo", isSelected: false },
-        { id: "coagulation", name: "Coagulação", isSelected: false },
-      ],
-    },
-    {
-      id: "allergy",
-      name: "Alergia",
-      exams: [{ id: "allergy-test", name: "Teste de alergia", isSelected: false }],
-    },
-    {
-      id: "hormones",
-      name: "Hormônios",
-      exams: [
-        { id: "thyroid", name: "Tireoide", isSelected: false },
-        { id: "cortisol", name: "Cortisol", isSelected: false },
-      ],
-    },
-    {
-      id: "tumor-markers",
-      name: "Marcadores tumorais",
-      exams: [
-        { id: "psa", name: "PSA", isSelected: false },
-        { id: "cea", name: "CEA", isSelected: false },
-      ],
-    },
-    {
-      id: "microbiology",
-      name: "Microbiologia",
-      exams: [
-        { id: "culture", name: "Cultura", isSelected: false },
-        { id: "antibiogram", name: "Antibiograma", isSelected: false },
-      ],
-    },
-    {
-      id: "immunology",
-      name: "Imunologia",
-      exams: [
-        { id: "hiv", name: "HIV", isSelected: false },
-        { id: "hepatitis", name: "Hepatite", isSelected: false },
-      ],
-    },
-    {
-      id: "urinalysis",
-      name: "Urinálise",
-      exams: [
-        { id: "urinalysis", name: "Urinálise", isSelected: false },
-        { id: "urine-culture", name: "Urocultura", isSelected: false },
-      ],
-    },
-  ])
+export interface ExamCategory {
+  id: string
+  name: string
+  exams: {
+    id: string
+    name: string
+    isSelected: boolean
+  }[]
+}
 
-  const [instructions, setInstructions] = useState("")
+export interface SpecialtyCategory {
+  id: string
+  name: string
+  specialties: {
+    id: string
+    name: string
+    isSelected: boolean
+  }[]
+}
+
+export function ExamsForm({ onClose }: ExamsFormProps) {
+  const [examCategories, setExamCategories] = useState<ExamCategory[]>(ExamCategories || [])
+  const [specialtyCategories, setSpecialtyCategories] = useState<SpecialtyCategory[]>(SpecialtiesCategories || [])
 
   const toggleExam = (categoryId: string, examId: string) => {
     setExamCategories((categories) =>
@@ -104,13 +60,37 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
     )
   }
 
+  const toggleSpecialty = (categoryId: string, specialtyId: string) => {
+    setSpecialtyCategories((categories) =>
+      categories.map((category) =>
+        category.id === categoryId
+          ? {
+              ...category,
+              specialties: category.specialties.map((specialty) =>
+                specialty.id === specialtyId ? { ...specialty, isSelected: !specialty.isSelected } : specialty,
+              ),
+            }
+          : category,
+      ),
+    )
+  }
+
   const handleSubmit = () => {
     const selectedExams = examCategories.flatMap((category) =>
       category.exams.filter((exam) => exam.isSelected).map((exam) => ({ category: category.name, name: exam.name })),
     )
 
+    const selectedSpecialties = specialtyCategories.flatMap((category) =>
+      category.specialties
+        .filter((specialty) => specialty.isSelected)
+        .map((specialty) => ({
+          category: category.name,
+          name: specialty.name,
+        })),
+    )
+
     console.log("Selected exams:", selectedExams)
-    console.log("Instructions:", instructions)
+    console.log("Selected specialties:", selectedSpecialties)
     // In a real app, you would send this data to your backend
     if (onClose) onClose()
   }
@@ -148,17 +128,35 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
         </Accordion>
       </div>
 
-      <div className="p-4 border-t">
-        <label className="text-sm font-medium mb-1 block">
-          Instrução de uso <Asterisk />
-        </label>
-        <Textarea
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          placeholder="Default"
-          rows={4}
-        />
-        <p className="text-xs text-gray-500 mt-1">1000 caracteres</p>
+      <div className="p-4">
+        <h3 className="text-sm font-medium mb-2">Especialidades</h3>
+
+        <Accordion type="multiple" className="w-full space-y-2" defaultValue={["biochemistry"]}>
+          {specialtyCategories.map((category) => (
+            <AccordionItem key={category.id} value={category.id} className="border rounded-md overflow-hidden">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-gray-50">
+                <span className="font-medium text-secondary">{category.name}</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-0 py-2 border-t space-y-2">
+                {category.specialties.map((specialty) => (
+                  <div key={specialty.id} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={specialty.id}
+                      checked={specialty.isSelected}
+                      onCheckedChange={() => toggleSpecialty(category.id, specialty.id)}
+                    />
+                    <label
+                      htmlFor={specialty.id}
+                      className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      {specialty.name}
+                    </label>
+                  </div>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
 
       <div className="p-4 ">

@@ -102,7 +102,7 @@ export function ConsultationHomeTable({
               handleStartConsultation(row)
             }}
           >
-            Iniciar consulta
+            {row?.category === ConsultationCategory.Teleconsultation ? "Iniciar chamada" : "Iniciar consulta"}
           </Button>
         ),
       },

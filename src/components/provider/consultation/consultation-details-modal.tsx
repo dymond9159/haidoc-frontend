@@ -149,7 +149,9 @@ export function ConsultationDetailsModal({
           <div className="space-y-2">
             {type === "consultation" && (
               <Button className="w-full" onClick={handleStartConsultation}>
-                Iniciar Consulta
+                {appointment.category === ConsultationCategory.Teleconsultation
+                  ? "Iniciar chamada"
+                  : "Iniciar consulta"}
               </Button>
             )}
             {type === "appointment" && (
@@ -163,7 +165,9 @@ export function ConsultationDetailsModal({
               </>
             )}
             <Button variant="link" className="w-full" onClick={handleCancel}>
-              Cancelar Consulta
+              {appointment.category === ConsultationCategory.Teleconsultation
+                ? "Cancelar chamada"
+                : "Cancelar consulta"}
             </Button>
           </div>
         </DialogContent>

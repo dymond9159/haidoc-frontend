@@ -38,6 +38,7 @@ export function Header() {
     "/professional/consultations": "Consultas",
     "/professional/online-consultation": "Consulta online",
     "/professional/chat": "Chat rápido",
+    "/professional/finances": "Finanças",
     "/professional/support": "Suporte",
     "/professional/notifications": "Notificações",
     "/profile/configurations": "Configurações",
