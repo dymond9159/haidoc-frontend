@@ -22,7 +22,7 @@ export const BackButton = ({ text = "Detalhes", onClick }: BackButtonProps) => {
     <Button
       variant="link"
       onClick={handleBack}
-      className="flex items-center text-foreground hover:text-secondary !pl-0"
+      className="flex items-center text-foreground hover:text-secondary !pl-0 -ml-1"
     >
       <ChevronLeftIcon className="h-4 w-4" />
       {text}

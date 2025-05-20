@@ -6,9 +6,9 @@ export default function ProviderRegistrationLayout({ children }: { children: Rea
   const t = useTranslations("auth.register")
 
   const steps = [
-    { id: "basic", number: 1, title: t("steps.basic.title") },
-    { id: "professional", number: 2, title: t("steps.professional.title") },
-    { id: "documentation", number: 3, title: t("steps.documentation.title") },
+    { id: "basic", number: 1, title: "Dados básicos" },
+    { id: "professional", number: 2, title: "Detalhes profissionais" },
+    { id: "documentation", number: 3, title: "Documentação" },
   ]
 
   return (

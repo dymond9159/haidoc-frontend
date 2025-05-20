@@ -73,7 +73,8 @@ export default function NovoAgendamentoPage() {
 
             <div className="col-span-1">
               <Label className="block text-sm font-medium mb-1">
-                Data<span className="text-error-5">*</span>
+                Data
+                <Asterisk />
               </Label>
               <SelectDatepicker
                 date={date}
@@ -87,7 +88,8 @@ export default function NovoAgendamentoPage() {
 
           <div>
             <Label className="block text-sm font-medium mb-1">
-              Horários disponíveis<span className="text-error-5">*</span>
+              Horários disponíveis
+              <Asterisk />
             </Label>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2">
               {TimeSlots.map((time) => (

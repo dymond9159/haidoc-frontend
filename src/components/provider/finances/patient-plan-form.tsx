@@ -2,21 +2,15 @@
 
 import { cn } from "@/lib/utils"
 
-import { useState, useEffect } from "react"
+import { BackButton } from "@/components/common"
+import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
-import { PlanRegistrationSteps } from "./plan-registration-steps"
-import { BackButton } from "@/components/common"
 import { useRouter } from "next/navigation"
+import { useEffect, useState } from "react"
+import { PlanRegistrationSteps } from "./plan-registration-steps"
 
 interface PatientPlanFormProps {
   initialData: any
@@ -25,12 +19,7 @@ interface PatientPlanFormProps {
   stepped?: boolean
 }
 
-export function PatientPlanForm({
-  initialData,
-  onSubmit,
-  onBack,
-  stepped = false,
-}: PatientPlanFormProps) {
+export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false }: PatientPlanFormProps) {
   const router = useRouter()
   const [formData, setFormData] = useState({
     name: initialData.name || "",
@@ -74,15 +63,9 @@ export function PatientPlanForm({
     // Validate dependents if family plan
     if (formData.isFamily && !formData.dependents) {
       newErrors.dependents = "Número de dependentes é obrigatório"
-    } else if (
-      formData.isFamily &&
-      !/^\d+$/.test(formData.dependents.toString())
-    ) {
+    } else if (formData.isFamily && !/^\d+$/.test(formData.dependents.toString())) {
       newErrors.dependents = "Apenas números são permitidos"
-    } else if (
-      formData.isFamily &&
-      formData.dependents.toString().length > 13
-    ) {
+    } else if (formData.isFamily && formData.dependents.toString().length > 13) {
       newErrors.dependents = "Máximo de 13 caracteres"
     }
 
@@ -93,11 +76,7 @@ export function PatientPlanForm({
 
     // Validate values if paid modality
     if (formData.modality === "paid") {
-      if (
-        !formData.monthlyValue &&
-        !formData.biannualValue &&
-        !formData.annualValue
-      ) {
+      if (!formData.monthlyValue && !formData.biannualValue && !formData.annualValue) {
         newErrors.values = "Pelo menos um valor de recorrência é obrigatório"
       }
     }
@@ -130,10 +109,7 @@ export function PatientPlanForm({
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <BackButton
-          onClick={() => router.back()}
-          text="Cadastro de novo plano"
-        />
+        <BackButton onClick={() => router.back()} text="Cadastro de novo plano" />
       </div>
 
       {stepped && <PlanRegistrationSteps steps={steps} currentStep={1} />}
@@ -141,7 +117,8 @@ export function PatientPlanForm({
       <div className="space-y-6">
         <div className="space-y-2">
           <Label htmlFor="plan-name" className="text-sm font-medium">
-            Nome do plano<span className="text-error-5">*</span>
+            Nome do plano
+            <Asterisk />
           </Label>
           <Input
             id="plan-name"
@@ -150,28 +127,19 @@ export function PatientPlanForm({
             onChange={(e) => handleChange("name", e.target.value)}
             className={submitted && errors.name ? "border-error-5" : ""}
           />
-          {submitted && errors.name && (
-            <p className="text-xs text-error-5">{errors.name}</p>
-          )}
+          {submitted && errors.name && <p className="text-xs text-error-5">{errors.name}</p>}
         </div>
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="family" className="text-sm font-medium">
-              É familiar?<span className="text-error-5">*</span>
+              É familiar?
+              <Asterisk />
             </Label>
             <Select
               value={formData.isFamily ? "yes" : "no"}
-              onValueChange={(value) =>
-                handleChange("isFamily", value === "yes")
-              }
+              onValueChange={(value) => handleChange("isFamily", value === "yes")}
             >
-              <SelectTrigger
-                id="family"
-                className={cn(
-                  "w-full",
-                  errors.isFamily ? "border-error-5" : "",
-                )}
-              >
+              <SelectTrigger id="family" className={cn("w-full", errors.isFamily ? "border-error-5" : "")}>
                 <SelectValue placeholder="Selecione" />
               </SelectTrigger>
               <SelectContent>
@@ -179,14 +147,13 @@ export function PatientPlanForm({
                 <SelectItem value="no">Não</SelectItem>
               </SelectContent>
             </Select>
-            {submitted && errors.isFamily && (
-              <p className="text-xs text-error-5">{errors.isFamily}</p>
-            )}
+            {submitted && errors.isFamily && <p className="text-xs text-error-5">{errors.isFamily}</p>}
           </div>
 
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="dependents" className="text-sm font-medium">
-              Número de dependentes<span className="text-error-5">*</span>
+              Número de dependentes
+              <Asterisk />
             </Label>
             <Input
               id="dependents"
@@ -197,26 +164,16 @@ export function PatientPlanForm({
               disabled={!formData.isFamily}
               className={errors.dependents ? "border-error-5" : ""}
             />
-            {submitted && errors.dependents && (
-              <p className="text-xs text-error-5">{errors.dependents}</p>
-            )}
+            {submitted && errors.dependents && <p className="text-xs text-error-5">{errors.dependents}</p>}
           </div>
 
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="modality" className="text-sm font-medium">
-              Modalidade<span className="text-error-5">*</span>
+              Modalidade
+              <Asterisk />
             </Label>
-            <Select
-              value={formData.modality}
-              onValueChange={(value) => handleChange("modality", value)}
-            >
-              <SelectTrigger
-                id="modality"
-                className={cn(
-                  "w-full",
-                  errors.modality ? "border-error-5" : "",
-                )}
-              >
+            <Select value={formData.modality} onValueChange={(value) => handleChange("modality", value)}>
+              <SelectTrigger id="modality" className={cn("w-full", errors.modality ? "border-error-5" : "")}>
                 <SelectValue placeholder="Selecione" />
               </SelectTrigger>
               <SelectContent>
@@ -224,9 +181,7 @@ export function PatientPlanForm({
                 <SelectItem value="free">Gratuito</SelectItem>
               </SelectContent>
             </Select>
-            {submitted && errors.modality && (
-              <p className="text-xs text-error-5">{errors.modality}</p>
-            )}
+            {submitted && errors.modality && <p className="text-xs text-error-5">{errors.modality}</p>}
           </div>
         </div>
 
@@ -273,28 +228,22 @@ export function PatientPlanForm({
               />
             </div>
           </div>
-          {submitted && errors.values && (
-            <p className="text-xs text-error-5 mt-1">{errors.values}</p>
-          )}
+          {submitted && errors.values && <p className="text-xs text-error-5 mt-1">{errors.values}</p>}
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="benefits" className="text-sm font-medium">
-            Benefícios<span className="text-error-5">*</span>
+            Benefícios
+            <Asterisk />
           </Label>
           <Textarea
             id="benefits"
             placeholder="Digite aqui"
             value={formData.benefits}
             onChange={(e) => handleChange("benefits", e.target.value)}
-            className={cn(
-              "min-h-[100px] resize-y",
-              submitted && errors.benefits ? "border-error-5" : "",
-            )}
+            className={cn("min-h-[100px] resize-y", submitted && errors.benefits ? "border-error-5" : "")}
           />
-          {submitted && errors.benefits && (
-            <p className="text-xs text-error-5">{errors.benefits}</p>
-          )}
+          {submitted && errors.benefits && <p className="text-xs text-error-5">{errors.benefits}</p>}
         </div>
 
         <div className="flex justify-end gap-5 pt-4">

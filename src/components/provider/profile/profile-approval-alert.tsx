@@ -99,9 +99,11 @@ export const ProfileApprovalAlert = ({ status, onActionClick, className = "" }: 
   return (
     <Alert variant={content.variant} className={className}>
       <div className="flex items-center gap-4">
-        <content.icon size={84} className="alert-icon" />
+        <content.icon size={84} className="alert-icon hidden sm:block" />
         <div className="space-y-1">
-          <AlertTitle>{content.title}</AlertTitle>
+          <AlertTitle className="flex flex-row items-center gap-2">
+            <content.icon size={32} className="alert-icon sm:hidden" /> {content.title}
+          </AlertTitle>
           <AlertDescription className="flex flex-col md:flex-row gap-2">
             <p>{content.description}</p>
             {content.actionButton && (

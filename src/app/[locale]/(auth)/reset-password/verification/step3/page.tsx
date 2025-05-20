@@ -61,7 +61,8 @@ export default function VerificationStep3() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="code" className="block text-sm font-medium">
-            Código<span className="text-error-5">*</span>
+            Código
+            <Asterisk />
           </label>
           <CodeInput id="code" placeholder="Ex: ABC123" value={code} onChangeCode={setCode} required />
           {error && <p className="text-xs text-error-5">{error}</p>}

@@ -47,7 +47,8 @@ export default function ForgotPassword() {
               </p>
 
               <label htmlFor="email" className="block text-sm font-medium">
-                E-mail<span className="text-error-5">*</span>
+                E-mail
+                <Asterisk />
               </label>
               <Input
                 id="email"
