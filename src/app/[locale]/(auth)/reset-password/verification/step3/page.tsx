@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { CodeInput } from "@/components/ui/code-input"
 import { useRouter } from "nextjs-toploader/app"
@@ -61,8 +62,7 @@ export default function VerificationStep3() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="code" className="block text-sm font-medium">
-            Código
-            <Asterisk />
+            Código <Asterisk />
           </label>
           <CodeInput id="code" placeholder="Ex: ABC123" value={code} onChangeCode={setCode} required />
           {error && <p className="text-xs text-error-5">{error}</p>}

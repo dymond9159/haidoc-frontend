@@ -81,7 +81,6 @@ export default function VerificationStep1() {
               setMethod("sms")
             }}
             required={method === "sms"}
-            className={method === "sms" ? "border-primary-9" : ""}
             onClick={() => setMethod("sms")}
           />
         </div>

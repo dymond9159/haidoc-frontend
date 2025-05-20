@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { PhoneInput } from "@/components/ui/phone-input"
@@ -45,8 +46,7 @@ export default function VerificationStep1() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium">
-            E-mail
-            <Asterisk />
+            E-mail <Asterisk />
           </label>
           <Input
             id="email"
@@ -58,7 +58,6 @@ export default function VerificationStep1() {
               setMethod("email")
             }}
             required={method === "email"}
-            className={method === "email" ? "border-primary-9" : ""}
             onClick={() => setMethod("email")}
           />
         </div>
@@ -71,8 +70,7 @@ export default function VerificationStep1() {
 
         <div className="space-y-2">
           <label htmlFor="phone" className="block text-sm font-medium">
-            SMS
-            <Asterisk />
+            SMS <Asterisk />
           </label>
           <PhoneInput
             id="phone"
@@ -83,7 +81,6 @@ export default function VerificationStep1() {
               setMethod("sms")
             }}
             required={method === "sms"}
-            className={method === "sms" ? "border-primary-9" : ""}
             onClick={() => setMethod("sms")}
           />
         </div>

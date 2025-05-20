@@ -1,42 +1,27 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
-import { useRef, useState } from "react"
+import type React from "react"
+import { useState } from "react"
 
-import { RegistrationSteps } from "@/components/auth/registration-step"
 import { Asterisk } from "@/components/common"
-import { FileUploadBox, UploadedFile } from "@/components/common/file-upload-box"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-
-enum DocumentationOptions {
-  License = "license",
-  Address = "address",
-}
+import { cn } from "@/lib/utils"
 
 export default function ProviderDocumentationPage() {
   const router = useRouter()
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
+  const t = useTranslations("provider.registration")
   const [formData, setFormData] = useState({
-    street: "",
-    number: "",
-    neighborhood: "",
-    city: "",
-    country: "",
+    documentType: "",
+    documentNumber: "",
+    documentFile: null as File | null,
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
 
-  const steps = [
-    { id: "basic", number: 1, title: "Dados básicos" },
-    { id: "professional", number: 2, title: "Detalhes profissionais" },
-    { id: "documentation", number: 3, title: "Documentação" },
-  ]
-
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: any) => {
     setFormData({ ...formData, [field]: value })
 
     // Clear error when field is edited
@@ -47,77 +32,29 @@ export default function ProviderDocumentationPage() {
     }
   }
 
-  const handleFileUpload = (files: FileList) => {
-    if (files.length > 0) {
-      const newFiles: UploadedFile[] = []
-
-      Array.from(files).forEach((file) => {
-        if (uploadedFiles.length + newFiles.length < 5) {
-          newFiles.push({
-            id: Math.random().toString(36).substring(2, 9),
-            name: file.name,
-            size: file.size,
-          })
-        }
-      })
-
-      setUploadedFiles([...uploadedFiles, ...newFiles])
-
-      // Clear file input
-      if (fileInputRef.current) {
-        fileInputRef.current.value = ""
-      }
-
-      // Clear error if files are uploaded
-      if (errors.files && newFiles.length > 0) {
-        const newErrors = { ...errors }
-        delete newErrors.files
-        setErrors(newErrors)
-      }
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      handleChange("documentFile", file)
     }
-  }
-
-  const handleRemoveFile = (id: string) => {
-    setUploadedFiles(uploadedFiles.filter((file) => file.id !== id))
-  }
-
-  const formatFileSize = (bytes: number): string => {
-    if (bytes < 1024) return bytes + " B"
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB"
-    return (bytes / (1024 * 1024)).toFixed(1) + " MB"
   }
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
 
-    // Validate files
-    if (uploadedFiles.length === 0) {
-      newErrors.files = "Pelo menos um documento é obrigatório"
+    // Validate document type
+    if (!formData.documentType) {
+      newErrors.documentType = t("documentation.documentType.error")
     }
 
-    // Validate street
-    if (!formData.street.trim()) {
-      newErrors.street = "Rua ou avenida é obrigatória"
+    // Validate document number
+    if (!formData.documentNumber) {
+      newErrors.documentNumber = t("documentation.documentNumber.error")
     }
 
-    // Validate number
-    if (!formData.number.trim()) {
-      newErrors.number = "Número é obrigatório"
-    }
-
-    // Validate neighborhood
-    if (!formData.neighborhood.trim()) {
-      newErrors.neighborhood = "Bairro é obrigatório"
-    }
-
-    // Validate city
-    if (!formData.city.trim()) {
-      newErrors.city = "Cidade é obrigatória"
-    }
-
-    // Validate country
-    if (!formData.country.trim()) {
-      newErrors.country = "País é obrigatório"
+    // Validate document file
+    if (!formData.documentFile) {
+      newErrors.documentFile = t("documentation.documentFile.error")
     }
 
     setErrors(newErrors)
@@ -126,129 +63,70 @@ export default function ProviderDocumentationPage() {
 
   const handleSubmit = () => {
     if (validateForm()) {
-      // In a real app, you would submit the form data to your backend here
-      router.push("/register/provider/success")
+      // Handle form submission
+      router.push("/register/success")
     }
   }
 
   return (
-    <div className="space-y-8">
-      <div className="mb-8">
-        <RegistrationSteps steps={steps} currentStep={3} />
-      </div>
-
-      <div className="space-y-6">
-        <Accordion
-          type="multiple"
-          className="w-full space-y-4"
-          defaultValue={[DocumentationOptions.License, DocumentationOptions.Address]}
+    <div className="space-y-6">
+      <div className="space-y-2">
+        <Label htmlFor="documentType" className="text-sm font-medium">
+          {t("documentation.documentType.label")} <Asterisk />
+        </Label>
+        <select
+          id="documentType"
+          value={formData.documentType}
+          onChange={(e) => handleChange("documentType", e.target.value)}
+          className={cn(
+            "w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background",
+            errors.documentType ? "border-error-5" : "",
+          )}
         >
-          {/* Documentos de Licença */}
-          <AccordionItem value={DocumentationOptions.License}>
-            <AccordionTrigger className="text-sm font-medium">Documentos de licença</AccordionTrigger>
-            <AccordionContent className="cursor-default">
-              <Separator className="mb-4" />
-              <div className="space-y-2">
-                <p className="text-sm">
-                  Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição) <Asterisk />
-                </p>
-                <p className="text-xs text-system-9">Apenas 5 documentos são permitidos</p>
-                <FileUploadBox
-                  uploadedFiles={uploadedFiles}
-                  onUpload={handleFileUpload}
-                  onRemove={handleRemoveFile}
-                  error={errors?.files}
-                />
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-          {/* Endereço */}
-          <AccordionItem value={DocumentationOptions.Address}>
-            <AccordionTrigger>
-              <Label className="text-sm font-medium">Endereço</Label>
-            </AccordionTrigger>
-            <AccordionContent className="cursor-default">
-              <Separator className="mb-4" />
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="space-y-2 col-span-1 md:col-span-3">
-                  <Label htmlFor="street" className="text-xs">
-                    Rua ou avenida <Asterisk />
-                  </Label>
-                  <Input
-                    id="street"
-                    value={formData.street}
-                    onChange={(e) => handleChange("street", e.target.value)}
-                    placeholder="123 456 789"
-                    className={errors.street ? "border-error-5" : ""}
-                  />
-                  {errors.street && <p className="text-xs text-error-5">{errors.street}</p>}
-                </div>
-
-                <div className="space-y-2 col-span-1 md:col-span-1">
-                  <Label htmlFor="number" className="text-xs">
-                    Número <Asterisk />
-                  </Label>
-                  <Input
-                    id="number"
-                    value={formData.number}
-                    onChange={(e) => handleChange("number", e.target.value)}
-                    placeholder="123"
-                    className={errors.number ? "border-error-5" : ""}
-                  />
-                  {errors.number && <p className="text-xs text-error-5">{errors.number}</p>}
-                </div>
-
-                <div className="space-y-2 col-span-1 md:col-span-2">
-                  <Label htmlFor="neighborhood" className="text-xs">
-                    Bairro <Asterisk />
-                  </Label>
-                  <Input
-                    id="neighborhood"
-                    value={formData.neighborhood}
-                    onChange={(e) => handleChange("neighborhood", e.target.value)}
-                    placeholder="Polana"
-                    className={errors.neighborhood ? "border-error-5" : ""}
-                  />
-                  {errors.neighborhood && <p className="text-xs text-error-5">{errors.neighborhood}</p>}
-                </div>
-
-                <div className="space-y-2 col-span-1 md:col-span-2">
-                  <Label htmlFor="city" className="text-xs">
-                    Cidade <Asterisk />
-                  </Label>
-                  <Input
-                    id="city"
-                    value={formData.city}
-                    onChange={(e) => handleChange("city", e.target.value)}
-                    placeholder="Maputo"
-                    className={errors.city ? "border-error-5" : ""}
-                  />
-                  {errors.city && <p className="text-xs text-error-5">{errors.city}</p>}
-                </div>
-
-                <div className="space-y-2 col-span-1 md:col-span-4">
-                  <Label htmlFor="country" className="text-xs">
-                    País <Asterisk />
-                  </Label>
-                  <Input
-                    id="country"
-                    value={formData.country}
-                    onChange={(e) => handleChange("country", e.target.value)}
-                    placeholder="Moçambique"
-                    className={errors.country ? "border-error-5" : ""}
-                  />
-                  {errors.country && <p className="text-xs text-error-5">{errors.country}</p>}
-                </div>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-        </Accordion>
-
-        <Button onClick={handleSubmit} className="w-full bg-primary-9 hover:bg-primary-10 text-white">
-          Cadastrar-me
-        </Button>
+          <option value="">{t("documentation.documentType.placeholder")}</option>
+          <option value="id">{t("documentation.documentType.options.id")}</option>
+          <option value="passport">{t("documentation.documentType.options.passport")}</option>
+          <option value="drivers_license">{t("documentation.documentType.options.driversLicense")}</option>
+        </select>
+        {errors.documentType && <p className="text-xs text-error-5">{errors.documentType}</p>}
       </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="documentNumber" className="text-sm font-medium">
+          {t("documentation.documentNumber.label")} <Asterisk />
+        </Label>
+        <Input
+          id="documentNumber"
+          value={formData.documentNumber}
+          onChange={(e) => handleChange("documentNumber", e.target.value)}
+          placeholder={t("documentation.documentNumber.placeholder")}
+          className={errors.documentNumber ? "border-error-5" : ""}
+        />
+        {errors.documentNumber && <p className="text-xs text-error-5">{errors.documentNumber}</p>}
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="documentFile" className="text-sm font-medium">
+          {t("documentation.documentFile.label")} <Asterisk />
+        </Label>
+        <Input
+          id="documentFile"
+          type="file"
+          onChange={handleFileChange}
+          accept=".pdf,.jpg,.jpeg,.png"
+          className={cn("w-full", errors.documentFile ? "border-error-5" : "")}
+        />
+        {errors.documentFile && <p className="text-xs text-error-5">{errors.documentFile}</p>}
+        <p className="text-xs text-muted-foreground">{t("documentation.documentFile.help")}</p>
+      </div>
+
+      <div className="bg-warning-2 border border-warning-3 rounded-md p-4 text-sm font-medium text-warning-5">
+        <p>{t("documentation.warning")}</p>
+      </div>
+
+      <Button onClick={handleSubmit} className="w-full">
+        {t("submit")}
+      </Button>
     </div>
   )
 }

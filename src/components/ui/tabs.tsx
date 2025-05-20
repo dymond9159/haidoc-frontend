@@ -34,7 +34,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "flex flex-wrap items-center justify-center w-fit bg-transparent text-muted-foreground rounded-lg p-[3px] gap-1",
+        "flex flex-wrap items-center justify-center w-fit bg-transparent text-muted-foreground rounded-lg p-[0px] gap-1",
         orientation === "vertical" && "h-fit flex-col items-start",
         variant === "default" && "flex-row gap-4",
         variant === "button" && "flex-row gap-4",
