@@ -22,9 +22,16 @@ interface ChatConversationProps {
   isFinished?: boolean
   showBackButton?: boolean
   onBack?: () => void
+  isPopover?: boolean
 }
 
-export function ChatConversation({ chat, isFinished = false, showBackButton = false, onBack }: ChatConversationProps) {
+export function ChatConversation({
+  chat,
+  isFinished = false,
+  showBackButton = false,
+  onBack,
+  isPopover = false,
+}: ChatConversationProps) {
   const isMobile = useMobile()
   const [message, setMessage] = useState("")
   const [isEndChatModalOpen, setIsEndChatModalOpen] = useState(false)
@@ -106,9 +113,17 @@ export function ChatConversation({ chat, isFinished = false, showBackButton = fa
 
   return (
     <div>
-      <div className={cn("flex flex-col overflow-hidden w-[calc(100%+20px)] h-[calc(100vh-110px)]")}>
+      <div
+        className={cn("flex flex-col overflow-hidden w-[calc(100%+20px)] h-[calc(100vh-110px)]", isPopover && "w-full")}
+      >
         {/* Chat header */}
-        <div className={cn("px-4 pt-[30px] pb-4 border-b flex items-center", isMobile && "px-0 py-0 pb-4")}>
+        <div
+          className={cn(
+            "px-4 pt-[30px] pb-4 border-b flex items-center",
+            isMobile && !isPopover && "px-0 py-0 pb-4",
+            isPopover && "pt-4",
+          )}
+        >
           {showBackButton && <BackButton text="" onClick={onBack} />}
           <Link href={`/professional/chat/patient/${chat.id}`} className="flex items-center gap-3 cursor-pointer group">
             <Avatar className="h-8 w-8">
@@ -140,7 +155,7 @@ export function ChatConversation({ chat, isFinished = false, showBackButton = fa
                 </Avatar>
                 <div className="flex flex-col max-w-[70%]">
                   <div
-                    className={`w-full relative p-3 rounded-2xl break-words ${
+                    className={`w-full relative px-3 py-1.5 rounded-2xl break-words ${
                       msg.sender === UserRole.Professional
                         ? "bg-secondary-11 text-white rounded-br-none ml-auto"
                         : "bg-system-3 text-foreground rounded-bl-none"

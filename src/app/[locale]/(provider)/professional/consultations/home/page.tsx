@@ -1,14 +1,20 @@
 "use client"
 
+import { Chatbot } from "@/components/provider/chat/chatbot"
 import { ConsultationFeatureBar } from "@/components/provider/consultation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
+import { useMobile } from "@/hooks/use-mobile"
 import { LucideCheckCircle2, MapPin } from "lucide-react"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function ConsultaDomicilioPage() {
+  const isMobile = useMobile()
+  const [isFeatureBarOpen, setIsFeatureBarOpen] = useState(false)
+
   return (
     <div className="space-y-8">
       <div className="flex flex-row gap-6">
@@ -66,12 +72,14 @@ export default function ConsultaDomicilioPage() {
               <h3 className="text-sm text-gray-500 mb-1">Contato</h3>
               <p className="text-base flex items-center gap-1">+258 00 00 0000</p>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end gap-2">
+              {isMobile && <Button onClick={() => setIsFeatureBarOpen(true)}>Ver detalhes</Button>}
               <Button variant="outline">Encerrar consulta</Button>
             </div>
           </Card>
         </div>
-        <ConsultationFeatureBar />
+        <ConsultationFeatureBar isOpenFeatureBar={isFeatureBarOpen} onOpenFeatureBarChange={setIsFeatureBarOpen} />
+        <Chatbot />
       </div>
     </div>
   )
