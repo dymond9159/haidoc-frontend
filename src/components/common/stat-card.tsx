@@ -40,6 +40,7 @@ export function StatCard({
 
   return (
     <Card
+      variant="metric"
       className={cn(
         "overflow-hidden",
         className,
@@ -55,11 +56,11 @@ export function StatCard({
               {icon && <div className="w-4 h-4 text-system-11 flex items-center justify-center">{icon}</div>}
               <h3 className="text-sm font-medium text-system-11">{title}</h3>
             </div>
-            {action && <div className="ml-auto">{action}</div>}
           </div>
-          <div className="mt-2">
+          <div className="mt-2 flex items-center gap-2">
             <p className="text-3xl font-bold">{value}</p>
             {trend !== undefined && <PerformanceIndicator value={trend} className="mt-2" />}
+            {action && <div className="ml-auto">{action}</div>}
           </div>
         </div>
         {chart && showChart && <div className="w-full flex-1">{chart}</div>}

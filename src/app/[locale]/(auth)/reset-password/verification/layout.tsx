@@ -1,25 +1,22 @@
+import { BackButton } from "@/components/common"
 import { Logo } from "@/components/logo"
-import { ChevronLeft } from "lucide-react"
-import Link from "next/link"
+import { Card } from "@/components/ui/card"
 import type { ReactNode } from "react"
 
 export default function ResetPasswordLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="w-full max-w-md space-y-8 rounded-lg bg-system-1 p-8 shadow-md">
+    <Card className="w-full max-w-md px-4 py-15 sm:p-8 sm:py-8 border-0 sm:border-1 sm:shadow-md">
       <div className="auth-verification">
         <div className="flex justify-center mb-12">
           <Logo size="md" />
         </div>
 
         <div className="flex items-center mb-4">
-          <Link href="/login" className="flex items-center text-md font-bold text-system-12 hover:text-system-12">
-            <ChevronLeft className="mr-1 h-4 w-4" />
-            Recuperar Senha
-          </Link>
+          <BackButton text="Recuperar Senha" />
         </div>
 
         {children}
       </div>
-    </div>
+    </Card>
   )
 }

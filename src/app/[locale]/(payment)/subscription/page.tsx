@@ -37,8 +37,8 @@ export default function SubscriptionPage() {
     <div>
       <BackButton text="Escolha a recorrência do seu plano" />
 
-      <Card className="mt-4">
-        <CardContent className="pt-6">
+      <Card className="mt-4 border-0 p-0 sm:border-1 sm:p-6">
+        <CardContent>
           <div className="space-y-6">
             <div>
               <h2 className="text-sm font-medium text-gray-500">Plano escolhido</h2>

@@ -19,7 +19,7 @@ const homeLink = "/professional"
 
 export default async function ProfessionalLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex flex-row min-h-screen bg-system-2">
+    <div className="flex flex-row min-h-screen bg-system-1">
       <Sidebar homeLink={homeLink} bottomCanvasImage="/images/side-bottom-canvas.svg" />
       <div className="w-screen h-screen flex-1 flex flex-col">
         <Header />

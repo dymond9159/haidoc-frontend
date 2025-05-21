@@ -82,13 +82,13 @@ export default function PrePaymentPage() {
     <div>
       <BackButton text="Método de pagamento" />
 
-      <Card className="mt-4">
-        <CardContent className="pt-6">
+      <Card className="mt-4 border-0 p-0 sm:border-1 sm:p-6">
+        <CardContent>
           <div className="space-y-6">
             <RadioGroup
               value={cardType}
               onValueChange={(value) => setCardType(value as CardType)}
-              className="flex gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
             >
               <div className="flex flex-1 items-center rounded-md border border-gray-200 bg-gray-50 px-4 py-3">
                 <RadioGroupItem value="credit" id="credit" />

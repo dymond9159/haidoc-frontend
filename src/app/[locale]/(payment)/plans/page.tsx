@@ -29,14 +29,14 @@ export default function PlansPage() {
       {/* Header with background */}
       <div className="h-[200px] md:h-[240px] py-10 px-2 md:px-10 bg-secondary-4 bg-[url(/images/haidoc-banner.svg)] bg-cover bg-center">
         <div className="relative z-10 text-center">
-          <h1 className="mb-4 text-3xl font-bold">Conheça Nossos Planos</h1>
+          <h1 className="mb-4 text-xl sm:text-2xl md:text-3xl font-bold">Conheça Nossos Planos</h1>
           <p className="mx-auto max-w-2xl text-center font-medium">
             Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.
           </p>
         </div>
       </div>
       {/* Plans Grid */}
-      <div className="mx-auto grid max-w-6xl grid-cols-1 divide-y md:grid-cols-3 md:divide-x md:divide-y gap-5 p-6 -mt-[95px]">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 divide-y md:grid-cols-3 md:divide-x md:divide-y gap-5 p-6 -mt-[50px] md:-mt-[95px] ">
         {PlanList.map((plan, index) => (
           <PlanCard
             key={index}

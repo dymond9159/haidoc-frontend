@@ -17,7 +17,7 @@ interface ConfigrationPersonalLayoutProps {
 
 export default function ConfigrationPersonalLayout({ children }: ConfigrationPersonalLayoutProps) {
   const pathname = usePathname()
-  const currentStep = registrationSteps.find((step) => step.path === pathname)?.number || 1
+  const currentStep = registrationSteps.find((step) => pathname.includes(step.path))?.number || 1
 
   return (
     <div className="space-y-6">

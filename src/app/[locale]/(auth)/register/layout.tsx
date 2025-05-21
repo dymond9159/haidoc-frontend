@@ -1,11 +1,12 @@
 import { BackButton } from "@/components/common"
 import { Logo } from "@/components/logo"
+import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import type { ReactNode } from "react"
 
 export default function RegisterLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="w-full max-w-2xl space-y-8 rounded-lg bg-system-1 p-8 shadow-md py-10">
+    <Card className="w-full max-w-2xl my-10 px-4 py-15 sm:p-8 sm:py-8 border-0 sm:border-1 sm:shadow-md">
       <div className="auth-verification">
         <div className="flex justify-center mb-12">
           <Logo size="md" />
@@ -18,6 +19,6 @@ export default function RegisterLayout({ children }: { children: ReactNode }) {
 
         {children}
       </div>
-    </div>
+    </Card>
   )
 }

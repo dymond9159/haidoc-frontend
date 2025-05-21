@@ -1,9 +1,9 @@
 "use client"
+
 import { Eye, EyeOff } from "lucide-react"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
-import { RegistrationSteps } from "@/components/auth/registration-step"
 import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,12 +26,6 @@ export default function ProviderBasicInfoPage() {
     confirmPassword: "",
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
-
-  const steps = [
-    { id: "basic", number: 1, title: "Dados básicos" },
-    { id: "professional", number: 2, title: "Detalhes profissionais" },
-    { id: "documentation", number: 3, title: "Documentação" },
-  ]
 
   const handleChange = (field: string, value: string) => {
     setFormData({ ...formData, [field]: value })
@@ -103,12 +97,8 @@ export default function ProviderBasicInfoPage() {
   }
 
   return (
-    <div className="space-y-8">
-      <div className="mb-8">
-        <RegistrationSteps steps={steps} currentStep={1} />
-      </div>
-
-      <div className="space-y-6 grid md:grid-cols-2 gap-4">
+    <div className="space-y-6">
+      <div className=" grid md:grid-cols-2 gap-4">
         <div className="space-y-2 md:col-span-2">
           <Label htmlFor="fullName" className="text-sm font-medium">
             Nome completo <Asterisk />
@@ -190,7 +180,7 @@ export default function ProviderBasicInfoPage() {
               type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={(e) => handleChange("password", e.target.value)}
-              placeholder="********"
+              placeholder="••••••••"
               className={errors.password ? "border-error-5 pr-10" : "pr-10"}
             />
             <button
@@ -213,7 +203,7 @@ export default function ProviderBasicInfoPage() {
               type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={(e) => handleChange("confirmPassword", e.target.value)}
-              placeholder="********"
+              placeholder="••••••••"
               className={errors.confirmPassword ? "border-error-5 pr-10" : "pr-10"}
             />
             <button

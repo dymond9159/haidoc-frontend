@@ -68,7 +68,6 @@ export default function VerificationStep4() {
               value={password}
               onChange={(e) => handleChange(e)}
               required
-              className="h-12"
             />
             <button
               type="button"
@@ -94,7 +93,6 @@ export default function VerificationStep4() {
               value={passwordConfirmation}
               onChange={(e) => handleChange(e)}
               required
-              className="h-12"
             />
             <button
               type="button"
