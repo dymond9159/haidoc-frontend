@@ -176,7 +176,7 @@ export const FileUploadBox = ({
   )
 
   return (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("space-y-3 bg-system-0", className)}>
       {/* Drop Zone */}
       <div
         className={dropZoneClasses}

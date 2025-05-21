@@ -8,13 +8,12 @@ interface CardProps extends React.ComponentProps<"div"> {
   variant?: CardVariant
 }
 
-function Card({ className, variant = "default", ...props }: CardProps) {
+function Card({ className, variant = "metric", ...props }: CardProps) {
   return (
     <div
       data-slot="card"
       className={cn(
         "sm:bg-card text-card-foreground flex flex-col gap-6 rounded-xl",
-        variant === "default" && "bg-transparent border-0 p-0 sm:border-1 sm:p-6",
         variant === "metric" && "bg-card p-6 sm:p-6 border",
         className,
       )}
