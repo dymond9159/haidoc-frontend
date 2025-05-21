@@ -1,6 +1,6 @@
 "use client"
+
 import { Eye, EyeOff } from "lucide-react"
-import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
@@ -14,8 +14,6 @@ import { Gender, GenderLabel } from "@/types/provider/profile/types"
 
 export default function ProviderBasicInfoPage() {
   const router = useRouter()
-  const t = useTranslations("auth.register")
-  const formT = useTranslations("form")
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [formData, setFormData] = useState({
@@ -45,47 +43,47 @@ export default function ProviderBasicInfoPage() {
 
     // Validate full name
     if (!formData.fullName.trim()) {
-      newErrors.fullName = formT("errors.required", { field: formT("labels.fullName") })
+      newErrors.fullName = "Nome completo é obrigatório"
     } else if (!/^[A-Za-z\s]+$/.test(formData.fullName)) {
-      newErrors.fullName = formT("errors.invalidName")
+      newErrors.fullName = "Nome deve conter apenas letras e espaços"
     }
 
     // Validate email
     if (!formData.email.trim()) {
-      newErrors.email = formT("errors.required", { field: formT("labels.email") })
+      newErrors.email = "E-mail é obrigatório"
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = formT("errors.invalidEmail")
+      newErrors.email = "E-mail inválido"
     }
 
     // Validate phone
     if (!formData.phone.trim()) {
-      newErrors.phone = formT("errors.required", { field: formT("labels.phone") })
+      newErrors.phone = "Número de telefone é obrigatório"
     } else if (!/^\d+$/.test(formData.phone)) {
-      newErrors.phone = formT("errors.invalidPhone")
+      newErrors.phone = "Telefone deve conter apenas números"
     }
 
     // Validate birth date
     if (!formData.birthDate.trim()) {
-      newErrors.birthDate = formT("errors.required", { field: formT("labels.birthDate") })
+      newErrors.birthDate = "Data de nascimento é obrigatória"
     }
 
     // Validate gender
     if (!formData.gender) {
-      newErrors.gender = formT("errors.required", { field: formT("labels.gender") })
+      newErrors.gender = "Sexo é obrigatório"
     }
 
     // Validate password
     if (!formData.password) {
-      newErrors.password = formT("errors.required", { field: formT("labels.password") })
+      newErrors.password = "Senha é obrigatória"
     } else if (formData.password.length < 8) {
-      newErrors.password = formT("errors.minPasswordLength")
+      newErrors.password = "Senha deve ter pelo menos 8 caracteres"
     }
 
     // Validate confirm password
     if (!formData.confirmPassword) {
-      newErrors.confirmPassword = formT("errors.required", { field: formT("labels.confirmPassword") })
+      newErrors.confirmPassword = "Confirmação de senha é obrigatória"
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = formT("errors.passwordMismatch")
+      newErrors.confirmPassword = "As senhas não coincidem"
     }
 
     setErrors(newErrors)
@@ -100,63 +98,63 @@ export default function ProviderBasicInfoPage() {
 
   return (
     <div className="space-y-6">
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className=" grid md:grid-cols-2 gap-4">
         <div className="space-y-2 md:col-span-2">
           <Label htmlFor="fullName" className="text-sm font-medium">
-            {formT("labels.fullName")} <Asterisk />
+            Nome completo <Asterisk />
           </Label>
           <Input
             id="fullName"
             value={formData.fullName}
             onChange={(e) => handleChange("fullName", e.target.value)}
-            placeholder={formT("placeholders.fullName")}
+            placeholder="Default"
             className={errors.fullName ? "border-error-5" : ""}
           />
           {errors.fullName && <p className="text-xs text-error-5">{errors.fullName}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="email" className="text-sm font-medium">
-            {formT("labels.email")} <Asterisk />
+            E-mail <Asterisk />
           </Label>
           <Input
             id="email"
             type="email"
             value={formData.email}
             onChange={(e) => handleChange("email", e.target.value)}
-            placeholder={formT("placeholders.email")}
+            placeholder="email@example.com"
             className={errors.email ? "border-error-5" : ""}
           />
           {errors.email && <p className="text-xs text-error-5">{errors.email}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="phone" className="text-sm font-medium">
-            {formT("labels.phone")} <Asterisk />
+            Número de telefone <Asterisk />
           </Label>
           <Input
             id="phone"
             value={formData.phone}
             onChange={(e) => handleChange("phone", e.target.value)}
-            placeholder={formT("placeholders.phone")}
+            placeholder="82 123 4567"
             className={errors.phone ? "border-error-5" : ""}
           />
           {errors.phone && <p className="text-xs text-error-5">{errors.phone}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="birthDate" className="text-sm font-medium">
-            {formT("labels.birthDate")} <Asterisk />
+            Data de nascimento <Asterisk />
           </Label>
           <Input
             id="birthDate"
             value={formData.birthDate}
             onChange={(e) => handleChange("birthDate", e.target.value)}
-            placeholder={formT("placeholders.birthDate")}
+            placeholder="22/03/2002"
             className={errors.birthDate ? "border-error-5" : ""}
           />
           {errors.birthDate && <p className="text-xs text-error-5">{errors.birthDate}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="gender" className="text-sm font-medium">
-            {formT("labels.gender")} <Asterisk />
+            Sexo <Asterisk />
           </Label>
           <Select value={formData.gender} onValueChange={(value) => handleChange("gender", value)}>
             <SelectTrigger id="gender" className={cn("w-full", errors.gender ? "border-error-5" : "")}>
@@ -174,7 +172,7 @@ export default function ProviderBasicInfoPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="password" className="text-sm font-medium">
-            {formT("labels.password")} <Asterisk />
+            Crie uma senha <Asterisk />
           </Label>
           <div className="relative">
             <Input
@@ -182,7 +180,7 @@ export default function ProviderBasicInfoPage() {
               type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={(e) => handleChange("password", e.target.value)}
-              placeholder={formT("placeholders.password")}
+              placeholder="••••••••"
               className={errors.password ? "border-error-5 pr-10" : "pr-10"}
             />
             <button
@@ -197,7 +195,7 @@ export default function ProviderBasicInfoPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-sm font-medium">
-            {formT("labels.confirmPassword")} <Asterisk />
+            Repita sua senha <Asterisk />
           </Label>
           <div className="relative">
             <Input
@@ -205,7 +203,7 @@ export default function ProviderBasicInfoPage() {
               type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={(e) => handleChange("confirmPassword", e.target.value)}
-              placeholder={formT("placeholders.password")}
+              placeholder="••••••••"
               className={errors.confirmPassword ? "border-error-5 pr-10" : "pr-10"}
             />
             <button
@@ -219,9 +217,10 @@ export default function ProviderBasicInfoPage() {
           {errors.confirmPassword && <p className="text-xs text-error-5">{errors.confirmPassword}</p>}
         </div>
       </div>
-      <div>
+
+      <div className="mt-6">
         <Button onClick={handleNext} className="w-full bg-primary-9 hover:bg-primary-10 text-white">
-          {t("next")}
+          Próximo
         </Button>
       </div>
     </div>

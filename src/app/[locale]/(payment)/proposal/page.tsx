@@ -105,7 +105,7 @@ export default function ProposalPage() {
     <div>
       <BackButton text="Fazer proposta" />
 
-      <Card className="mt-4">
+      <Card className="mt-6 border-0 p-0 sm:border-1 sm:p-4">
         <CardContent className="px-0">
           <div className="space-y-6">
             <div className="space-y-4 grid grid-cols-1 md:grid-cols-3 gap-3">

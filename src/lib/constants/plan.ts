@@ -15,7 +15,7 @@ export const PlanList = [
   {
     type: PlanType.BusinessPlus,
     title: "HaiDoc Business Plus",
-    price: "1.980 MZN/Mês",
+    price: "1.499 MZN/Mês",
     features: [
       "Todos os benefícios do plano HaiDoc Business +",
       "Saque de fundos quinzenalmente após dedução de taxas",
@@ -29,7 +29,7 @@ export const PlanList = [
   {
     type: PlanType.Company,
     title: "HaiDoc Company",
-    price: "3.980 MZN/Mês",
+    price: "90 MZN/Mês",
     features: [
       "Todos os benefícios do plano HaiDoc Business Plus +",
       "Saque de fundos semanalmente após dedução de taxas",

@@ -1,6 +1,5 @@
 "use client"
 
-import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import type React from "react"
 import { useState } from "react"
@@ -15,7 +14,6 @@ import { ProviderOptions } from "@/types"
 
 export default function ProviderProfessionalDetailsPage() {
   const router = useRouter()
-  const t = useTranslations("provider.registration")
   const [formData, setFormData] = useState({
     providerType: ProviderOptions.Professional,
     specialty: "",
@@ -46,35 +44,35 @@ export default function ProviderProfessionalDetailsPage() {
 
     // Validate provider type
     if (!formData.providerType) {
-      newErrors.providerType = t("professionalDetails.providerType.error")
+      newErrors.providerType = "Tipo de provedor é obrigatório"
     }
 
     // Validate specialty
     if (formData.providerType === ProviderOptions.Professional && !formData.specialty) {
-      newErrors.specialty = t("professionalDetails.specialty.error")
+      newErrors.specialty = "Especialidade é obrigatória"
     }
 
     // Validate institution name
     if (formData.providerType !== ProviderOptions.Professional && !formData.institutionName) {
-      newErrors.institutionName = t("professionalDetails.institutionName.error")
+      newErrors.institutionName = "Nome da instituição é obrigatório"
     }
 
     // Validate card number/NUIT
     if (!formData.cardNumber) {
       newErrors.cardNumber =
         formData.providerType === ProviderOptions.Professional
-          ? t("professionalDetails.cardNumber.error.required")
-          : t("professionalDetails.nuit.error.required")
+          ? "Número de Carteira Profissional é obrigatório"
+          : "NUIT é obrigatório"
     } else if (formData.cardNumber.replace(/\D/g, "").length !== 9) {
       newErrors.cardNumber =
         formData.providerType === ProviderOptions.Professional
-          ? t("professionalDetails.cardNumber.error.invalid")
-          : t("professionalDetails.nuit.error.invalid")
+          ? "Número de Carteira Profissional deve ter 9 dígitos"
+          : "NUIT deve ter 9 dígitos"
     }
 
     // Validate terms
     if (!formData.termsAccepted) {
-      newErrors.termsAccepted = t("form.errors.required", { field: "Terms and conditions" })
+      newErrors.termsAccepted = "Você deve concordar com os termos e condições"
     }
 
     setErrors(newErrors)
@@ -91,25 +89,17 @@ export default function ProviderProfessionalDetailsPage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="providerType" className="text-sm font-medium">
-          {t("professionalDetails.providerType.label")} <Asterisk />
+          Tipo de provedor de saúde <Asterisk />
         </Label>
         <Select value={formData.providerType} onValueChange={(value) => handleChange("providerType", value)}>
           <SelectTrigger id="providerType" className={cn("w-full", errors.providerType ? "border-error-5" : "")}>
-            <SelectValue placeholder={t("professionalDetails.providerType.placeholder")} />
+            <SelectValue placeholder="Profissional de saúde" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value={ProviderOptions.Professional}>
-              {t("professionalDetails.providerType.options.professional")}
-            </SelectItem>
-            <SelectItem value={ProviderOptions.Laboratory}>
-              {t("professionalDetails.providerType.options.laboratory")}
-            </SelectItem>
-            <SelectItem value={ProviderOptions.Clinic}>
-              {t("professionalDetails.providerType.options.clinic")}
-            </SelectItem>
-            <SelectItem value={ProviderOptions.Pharmacy}>
-              {t("professionalDetails.providerType.options.pharmacy")}
-            </SelectItem>
+            <SelectItem value={ProviderOptions.Professional}>Profissional de Saúde</SelectItem>
+            <SelectItem value={ProviderOptions.Laboratory}>Laboratório</SelectItem>
+            <SelectItem value={ProviderOptions.Clinic}>Clínica</SelectItem>
+            <SelectItem value={ProviderOptions.Pharmacy}>Farmácia</SelectItem>
           </SelectContent>
         </Select>
         {errors.providerType && <p className="text-xs text-error-5">{errors.providerType}</p>}
@@ -118,18 +108,18 @@ export default function ProviderProfessionalDetailsPage() {
       {formData?.providerType === ProviderOptions.Professional && (
         <div className="space-y-2">
           <Label htmlFor="specialty" className="text-sm font-medium">
-            {t("professionalDetails.specialty.label")} <Asterisk />
+            Especialidade <Asterisk />
           </Label>
           <Select value={formData.specialty} onValueChange={(value) => handleChange("specialty", value)}>
             <SelectTrigger id="specialty" className={cn("w-full", errors.specialty ? "border-error-5" : "")}>
-              <SelectValue placeholder={t("professionalDetails.specialty.placeholder")} />
+              <SelectValue placeholder="Ginecologia" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="gynecology">{t("professionalDetails.specialty.options.gynecology")}</SelectItem>
-              <SelectItem value="cardiology">{t("professionalDetails.specialty.options.cardiology")}</SelectItem>
-              <SelectItem value="dermatology">{t("professionalDetails.specialty.options.dermatology")}</SelectItem>
-              <SelectItem value="pediatrics">{t("professionalDetails.specialty.options.pediatrics")}</SelectItem>
-              <SelectItem value="orthopedics">{t("professionalDetails.specialty.options.orthopedics")}</SelectItem>
+              <SelectItem value="gynecology">Ginecologia</SelectItem>
+              <SelectItem value="cardiology">Cardiologia</SelectItem>
+              <SelectItem value="dermatology">Dermatologia</SelectItem>
+              <SelectItem value="pediatrics">Pediatria</SelectItem>
+              <SelectItem value="orthopedics">Ortopedia</SelectItem>
             </SelectContent>
           </Select>
           {errors.specialty && <p className="text-xs text-error-5">{errors.specialty}</p>}
@@ -139,13 +129,13 @@ export default function ProviderProfessionalDetailsPage() {
       {formData?.providerType !== ProviderOptions.Professional && (
         <div className="space-y-2">
           <Label htmlFor="institutionName" className="text-sm font-medium">
-            {t("professionalDetails.institutionName.label")} <Asterisk />
+            Nome da instituição <Asterisk />
           </Label>
           <Input
             id="institutionName"
             value={formData.institutionName}
             onChange={(e) => handleChange("institutionName", e.target.value)}
-            placeholder={t("professionalDetails.institutionName.placeholder")}
+            placeholder="Hospital de Santo António"
             className={errors.institutionName ? "border-error-5" : ""}
           />
           {errors.institutionName && <p className="text-xs text-error-5">{errors.institutionName}</p>}
@@ -154,20 +144,14 @@ export default function ProviderProfessionalDetailsPage() {
 
       <div className="space-y-2">
         <Label htmlFor="cardNumber" className="text-sm font-medium">
-          {formData.providerType === ProviderOptions.Professional
-            ? t("professionalDetails.cardNumber.label")
-            : t("professionalDetails.nuit.label")}{" "}
+          {formData.providerType === ProviderOptions.Professional ? "Número de Carteira Profissional" : "NUIT"}{" "}
           <Asterisk />
         </Label>
         <Input
           id="cardNumber"
           value={formData.cardNumber}
           onChange={handleCardNumberChange}
-          placeholder={
-            formData.providerType === ProviderOptions.Professional
-              ? t("professionalDetails.cardNumber.placeholder")
-              : t("professionalDetails.nuit.placeholder")
-          }
+          placeholder={formData.providerType === ProviderOptions.Professional ? "123456789" : "123456789"}
           maxLength={9}
           className={errors.cardNumber ? "border-error-5" : ""}
         />
@@ -177,8 +161,8 @@ export default function ProviderProfessionalDetailsPage() {
       <div className="bg-warning-2 border border-warning-3 rounded-md p-4 text-sm font-medium text-warning-5">
         <p>
           {formData.providerType === ProviderOptions.Professional
-            ? t("professionalDetails.warning.professional")
-            : t("professionalDetails.warning.institution")}
+            ? "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte."
+            : "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte."}
         </p>
       </div>
 
@@ -189,7 +173,7 @@ export default function ProviderProfessionalDetailsPage() {
       />
 
       <Button onClick={handleNext} className="w-full">
-        {t("next")}
+        Próximo
       </Button>
     </div>
   )

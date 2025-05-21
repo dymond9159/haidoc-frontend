@@ -38,8 +38,8 @@ export default function PaymentMethodPage() {
     <div>
       <BackButton text="Método de pagamento" />
 
-      <Card className="mt-4">
-        <CardContent className="pt-6">
+      <Card className="mt-4 border-0 p-0 sm:border-1 sm:p-6">
+        <CardContent>
           <div className="space-y-6">
             <RadioGroup
               value={selectedMethod}
