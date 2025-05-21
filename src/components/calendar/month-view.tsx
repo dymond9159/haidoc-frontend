@@ -1,4 +1,5 @@
 "use client"
+import { useMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 
 interface Appointment {
@@ -18,6 +19,9 @@ interface MonthViewProps {
 
 export function MonthView({ month, year, appointments, onDateClick, onMonthChange, className }: MonthViewProps) {
   const weekDays = ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"]
+  const shortWeekDays = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"]
+
+  const isMobile = useMobile()
 
   const getMonthData = (month: number, year: number) => {
     const firstDay = new Date(year, month, 1)
@@ -72,7 +76,7 @@ export function MonthView({ month, year, appointments, onDateClick, onMonthChang
   return (
     <div className={cn("w-full bg-white rounded-md", className)}>
       <div className="grid grid-cols-7 border rounded-t-md">
-        {weekDays.map((day, index) => (
+        {(isMobile ? shortWeekDays : weekDays).map((day, index) => (
           <div
             key={day}
             className={cn(

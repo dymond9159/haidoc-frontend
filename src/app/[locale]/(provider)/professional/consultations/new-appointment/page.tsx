@@ -131,15 +131,15 @@ export default function NovoAgendamentoPage() {
               onValueChange={(value) => setConsultationType(value as ConsultationType)}
               className="grid grid-cols-1 sm:grid-cols-3 gap-2"
             >
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.Normal} id="normal" />
                 <Label htmlFor="normal">Normal</Label>
               </div>
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.Urgent} id="urgente" />
                 <Label htmlFor="urgente">Urgente</Label>
               </div>
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.FollowUp} id="seguimento" />
                 <Label htmlFor="seguimento">Seguimento</Label>
                 <TooltipProvider>
@@ -166,15 +166,15 @@ export default function NovoAgendamentoPage() {
               onValueChange={(value) => setConsultationCategory(value as ConsultationCategory)}
               className="grid grid-cols-1 sm:grid-cols-3 gap-2"
             >
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Home} id="domicilio" />
                 <Label htmlFor="domicilio">Domicílio</Label>
               </div>
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Chat} id="chat" />
                 <Label htmlFor="chat">Chat</Label>
               </div>
-              <div className="flex items-center space-x-2 border px-4 py-2 rounded-md">
+              <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Teleconsultation} id="teleconsulta" />
                 <Label htmlFor="teleconsulta">Teleconsulta</Label>
               </div>
@@ -185,9 +185,8 @@ export default function NovoAgendamentoPage() {
             <Button type="submit">Enviar</Button>
           </div>
         </form>
+        <RestrictedAccessModal isOpen={showRestrictedModal} onClose={() => setShowRestrictedModal(false)} />
       </Card>
-
-      <RestrictedAccessModal isOpen={showRestrictedModal} onClose={() => setShowRestrictedModal(false)} />
     </div>
   )
 }

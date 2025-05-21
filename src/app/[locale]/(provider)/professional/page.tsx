@@ -12,7 +12,6 @@ import { StatCard } from "@/components/common"
 import { RequestConsultationTable } from "@/components/provider/home/request-consult-table"
 import { ProfileApprovalAlert, ProfileApprovalStatus } from "@/components/provider/profile/profile-approval-alert"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
 import LinkButton from "@/components/ui/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
@@ -38,13 +37,15 @@ export default function ProfessionalHomePage() {
           onActionClick={() => router.push("/profile/public")}
         />
         <div className="flex flex-row items-center gap-2 mt-4 justify-end">
-          <Label>This is a switch for test. will be disappear after integrating with backend</Label>
           <Switch checked={approvedAccount} onCheckedChange={() => setApprovedAccount(!approvedAccount)} />
         </div>
       </div>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col justify-start sm:flex-row sm:justify-between items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold">Hi, doctor!</h1>
-        <Button className="gap-2" onClick={() => router.push("/professional/consultations/new-appointment")}>
+        <Button
+          className="gap-2 w-full sm:w-fit"
+          onClick={() => router.push("/professional/consultations/new-appointment")}
+        >
           <PlusIcon size={16} />
           Novo agendamento
         </Button>

@@ -3,6 +3,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useMobile } from "@/hooks/use-mobile"
 import { mockChats } from "@/lib/mock-data/professional/chat"
 import { cn } from "@/lib/utils"
 import { MessageItem } from "@/types/provider/chat/types"
@@ -19,13 +20,13 @@ interface ChatListProps {
 }
 
 export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
+  const isMobile = useMobile()
   const [activeTab, setActiveTab] = useState(ChatListTabOptions.InProgress)
 
   return (
     <Tabs
       defaultValue={ChatListTabOptions.InProgress}
-      className="flex-1 flex flex-col"
-      style={{ height: "calc(100vh - 140px)", minHeight: "calc(100vh - 140px)", maxHeight: "calc(100vh - 140px)" }}
+      className={cn("flex flex-col w-full h-[calc(100vh-140px)]", isMobile && "w-[calc(100%+20px)]")}
       onValueChange={(value) => setActiveTab(value as ChatListTabOptions)}
     >
       <TabsList className="grid grid-cols-2 h-12 w-full gap-0 p-0">
@@ -38,7 +39,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
       </TabsList>
 
       <TabsContent value={ChatListTabOptions.InProgress} className="flex-1 flex flex-col overflow-hidden p-0 m-0">
-        <ScrollArea className="flex-1 h-full">
+        <ScrollArea className="flex-1 h-full pr-2">
           {mockChats.unread.length > 0 && (
             <>
               <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens não lidas</h3>
@@ -111,7 +112,7 @@ function ChatItem({ chat, onClick, isSelected, unread }: ChatItemProps) {
       </Avatar>
       <div className="flex-1 min-w-0">
         <div className="flex flex-row justify-between items-center">
-          <div className="flex flex-col max-w-[200px]">
+          <div className="flex flex-col max-w-[180px]">
             <p className="font-semibold text-sm truncate text-gray-900">{chat.name}</p>
             <p className="text-sm text-gray-500 truncate">{chat.message}</p>
           </div>

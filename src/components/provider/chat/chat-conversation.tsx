@@ -1,10 +1,13 @@
 "use client"
 
+import { BackButton } from "@/components/common"
 import { ScrollArea, ScrollBar } from "@/components/ui"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useMobile } from "@/hooks/use-mobile"
 import { mockMessages } from "@/lib/mock-data/professional/chat"
+import { cn } from "@/lib/utils"
 import { ChatMessage } from "@/types/provider/chat/interfaces"
 import { MessageItem } from "@/types/provider/chat/types"
 import { UserRole } from "@/types/user"
@@ -17,9 +20,12 @@ import { EndChatModal } from "./end-chat-modal"
 interface ChatConversationProps {
   chat: MessageItem
   isFinished?: boolean
+  showBackButton?: boolean
+  onBack?: () => void
 }
 
-export function ChatConversation({ chat, isFinished = false }: ChatConversationProps) {
+export function ChatConversation({ chat, isFinished = false, showBackButton = false, onBack }: ChatConversationProps) {
+  const isMobile = useMobile()
   const [message, setMessage] = useState("")
   const [isEndChatModalOpen, setIsEndChatModalOpen] = useState(false)
   const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false)
@@ -100,20 +106,17 @@ export function ChatConversation({ chat, isFinished = false }: ChatConversationP
 
   return (
     <div>
-      <div className="flex flex-col overflow-hidden" style={{ height: "calc(100vh - 110px)" }}>
+      <div className={cn("flex flex-col overflow-hidden w-[calc(100%+20px)] h-[calc(100vh-110px)]")}>
         {/* Chat header */}
-        <div className="p-4 border-b pt-[22px]">
-          <div className=" flex items-center gap-3">
-            <Link href={`/professional/chat/patient/${chat.id}`}>
-              <div className="flex items-center gap-3 cursor-pointer">
-                <Avatar className="h-10 w-10">
-                  <AvatarImage src={chat.avatar || "/images/placeholder.svg?height=40&width=40"} alt={chat.name} />
-                  <AvatarFallback>{chat.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <span className="font-medium">{chat.name}</span>
-              </div>
-            </Link>
-          </div>
+        <div className={cn("px-4 pt-[30px] pb-4 border-b flex items-center", isMobile && "px-0 py-0 pb-4")}>
+          {showBackButton && <BackButton text="" onClick={onBack} />}
+          <Link href={`/professional/chat/patient/${chat.id}`} className="flex items-center gap-3 cursor-pointer group">
+            <Avatar className="h-8 w-8">
+              <AvatarImage src={chat.avatar || "/images/placeholder.svg?height=40&width=40"} alt={chat.name} />
+              <AvatarFallback>{chat.name.charAt(0)}</AvatarFallback>
+            </Avatar>
+            <span className="font-medium group-hover:text-secondary group-hover:underline">{chat.name}</span>
+          </Link>
         </div>
 
         {/* Chat messages */}
