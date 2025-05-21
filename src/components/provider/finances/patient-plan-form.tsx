@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils"
 
-import { BackButton } from "@/components/common"
+import { Asterisk, BackButton } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -117,8 +117,7 @@ export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false
       <div className="space-y-6">
         <div className="space-y-2">
           <Label htmlFor="plan-name" className="text-sm font-medium">
-            Nome do plano
-            <Asterisk />
+            Nome do plano <Asterisk />
           </Label>
           <Input
             id="plan-name"
@@ -132,8 +131,7 @@ export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false
         <div className="grid sm:grid-cols-3 gap-4">
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="family" className="text-sm font-medium">
-              É familiar?
-              <Asterisk />
+              É familiar? <Asterisk />
             </Label>
             <Select
               value={formData.isFamily ? "yes" : "no"}
@@ -152,8 +150,7 @@ export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false
 
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="dependents" className="text-sm font-medium">
-              Número de dependentes
-              <Asterisk />
+              Número de dependentes <Asterisk />
             </Label>
             <Input
               id="dependents"
@@ -169,8 +166,7 @@ export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false
 
           <div className="space-y-2 col-span-3 sm:col-span-1">
             <Label htmlFor="modality" className="text-sm font-medium">
-              Modalidade
-              <Asterisk />
+              Modalidade <Asterisk />
             </Label>
             <Select value={formData.modality} onValueChange={(value) => handleChange("modality", value)}>
               <SelectTrigger id="modality" className={cn("w-full", errors.modality ? "border-error-5" : "")}>
@@ -233,8 +229,7 @@ export function PatientPlanForm({ initialData, onSubmit, onBack, stepped = false
 
         <div className="space-y-2">
           <Label htmlFor="benefits" className="text-sm font-medium">
-            Benefícios
-            <Asterisk />
+            Benefícios <Asterisk />
           </Label>
           <Textarea
             id="benefits"

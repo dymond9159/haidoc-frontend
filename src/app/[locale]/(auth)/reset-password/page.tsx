@@ -2,6 +2,7 @@
 
 import type React from "react"
 
+import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useRouter } from "nextjs-toploader/app"
@@ -47,8 +48,7 @@ export default function ForgotPassword() {
               </p>
 
               <label htmlFor="email" className="block text-sm font-medium">
-                E-mail
-                <Asterisk />
+                E-mail <Asterisk />
               </label>
               <Input
                 id="email"
