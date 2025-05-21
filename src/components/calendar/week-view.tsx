@@ -1,5 +1,6 @@
 "use client"
 
+import { useMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import React from "react"
 
@@ -20,6 +21,10 @@ interface WeekViewProps {
 
 export function WeekView({ startDate, appointments, onAppointmentClick, onWeekChange, className }: WeekViewProps) {
   const weekDays = ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"]
+  const shortWeekDays = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"]
+
+  const isMobile = useMobile()
+
   const hours = Array.from({ length: 14 }, (_, i) => i + 7) // 7:00 to 20:00
 
   const getWeekDates = (start: Date) => {
@@ -64,23 +69,23 @@ export function WeekView({ startDate, appointments, onAppointmentClick, onWeekCh
     <div className={cn("w-full bg-white rounded-md", className)}>
       <div className="grid grid-cols-8 border rounded-t-md">
         <div className="py-2 text-xs font-medium text-center"></div>
-        {weekDates.map((date, index) => (
+        {(isMobile ? shortWeekDays : weekDays).map((day, index) => (
           <div
-            key={date.toISOString()}
+            key={day}
             className={cn(
               "py-2 text-xs font-medium text-center",
               index === 0 && "text-error-5",
               index === 6 && "text-secondary-11",
             )}
           >
-            <div>{weekDays[index]}</div>
+            <div>{day}</div>
             <div
               className={cn(
                 "inline-block w-6 h-6 rounded-full text-sm leading-6 text-center mt-1",
-                isToday(date) && "bg-secondary-9 text-white",
+                isToday(weekDates[index]) && "bg-secondary-9 text-white",
               )}
             >
-              {formatMonthDay(date)}
+              {formatMonthDay(weekDates[index])}
             </div>
           </div>
         ))}

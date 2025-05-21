@@ -21,15 +21,14 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="space-y-3">
-      <h2 className="text-lg font-medium mb-6">Como deseja se cadastrar?</h2>
-
+    <div>
+      <h2 className="text-lg font-medium mb-2">Como deseja se cadastrar?</h2>
       <div className="space-y-3 mb-6">
         <Tabs
           defaultValue={RegistrationType.Patient}
           onValueChange={(value) => setSelectedType(value as RegistrationType)}
         >
-          <TabsList className="flex flex-col w-full h-full space-y-6 py-4 bg-transparent">
+          <TabsList className="bg-transparent w-full h-full py-4 flex flex-col gap-4">
             <TabsTrigger value={RegistrationType.Patient} variant="button" size="xl" className="w-full">
               <CircleUserRoundIcon />
               Usuário Paciente
@@ -40,37 +39,6 @@ export default function RegisterPage() {
             </TabsTrigger>
           </TabsList>
         </Tabs>
-        {/* <div
-          className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ${
-            selectedType === "patient" ? "border-primary-9 bg-primary-1" : "border-system-5 hover:border-system-7"
-          }`}
-          onClick={() => setSelectedType("patient")}
-        >
-          <div
-            className={`w-5 h-5 rounded-full border flex items-center justify-center ${
-              selectedType === "patient" ? "border-primary-9" : "border-system-7"
-            }`}
-          >
-            {selectedType === "patient" && <div className="w-3 h-3 rounded-full bg-primary-9"></div>}
-          </div>
-          <span className="font-medium">Usuário Paciente</span>
-        </div>
-
-        <div
-          className={`flex items-center gap-3 p-4 border rounded-lg cursor-pointer transition-colors ${
-            selectedType === "provider" ? "border-secondary-11 bg-secondary-1" : "border-system-5 hover:border-system-7"
-          }`}
-          onClick={() => setSelectedType("provider")}
-        >
-          <div
-            className={`w-5 h-5 rounded-full border flex items-center justify-center ${
-              selectedType === "provider" ? "border-secondary-11" : "border-system-7"
-            }`}
-          >
-            {selectedType === "provider" && <div className="w-3 h-3 rounded-full bg-secondary-11"></div>}
-          </div>
-          <span className="font-medium">Provedor de Saúde</span>
-        </div> */}
       </div>
 
       <Button

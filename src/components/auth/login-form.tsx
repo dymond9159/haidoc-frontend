@@ -8,6 +8,7 @@ import { useRouter } from "nextjs-toploader/app"
 import type React from "react"
 import { useState } from "react"
 
+import { Asterisk } from "../common"
 import { Logo } from "../logo"
 
 export const LoginForm = () => {
@@ -37,7 +38,7 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium">
-            E-mail<span className="text-error-5">*</span>
+            E-mail <Asterisk />
           </label>
           <Input
             id="email"
@@ -46,13 +47,12 @@ export const LoginForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="h-12"
           />
         </div>
 
         <div className="space-y-2">
           <label htmlFor="password" className="block text-sm font-medium">
-            Senha<span className="text-error-5">*</span>
+            Senha <Asterisk />
           </label>
           <div className="relative">
             <Input
@@ -62,7 +62,6 @@ export const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="h-12"
             />
             <button
               type="button"
@@ -75,7 +74,7 @@ export const LoginForm = () => {
         </div>
 
         <Button variant="primary" className="w-full" type="submit" disabled={isLoading}>
-          {isLoading ? "Carregando..." : "Entrar"}
+          {isLoading ? "Entrando..." : "Entrar"}
         </Button>
 
         <div className="flex items-center justify-start">

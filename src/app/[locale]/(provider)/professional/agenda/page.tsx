@@ -152,31 +152,38 @@ export default function AgendaPage() {
 
   return (
     <div className="space-y-8">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center">
         <Tabs
           value={activeTab}
           onValueChange={(value) => handleTabChange(value as AgendaTabOptions)}
           className="w-full"
         >
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-4 mb-2">
             <TabsList>
               <TabsTrigger value={AgendaTabOptions.Agenda}>Agenda</TabsTrigger>
               <TabsTrigger value={AgendaTabOptions.History}>Histórico</TabsTrigger>
             </TabsList>
 
-            <div className="flex items-center gap-4 mt-4">
-              <Button variant="outline" className="gap-2" onClick={() => router.push("/profile/public/services")}>
+            <div className="w-full md:w-auto grid grid-cols-2 gap-2 md:gap-4">
+              <Button
+                variant="outline"
+                className="gap-2 w-full md:w-auto"
+                onClick={() => router.push("/profile/public/services")}
+              >
                 Disponibilidade
                 <SlidersHorizontalIcon />
               </Button>
-              <Button className="gap-2" onClick={() => router.push("/professional/consultations/new-appointment")}>
+              <Button
+                className="gap-2 w-full md:w-auto"
+                onClick={() => router.push("/professional/consultations/new-appointment")}
+              >
                 <PlusIcon />
                 Novo agendamento
               </Button>
             </div>
           </div>
 
-          <TabsContent value={AgendaTabOptions.Agenda} className="mt-4">
+          <TabsContent value={AgendaTabOptions.Agenda}>
             {/* Metrics Section */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
               <StatCard title="Consultas à Domicílio" value="300" icon={<HomeIcon />} />
@@ -187,15 +194,14 @@ export default function AgendaPage() {
             {/* Calendar View Selector */}
             <div className="mb-6">
               <Tabs value={calendarView} onValueChange={setCalendarView}>
-                <div className="flex justify-between items-center mb-4 gap-10">
-                  <div className="flex items-center gap-2">
-                    <TabsList>
+                <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-10">
+                  <div className="w-full md:w-auto flex flex-col md:flex-row items-center justify-start md:justify-between gap-2">
+                    <TabsList className="w-full md:w-auto gap-2 md:gap-4">
                       <TabsTrigger value="month">Mês</TabsTrigger>
                       <TabsTrigger value="week">Semana</TabsTrigger>
                       <TabsTrigger value="day">Dia</TabsTrigger>
                     </TabsList>
-
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-row items-center gap-2">
                       <Button
                         variant="ghost"
                         size="icon"
@@ -249,9 +255,9 @@ export default function AgendaPage() {
                       </Button>
                     </div>
                   </div>
-                  <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div className="w-full md:w-auto grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="text-sm text-system-9 mb-1 block">Tipo de Consulta</label>
+                      <label className="text-sm mb-1 block">Tipo de Consulta</label>
                       <Select defaultValue="Urgente">
                         <SelectTrigger className="w-full">
                           <SelectValue />
@@ -267,7 +273,7 @@ export default function AgendaPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm text-system-9 mb-1 block">Categoria de Consulta</label>
+                      <label className="text-sm mb-1 block">Categoria de Consulta</label>
                       <Select defaultValue="Teleconsulta">
                         <SelectTrigger className="w-full">
                           <SelectValue />

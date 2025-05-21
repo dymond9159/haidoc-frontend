@@ -57,7 +57,7 @@ export function Header() {
       variant="ghost"
       size="icon"
       className={cn(
-        "bg-system-1 hover:bg-transparent mt-[2px]",
+        "hover:bg-transparent mt-[2px] justify-start",
         isDesktop && "hidden",
         isTablet && !isCollapse && "hidden",
       )}
@@ -75,10 +75,10 @@ export function Header() {
   )
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-2 px-6">
+    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-1 px-6">
       <div className="flex items-center">
         <MenuButton />
-        <h1 className="text-xl font-semibold">{pageTitle}</h1>
+        {!isMobile && <h1 className="text-xl font-semibold">{pageTitle}</h1>}
       </div>
 
       <div className="flex items-center gap-4">

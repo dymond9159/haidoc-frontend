@@ -34,23 +34,28 @@ export default function ConsultationsPage() {
         onValueChange={(value) => handleTabChange(value as ConsultationOptions)}
         className="w-full"
       >
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-4 mb-2">
           <TabsList>
             <TabsTrigger value={ConsultationOptions.Consultation}>Consultas</TabsTrigger>
             <TabsTrigger value={ConsultationOptions.Request}>Solicitações</TabsTrigger>
           </TabsList>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-4 mt-4">
-              <Button variant="outline" className="gap-2" onClick={() => router.push("/profile/public/services")}>
-                Disponibilidade
-                <SlidersHorizontalIcon />
-              </Button>
-              <Button className="gap-2" onClick={() => router.push("/professional/consultations/new-appointment")}>
-                <PlusIcon />
-                Novo agendamento
-              </Button>
-            </div>
+          <div className="w-full md:w-auto grid grid-cols-2 gap-2 md:gap-4">
+            <Button
+              variant="outline"
+              className="gap-2 w-full md:w-auto"
+              onClick={() => router.push("/profile/public/services")}
+            >
+              Disponibilidade
+              <SlidersHorizontalIcon />
+            </Button>
+            <Button
+              className="gap-2 w-full md:w-auto"
+              onClick={() => router.push("/professional/consultations/new-appointment")}
+            >
+              <PlusIcon />
+              Novo agendamento
+            </Button>
           </div>
         </div>
 

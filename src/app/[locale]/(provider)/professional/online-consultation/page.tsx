@@ -1,5 +1,6 @@
 "use client"
 
+import { Chatbot } from "@/components/provider/chat/chatbot"
 import { ConsultationFeatureBar, MedicalReportModal, VideoCallInterface } from "@/components/provider/consultation"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState } from "react"
@@ -8,7 +9,8 @@ export default function OnlineConsultationPage() {
   const [isVideoOn, setIsVideoOn] = useState(true)
   const [isAudioOn, setIsAudioOn] = useState(true)
   const [isEndCallModalOpen, setIsEndCallModalOpen] = useState(false)
-  const [activeTab, setActiveTab] = useState<"history" | "prescription" | "exams">("history")
+  const [isFeatureBarOpen, setIsFeatureBarOpen] = useState(false)
+  const [isChatOpen, setIsChatOpen] = useState(false)
 
   // Handle end call
   const handleEndCall = () => {
@@ -42,6 +44,8 @@ export default function OnlineConsultationPage() {
               onToggleVideo={() => setIsVideoOn(!isVideoOn)}
               onToggleAudio={() => setIsAudioOn(!isAudioOn)}
               onEndCall={handleEndCall}
+              onOpenFeatureBar={() => setIsFeatureBarOpen(true)}
+              onOpenChat={() => setIsChatOpen(true)}
             />
           </div>
           <MedicalReportModal
@@ -51,7 +55,8 @@ export default function OnlineConsultationPage() {
           />
         </div>
 
-        <ConsultationFeatureBar />
+        <ConsultationFeatureBar isOpenFeatureBar={isFeatureBarOpen} onOpenFeatureBarChange={setIsFeatureBarOpen} />
+        <Chatbot isOpenChat={isChatOpen} onOpenChatChange={setIsChatOpen} />
       </div>
     </div>
   )

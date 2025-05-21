@@ -4,24 +4,27 @@ import { NavigationCard } from "@/components/cards"
 import { BackButton } from "@/components/common"
 import { DollarDocIcon, InvoiceDocIcon, InvoiceLeftImageIcon, InvoiceRightImageIcon } from "@/components/icons"
 import { ReceiptsTable } from "@/components/provider/finances/receipts-table"
+import { useMobile } from "@/hooks/use-mobile"
 import { ThemeColor } from "@/lib/constants"
 
-const config = [
-  {
-    title: "Faturas",
-    href: "/professional/finances/invoices",
-    icon: <DollarDocIcon fill={ThemeColor.secondary[11]} />,
-    illustration: <InvoiceLeftImageIcon />,
-  },
-  {
-    title: "Recibos",
-    href: "/professional/finances/receipts",
-    icon: <InvoiceDocIcon fill={ThemeColor.secondary[11]} />,
-    illustration: <InvoiceRightImageIcon />,
-  },
-]
-
 export default function FinancesPage() {
+  const isMobile = useMobile()
+
+  const config = [
+    {
+      title: "Faturas",
+      href: "/professional/finances/invoices",
+      icon: <DollarDocIcon fill={ThemeColor.secondary[11]} />,
+      illustration: <InvoiceLeftImageIcon size={isMobile ? "80" : "200"} />,
+    },
+    {
+      title: "Recibos",
+      href: "/professional/finances/receipts",
+      icon: <InvoiceDocIcon fill={ThemeColor.secondary[11]} />,
+      illustration: <InvoiceRightImageIcon size={isMobile ? "80" : "200"} />,
+    },
+  ]
+
   return (
     <div className="space-y-6">
       <BackButton text="Finanças" />
