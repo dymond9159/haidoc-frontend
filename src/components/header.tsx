@@ -56,7 +56,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-system-5 bg-system-1">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="w-full flex items-center justify-between gap-4">
-          <Logo size="sm" className="-ml-4" />
+          <Logo size="sm" />
           {!isMobile && (
             <nav className="flex-1 flex items-center justify-center gap-1">
               <NavLinks />
@@ -65,10 +65,14 @@ export function Header() {
         </div>
         <div className="flex items-center gap-4">
           <LanguageSwitcher />
-          <Button onClick={() => router.push("/login")}>Login</Button>
-          <Button variant="ghost" onClick={() => router.push("/register")}>
-            Cadastro
-          </Button>
+          {!isMobile && (
+            <>
+              <Button onClick={() => router.push("/login")}>Login</Button>
+              <Button variant="ghost" onClick={() => router.push("/register")}>
+                Cadastro
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </header>
