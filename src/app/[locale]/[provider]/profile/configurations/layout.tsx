@@ -23,25 +23,25 @@ const tabItems: TabItemType<ConfigurationTabOptions>[] = [
     value: ConfigurationTabOptions.DataRegistration,
     icon: <UserRoundIcon />,
     label: "Dados Cadastrais",
-    href: "/profile/configurations/personal",
+    href: "/professional/profile/configurations/personal",
   },
   {
     value: ConfigurationTabOptions.Documents,
     icon: <FolderIcon />,
     label: "Ficheiros",
-    href: "/profile/configurations/files",
+    href: "/professional/profile/configurations/files",
   },
   {
     value: ConfigurationTabOptions.PaymentDetails,
     icon: <CircleDollarSignIcon />,
     label: "Dados de pagamento",
-    href: "/profile/configurations/payment-details",
+    href: "/professional/profile/configurations/payment-details",
   },
   {
     value: ConfigurationTabOptions.Signature,
     icon: <ReceiptIcon />,
     label: "Minha assinatura",
-    href: "/profile/configurations/signature",
+    href: "/professional/profile/configurations/signature",
   },
 ]
 
@@ -63,7 +63,7 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <BackButton text="Configurações" onClick={() => router.push("/profile")} />
+        <BackButton text="Configurações" onClick={() => router.push("/professional/profile")} />
       </div>
       <Tabs
         defaultValue={ConfigurationTabOptions.DataRegistration}

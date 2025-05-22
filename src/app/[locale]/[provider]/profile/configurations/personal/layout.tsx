@@ -6,9 +6,19 @@ import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
 export const registrationSteps = [
-  { id: "basic", number: 1, title: "Dados básicos", path: "/profile/configurations/personal/basic-data" },
-  { id: "professional", number: 2, title: "Detalhes profissionais", path: "/profile/configurations/personal/details" },
-  { id: "documentation", number: 3, title: "Documentação", path: "/profile/configurations/personal/document" },
+  { id: "basic", number: 1, title: "Dados básicos", path: "/professional/profile/configurations/personal/basic-data" },
+  {
+    id: "professional",
+    number: 2,
+    title: "Detalhes profissionais",
+    path: "/professional/profile/configurations/personal/details",
+  },
+  {
+    id: "documentation",
+    number: 3,
+    title: "Documentação",
+    path: "/professional/profile/configurations/personal/document",
+  },
 ]
 
 interface ConfigrationPersonalLayoutProps {

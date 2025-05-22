@@ -13,19 +13,19 @@ const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB in bytes
 
 const profileOptions = [
   {
-    href: "/profile/configurations",
+    href: "/professional/profile/configurations",
     icon: <UserSettingsIcon />,
     title: "Configurações",
     description: "Atualize suas informações pessoais e senha",
   },
   {
-    href: "/profile/public",
+    href: "/professional/profile/public",
     icon: <LucideLayers2 />,
     title: "Perfil público",
     description: "Veja como seu perfil aparece para outros usuários",
   },
   {
-    href: "/my-activity",
+    href: "/professional/my-activity",
     icon: <HistoryIcon />,
     title: "Minhas Atividades",
     description: "Acompanhe seu histórico de ações e interações",

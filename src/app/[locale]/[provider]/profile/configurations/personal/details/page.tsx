@@ -104,7 +104,7 @@ export default function PersonalDetails() {
         <Button
           variant="outline"
           className="gap-2"
-          onClick={() => router.push("/profile/configurations/personal/document")}
+          onClick={() => router.push("/professional/profile/configurations/personal/document")}
         >
           Próxima
           <ChevronRight />

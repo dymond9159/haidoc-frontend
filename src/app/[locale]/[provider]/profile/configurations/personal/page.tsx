@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation"
 
 export default function PersonalConfigurationsPage() {
-  redirect("/profile/configurations/personal/basic-data")
+  redirect("/professional/profile/configurations/personal/basic-data")
 }

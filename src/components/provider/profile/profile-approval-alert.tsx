@@ -92,7 +92,7 @@ export const ProfileApprovalAlert = ({ status, onActionClick, className = "" }: 
       onActionClick()
     }
     if (status === ProfileApprovalStatus.Approved) {
-      router.push("/profile/public")
+      router.push("/professional/profile/public")
     }
   }
 

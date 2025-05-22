@@ -43,12 +43,12 @@ export function Header() {
     "/professional/chat": t("provider.quickChat.title"),
     "/professional/finances": t("provider.finances.title"),
     "/professional/support": t("provider.support.title"),
-    "/professional/notifications": t("notifications.title"),
-    "/profile/configurations": t("configurations.title"),
-    "/profile/public": t("publicProfile.title"),
-    "/profile": t("myAccount.title"),
-    "/my-activity": t("activityLog.title"),
+    "/professional/profile/configurations": t("configurations.title"),
+    "/professional/profile/public": t("publicProfile.title"),
+    "/professional/profile": t("myAccount.title"),
+    "/professional/my-activity": t("activityLog.title"),
     "/professional": t("home.title"),
+    "/notifications": t("notifications.title"),
   }
 
   const pageTitle = getPageTitleFromPath(pageTitles, pathname)
@@ -101,7 +101,7 @@ export function Header() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuItem asChild>
-              <Link href="/profile" className="flex items-center gap-2">
+              <Link href="/professional/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
                 {tCommon("myAccount")}
               </Link>

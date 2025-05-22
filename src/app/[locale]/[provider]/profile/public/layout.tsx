@@ -24,13 +24,13 @@ const tabItems: TabItemType<PublicProfileTabOptions>[] = [
     value: PublicProfileTabOptions.About,
     icon: <UserRoundIcon />,
     label: "Sobre",
-    href: "/profile/public",
+    href: "/professional/profile/public",
   },
   {
     value: PublicProfileTabOptions.Services,
     icon: <BriefcaseMedicalIcon />,
     label: "Serviços",
-    href: "/profile/public/services",
+    href: "/professional/profile/public/services",
   },
 ]
 

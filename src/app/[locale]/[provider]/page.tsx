@@ -34,7 +34,7 @@ export default function ProfessionalHomePage() {
       <div>
         <ProfileApprovalAlert
           status={approvedAccount ? ProfileApprovalStatus.Approved : ProfileApprovalStatus.Pending}
-          onActionClick={() => router.push("/profile/public")}
+          onActionClick={() => router.push("/professional/profile/public")}
         />
         <div className="flex flex-row items-center gap-2 mt-4 justify-end">
           <Switch checked={approvedAccount} onCheckedChange={() => setApprovedAccount(!approvedAccount)} />

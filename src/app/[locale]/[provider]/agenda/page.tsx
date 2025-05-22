@@ -168,7 +168,7 @@ export default function AgendaPage() {
               <Button
                 variant="outline"
                 className="gap-2 w-full md:w-auto"
-                onClick={() => router.push("/profile/public/services")}
+                onClick={() => router.push("/professional/profile/public/services")}
               >
                 Disponibilidade
                 <SlidersHorizontalIcon />
