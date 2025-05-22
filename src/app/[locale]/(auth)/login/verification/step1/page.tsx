@@ -13,7 +13,7 @@ import { useState } from "react"
 
 export default function VerificationStep1() {
   const router = useRouter()
-  const t = useTranslations("auth")
+  const t = useTranslations("auth.login")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const [method, setMethod] = useState<"email" | "sms" | null>(null)
@@ -47,7 +47,7 @@ export default function VerificationStep1() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium">
-            {tForm("email")} <Asterisk />
+            {tForm("label.email")} <Asterisk />
           </label>
           <Input
             id="email"
@@ -71,7 +71,7 @@ export default function VerificationStep1() {
 
         <div className="space-y-2">
           <label htmlFor="phone" className="block text-sm font-medium">
-            {tForm("sms")} <Asterisk />
+            {tForm("label.sms")} <Asterisk />
           </label>
           <PhoneInput
             id="phone"

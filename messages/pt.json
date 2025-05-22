@@ -1,9 +1,7 @@
 {
   "common": {
-    "startNow": "Começar agora",
-    "login": "Fazer login",
+    "login": "Login",
     "register": "Cadastro",
-    "createAccount": "Criar uma conta",
     "home": "Home",
     "about": "Sobre",
     "aboutUs": "Sobre Nós",
@@ -18,9 +16,16 @@
     "contactUsAt": "Contate-nos em:",
     "allRightsReserved": "Todos os direitos reservados.",
     "logout": "Sair",
-    "myAccount": "Minha conta"
+    "myAccount": "Minha conta",
+    "termsAndConditions": "Termos e condições",
+    "termsAndConditionsDesc": "Li e concordo com os termos de uso"
   },
   "home": {
+    "cta": {
+      "login": "Fazer login",
+      "startNow": "Começar agora",
+      "createAccount": "Criar uma conta"
+    },
     "heroTitle": "Cuidados de saúde simplificados para todos",
     "heroDescription": "HaiDoc conecta você aos melhores profissionais de saúde, facilitando o agendamento de consultas e o acompanhamento do seu bem-estar.",
     "whyChoose": "Por que escolher HaiDoc?",
@@ -42,7 +47,6 @@
       "examResultsDesc": "Visualize e compartilhe seus resultados de exames com seus médicos."
     }
   },
-
   "footer": {
     "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
   },
@@ -81,7 +85,8 @@
       "number": "Número",
       "neighborhood": "Bairro",
       "city": "Cidade",
-      "country": "País"
+      "country": "País",
+      "or": "ou"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -221,6 +226,7 @@
     },
     "register": {
       "title": "Cadastro",
+      "chooseAccountType": "Como deseja se cadastrar?",
       "patientFor": "Paciente",
       "providerFor": "Prestador de Serviços",
       "alreadyHaveAccount": "Já tem conta?",

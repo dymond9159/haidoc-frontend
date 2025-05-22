@@ -25,7 +25,7 @@ export default function RegisterPage() {
 
   return (
     <div>
-      <h2 className="text-lg font-medium mb-2">{t("title")}</h2>
+      <h2 className="text-lg font-medium mb-2">{t("chooseAccountType")}</h2>
       <div className="space-y-3 mb-6">
         <Tabs
           defaultValue={RegistrationType.Patient}

@@ -56,12 +56,12 @@ export default function LandingPage() {
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <Link href="/auth/register">
                   <Button size="lg" className="bg-primary-9 hover:bg-primary-10">
-                    {tCommon("startNow")}
+                    {t("cta.startNow")}
                   </Button>
                 </Link>
                 <Link href="/login">
                   <Button size="lg" variant="outline">
-                    {tCommon("loginHero")}
+                    {t("cta.login")}
                   </Button>
                 </Link>
               </div>
@@ -110,12 +110,12 @@ export default function LandingPage() {
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link href="/auth/register">
                 <Button size="lg" variant="secondary">
-                  {tCommon("createAccount")}
+                  {t("cta.createAccount")}
                 </Button>
               </Link>
               <Link href="/login">
                 <Button size="lg" variant="outline" className="bg-transparent text-white hover:bg-white/10">
-                  {tCommon("login")}
+                  {t("cta.login")}
                 </Button>
               </Link>
             </div>
