@@ -1,6 +1,52 @@
 {
-  "common": {},
+  "common": {
+    "startNow": "Começar agora",
+    "login": "Fazer login",
+    "register": "Cadastro",
+    "createAccount": "Criar uma conta",
+    "home": "Home",
+    "about": "Sobre",
+    "aboutUs": "Sobre Nós",
+    "services": "Serviços",
+    "contact": "Contato",
+    "quickLinks": "Links Rápidos",
+    "legal": "Legal",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço",
+    "cookiePolicy": "Política de Cookies",
+    "contactUs": "Contate-nos",
+    "contactUsAt": "Contate-nos em:",
+    "allRightsReserved": "Todos os direitos reservados.",
+    "logout": "Sair",
+    "myAccount": "Minha conta"
+  },
+  "home": {
+    "heroTitle": "Cuidados de saúde simplificados para todos",
+    "heroDescription": "HaiDoc conecta você aos melhores profissionais de saúde, facilitando o agendamento de consultas e o acompanhamento do seu bem-estar.",
+    "whyChoose": "Por que escolher HaiDoc?",
+    "whyChooseDescription": "Nossa plataforma oferece uma experiência completa para pacientes e profissionais de saúde.",
+    "readyToStart": "Pronto para começar?",
+    "joinThousands": "Junte-se a milhares de usuários que já estão aproveitando os benefícios da HaiDoc."
+  },
+  "features": {
+    "onlineConsultationsTitle": "Consultas Online",
+    "onlineConsultationsDesc": "Agende e realize consultas médicas diretamente do conforto da sua casa.",
+    "qualifiedProfessionalsTitle": "Profissionais Qualificados",
+    "qualifiedProfessionalsDesc": "Acesso a uma rede de médicos e especialistas altamente qualificados.",
+    "digitalRecordsTitle": "Prontuário Digital",
+    "digitalRecordsDesc": "Mantenha seu histórico médico organizado e acessível a qualquer momento.",
+    "digitalPrescriptionsTitle": "Receitas Digitais",
+    "digitalPrescriptionsDesc": "Receba suas prescrições médicas digitalmente, sem complicações.",
+    "medicationRemindersTitle": "Lembretes de Medicação",
+    "medicationRemindersDesc": "Nunca mais esqueça de tomar seus medicamentos com nossos lembretes.",
+    "examResultsTitle": "Resultados de Exames",
+    "examResultsDesc": "Visualize e compartilhe seus resultados de exames com seus médicos."
+  },
+  "footer": {
+    "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
+  },
   "pages": {
+    "home": "Home",
     "agenda": "Agenda",
     "consultations": "Consultas",
     "onlineConsultation": "Consulta online",
@@ -12,7 +58,6 @@
     "publicProfile": "Perfil público",
     "myAccount": "Minha conta",
     "activityLog": "Log de Atividades",
-    "home": "Home",
     "collapse": "Recolher"
   }
 }

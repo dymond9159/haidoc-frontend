@@ -32,6 +32,7 @@ export function Header() {
   const dispatch = useAppDispatch()
   const { isMobile, isTablet, isDesktop } = useScreen()
   const t = useTranslations("pages")
+  const tCommon = useTranslations("common")
 
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
@@ -99,17 +100,16 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            {/* <DropdownMenuLabel>Minha Conta</DropdownMenuLabel> */}
             <DropdownMenuItem asChild>
               <Link href="/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
-                Minha conta
+                {tCommon("myAccount")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/login")}>
               <LogOutIcon size="14" />
-              Sair
+              {tCommon("logout")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

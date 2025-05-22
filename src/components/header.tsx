@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useRouter } from "nextjs-toploader/app"
 import { useMobile } from "../hooks/use-mobile"
@@ -13,44 +14,29 @@ interface NavItem {
   href: string
 }
 
-const navItems: NavItem[] = [
-  {
-    label: "Início",
-    href: "/home",
-  },
-  {
-    label: "Serviços",
-    href: "/services",
-  },
-  {
-    label: "Contato",
-    href: "/contact",
-  },
-  {
-    label: "Sobre",
-    href: "/about",
-  },
-]
-
 export function Header() {
+  const t = useTranslations("common")
   const router = useRouter()
   const isMobile = useMobile()
 
-  const NavLinks = () => (
-    <>
-      {navItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            "flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors border-b-2 border-transparent hover:border-secondary-11 hover:text-secondary-11",
-          )}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </>
-  )
+  const navItems: NavItem[] = [
+    {
+      label: t("home"),
+      href: "/home",
+    },
+    {
+      label: t("services"),
+      href: "/services",
+    },
+    {
+      label: t("contact"),
+      href: "/contact",
+    },
+    {
+      label: t("about"),
+      href: "/about",
+    },
+  ]
 
   return (
     <header className="sticky top-0 z-40 border-b border-system-5 bg-system-1">
@@ -59,7 +45,17 @@ export function Header() {
           <Logo size="sm" />
           {!isMobile && (
             <nav className="flex-1 flex items-center justify-center gap-1">
-              <NavLinks />
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={cn(
+                    "flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium transition-colors border-b-2 border-transparent hover:border-secondary-11 hover:text-secondary-11",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </nav>
           )}
         </div>
@@ -67,9 +63,9 @@ export function Header() {
           <LanguageSwitcher />
           {!isMobile && (
             <>
-              <Button onClick={() => router.push("/login")}>Login</Button>
+              <Button onClick={() => router.push("/login")}>{t("login")}</Button>
               <Button variant="ghost" onClick={() => router.push("/register")}>
-                Cadastro
+                {t("register")}
               </Button>
             </>
           )}

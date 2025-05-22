@@ -1,5 +1,50 @@
 {
-  "common": {},
+  "common": {
+    "startNow": "Start Now",
+    "login": "Login",
+    "register": "Register",
+    "createAccount": "Create an Account",
+    "home": "Home",
+    "about": "About",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "cookiePolicy": "Cookie Policy",
+    "contactUs": "Contact Us",
+    "contactUsAt": "Contact us at:",
+    "allRightsReserved": "All rights reserved.",
+    "logout": "Logout",
+    "myAccount": "My Account"
+  },
+  "home": {
+    "heroTitle": "Healthcare simplified for everyone",
+    "heroDescription": "HaiDoc connects you with top healthcare professionals, making it easy to schedule appointments and stay on top of your well-being.",
+    "whyChoose": "Why choose HaiDoc?",
+    "whyChooseDescription": "Our platform offers a complete experience for both patients and healthcare professionals.",
+    "readyToStart": "Ready to get started?",
+    "joinThousands": "Join thousands of users already enjoying the benefits of HaiDoc."
+  },
+  "features": {
+    "onlineConsultationsTitle": "Online Consultations",
+    "onlineConsultationsDesc": "Schedule and attend medical consultations from the comfort of your home.",
+    "qualifiedProfessionalsTitle": "Qualified Professionals",
+    "qualifiedProfessionalsDesc": "Access a network of highly qualified doctors and specialists.",
+    "digitalRecordsTitle": "Digital Records",
+    "digitalRecordsDesc": "Keep your medical history organized and accessible anytime.",
+    "digitalPrescriptionsTitle": "Digital Prescriptions",
+    "digitalPrescriptionsDesc": "Receive your medical prescriptions digitally, hassle-free.",
+    "medicationRemindersTitle": "Medication Reminders",
+    "medicationRemindersDesc": "Never forget to take your medications with our smart reminders.",
+    "examResultsTitle": "Exam Results",
+    "examResultsDesc": "View and share your exam results with your doctors."
+  },
+  "footer": {
+    "description": "Providing high-quality healthcare services and solutions for patients and healthcare professionals."
+  },
   "pages": {
     "home": "Home",
     "agenda": "Schedule",
