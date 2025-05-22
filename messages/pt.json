@@ -320,27 +320,27 @@
       "support": {
         "title": "Suporte",
         "description": "Suporte ao cliente"
+      },
+      "profile": {
+        "title": "Minha conta",
+        "description": "Minha conta do usuário",
+        "configurations": {
+          "title": "Configurações",
+          "description": "Configurações do sistema"
+        },
+        "public": {
+          "title": "Perfil Público",
+          "description": "Perfil público do usuário"
+        }
+      },
+      "activityLog": {
+        "title": "Log de atividades",
+        "description": "Log de atividades do usuário"
       }
     },
     "notifications": {
       "title": "Notificações",
       "description": "Notificações do sistema"
-    },
-    "configurations": {
-      "title": "Configurações",
-      "description": "Configurações do sistema"
-    },
-    "publicProfile": {
-      "title": "Perfil Público",
-      "description": "Perfil público do usuário"
-    },
-    "myAccount": {
-      "title": "Minha conta",
-      "description": "Minha conta do usuário"
-    },
-    "activityLog": {
-      "title": "Log de atividades",
-      "description": "Log de atividades do usuário"
     },
     "plans": {
       "pageTitle": "Conheça Nossos Planos",
