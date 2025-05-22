@@ -4,8 +4,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 
 export default function LandingPage() {
-  const t = useTranslations("home")
-  const tCommon = useTranslations("common")
+  const t = useTranslations("landing.home")
 
   const features = [
     {

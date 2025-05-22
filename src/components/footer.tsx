@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Logo } from "./logo"
 
 export function Footer() {
-  const t = useTranslations("footer")
+  const t = useTranslations("landing.footer")
   const tCommon = useTranslations("common")
   return (
     <footer className="border-t border-system-5 bg-system-2 py-8">

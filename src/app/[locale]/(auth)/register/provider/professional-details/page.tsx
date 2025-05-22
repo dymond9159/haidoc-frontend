@@ -22,7 +22,7 @@ export default function ProviderProfessionalDetailsPage() {
     providerType: ProviderOptions.Professional,
     specialty: "",
     institutionName: "",
-    cardNumber: "",
+    professionalNumber: "",
     termsAccepted: false,
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
@@ -40,7 +40,7 @@ export default function ProviderProfessionalDetailsPage() {
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCardNumber(e.target.value)
-    handleChange("cardNumber", formatted)
+    handleChange("professionalNumber", formatted)
   }
 
   const validateForm = () => {
@@ -62,15 +62,15 @@ export default function ProviderProfessionalDetailsPage() {
     }
 
     // Validate card number/NUIT
-    if (!formData.cardNumber) {
-      newErrors.cardNumber =
+    if (!formData.professionalNumber) {
+      newErrors.professionalNumber =
         formData.providerType === ProviderOptions.Professional
-          ? tForm("error.cardNumberRequired")
+          ? tForm("error.professionalNumberRequired")
           : tForm("error.nuitRequired")
-    } else if (formData.cardNumber.replace(/\D/g, "").length !== 9) {
-      newErrors.cardNumber =
+    } else if (formData.professionalNumber.replace(/\D/g, "").length !== 9) {
+      newErrors.professionalNumber =
         formData.providerType === ProviderOptions.Professional
-          ? tForm("error.cardNumberLength")
+          ? tForm("error.professionalNumberLength")
           : tForm("error.nuitLength")
     }
 
@@ -147,23 +147,25 @@ export default function ProviderProfessionalDetailsPage() {
       )}
 
       <div className="space-y-2">
-        <Label htmlFor="cardNumber" className="text-sm font-medium">
-          {formData.providerType === ProviderOptions.Professional ? tForm("label.cardNumber") : tForm("label.nuit")}{" "}
+        <Label htmlFor="professionalNumber" className="text-sm font-medium">
+          {formData.providerType === ProviderOptions.Professional
+            ? tForm("label.professionalNumber")
+            : tForm("label.nuit")}{" "}
           <Asterisk />
         </Label>
         <Input
-          id="cardNumber"
-          value={formData.cardNumber}
+          id="professionalNumber"
+          value={formData.professionalNumber}
           onChange={handleCardNumberChange}
           placeholder={
             formData.providerType === ProviderOptions.Professional
-              ? tForm("placeholder.cardNumber")
+              ? tForm("placeholder.professionalNumber")
               : tForm("placeholder.nuit")
           }
           maxLength={9}
-          className={errors.cardNumber ? "border-error-5" : ""}
+          className={errors.professionalNumber ? "border-error-5" : ""}
         />
-        {errors.cardNumber && <p className="text-xs text-error-5">{errors.cardNumber}</p>}
+        {errors.professionalNumber && <p className="text-xs text-error-5">{errors.professionalNumber}</p>}
       </div>
 
       <div className="bg-warning-2 border border-warning-3 rounded-md p-4 text-sm font-medium text-warning-5">

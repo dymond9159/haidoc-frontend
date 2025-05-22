@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { z } from "zod"
@@ -32,6 +33,9 @@ type ProposalFormData = z.infer<typeof proposalSchema>
 export default function ProposalPage() {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations("pages.proposal")
+
+  const tSuccess = useTranslations("pages.proposal.success")
   const [formData, setFormData] = useState<Partial<ProposalFormData>>({
     companyName: "",
     email: "",
@@ -89,8 +93,8 @@ export default function ProposalPage() {
   const handleSubmit = () => {
     if (validateForm()) {
       toast({
-        title: "Proposta enviada",
-        description: "Sua proposta foi enviada com sucesso! Entraremos em contato em breve.",
+        title: tSuccess("title"),
+        description: tSuccess("description"),
         variant: "default",
       })
 
@@ -103,7 +107,7 @@ export default function ProposalPage() {
 
   return (
     <div>
-      <BackButton text="Fazer proposta" />
+      <BackButton text={t("back")} />
 
       <Card className="mt-6 border-0 p-0 sm:border-1 sm:p-4">
         <CardContent className="px-0">
@@ -111,11 +115,11 @@ export default function ProposalPage() {
             <div className="space-y-4 grid grid-cols-1 md:grid-cols-3 gap-3">
               <div className="space-y-2 col-span-1 md:col-span-1">
                 <Label htmlFor="companyName">
-                  Nome da empresa <Asterisk />
+                  {t("form.label.companyName")} <Asterisk />
                 </Label>
                 <Input
                   id="companyName"
-                  placeholder="Digite aqui"
+                  placeholder={t("form.placeholder.companyNamePlaceholder")}
                   value={formData.companyName}
                   onChange={(e) => handleInputChange("companyName", e.target.value)}
                   className={errors.companyName ? "border-red-500" : ""}
@@ -125,12 +129,12 @@ export default function ProposalPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-1">
                 <Label htmlFor="email">
-                  E-mail <Asterisk />
+                  {t("form.label.email")} <Asterisk />
                 </Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="email@example.com"
+                  placeholder={t("form.placeholder.emailPlaceholder")}
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   className={errors.email ? "border-red-500" : ""}
@@ -140,11 +144,11 @@ export default function ProposalPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-1">
                 <Label htmlFor="phone">
-                  Número de telefone <Asterisk />
+                  {t("form.label.phone")} <Asterisk />
                 </Label>
                 <Input
                   id="phone"
-                  placeholder="82 123 4567"
+                  placeholder={t("form.placeholder.phonePlaceholder")}
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   className={errors.phone ? "border-red-500" : ""}
@@ -154,11 +158,11 @@ export default function ProposalPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-3">
                 <Label htmlFor="description">
-                  Descrição <Asterisk />
+                  {t("form.label.description")} <Asterisk />
                 </Label>
                 <Textarea
                   id="description"
-                  placeholder="Digite aqui"
+                  placeholder={t("form.placeholder.descriptionPlaceholder")}
                   value={formData.description}
                   onChange={(e) => handleInputChange("description", e.target.value)}
                   className={errors.description ? "border-red-500" : ""}
@@ -166,14 +170,16 @@ export default function ProposalPage() {
                   maxLength={500}
                 />
                 <div className="flex justify-end">
-                  <span className="text-xs text-gray-500">{characterCount} caracteres</span>
+                  <span className="text-xs text-gray-500">
+                    {t("form.description.charCount", { count: characterCount })}
+                  </span>
                 </div>
                 {errors.description && <p className="text-xs text-red-500">{errors.description}</p>}
               </div>
 
               <div className="space-y-2 col-span-1 md:col-span-3">
-                <Label>Documento</Label>
-                <p className="text-xs text-gray-500">Apenas 1 arquivo permitido</p>
+                <Label>{t("form.label.file")}</Label>
+                <p className="text-xs text-gray-500">{t("form.label.fileHint")}</p>
                 <FileUploadBox
                   maxFiles={1}
                   accept=".pdf"
@@ -186,7 +192,7 @@ export default function ProposalPage() {
             </div>
 
             <Button onClick={handleSubmit} className="w-full">
-              Enviar proposta
+              {t("cta.submitProposal")}
             </Button>
           </div>
         </CardContent>

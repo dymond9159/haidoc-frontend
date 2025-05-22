@@ -37,18 +37,18 @@ export function Header() {
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
   const pageTitles: Record<string, string> = {
-    "/professional/agenda": t("agenda"),
-    "/professional/consultations": t("consultations"),
-    "/professional/online-consultation": t("onlineConsultation"),
-    "/professional/chat": t("quickChat"),
-    "/professional/finances": t("finances"),
-    "/professional/support": t("support"),
-    "/professional/notifications": t("notifications"),
-    "/profile/configurations": t("configurations"),
-    "/profile/public": t("publicProfile"),
-    "/profile": t("myAccount"),
-    "/my-activity": t("activityLog"),
-    "/professional": t("home"),
+    "/professional/agenda": t("agenda.title"),
+    "/professional/consultations": t("consultations.title"),
+    "/professional/online-consultation": t("onlineConsultation.title"),
+    "/professional/chat": t("quickChat.title"),
+    "/professional/finances": t("finances.title"),
+    "/professional/support": t("support.title"),
+    "/professional/notifications": t("notifications.title"),
+    "/profile/configurations": t("configurations.title"),
+    "/profile/public": t("publicProfile.title"),
+    "/profile": t("myAccount.title"),
+    "/my-activity": t("activityLog.title"),
+    "/professional": t("home.title"),
   }
 
   const pageTitle = getPageTitleFromPath(pageTitles, pathname)

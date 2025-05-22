@@ -21,35 +21,37 @@
     "termsAndConditions": "Termos e condições",
     "termsAndConditionsDesc": "Li e concordo com os termos de uso"
   },
-  "home": {
-    "cta": {
-      "login": "Fazer login",
-      "startNow": "Começar agora",
-      "createAccount": "Criar uma conta"
+  "landing": {
+    "home": {
+      "cta": {
+        "login": "Fazer login",
+        "startNow": "Começar agora",
+        "createAccount": "Criar uma conta"
+      },
+      "heroTitle": "Cuidados de saúde simplificados para todos",
+      "heroDescription": "HaiDoc conecta você aos melhores profissionais de saúde, facilitando o agendamento de consultas e o acompanhamento do seu bem-estar.",
+      "whyChoose": "Por que escolher HaiDoc?",
+      "whyChooseDescription": "Nossa plataforma oferece uma experiência completa para pacientes e profissionais de saúde.",
+      "readyToStart": "Pronto para começar?",
+      "joinThousands": "Junte-se a milhares de usuários que já estão aproveitando os benefícios da HaiDoc.",
+      "features": {
+        "onlineConsultationsTitle": "Consultas Online",
+        "onlineConsultationsDesc": "Agende e realize consultas médicas diretamente do conforto da sua casa.",
+        "qualifiedProfessionalsTitle": "Profissionais Qualificados",
+        "qualifiedProfessionalsDesc": "Acesso a uma rede de médicos e especialistas altamente qualificados.",
+        "digitalRecordsTitle": "Prontuário Digital",
+        "digitalRecordsDesc": "Mantenha seu histórico médico organizado e acessível a qualquer momento.",
+        "digitalPrescriptionsTitle": "Receitas Digitais",
+        "digitalPrescriptionsDesc": "Receba suas prescrições médicas digitalmente, sem complicações.",
+        "medicationRemindersTitle": "Lembretes de Medicação",
+        "medicationRemindersDesc": "Nunca mais esqueça de tomar seus medicamentos com nossos lembretes.",
+        "examResultsTitle": "Resultados de Exames",
+        "examResultsDesc": "Visualize e compartilhe seus resultados de exames com seus médicos."
+      }
     },
-    "heroTitle": "Cuidados de saúde simplificados para todos",
-    "heroDescription": "HaiDoc conecta você aos melhores profissionais de saúde, facilitando o agendamento de consultas e o acompanhamento do seu bem-estar.",
-    "whyChoose": "Por que escolher HaiDoc?",
-    "whyChooseDescription": "Nossa plataforma oferece uma experiência completa para pacientes e profissionais de saúde.",
-    "readyToStart": "Pronto para começar?",
-    "joinThousands": "Junte-se a milhares de usuários que já estão aproveitando os benefícios da HaiDoc.",
-    "features": {
-      "onlineConsultationsTitle": "Consultas Online",
-      "onlineConsultationsDesc": "Agende e realize consultas médicas diretamente do conforto da sua casa.",
-      "qualifiedProfessionalsTitle": "Profissionais Qualificados",
-      "qualifiedProfessionalsDesc": "Acesso a uma rede de médicos e especialistas altamente qualificados.",
-      "digitalRecordsTitle": "Prontuário Digital",
-      "digitalRecordsDesc": "Mantenha seu histórico médico organizado e acessível a qualquer momento.",
-      "digitalPrescriptionsTitle": "Receitas Digitais",
-      "digitalPrescriptionsDesc": "Receba suas prescrições médicas digitalmente, sem complicações.",
-      "medicationRemindersTitle": "Lembretes de Medicação",
-      "medicationRemindersDesc": "Nunca mais esqueça de tomar seus medicamentos com nossos lembretes.",
-      "examResultsTitle": "Resultados de Exames",
-      "examResultsDesc": "Visualize e compartilhe seus resultados de exames com seus médicos."
+    "footer": {
+      "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
     }
-  },
-  "footer": {
-    "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
   },
   "sidebar": {
     "home": "Home",
@@ -74,14 +76,17 @@
       "confirmPassword": "Confirme a senha",
       "specialty": "Especialidade",
       "institutionName": "Nome da instituição",
-      "cardNumber": "Número de Carteira Profissional",
+      "professionalNumber": "Número de Carteira Profissional",
       "nuit": "NUIT",
       "street": "Rua ou avenida",
       "number": "Número",
       "neighborhood": "Bairro",
       "city": "Cidade",
       "country": "País",
-      "or": "ou"
+      "or": "ou",
+      "cardNumber": "Número do cartão",
+      "cvv": "CVV",
+      "expiryDate": "Data de validade"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -92,13 +97,16 @@
       "confirmPassword": "••••••••",
       "specialty": "Ginecologia",
       "institutionName": "Hospital de Santo António",
-      "cardNumber": "123456789",
+      "professionalNumber": "123456789",
       "nuit": "123456789",
       "street": "Rua Exemplo",
       "number": "123",
       "neighborhood": "Centro",
       "city": "Maputo",
-      "country": "Moçambique"
+      "country": "Moçambique",
+      "cardNumber": "**** **** **** ****",
+      "cvv": "123",
+      "expiryDate": "MM/AA"
     },
     "category": {
       "gender": {
@@ -142,9 +150,9 @@
       "providerTypeRequired": "Tipo de provedor é obrigatório",
       "specialtyRequired": "Especialidade é obrigatória",
       "institutionNameRequired": "Nome da instituição é obrigatório",
-      "cardNumberRequired": "Número de Carteira Profissional é obrigatório",
+      "professionalNumberRequired": "Número de Carteira Profissional é obrigatório",
       "nuitRequired": "NUIT é obrigatório",
-      "cardNumberLength": "Número de Carteira Profissional deve ter 9 dígitos",
+      "professionalNumberLength": "Número de Carteira Profissional deve ter 9 dígitos",
       "nuitLength": "NUIT deve ter 9 dígitos",
       "termsRequired": "Você deve concordar com os termos e condições"
     }
@@ -250,7 +258,7 @@
             "providerType": "Tipo de provedor de saúde",
             "specialty": "Especialidade",
             "institutionName": "Nome da instituição",
-            "cardNumber": "Número de Carteira Profissional",
+            "professionalNumber": "Número de Carteira Profissional",
             "nuit": "NUIT",
             "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
             "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
@@ -280,6 +288,10 @@
       "title": "Consultas",
       "description": "Consultas médicas"
     },
+    "onlineConsultation": {
+      "title": "Consultas Online",
+      "description": "Consultas médicas online"
+    },
     "quickChat": {
       "title": "Chat rápido",
       "description": "Chat com o suporte"
@@ -299,6 +311,18 @@
     "configurations": {
       "title": "Configurações",
       "description": "Configurações do sistema"
+    },
+    "publicProfile": {
+      "title": "Perfil Público",
+      "description": "Perfil público do usuário"
+    },
+    "myAccount": {
+      "title": "Minha conta",
+      "description": "Minha conta do usuário"
+    },
+    "activityLog": {
+      "title": "Log de atividades",
+      "description": "Log de atividades do usuário"
     },
     "plans": {
       "pageTitle": "Conheça Nossos Planos",
@@ -344,6 +368,80 @@
           "Participação em eventos de networking e treinamentos personalizados"
         ]
       }
+    },
+    "proposal": {
+      "title": "Proposta",
+      "description": "Proposta de serviços",
+      "back": "Fazer proposta",
+      "form": {
+        "label": {
+          "companyName": "Nome da empresa",
+          "email": "E-mail",
+          "phone": "Número de telefone",
+          "description": "Descrição",
+          "file": "Documento",
+          "fileHint": "Apenas 1 arquivo permitido"
+        },
+        "placeholder": {
+          "companyNamePlaceholder": "Digite aqui",
+          "emailPlaceholder": "email@example.com",
+          "phonePlaceholder": "82 123 4567",
+          "descriptionPlaceholder": "Digite aqui"
+        },
+        "description": {
+          "charCount": "{count} caracteres"
+        },
+        "errors": {
+          "companyNameMin": "O nome deve ter no mínimo 3 caracteres",
+          "companyNameMax": "O nome deve ter no máximo 255 caracteres",
+          "companyNameRegex": "O nome deve conter apenas letras e espaços",
+          "emailInvalid": "Insira um e-mail válido",
+          "emailMax": "O e-mail deve ter no máximo 255 caracteres",
+          "phoneInvalid": "Insira um número de telefone válido",
+          "descriptionMin": "A descrição deve ter no mínimo 10 caracteres",
+          "descriptionMax": "A descrição deve ter no máximo 500 caracteres"
+        }
+      },
+      "cta": {
+        "submitProposal": "Enviar proposta"
+      },
+      "success": {
+        "title": "Proposta enviada",
+        "description": "Sua proposta foi enviada com sucesso! Entraremos em contato em breve."
+      }
+    },
+    "subscription": {
+      "title": "Escolha o seu plano",
+      "description": "Escolha o plano que melhor se adapta às suas necessidades e ao seu negócio.",
+      "chooseRecurrence": "Escolha a recorrência do seu plano",
+      "selectedPlan": "Plano escolhido",
+      "totalValue": "Valor total",
+      "selectRecurrence": "Selecione a recorrência",
+      "currency": "MZN",
+      "recurrence": {
+        "monthly": "Mensal",
+        "semiannual": "Semestral",
+        "annual": "Anual",
+        "shortMonthly": "Mês",
+        "shortSemiannual": "Semestre",
+        "shortAnnual": "Ano"
+      },
+      "paymentMethod": "Método de pagamento",
+      "paymentType": "Forma de pagamento",
+      "paymentMethodOptions": {
+        "card": "Cartões de crédito e/ou débito",
+        "mpesa": "M-Pesa",
+        "emola": "E-Mola",
+        "paypal": "Paypal"
+      },
+      "cardType": {
+        "credit": "Cartão de crédito",
+        "debit": "Cartão de débito"
+      },
+      "autoRenewNotice": "Sua assinatura será renovada automaticamente, você tem este método de pagamento recorrente.",
+      "review": "Revisão",
+      "cardEnding": "Cartão de crédito terminando em {lastDigits}",
+      "success": "Seu cadastro e pagamento foram concluídos!"
     }
   }
 }
