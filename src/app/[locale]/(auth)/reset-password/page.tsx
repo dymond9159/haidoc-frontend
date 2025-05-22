@@ -5,10 +5,14 @@ import type React from "react"
 import { Asterisk } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function ForgotPassword() {
+  const t = useTranslations("auth.forgotPassword")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [isLoading, setIsLoading] = useState(false)
@@ -28,32 +32,28 @@ export default function ForgotPassword() {
   return (
     <div className="w-full space-y-8">
       <div className="space-y-6">
-        <h2 className="text-xl font-semibold text-system-13">Esqueci minha senha</h2>
+        <h2 className="text-xl font-semibold text-system-13">{t("title")}</h2>
 
         {submitted ? (
           <div className="space-y-4">
-            <p className="text-sm text-system-12">
-              Enviamos um e-mail com instruções para redefinir sua senha. Por favor, verifique sua caixa de entrada.
-            </p>
+            <p className="text-sm text-system-12">{t("emailSent")}</p>
 
             <Button onClick={() => router.push("/login")} className="w-full bg-primary-9 hover:bg-primary-10">
-              Voltar para o Login
+              {tCta("backToLogin")}
             </Button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <p className="text-sm text-system-12">
-                Digite seu e-mail abaixo e enviaremos instruções para redefinir sua senha.
-              </p>
+              <p className="text-sm text-system-12">{t("instructions")}</p>
 
               <label htmlFor="email" className="block text-sm font-medium">
-                E-mail <Asterisk />
+                {tForm("label.email")} <Asterisk />
               </label>
               <Input
                 id="email"
                 type="email"
-                placeholder="mail.example@gmail.com"
+                placeholder={tForm("placeholder.email")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -61,7 +61,7 @@ export default function ForgotPassword() {
             </div>
 
             <Button type="submit" className="w-full bg-primary-9 hover:bg-primary-10" disabled={isLoading}>
-              {isLoading ? "Enviando..." : "Enviar instruções"}
+              {isLoading ? tCta("sending") : tCta("sendInstructions")}
             </Button>
           </form>
         )}

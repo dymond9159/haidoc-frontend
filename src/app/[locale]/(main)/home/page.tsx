@@ -5,38 +5,37 @@ import Link from "next/link"
 
 export default function LandingPage() {
   const t = useTranslations("home")
-  const tFeatures = useTranslations("features")
   const tCommon = useTranslations("common")
 
   const features = [
     {
-      title: tFeatures("onlineConsultationsTitle"),
-      description: tFeatures("onlineConsultationsDesc"),
+      title: t("features.onlineConsultationsTitle"),
+      description: t("features.onlineConsultationsDesc"),
       icon: "message-square",
     },
     {
-      title: tFeatures("qualifiedProfessionalsTitle"),
-      description: tFeatures("qualifiedProfessionalsDesc"),
+      title: t("features.qualifiedProfessionalsTitle"),
+      description: t("features.qualifiedProfessionalsDesc"),
       icon: "doctor",
     },
     {
-      title: tFeatures("digitalRecordsTitle"),
-      description: tFeatures("digitalRecordsDesc"),
+      title: t("features.digitalRecordsTitle"),
+      description: t("features.digitalRecordsDesc"),
       icon: "file-text",
     },
     {
-      title: tFeatures("digitalPrescriptionsTitle"),
-      description: tFeatures("digitalPrescriptionsDesc"),
+      title: t("features.digitalPrescriptionsTitle"),
+      description: t("features.digitalPrescriptionsDesc"),
       icon: "prescription",
     },
     {
-      title: tFeatures("medicationRemindersTitle"),
-      description: tFeatures("medicationRemindersDesc"),
+      title: t("features.medicationRemindersTitle"),
+      description: t("features.medicationRemindersDesc"),
       icon: "clock",
     },
     {
-      title: tFeatures("examResultsTitle"),
-      description: tFeatures("examResultsDesc"),
+      title: t("features.examResultsTitle"),
+      description: t("features.examResultsDesc"),
       icon: "lab-result",
     },
   ]
@@ -62,7 +61,7 @@ export default function LandingPage() {
                 </Link>
                 <Link href="/login">
                   <Button size="lg" variant="outline">
-                    {tCommon("login")}
+                    {tCommon("loginHero")}
                   </Button>
                 </Link>
               </div>

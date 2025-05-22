@@ -7,11 +7,15 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { PhoneInput } from "@/components/ui/phone-input"
 import { Separator } from "@/components/ui/separator"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function VerificationStep1() {
   const router = useRouter()
+  const t = useTranslations("auth")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
   const [method, setMethod] = useState<"email" | "sms" | null>(null)
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
@@ -37,21 +41,18 @@ export default function VerificationStep1() {
   return (
     <div className="space-y-6">
       <div className="space-y-2">
-        <p className="text-md text-system-12">
-          Para completar seu Login com sucesso, por favor efetue a autenticação de seus dados. Escolha por qual meio
-          deseja receber o código.
-        </p>
+        <p className="text-md text-system-12">{t("chooseMethod")}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-2">
           <label htmlFor="email" className="block text-sm font-medium">
-            E-mail <Asterisk />
+            {tForm("email")} <Asterisk />
           </label>
           <Input
             id="email"
             type="email"
-            placeholder="mail.example@gmail.com"
+            placeholder={tForm("placeholder.email")}
             value={email}
             onChange={(e) => {
               setEmail(e.target.value)
@@ -64,17 +65,17 @@ export default function VerificationStep1() {
 
         <div className="w-full flex flex-row gap-2 items-center">
           <Separator className="flex-grow !w-1/3" />
-          <span className="mx-2 text-xs text-system-10">ou</span>
+          <span className="mx-2 text-xs text-system-10">{t("or")}</span>
           <Separator className="flex-grow !w-1/3" />
         </div>
 
         <div className="space-y-2">
           <label htmlFor="phone" className="block text-sm font-medium">
-            SMS <Asterisk />
+            {tForm("sms")} <Asterisk />
           </label>
           <PhoneInput
             id="phone"
-            placeholder="Ex: +55 (71) 99999-9999"
+            placeholder={tForm("placeholder.phone")}
             value={phone}
             onChangeNumber={(value) => {
               setPhone(value)
@@ -90,7 +91,7 @@ export default function VerificationStep1() {
           className="w-full"
           disabled={isLoading || !method || (method === "email" && !email) || (method === "sms" && !phone)}
         >
-          {isLoading ? "Enviando..." : "Enviar"}
+          {isLoading ? tCta("sending") : tCta("send")}
         </Button>
       </form>
     </div>

@@ -1,11 +1,14 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useEffect, useState } from "react"
 
 export default function VerificationStep2() {
   const router = useRouter()
+  const t = useTranslations("auth")
+  const tCta = useTranslations("cta")
   const [method, setMethod] = useState<"email" | "sms" | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -28,24 +31,16 @@ export default function VerificationStep2() {
     <div className="space-y-6">
       <div className="space-y-2">
         {method === "email" ? (
-          <p className="text-md text-system-12">
-            Enviamos um código de autenticação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada
-            e a pasta de spam, se necessário.
-          </p>
+          <p className="text-md text-system-12">{t("codeSentEmail")}</p>
         ) : method === "sms" ? (
-          <p className="text-md text-system-12">
-            Enviamos um código de autenticação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada
-            e a pasta de spam, se necessário.
-          </p>
+          <p className="text-md text-system-12">{t("codeSentSMS")}</p>
         ) : (
-          <p className="text-md text-system-12">
-            Enviamos um código de autenticação. Por favor, verifique a sua caixa de entrada.
-          </p>
+          <p className="text-md text-system-12">{t("codeSentGeneric")}</p>
         )}
       </div>
 
       <Button className="w-full" onClick={handleNext} disabled={isLoading}>
-        {isLoading ? "Carregando..." : "Próximo"}
+        {isLoading ? tCta("loading") : tCta("next")}
       </Button>
     </div>
   )
