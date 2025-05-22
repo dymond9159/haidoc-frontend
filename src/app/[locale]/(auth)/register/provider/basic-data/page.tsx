@@ -15,7 +15,7 @@ import { Gender } from "@/types/provider/profile/types"
 
 export default function ProviderBasicInfoPage() {
   const router = useRouter()
-  const t = useTranslations("auth.register.provider.basicData")
+  const t = useTranslations("pages.auth.register.provider.basicData")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const [showPassword, setShowPassword] = useState(false)

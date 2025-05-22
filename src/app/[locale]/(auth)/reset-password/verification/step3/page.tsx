@@ -11,7 +11,7 @@ import { useEffect, useState } from "react"
 
 export default function VerificationStep3() {
   const router = useRouter()
-  const t = useTranslations("auth.forgotPassword.verification")
+  const t = useTranslations("pages.auth.forgotPassword.verification")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const [method, setMethod] = useState<"email" | "sms" | null>(null)

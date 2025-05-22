@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 
 export default function VerificationStep2() {
   const router = useRouter()
-  const t = useTranslations("auth.forgotPassword.verification")
+  const t = useTranslations("pages.auth.forgotPassword.verification")
   const tCta = useTranslations("cta")
   const [method, setMethod] = useState<"email" | "sms" | null>(null)
   const [isLoading, setIsLoading] = useState(false)

@@ -23,7 +23,7 @@ export default async function ProfessionalLayout({ children }: { children: React
       <Sidebar homeLink={homeLink} bottomCanvasImage="/images/side-bottom-canvas.svg" />
       <div className="w-screen h-screen flex-1 flex flex-col">
         <Header />
-        <Suspense fallback={<Loading text="Carregando..." />}>
+        <Suspense fallback={<Loading />}>
           <main className="flex-1 p-6 overflow-y-auto">{children}</main>
         </Suspense>
       </div>

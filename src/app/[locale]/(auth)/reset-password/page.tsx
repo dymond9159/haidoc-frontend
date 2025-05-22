@@ -10,7 +10,7 @@ import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function ForgotPassword() {
-  const t = useTranslations("auth.forgotPassword")
+  const t = useTranslations("pages.auth.forgotPassword")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const router = useRouter()

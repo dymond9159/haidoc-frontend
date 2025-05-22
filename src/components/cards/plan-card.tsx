@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button" // Assuming these are your UI components
 import { cn } from "@/lib/utils"
 import { CheckCircle } from "lucide-react"
+import { useTranslations } from "next-intl"
 import React from "react"
 import { Badge } from "../ui/badge"
 import { Card, CardContent, CardHeader } from "../ui/card"
@@ -19,38 +20,50 @@ export const FeatureItem: React.FC<FeatureItemProps> = ({ text }) => {
 }
 
 interface PlanCardProps {
-  title: string
-  price: string
-  features: string[]
+  titleKey: string
+  priceKey: string
+  currencyKey?: string
+  periodKey?: string
+  featuresKeys: string[]
   onContinue: () => void
   priceColor?: string // Optional prop for price color
 }
 
 export const PlanCard: React.FC<PlanCardProps> = ({
-  title,
-  price,
-  features,
+  titleKey,
+  priceKey,
+  currencyKey,
+  periodKey,
+  featuresKeys,
   onContinue,
   priceColor = "text-foreground",
 }) => {
+  const t = useTranslations()
+  const tCta = useTranslations("cta")
   return (
     <Card className="flex flex-col p-6 bg-white rounded-lg max-w-[320px] mx-auto md:w-full md:h-fit">
       <CardHeader className="mb-4 px-0">
-        <h3 className="text-xl font-bold text-secondary mb-3">{title}</h3>
-        {price !== "GRATUITO" && <Badge className="w-fit text-xs">{"EM DESTAQUE"}</Badge>}
-        {price == "GRATUITO" && <div className={cn("mt-2 text-xl font-bold text-primary")}>{"GRATUITO"}</div>}
-        {price !== "GRATUITO" && <div className={cn("mt-2 text-xl font-bold", priceColor)}>{price}</div>}
+        <h3 className="text-xl font-bold text-secondary mb-3">{t(titleKey)}</h3>
+        {t(priceKey) !== t("pages.plans.free") && <Badge className="w-fit text-xs">{t("pages.plans.featured")}</Badge>}
+        {t(priceKey) === t("pages.plans.free") && (
+          <div className={cn("mt-2 text-xl font-bold text-primary")}>{t("pages.plans.free")}</div>
+        )}
+        {t(priceKey) !== t("pages.plans.free") && (
+          <div className={cn("mt-2 text-xl font-bold", priceColor)}>
+            {t(priceKey)} <span className="text-md">{t(currencyKey || "")}</span>/
+            <span className="text-sm">{t(periodKey || "")}</span>
+          </div>
+        )}
       </CardHeader>
       <CardContent className="space-y-3 px-0">
         <div className="space-y-3">
-          {features.map((feature, index) => (
-            <FeatureItem key={index} text={feature} />
+          {featuresKeys.map((featureKey, index) => (
+            <FeatureItem key={index} text={t(featureKey)} />
           ))}
         </div>
-
         <div className="mt-auto pt-6">
           <Button onClick={onContinue} className="w-full">
-            Continuar
+            {tCta("continue")}
           </Button>
         </div>
       </CardContent>

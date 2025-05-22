@@ -31,7 +31,7 @@ export default function ProviderDocumentationPage() {
     country: "",
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
-  const t = useTranslations("auth.register.provider.documentation")
+  const t = useTranslations("pages.auth.register.provider.documentation")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
 

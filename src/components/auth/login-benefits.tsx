@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 
 export function LoginBenefits() {
   const router = useRouter()
-  const t = useTranslations("auth.login.benefits")
+  const t = useTranslations("pages.auth.login.benefits")
   const tCta = useTranslations("cta")
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop")
 

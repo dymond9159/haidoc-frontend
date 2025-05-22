@@ -10,7 +10,7 @@ import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function RegisterPage() {
-  const t = useTranslations("auth.register")
+  const t = useTranslations("pages.auth.register")
   const tCta = useTranslations("cta")
   const router = useRouter()
   const [selectedType, setSelectedType] = useState<RegistrationType>(RegistrationType.Patient)

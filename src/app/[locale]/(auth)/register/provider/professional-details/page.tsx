@@ -15,7 +15,7 @@ import { ProviderOptions } from "@/types"
 
 export default function ProviderProfessionalDetailsPage() {
   const router = useRouter()
-  const t = useTranslations("auth.register.provider.professionalDetails")
+  const t = useTranslations("pages.auth.register.provider.professionalDetails")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const [formData, setFormData] = useState({

@@ -2,6 +2,7 @@
   "common": {
     "login": "Login",
     "register": "Cadastro",
+    "loading": "Carregando...",
     "home": "Home",
     "about": "Sobre",
     "aboutUs": "Sobre Nós",
@@ -50,19 +51,13 @@
   "footer": {
     "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
   },
-  "pages": {
+  "sidebar": {
     "home": "Home",
     "agenda": "Agenda",
     "consultations": "Consultas",
-    "onlineConsultation": "Consulta online",
     "quickChat": "Chat rápido",
     "finances": "Finanças",
     "support": "Suporte",
-    "notifications": "Notificações",
-    "configurations": "Configurações",
-    "publicProfile": "Perfil público",
-    "myAccount": "Minha conta",
-    "activityLog": "Log de Atividades",
     "collapse": "Recolher"
   },
   "form": {
@@ -178,96 +173,176 @@
     "verifying": "Verificando...",
     "loading": "Carregando...",
     "sendInstructions": "Enviar instruções",
-    "backToLogin": "Voltar para login"
+    "backToLogin": "Voltar para login",
+    "continue": "Continuar"
   },
-  "auth": {
-    "login": {
-      "title": "Faça seu Login!",
-      "authentication": "Autenticação",
-      "chooseMethod": "Para completar seu Login com sucesso, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
-      "or": "ou",
-      "codeSentEmail": "Enviamos um código de autenticação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
-      "codeSentSMS": "Enviamos um código de autenticação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
-      "codeSentGeneric": "Enviamos um código de autenticação. Por favor, verifique a sua caixa de entrada.",
-      "enterCodeEmail": "Digite abaixo o código enviado para o seu e-mail.",
-      "enterCodeSMS": "Digite abaixo o código enviado para o seu número de telefone.",
-      "enterCodeGeneric": "Digite abaixo o código enviado.",
-      "success": "Parabéns! Autenticação efetuada com sucesso!",
-      "failed": "O código digitado está incorreto.",
-      "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
-      "noAccount": "Não tem uma conta?",
-      "business": "negócio",
-      "family": "família",
-      "benefits": {
-        "description": "Planos especialmente feitos para seu <bold>negócio</bold> ou para sua <bold>família</bold>"
-      }
+  "pages": {
+    "home": {
+      "title": "Home",
+      "description": "Página inicial"
     },
-    "forgotPassword": {
-      "title": "Recuperar Senha",
-      "backLable": "Recuperar Senha",
-      "instructions": "Digite seu e-mail para receber instruções de redefinição de senha.",
-      "emailSent": "Se o e-mail informado estiver cadastrado, você receberá instruções para redefinir sua senha.",
-      "verification": {
-        "chooseMethod": "Para alterar sua senha, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
+    "auth": {
+      "login": {
+        "title": "Faça seu Login!",
+        "authentication": "Autenticação",
+        "chooseMethod": "Para completar seu Login com sucesso, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
         "or": "ou",
-        "codeSentEmail": "Enviamos um código de recuperação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
-        "codeSentSMS": "Enviamos um código de recuperação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
-        "codeSentGeneric": "Enviamos um código de recuperação. Por favor, verifique a sua caixa de entrada.",
+        "codeSentEmail": "Enviamos um código de autenticação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+        "codeSentSMS": "Enviamos um código de autenticação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+        "codeSentGeneric": "Enviamos um código de autenticação. Por favor, verifique a sua caixa de entrada.",
         "enterCodeEmail": "Digite abaixo o código enviado para o seu e-mail.",
         "enterCodeSMS": "Digite abaixo o código enviado para o seu número de telefone.",
         "enterCodeGeneric": "Digite abaixo o código enviado.",
-        "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
+        "success": "Parabéns! Autenticação efetuada com sucesso!",
         "failed": "O código digitado está incorreto.",
-        "newPassword": "Insira sua nova senha.",
-        "repeatPassword": "Repita a senha",
-        "passwordsMustMatch": "As novas senhas devem ser iguais.",
-        "success": "Parabéns! Sua nova senha foi redefinida com sucesso. Por favor, faça login novamente."
+        "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
+        "noAccount": "Não tem uma conta?",
+        "business": "negócio",
+        "family": "família",
+        "benefits": {
+          "description": "Planos especialmente feitos para seu <bold>negócio</bold> ou para sua <bold>família</bold>"
+        }
+      },
+      "forgotPassword": {
+        "title": "Recuperar Senha",
+        "backLable": "Recuperar Senha",
+        "instructions": "Digite seu e-mail para receber instruções de redefinição de senha.",
+        "emailSent": "Se o e-mail informado estiver cadastrado, você receberá instruções para redefinir sua senha.",
+        "verification": {
+          "chooseMethod": "Para alterar sua senha, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
+          "or": "ou",
+          "codeSentEmail": "Enviamos um código de recuperação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+          "codeSentSMS": "Enviamos um código de recuperação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+          "codeSentGeneric": "Enviamos um código de recuperação. Por favor, verifique a sua caixa de entrada.",
+          "enterCodeEmail": "Digite abaixo o código enviado para o seu e-mail.",
+          "enterCodeSMS": "Digite abaixo o código enviado para o seu número de telefone.",
+          "enterCodeGeneric": "Digite abaixo o código enviado.",
+          "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
+          "failed": "O código digitado está incorreto.",
+          "newPassword": "Insira sua nova senha.",
+          "repeatPassword": "Repita a senha",
+          "passwordsMustMatch": "As novas senhas devem ser iguais.",
+          "success": "Parabéns! Sua nova senha foi redefinida com sucesso. Por favor, faça login novamente."
+        }
+      },
+      "register": {
+        "title": "Cadastro",
+        "chooseAccountType": "Como deseja se cadastrar?",
+        "patientFor": "Paciente",
+        "providerFor": "Prestador de Serviços",
+        "alreadyHaveAccount": "Já tem conta?",
+        "loginHere": "Faça login",
+        "steps": {
+          "basic": "Dados básicos",
+          "professional": "Detalhes profissionais",
+          "documentation": "Documentação"
+        },
+        "provider": {
+          "basicData": {
+            "fullName": "Nome completo",
+            "phone": "Número de telefone",
+            "birthDate": "Data de nascimento",
+            "gender": "Sexo",
+            "password": "Crie uma senha",
+            "confirmPassword": "Repita sua senha"
+          },
+          "professionalDetails": {
+            "providerType": "Tipo de provedor de saúde",
+            "specialty": "Especialidade",
+            "institutionName": "Nome da instituição",
+            "cardNumber": "Número de Carteira Profissional",
+            "nuit": "NUIT",
+            "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+            "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+            "termsRequired": "Você deve concordar com os termos e condições"
+          },
+          "documentation": {
+            "licenseDocs": "Documentos de licença",
+            "licenseDesc": "Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição)",
+            "address": "Endereço",
+            "street": "Rua ou avenida",
+            "number": "Número",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "country": "País",
+            "fileLimit": "Apenas 5 documentos são permitidos",
+            "successTitle": "Cadastro realizado com sucesso!",
+            "successDesc": "Agora você pode acessar todas as funcionalidades da plataforma."
+          }
+        }
       }
     },
-    "register": {
-      "title": "Cadastro",
-      "chooseAccountType": "Como deseja se cadastrar?",
-      "patientFor": "Paciente",
-      "providerFor": "Prestador de Serviços",
-      "alreadyHaveAccount": "Já tem conta?",
-      "loginHere": "Faça login",
-      "steps": {
-        "basic": "Dados básicos",
-        "professional": "Detalhes profissionais",
-        "documentation": "Documentação"
+    "agenda": {
+      "title": "Agenda",
+      "description": "Agenda de consultas"
+    },
+    "consultations": {
+      "title": "Consultas",
+      "description": "Consultas médicas"
+    },
+    "quickChat": {
+      "title": "Chat rápido",
+      "description": "Chat com o suporte"
+    },
+    "finances": {
+      "title": "Finanças",
+      "description": "Gerenciamento de finanças"
+    },
+    "support": {
+      "title": "Suporte",
+      "description": "Suporte ao cliente"
+    },
+    "notifications": {
+      "title": "Notificações",
+      "description": "Notificações do sistema"
+    },
+    "configurations": {
+      "title": "Configurações",
+      "description": "Configurações do sistema"
+    },
+    "plans": {
+      "pageTitle": "Conheça Nossos Planos",
+      "pageDescription": "Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.",
+      "featured": "EM DESTAQUE",
+      "free": "GRATUITO",
+      "business": {
+        "title": "HaiDoc Business",
+        "price": "GRATUITO",
+        "features": [
+          "Conta gratuita",
+          "Saque de fundos mensal após dedução de taxas",
+          "Acesso a serviços de business na plataforma",
+          "Ferramentas básicas de gerenciamento de agendamentos (consultas, marcações, etc.)"
+        ]
       },
-      "provider": {
-        "basicData": {
-          "fullName": "Nome completo",
-          "phone": "Número de telefone",
-          "birthDate": "Data de nascimento",
-          "gender": "Sexo",
-          "password": "Crie uma senha",
-          "confirmPassword": "Repita sua senha"
-        },
-        "professionalDetails": {
-          "providerType": "Tipo de provedor de saúde",
-          "specialty": "Especialidade",
-          "institutionName": "Nome da instituição",
-          "cardNumber": "Número de Carteira Profissional",
-          "nuit": "NUIT",
-          "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
-          "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
-          "termsRequired": "Você deve concordar com os termos e condições"
-        },
-        "documentation": {
-          "licenseDocs": "Documentos de licença",
-          "licenseDesc": "Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição)",
-          "address": "Endereço",
-          "street": "Rua ou avenida",
-          "number": "Número",
-          "neighborhood": "Bairro",
-          "city": "Cidade",
-          "country": "País",
-          "fileLimit": "Apenas 5 documentos são permitidos",
-          "successTitle": "Cadastro realizado com sucesso!",
-          "successDesc": "Agora você pode acessar todas as funcionalidades da plataforma."
-        }
+      "businessPlus": {
+        "title": "HaiDoc Business Plus",
+        "price": "1.499",
+        "currency": "MZN",
+        "period": "Mês",
+        "features": [
+          "Todos os benefícios do plano HaiDoc Business +",
+          "Saque de fundos quinzenalmente após dedução de taxas",
+          "Gerenciamento de agenda personalizada para o seu negócio (consultas, marcações, etc.)",
+          "Análises de desempenho e relatórios personalizados",
+          "Destaque do provedor de saúde para todos os pacientes",
+          "Inclusão na lista de Serviços Recomendados da Plataforma aos pacientes",
+          "Acesso a uma linha de apoio ao cliente 24/7"
+        ]
+      },
+      "company": {
+        "title": "HaiDoc Company",
+        "price": "90",
+        "currency": "MZN",
+        "period": "Mês",
+        "features": [
+          "Todos os benefícios do plano HaiDoc Business Plus +",
+          "Saque de fundos semanalmente após dedução de taxas",
+          "Acesso simultâneo a todos os serviços (Farmácia, Laboratório, Clínica e Profissional de Saúde)",
+          "Consultoria para otimização de operações e serviços",
+          "Suporte prioritário 24/7",
+          "Participação em eventos de networking e treinamentos personalizados"
+        ]
       }
     }
   }

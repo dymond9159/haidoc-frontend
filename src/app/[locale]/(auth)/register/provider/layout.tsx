@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
 export default function ProviderRegistrationLayout({ children }: { children: ReactNode }) {
-  const t = useTranslations("auth.register.steps")
+  const t = useTranslations("pages.auth.register.steps")
   const registrationSteps = [
     { id: "basic", number: 1, title: t("basic"), path: "/register/provider/basic-data" },
     { id: "professional", number: 2, title: t("professional"), path: "/register/provider/professional-details" },

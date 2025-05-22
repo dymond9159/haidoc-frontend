@@ -7,7 +7,7 @@ import { useRouter } from "nextjs-toploader/app"
 
 export default function VerificationSuccess() {
   const router = useRouter()
-  const t = useTranslations("auth.forgotPassword.verification")
+  const t = useTranslations("pages.auth.forgotPassword.verification")
   const tCta = useTranslations("cta")
 
   const handleLogin = () => {

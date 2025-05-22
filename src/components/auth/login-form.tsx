@@ -14,7 +14,7 @@ import { Logo } from "../logo"
 
 export const LoginForm = () => {
   const router = useRouter()
-  const t = useTranslations("auth.login")
+  const t = useTranslations("pages.auth.login")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
   const [email, setEmail] = useState("")
