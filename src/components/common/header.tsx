@@ -37,12 +37,12 @@ export function Header() {
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
   const pageTitles: Record<string, string> = {
-    "/professional/agenda": t("agenda.title"),
-    "/professional/consultations": t("consultations.title"),
-    "/professional/online-consultation": t("onlineConsultation.title"),
-    "/professional/chat": t("quickChat.title"),
-    "/professional/finances": t("finances.title"),
-    "/professional/support": t("support.title"),
+    "/professional/agenda": t("provider.agenda.title"),
+    "/professional/consultations": t("provider.consultations.title"),
+    "/professional/online-consultation": t("provider.onlineConsultation.title"),
+    "/professional/chat": t("provider.quickChat.title"),
+    "/professional/finances": t("provider.finances.title"),
+    "/professional/support": t("provider.support.title"),
     "/professional/notifications": t("notifications.title"),
     "/profile/configurations": t("configurations.title"),
     "/profile/public": t("publicProfile.title"),

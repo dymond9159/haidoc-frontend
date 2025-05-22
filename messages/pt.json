@@ -280,29 +280,47 @@
         }
       }
     },
-    "agenda": {
-      "title": "Agenda",
-      "description": "Agenda de consultas"
+    "patient": {
+      "title": "Paciente",
+      "description": "Página inicial do paciente"
     },
-    "consultations": {
-      "title": "Consultas",
-      "description": "Consultas médicas"
-    },
-    "onlineConsultation": {
-      "title": "Consultas Online",
-      "description": "Consultas médicas online"
-    },
-    "quickChat": {
-      "title": "Chat rápido",
-      "description": "Chat com o suporte"
-    },
-    "finances": {
-      "title": "Finanças",
-      "description": "Gerenciamento de finanças"
-    },
-    "support": {
-      "title": "Suporte",
-      "description": "Suporte ao cliente"
+    "provider": {
+      "professional": {
+        "title": "Profissional de saúde",
+        "description": "Página inicial do profissional de saúde"
+      },
+      "laboratory": {
+        "title": "Laboratório",
+        "description": "Página inicial do laboratório"
+      },
+      "clinic": {
+        "title": "Clínica",
+        "description": "Página inicial da clínica"
+      },
+      "agenda": {
+        "title": "Agenda",
+        "description": "Agenda de consultas"
+      },
+      "consultations": {
+        "title": "Consultas",
+        "description": "Consultas médicas"
+      },
+      "onlineConsultation": {
+        "title": "Consultas Online",
+        "description": "Consultas médicas online"
+      },
+      "quickChat": {
+        "title": "Chat rápido",
+        "description": "Chat com o suporte"
+      },
+      "finances": {
+        "title": "Finanças",
+        "description": "Gerenciamento de finanças"
+      },
+      "support": {
+        "title": "Suporte",
+        "description": "Suporte ao cliente"
+      }
     },
     "notifications": {
       "title": "Notificações",
