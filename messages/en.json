@@ -1,9 +1,8 @@
 {
   "common": {
-    "startNow": "Start Now",
     "login": "Login",
     "register": "Register",
-    "createAccount": "Create an Account",
+    "loading": "Loading...",
     "home": "Home",
     "about": "About",
     "aboutUs": "About Us",
@@ -18,46 +17,947 @@
     "contactUsAt": "Contact us at:",
     "allRightsReserved": "All rights reserved.",
     "logout": "Logout",
-    "myAccount": "My Account"
+    "myAccount": "My account",
+    "termsAndConditions": "Terms and conditions",
+    "termsAndConditionsDesc": "I have read and agree to the terms of use",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "search": "Search",
+    "status": "Status",
+    "date": "Date",
+    "value": "Value",
+    "id": "ID",
+    "type": "Type",
+    "select": "Select",
+    "filterByDate": "Filter by date",
+    "addFile": "Add file",
+    "maxFiles": "Only 5 files allowed",
+    "fileTypeError": "Only JPEG and PDF files with a maximum size of 5MB are allowed.",
+    "characters": "characters"
   },
-  "home": {
-    "heroTitle": "Healthcare simplified for everyone",
-    "heroDescription": "HaiDoc connects you with top healthcare professionals, making it easy to schedule appointments and stay on top of your well-being.",
-    "whyChoose": "Why choose HaiDoc?",
-    "whyChooseDescription": "Our platform offers a complete experience for both patients and healthcare professionals.",
-    "readyToStart": "Ready to get started?",
-    "joinThousands": "Join thousands of users already enjoying the benefits of HaiDoc."
+  "landing": {
+    "home": {
+      "cta": {
+        "login": "Login",
+        "startNow": "Start now",
+        "createAccount": "Create an account"
+      },
+      "heroTitle": "Healthcare simplified for everyone",
+      "heroDescription": "HaiDoc connects you to the best healthcare professionals, making it easy to schedule appointments and monitor your well-being.",
+      "whyChoose": "Why choose HaiDoc?",
+      "whyChooseDescription": "Our platform offers a complete experience for patients and healthcare professionals.",
+      "readyToStart": "Ready to start?",
+      "joinThousands": "Join thousands of users who are already enjoying the benefits of HaiDoc.",
+      "features": {
+        "onlineConsultationsTitle": "Online Consultations",
+        "onlineConsultationsDesc": "Schedule and conduct medical consultations directly from the comfort of your home.",
+        "qualifiedProfessionalsTitle": "Qualified Professionals",
+        "qualifiedProfessionalsDesc": "Access to a network of highly qualified doctors and specialists.",
+        "digitalRecordsTitle": "Digital Records",
+        "digitalRecordsDesc": "Keep your medical history organized and accessible at any time.",
+        "digitalPrescriptionsTitle": "Digital Prescriptions",
+        "digitalPrescriptionsDesc": "Receive your medical prescriptions digitally, without complications.",
+        "medicationRemindersTitle": "Medication Reminders",
+        "medicationRemindersDesc": "Never forget to take your medications again with our reminders.",
+        "examResultsTitle": "Exam Results",
+        "examResultsDesc": "View and share your exam results with your doctors."
+      }
+    },
+    "footer": {
+      "description": "Providing high-quality healthcare services and solutions for patients and healthcare professionals."
+    }
   },
-  "features": {
-    "onlineConsultationsTitle": "Online Consultations",
-    "onlineConsultationsDesc": "Schedule and attend medical consultations from the comfort of your home.",
-    "qualifiedProfessionalsTitle": "Qualified Professionals",
-    "qualifiedProfessionalsDesc": "Access a network of highly qualified doctors and specialists.",
-    "digitalRecordsTitle": "Digital Records",
-    "digitalRecordsDesc": "Keep your medical history organized and accessible anytime.",
-    "digitalPrescriptionsTitle": "Digital Prescriptions",
-    "digitalPrescriptionsDesc": "Receive your medical prescriptions digitally, hassle-free.",
-    "medicationRemindersTitle": "Medication Reminders",
-    "medicationRemindersDesc": "Never forget to take your medications with our smart reminders.",
-    "examResultsTitle": "Exam Results",
-    "examResultsDesc": "View and share your exam results with your doctors."
-  },
-  "footer": {
-    "description": "Providing high-quality healthcare services and solutions for patients and healthcare professionals."
-  },
-  "pages": {
+  "sidebar": {
     "home": "Home",
     "agenda": "Schedule",
     "consultations": "Consultations",
-    "onlineConsultation": "Online Consultation",
-    "quickChat": "Quick Chat",
+    "quickChat": "Quick chat",
     "finances": "Finances",
     "support": "Support",
-    "notifications": "Notifications",
-    "configurations": "Settings",
-    "publicProfile": "Public Profile",
-    "myAccount": "My Account",
-    "activityLog": "Activity Log",
     "collapse": "Collapse"
+  },
+  "form": {
+    "label": {
+      "email": "Email",
+      "password": "Password",
+      "code": "Code",
+      "sms": "SMS",
+      "repeatPassword": "Repeat password",
+      "fullName": "Full name",
+      "phone": "Phone number",
+      "birthDate": "Birth date",
+      "gender": "Gender",
+      "confirmPassword": "Confirm password",
+      "specialty": "Specialty",
+      "institutionName": "Institution name",
+      "professionalNumber": "Professional License Number",
+      "nuit": "NUIT",
+      "street": "Street or avenue",
+      "number": "Number",
+      "neighborhood": "Neighborhood",
+      "city": "City",
+      "country": "Country",
+      "or": "or",
+      "cardNumber": "Card number",
+      "cvv": "CVV",
+      "expiryDate": "Expiry date",
+      "occurrenceType": "Type of occurrence",
+      "description": "Description",
+      "patientName": "Patient Name",
+      "date": "Date",
+      "timeSlots": "Available time slots",
+      "reason": "Reason for appointment",
+      "consultationType": "Consultation type"
+    },
+    "placeholder": {
+      "email": "mail.example@gmail.com",
+      "password": "••••••••",
+      "phone": "Ex: +55 (71) 99999-9999",
+      "fullName": "Your full name",
+      "birthDate": "03/22/2002",
+      "confirmPassword": "••••••••",
+      "specialty": "Gynecology",
+      "institutionName": "Santo António Hospital",
+      "professionalNumber": "123456789",
+      "nuit": "123456789",
+      "street": "Example Street",
+      "number": "123",
+      "neighborhood": "Downtown",
+      "city": "Maputo",
+      "country": "Mozambique",
+      "cardNumber": "**** **** **** ****",
+      "cvv": "123",
+      "expiryDate": "MM/YY",
+      "occurrenceType": "Example: Question about payment",
+      "supportDescription": "Type your question or report your problem...",
+      "patientName": "Select a Patient",
+      "date": "Select a date",
+      "timeSlots": "Select a time slot",
+      "reason": "Reason for the patient's consultation appointment"
+    },
+    "category": {
+      "gender": {
+        "male": "Male",
+        "female": "Female",
+        "noIdentification": "Prefer Not to Identify"
+      },
+      "provider": {
+        "professional": "Healthcare professional",
+        "laboratory": "Laboratory",
+        "clinic": "Clinic",
+        "pharmacy": "Pharmacy"
+      },
+      "specialty": {
+        "gynecology": "Gynecology",
+        "cardiology": "Cardiology",
+        "dermatology": "Dermatology",
+        "pediatrics": "Pediatrics",
+        "orthopedics": "Orthopedics"
+      },
+      "durationUnit": {
+        "days": "Days",
+        "weeks": "Weeks",
+        "months": "Months"
+      },
+      "administrationRoute": {
+        "oral": "Oral",
+        "intravenosa": "Intravenous",
+        "intramuscular": "Intramuscular",
+        "subcutanea": "Subcutaneous",
+        "topica": "Topical"
+      },
+      "pharmaceuticalForm": {
+        "tablets": "Tablets",
+        "capsules": "Capsules",
+        "solution": "Solution",
+        "suspension": "Suspension",
+        "ointment": "Ointment",
+        "cream": "Cream"
+      },
+      "consultationType": {
+        "normal": "Normal",
+        "urgent": "Urgent",
+        "followUp": "Follow-up"
+      },
+      "consultationCategory": {
+        "home": "Home Visit",
+        "chat": "Chat",
+        "teleconsultation": "Teleconsultation"
+      },
+      "months": {
+        "january": "January",
+        "february": "February",
+        "march": "March",
+        "april": "April",
+        "may": "May",
+        "june": "June",
+        "july": "July",
+        "august": "August",
+        "september": "September",
+        "october": "October",
+        "november": "November",
+        "december": "December"
+      },
+      "weekDays": {
+        "monday": "SUNDAY",
+        "tuesday": "MONDAY",
+        "wednesday": "TUESDAY",
+        "thursday": "WEDNESDAY",
+        "friday": "THURSDAY",
+        "saturday": "FRIDAY",
+        "sunday": "SATURDAY"
+      },
+      "shortWeekDays": {
+        "monday": "Sun",
+        "tuesday": "Mon",
+        "wednesday": "Tue",
+        "thursday": "Wed",
+        "friday": "Thu",
+        "saturday": "Fri",
+        "sunday": "Sat"
+      }
+    },
+    "error": {
+      "fullNameRequired": "Full name is required",
+      "fullNameInvalid": "Name must contain only letters and spaces",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Phone must contain only numbers",
+      "birthDateRequired": "Birth date is required",
+      "genderRequired": "Gender is required",
+      "passwordRequired": "Password is required",
+      "passwordShort": "Password must be at least 8 characters long",
+      "confirmPasswordRequired": "Password confirmation is required",
+      "passwordsDontMatch": "Passwords do not match",
+      "filesRequired": "At least one document is required",
+      "streetRequired": "Street or avenue is required",
+      "numberRequired": "Number is required",
+      "neighborhoodRequired": "Neighborhood is required",
+      "cityRequired": "City is required",
+      "countryRequired": "Country is required",
+      "providerTypeRequired": "Provider type is required",
+      "specialtyRequired": "Specialty is required",
+      "institutionNameRequired": "Institution name is required",
+      "professionalNumberRequired": "Professional License Number is required",
+      "nuitRequired": "NUIT is required",
+      "professionalNumberLength": "Professional License Number must have 9 digits",
+      "nuitLength": "NUIT must have 9 digits",
+      "termsRequired": "You must agree to the terms and conditions",
+      "occurrenceTypeRequired": "The type of occurrence is required.",
+      "occurrenceTypeInvalid": "The type of occurrence must contain only letters and spaces.",
+      "occurrenceTypeLength": "The type of occurrence must be at least 3 characters and at most 255 characters long.",
+      "descriptionRequired": "The description field is required.",
+      "descriptionMinLength": "The description must be at least 10 characters long.",
+      "descriptionMaxLength": "The description must be at most 500 characters long."
+    }
+  },
+  "notification": {
+    "success": {
+      "title": "Success",
+      "message": "Your action was performed successfully!"
+    },
+    "warning": {
+      "title": "Warning",
+      "message": "Action not performed."
+    },
+    "error": {
+      "title": "Error",
+      "message": "An error occurred while performing the action."
+    },
+    "appointment": {
+      "success": {
+        "title": "Consultation marked as completed",
+        "message": "The consultation was successfully marked as completed."
+      }
+    }
+  },
+  "cta": {
+    "loginHero": "Login",
+    "loginHere": "Login here",
+    "login": "Login",
+    "register": "Register",
+    "send": "Send",
+    "next": "Next",
+    "access": "Access",
+    "enter": "Enter",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "tryAgain": "Try Again",
+    "forgotPassword": "Forgot my password",
+    "signUp": "Sign up",
+    "knowMore": "I want to know more",
+    "entering": "Entering...",
+    "sending": "Sending...",
+    "verifying": "Verifying...",
+    "loading": "Loading...",
+    "sendInstructions": "Send instructions",
+    "backToLogin": "Back to login",
+    "continue": "Continue",
+    "newAppointment": "New Appointment",
+    "availability": "Availability",
+    "viewDetails": "View details",
+    "endConsultation": "End consultation",
+    "startCall": "Start call",
+    "cancelCall": "Cancel call",
+    "startConsultation": "Start consultation",
+    "cancelConsultation": "Cancel consultation",
+    "reschedule": "Reschedule Consultation",
+    "markAsCompleted": "Mark as completed"
+  },
+  "modal": {
+    "quickChat": {
+      "endChat": {
+        "title": "Do you really want to end the consultation?",
+        "description": "This action cannot be undone.",
+        "cta": {
+          "endChat": "End Chat",
+          "cancel": "Cancel"
+        },
+        "success": {
+          "title": "Chat ended",
+          "description": "The consultation was ended successfully."
+        }
+      },
+      "summary": {
+        "title": "Consultation Summary",
+        "description": "Enter the consultation summary:",
+        "send": "Send"
+      }
+    },
+    "consultationDetails": {
+      "title": "Consultation information",
+      "label": {
+        "idOf": "Patient ID",
+        "date": "Consultation date",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "specialty": "Specialty",
+        "doctorName": "Doctor",
+        "price": "Value",
+        "reason": "Reason for consultation"
+      },
+      "cancelConfirm": {
+        "title": "Do you really want to Cancel this Consultation?",
+        "description": "Write the reason for refusing the cancellation to the patient"
+      }
+    },
+    "startConsultation": {
+      "title": "Start consultation...",
+      "description": "Please confirm the consultation to start the call.",
+      "alert": {
+        "title": "Secure call",
+        "description": "We use advanced encryption technology to ensure that all information exchanged during the consultation remains private and protected."
+      },
+      "alert2": {
+        "title": "Notice of Use of Services Outside the Platform",
+        "description": "To ensure the security and integrity of our services, HaiDoc declares that it is not responsible for any attempts to contact healthcare providers outside our platform. We strongly recommend that all interactions, consultations, transactions, and communications be conducted exclusively through our platform in order to avoid fraud, moral damages, and other inconveniences. By clicking &quot;Next&quot;, you affirm that you are aware of this notice."
+      }
+    }
+  },
+  "table": {
+    "emptyStateMessage": "No records found",
+    "emptyStateDescription": "No records found for the selected query.",
+    "loadingMessage": "Loading data...",
+    "viewMoreButtonText": "View All",
+    "columns": {
+      "ID": "ID",
+      "type": "Type",
+      "status": "Status",
+      "consultation": "Consultation",
+      "typeOf": "Type of {column}",
+      "value": "Value",
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "invoice": "Invoice",
+      "receipt": "Receipt",
+      "numberOf": "No. {column}",
+      "client": "Client",
+      "category": "Category",
+      "date": "Date",
+      "datetime": "Date and time",
+      "issueDate": "Issue date",
+      "actions": "Actions",
+      "options": "Options"
+    },
+    "filter": {
+      "label": {
+        "search": "Search",
+        "date": "Date",
+        "status": "Status",
+        "actions": "Actions",
+        "category": "Category",
+        "typeOfConsultation": "Type of Consultation",
+        "categoryOfConsultation": "Category of Consultation",
+        "typeOf": "Type of {column}"
+      },
+      "placeholder": {
+        "search": "Search by {column}",
+        "date": "Select a date",
+        "status": "Select a status",
+        "actions": "Select an action",
+        "category": "Select a category",
+        "typeOfConsultation": "Select a type",
+        "typeOf": "Select a {column}",
+        "categoryOfConsultation": "Select a category"
+      }
+    },
+    "cta": {
+      "view": "View",
+      "edit": "Edit",
+      "delete": "Delete",
+      "previous": "Previous",
+      "next": "Next",
+      "viewAllOrders": "View All Orders",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "pending": "Pending"
+    }
+  },
+  "pages": {
+    "auth": {
+      "login": {
+        "title": "Login!",
+        "authentication": "Authentication",
+        "chooseMethod": "To complete your Login successfully, please authenticate your data. Choose by which means you wish to receive the code.",
+        "or": "or",
+        "codeSentEmail": "We have sent an authentication code to your registered email. Please check your inbox and spam folder if necessary.",
+        "codeSentSMS": "We have sent an authentication code to your registered number. Please check your inbox and spam folder if necessary.",
+        "codeSentGeneric": "We have sent an authentication code. Please check your inbox.",
+        "enterCodeEmail": "Enter the code sent to your email below.",
+        "enterCodeSMS": "Enter the code sent to your phone number below.",
+        "enterCodeGeneric": "Enter the code sent below.",
+        "success": "Congratulations! Authentication successful!",
+        "failed": "The code entered is incorrect.",
+        "invalidFormat": "The code must contain 3 letters followed by 3 numbers.",
+        "noAccount": "Don't have an account?",
+        "business": "business",
+        "family": "family",
+        "benefits": {
+          "description": "Plans specially made for your <bold>business</bold> or for your <bold>family</bold>"
+        }
+      },
+      "forgotPassword": {
+        "title": "Recover Password",
+        "backLable": "Recover Password",
+        "instructions": "Enter your email to receive password reset instructions.",
+        "emailSent": "If the email provided is registered, you will receive instructions to reset your password.",
+        "verification": {
+          "chooseMethod": "To change your password, please authenticate your data. Choose by which means you wish to receive the code.",
+          "or": "or",
+          "codeSentEmail": "We have sent a recovery code to your registered email. Please check your inbox and spam folder if necessary.",
+          "codeSentSMS": "We have sent a recovery code to your registered number. Please check your inbox and spam folder if necessary.",
+          "codeSentGeneric": "We have sent a recovery code. Please check your inbox.",
+          "enterCodeEmail": "Enter the code sent to your email below.",
+          "enterCodeSMS": "Enter the code sent to your phone number below.",
+          "enterCodeGeneric": "Enter the code sent below.",
+          "invalidFormat": "The code must contain 3 letters followed by 3 numbers.",
+          "failed": "The code entered is incorrect.",
+          "newPassword": "Enter your new password.",
+          "repeatPassword": "Repeat password",
+          "passwordsMustMatch": "The new passwords must be the same.",
+          "success": "Congratulations! Your new password has been successfully reset. Please log in again."
+        }
+      },
+      "register": {
+        "title": "Register",
+        "chooseAccountType": "How do you want to register?",
+        "patientFor": "Patient",
+        "providerFor": "Service Provider",
+        "alreadyHaveAccount": "Already have an account?",
+        "loginHere": "Login here",
+        "steps": {
+          "basic": "Basic data",
+          "professional": "Professional details",
+          "documentation": "Documentation"
+        },
+        "provider": {
+          "basicData": {
+            "fullName": "Full name",
+            "phone": "Phone number",
+            "birthDate": "Birth date",
+            "gender": "Gender",
+            "password": "Create a password",
+            "confirmPassword": "Repeat your password"
+          },
+          "professionalDetails": {
+            "providerType": "Type of healthcare provider",
+            "specialty": "Specialty",
+            "institutionName": "Institution name",
+            "professionalNumber": "Professional License Number",
+            "nuit": "NUIT",
+            "permanentInfoProfessional": "The information regarding type of healthcare provider, specialty, and your Professional License Number will be permanent. If future changes are needed, please contact support.",
+            "permanentInfoOther": "The information regarding type of healthcare provider and NUIT will be permanent. If future changes are needed, please contact support.",
+            "termsRequired": "You must agree to the terms and conditions"
+          },
+          "documentation": {
+            "licenseDocs": "License documents",
+            "licenseDesc": "License (Medical Order Card or Institution Permit)",
+            "address": "Address",
+            "street": "Street or avenue",
+            "number": "Number",
+            "neighborhood": "Neighborhood",
+            "city": "City",
+            "country": "Country",
+            "fileLimit": "Only 5 documents are allowed",
+            "successTitle": "Registration successful!",
+            "successDesc": "Now you can access all platform functionalities."
+          }
+        }
+      }
+    },
+    "patient": {
+      "title": "Patient",
+      "description": "Patient's home page",
+      "name": "Patient Name",
+      "profile": {
+        "title": "Patient Profile",
+        "description": "Patient's profile"
+      },
+      "consultations": {
+        "title": "Consultations",
+        "description": "Medical consultations",
+        "completed": "Completed Consultations",
+        "canceled": "Canceled Consultations"
+      },
+      "chats": {
+        "title": "Chats",
+        "description": "Ended chats",
+        "completed": "Ended Chats",
+        "canceled": "Canceled Chats"
+      }
+    },
+    "provider": {
+      "professional": {
+        "title": "Healthcare professional",
+        "description": "Healthcare professional's home page"
+      },
+      "laboratory": {
+        "title": "Laboratory",
+        "description": "Laboratory's home page"
+      },
+      "clinic": {
+        "title": "Clinic",
+        "description": "Clinic's home page"
+      },
+      "home": {
+        "title": "Home",
+        "description": "Home page",
+        "welcome": "Welcome back, {name}!",
+        "lastestMessages": "Latest messages",
+        "consultationRequests": "Consultation Requests",
+        "profileApproval": {
+          "pending": {
+            "title": "Registration complete!",
+            "description": "Your data has been sent for the platform administrator to approve. Approval may take up to <bold>48 hours</bold>, and we will notify you as soon as your registration is approved!"
+          },
+          "approved": {
+            "title": "Success!",
+            "description": "Your profile has been approved! Now you can use your account, complete and adjust all necessary settings. Be sure to review your information to ensure a good experience.",
+            "cta": {
+              "label": "Customize my profile"
+            }
+          },
+          "rejected": {
+            "title": "Registration rejected!",
+            "description": "Your registration has been rejected. You have up to 3 attempts to correct your information. After editing, your application will be re-evaluated. If you need support, we are here to help."
+          },
+          "cancelled": {
+            "title": "Registration cancelled!",
+            "description": "Your registration has been cancelled. You can request a new registration at any time."
+          },
+          "suspended": {
+            "title": "Account suspended!",
+            "description": "Your account has been suspended. Please contact support for more information."
+          }
+        },
+        "metricStatus": {
+          "marked": "Scheduled Consultations",
+          "completed": "Completed Consultations",
+          "canceled": "Canceled Consultations"
+        },
+        "cta": {
+          "viewMessages": "View Messages",
+          "viewAgenda": "View Schedule"
+        }
+      },
+      "agenda": {
+        "title": "Schedule",
+        "description": "Consultation schedule",
+        "tabs": {
+          "agenda": "Schedule",
+          "history": "History",
+          "month": "Month",
+          "week": "Week",
+          "day": "Day"
+        },
+        "metricStatus": {
+          "home": "Home Visit Consultations",
+          "chat": "Quick Chat Consultations",
+          "teleconsultation": "Teleconsultations"
+        }
+      },
+      "consultation": {
+        "title": "Consultations",
+        "description": "Medical consultations",
+        "consultationsCompleted": "Completed Consultations",
+        "consultationsCanceled": "Canceled Consultations",
+        "tabs": {
+          "consultation": "Consultations",
+          "request": "Requests"
+        },
+        "metricStatus": {
+          "home": "Home Visit Consultations",
+          "chat": "Quick Chat Consultations",
+          "teleconsultation": "Teleconsultations"
+        },
+        "newAppointment": {
+          "title": "New appointment",
+          "description": "Schedule a consultation with one of our healthcare professionals",
+          "followUpTooltip": "A follow-up consultation is a follow-up appointment for patients who have already had a previous consultation.",
+          "cta": {
+            "backButton": "New Appointment"
+          }
+        },
+        "consultationHome": {
+          "title": "Home visit consultation",
+          "description": "Medical consultations",
+          "alert": {
+            "title": "Home visit consultation",
+            "description": "Please go to the indicated address at the scheduled time for the consultation. Remember to review all information before leaving to ensure you have everything you need for the home visit."
+          },
+          "label": {
+            "day": "Monday",
+            "hour": "Time",
+            "address": "Address link",
+            "contact": "Contact"
+          },
+          "cta": {},
+          "cancelConfirm": {
+            "title": "Do you really want to Cancel this Consultation?",
+            "description": "Write the reason for refusing the cancellation to the patient"
+          }
+        },
+        "featureBar": {
+          "tabs": {
+            "history": "History",
+            "prescription": "Prescription",
+            "exams": "Exams"
+          },
+          "history": {
+            "vitals": {
+              "title": "Patient pre-assessment",
+              "measuredOn": "Measured on",
+              "bloodPressure": "BP/HR (Blood pressure)",
+              "temperature": "Temperature",
+              "respiratoryRate": "Respiratory rate",
+              "weight": "Weight",
+              "imc": "BMI",
+              "additionalInfoTitle": "Additional information",
+              "additionalInformation": "If filled, it will appear like this"
+            },
+            "medicalHistory": {
+              "title": "Medical history",
+              "description": "Patient's medical history",
+              "filledOn": "Filled on",
+              "weight": "Weight",
+              "height": "Height",
+              "sex": "Sex",
+              "imc": "BMI",
+              "additionalInfoTitle": "Additional information",
+              "additionalInformation": "Hereditary diseases and medical conditions (diabetes, hypertension, heart disease, cancer, etc.) of parents, siblings, and other close relatives."
+            }
+          },
+          "prescription": {
+            "title": "Prescription",
+            "description": "Medical prescription",
+            "medicationName": "Medication name",
+            "medicationNamePlaceholder": "Type here",
+            "medicationNameGenericName": "Preferably add the generic name.",
+            "genericNamePlaceholder": "Type here",
+            "dosage": "Dosage",
+            "quantity": "Quantity",
+            "dosageUnit": "Unit",
+            "treatmentDuration": "Treatment duration",
+            "durationUnit": "Unit",
+            "administrationRoute": "Route of administration",
+            "pharmaceuticalForm": "Pharmaceutical form",
+            "instructions": "Instructions for use",
+            "instructionsMaxCharacters": "{chars} characters",
+            "signatureAndStampAdded": "Signature and stamp added",
+            "signatureAndStampAddedDescription": "Your signature and stamp will be automatically added when this prescription is sent.",
+            "addAnotherMedication": "Add another medication",
+            "send": "Send"
+          },
+          "exams": {}
+        }
+      },
+      "onlineConsultation": {
+        "title": "Online Consultations",
+        "description": "Online medical consultations",
+        "medicalReport": "Medical report",
+        "provisionalDiagnosis": "Provisional diagnosis",
+        "suspectedDiagnosis": "Suspected diagnosis",
+        "finalDiagnosis": "Final diagnosis (optional)",
+        "summary": "Consultation summary",
+        "close": "Close",
+        "history": "History",
+        "prescription": "Prescription",
+        "exams": "Exams",
+        "endCall": "End call",
+        "turnOnVideo": "Turn on video",
+        "turnOffVideo": "Turn off video",
+        "turnOnAudio": "Turn on audio",
+        "turnOffAudio": "Turn off audio",
+        "features": "Features"
+      },
+      "quickChat": {
+        "title": "Quick chat",
+        "description": "Chat with support",
+        "yourConversations": "Your Conversations",
+        "patientProfile": "Patient Profile",
+        "consultationHistory": "Consultation History",
+        "chatsFinalized": "Ended Chats",
+        "chatsFinalizedDesc": "Chats Ended on {datetime}",
+        "inProgress": "In progress",
+        "finalized": "Ended consultations",
+        "unreadMessages": "Unread messages",
+        "readMessages": "Read messages",
+        "endChatTitle": "Do you really want to end the consultation?",
+        "endChatDesc": "This action cannot be undone.",
+        "endChatCancel": "Cancel",
+        "endChatConfirm": "End consultation",
+        "summaryTitle": "Consultation Summary",
+        "summaryPlaceholder": "Type here...",
+        "summaryLabel": "Enter the consultation summary:",
+        "summarySend": "Send",
+        "cta": {
+          "completeChat": "End chat"
+        }
+      },
+      "finances": {
+        "title": "Finances",
+        "description": "Financial management",
+        "lastReceipts": "Last receipts",
+        "invoices": {
+          "title": "Invoices",
+          "description": "Issued invoices",
+          "details": {
+            "title": "Invoice details",
+            "description": "Invoice details",
+            "cta": {
+              "backButton": "Invoice details {invoiceNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Invoices"
+          }
+        },
+        "receipts": {
+          "title": "Receipts",
+          "description": "Issued receipts",
+          "details": {
+            "title": "Receipt Details",
+            "description": "Receipt details",
+            "cta": {
+              "backButton": "Receipt details {receiptNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Receipts"
+          }
+        },
+        "label": {
+          "receiptNumber": "Receipt number",
+          "invoiceNumber": "Invoice number",
+          "issueDate": "Issued on",
+          "unitValue": "Unit value",
+          "plansCount": "No. of plans",
+          "paymentMethod": "Payment method",
+          "status": "Status",
+          "issuerDetails": "Issuer details",
+          "issuerName": "Name",
+          "issuerNuit": "NUIT",
+          "issuerAddress": "Address",
+          "issuerContact": "Contact",
+          "customerDetails": "Customer details",
+          "customerName": "Name",
+          "customerNuit": "NUIT",
+          "customerAddress": "Address",
+          "customerContact": "Contact",
+          "dueDate": "Due date",
+          "subtotal": "Subtotal",
+          "finalValue": "Final value",
+          "totalWithTaxes": "Total with taxes",
+          "receiptReceived": "We inform you that the amount has been received by the issuer.",
+          "qrCode": "Scan the QR code and access our terms and conditions"
+        },
+        "cta": {
+          "backButton": "Finances",
+          "export": "Export",
+          "exporting": "Exporting...",
+          "exportPdf": "Export PDF",
+          "exportJpeg": "Export JPEG"
+        }
+      },
+      "support": {
+        "title": "Support",
+        "description": "Customer support",
+        "submitSuccessTitle": "Request sent",
+        "submitSuccessDesc": "Your support request has been sent successfully."
+      },
+      "profile": {
+        "title": "My account",
+        "description": "User's my account",
+        "configurations": {
+          "title": "Settings",
+          "description": "System settings"
+        },
+        "public": {
+          "title": "Public Profile",
+          "description": "User's public profile"
+        }
+      },
+      "activityLog": {
+        "title": "Activity log",
+        "description": "User's activity log"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "System notifications"
+    },
+    "plans": {
+      "pageTitle": "Discover Our Plans",
+      "pageDescription": "Explore personalized solutions to optimize your services and boost your business.",
+      "featured": "FEATURED",
+      "free": "FREE",
+      "business": {
+        "title": "HaiDoc Business",
+        "price": "FREE",
+        "features": [
+          "Free account",
+          "Monthly fund withdrawal after deduction of fees",
+          "Access to business services on the platform",
+          "Basic appointment management tools (consultations, bookings, etc.)"
+        ]
+      },
+      "businessPlus": {
+        "title": "HaiDoc Business Plus",
+        "price": "1,499",
+        "currency": "MZN",
+        "period": "Month",
+        "features": [
+          "All HaiDoc Business plan benefits +",
+          "Bi-weekly fund withdrawal after deduction of fees",
+          "Personalized schedule management for your business (consultations, bookings, etc.)",
+          "Performance analytics and personalized reports",
+          "Healthcare provider spotlight for all patients",
+          "Inclusion in the Platform's Recommended Services list for patients",
+          "Access to a 24/7 customer support line"
+        ]
+      },
+      "company": {
+        "title": "HaiDoc Company",
+        "price": "90",
+        "currency": "MZN",
+        "period": "Month",
+        "features": [
+          "All HaiDoc Business Plus plan benefits +",
+          "Weekly fund withdrawal after deduction of fees",
+          "Simultaneous access to all services (Pharmacy, Laboratory, Clinic, and Healthcare Professional)",
+          "Consulting for operations and service optimization",
+          "24/7 priority support",
+          "Participation in networking events and personalized training"
+        ]
+      }
+    },
+    "proposal": {
+      "title": "Proposal",
+      "description": "Service proposal",
+      "back": "Make proposal",
+      "form": {
+        "label": {
+          "companyName": "Company name",
+          "email": "Email",
+          "phone": "Phone number",
+          "description": "Description",
+          "file": "Document",
+          "fileHint": "Only 1 file allowed"
+        },
+        "placeholder": {
+          "companyNamePlaceholder": "Type here",
+          "emailPlaceholder": "email@example.com",
+          "phonePlaceholder": "82 123 4567",
+          "descriptionPlaceholder": "Type here"
+        },
+        "description": {
+          "charCount": "{count} characters"
+        },
+        "errors": {
+          "companyNameMin": "Name must be at least 3 characters long",
+          "companyNameMax": "Name must be at most 255 characters long",
+          "companyNameRegex": "Name must contain only letters and spaces",
+          "emailInvalid": "Enter a valid email",
+          "emailMax": "Email must be at most 255 characters long",
+          "phoneInvalid": "Enter a valid phone number",
+          "descriptionMin": "Description must be at least 10 characters long",
+          "descriptionMax": "Description must be at most 500 characters long"
+        }
+      },
+      "cta": {
+        "submitProposal": "Submit proposal"
+      },
+      "success": {
+        "title": "Proposal sent",
+        "description": "Your proposal has been sent successfully! We will contact you soon."
+      }
+    },
+    "subscription": {
+      "title": "Choose your plan",
+      "description": "Choose the plan that best suits your needs and your business.",
+      "chooseRecurrence": "Choose your plan recurrence",
+      "selectedPlan": "Chosen plan",
+      "totalValue": "Total value",
+      "selectRecurrence": "Select recurrence",
+      "currency": "MZN",
+      "recurrence": {
+        "monthly": "Monthly",
+        "semiannual": "Semi-annual",
+        "annual": "Annual",
+        "shortMonthly": "Month",
+        "shortSemiannual": "Semester",
+        "shortAnnual": "Year"
+      },
+      "paymentMethod": "Payment method",
+      "paymentType": "Payment type",
+      "paymentMethodOptions": {
+        "card": "Credit and/or debit cards",
+        "mpesa": "M-Pesa",
+        "emola": "E-Mola",
+        "paypal": "Paypal"
+      },
+      "cardType": {
+        "credit": "Credit card",
+        "debit": "Debit card"
+      },
+      "autoRenewNotice": "Your subscription will renew automatically, you have this recurring payment method.",
+      "review": "Review",
+      "cardEnding": "Credit card ending in {lastDigits}",
+      "success": "Your registration and payment have been completed!"
+    }
+  },
+  "videoCall": {
+    "title": "Video call",
+    "description": "Video call with the patient",
+    "endCall": "End",
+    "chatTooltip": "Chat",
+    "endCallTooltip": "End call",
+    "turnOnVideoTooltip": "Turn on video",
+    "turnOffVideoTooltip": "Turn off video",
+    "turnOnAudioTooltip": "Turn on audio",
+    "turnOffAudioTooltip": "Turn off audio",
+    "featuresTooltip": "Features"
   }
 }

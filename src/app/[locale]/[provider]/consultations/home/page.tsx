@@ -8,11 +8,15 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { useMobile } from "@/hooks/use-mobile"
 import { LucideCheckCircle2, MapPin } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useState } from "react"
 
 export default function ConsultaDomicilioPage() {
   const isMobile = useMobile()
+  const t = useTranslations("pages.provider.consultation.consultationHome")
+  const tCta = useTranslations("cta")
+
   const [isFeatureBarOpen, setIsFeatureBarOpen] = useState(false)
 
   return (
@@ -24,13 +28,9 @@ export default function ConsultaDomicilioPage() {
               <div>
                 <AlertTitle className="flex items-center gap-2">
                   <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
-                  Consulta a domicílio
+                  {t("alert.title")}
                 </AlertTitle>
-                <AlertDescription>
-                  Por favor, dirija-se ao endereço indicado no horário agendado para a consulta. Lembre-se de revisar
-                  todas as informações antes de sair para garantir que tenha tudo o que precisa para o atendimento
-                  domiciliar.
-                </AlertDescription>
+                <AlertDescription>{t("alert.description")}</AlertDescription>
               </div>
             </Alert>
 
@@ -46,17 +46,17 @@ export default function ConsultaDomicilioPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <Card className="p-4 gap-2">
-                <h3 className="text-sm text-gray-500 mb-1">Segunda</h3>
+                <h3 className="text-sm  mb-1">{t("label.day")}</h3>
                 <p className="text-base font-medium">03 Setembro, 2024</p>
               </Card>
               <Card className="p-4 gap-2">
-                <h3 className="text-sm text-gray-500 mb-1">Horário</h3>
+                <h3 className="text-sm  mb-1">{t("label.hour")}</h3>
                 <p className="text-base font-medium">09:00 - 10:00</p>
               </Card>
             </div>
 
             <div>
-              <h3 className="text-sm text-gray-500 mb-1">Link do endereço</h3>
+              <h3 className="text-sm  mb-1">{t("label.address")}</h3>
               <Link
                 href="https://maps.google.com"
                 target="_blank"
@@ -69,12 +69,12 @@ export default function ConsultaDomicilioPage() {
             </div>
 
             <div>
-              <h3 className="text-sm text-gray-500 mb-1">Contato</h3>
+              <h3 className="text-sm  mb-1">{t("label.contact")}</h3>
               <p className="text-base flex items-center gap-1">+258 00 00 0000</p>
             </div>
             <div className="flex justify-end gap-2">
-              {isMobile && <Button onClick={() => setIsFeatureBarOpen(true)}>Ver detalhes</Button>}
-              <Button variant="outline">Encerrar consulta</Button>
+              {isMobile && <Button onClick={() => setIsFeatureBarOpen(true)}>{tCta("viewDetails")}</Button>}
+              <Button variant="outline">{tCta("endConsultation")}</Button>
             </div>
           </Card>
         </div>

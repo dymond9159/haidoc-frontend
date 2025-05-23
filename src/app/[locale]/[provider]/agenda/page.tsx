@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
 
@@ -32,7 +33,14 @@ enum AgendaTabOptions {
 
 export default function AgendaPage() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.agenda")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+  const tFilter = useTranslations("table.filter")
+  const tNotification = useTranslations("notification")
+
   const { toast } = useToast()
+
   const query = useSearchParams()
   const [activeTab, setActiveTab] = useState(
     query.get("tab") === AgendaTabOptions.History ? AgendaTabOptions.History : AgendaTabOptions.Agenda,
@@ -46,8 +54,16 @@ export default function AgendaPage() {
   const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false)
 
   // Mock data
-  const consultationTypes = ["Urgente", "Normal", "Seguimento"]
-  const consultationCategories = ["Teleconsulta", "Chat", "Domicílio"]
+  const consultationTypes = [
+    tForm("category.consultationType.urgent"),
+    tForm("category.consultationType.normal"),
+    tForm("category.consultationType.followUp"),
+  ]
+  const consultationCategories = [
+    tForm("category.consultationCategory.teleconsultation"),
+    tForm("category.consultationCategory.chat"),
+    tForm("category.consultationCategory.home"),
+  ]
 
   const appointments = [
     {
@@ -118,8 +134,8 @@ export default function AgendaPage() {
   const handleMarkAsCompleted = () => {
     // Handle marking appointment as completed
     toast({
-      title: "Consulta marcada como realizada",
-      description: "A consulta foi marcada como realizada com sucesso",
+      title: tNotification("appointment.success.title"),
+      description: tNotification("appointment.success.message"),
     })
     setIsAppointmentModalOpen(false)
   }
@@ -136,18 +152,18 @@ export default function AgendaPage() {
   }
 
   const monthNames = [
-    "Janeiro",
-    "Fevereiro",
-    "Março",
-    "Abril",
-    "Maio",
-    "Junho",
-    "Julho",
-    "Agosto",
-    "Setembro",
-    "Outubro",
-    "Novembro",
-    "Dezembro",
+    tForm("category.months.january"),
+    tForm("category.months.february"),
+    tForm("category.months.march"),
+    tForm("category.months.april"),
+    tForm("category.months.may"),
+    tForm("category.months.june"),
+    tForm("category.months.july"),
+    tForm("category.months.august"),
+    tForm("category.months.september"),
+    tForm("category.months.october"),
+    tForm("category.months.november"),
+    tForm("category.months.december"),
   ]
 
   return (
@@ -160,8 +176,8 @@ export default function AgendaPage() {
         >
           <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-4 mb-2">
             <TabsList>
-              <TabsTrigger value={AgendaTabOptions.Agenda}>Agenda</TabsTrigger>
-              <TabsTrigger value={AgendaTabOptions.History}>Histórico</TabsTrigger>
+              <TabsTrigger value={AgendaTabOptions.Agenda}>{t("tabs.agenda")}</TabsTrigger>
+              <TabsTrigger value={AgendaTabOptions.History}>{t("tabs.history")}</TabsTrigger>
             </TabsList>
 
             <div className="w-full md:w-auto grid grid-cols-2 gap-2 md:gap-4">
@@ -170,7 +186,7 @@ export default function AgendaPage() {
                 className="gap-2 w-full md:w-auto"
                 onClick={() => router.push("/professional/profile/public/services")}
               >
-                Disponibilidade
+                {tCta("availability")}
                 <SlidersHorizontalIcon />
               </Button>
               <Button
@@ -178,7 +194,7 @@ export default function AgendaPage() {
                 onClick={() => router.push("/professional/consultations/new-appointment")}
               >
                 <PlusIcon />
-                Novo agendamento
+                {tCta("newAppointment")}
               </Button>
             </div>
           </div>
@@ -186,9 +202,9 @@ export default function AgendaPage() {
           <TabsContent value={AgendaTabOptions.Agenda}>
             {/* Metrics Section */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-              <StatCard title="Consultas à Domicílio" value="300" icon={<HomeIcon />} />
-              <StatCard title="Consultas em Chat Rápido" value="300" icon={<MessageSquareTextIcon />} />
-              <StatCard title="Teleconsultas" value="300" icon={<VideoIcon />} />
+              <StatCard title={t("metricStatus.home")} value="300" icon={<HomeIcon />} />
+              <StatCard title={t("metricStatus.chat")} value="300" icon={<MessageSquareTextIcon />} />
+              <StatCard title={t("metricStatus.teleconsultation")} value="300" icon={<VideoIcon />} />
             </div>
 
             {/* Calendar View Selector */}
@@ -197,9 +213,9 @@ export default function AgendaPage() {
                 <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-10">
                   <div className="w-full md:w-auto flex flex-col md:flex-row items-center justify-start md:justify-between gap-2">
                     <TabsList className="w-full md:w-auto gap-2 md:gap-4">
-                      <TabsTrigger value="month">Mês</TabsTrigger>
-                      <TabsTrigger value="week">Semana</TabsTrigger>
-                      <TabsTrigger value="day">Dia</TabsTrigger>
+                      <TabsTrigger value="month">{t("tabs.month")}</TabsTrigger>
+                      <TabsTrigger value="week">{t("tabs.week")}</TabsTrigger>
+                      <TabsTrigger value="day">{t("tabs.day")}</TabsTrigger>
                     </TabsList>
                     <div className="flex flex-row items-center gap-2">
                       <Button
@@ -257,7 +273,7 @@ export default function AgendaPage() {
                   </div>
                   <div className="w-full md:w-auto grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="text-sm mb-1 block">Tipo de Consulta</label>
+                      <label className="text-sm mb-1 block">{tFilter("label.typeOfConsultation")}</label>
                       <Select defaultValue="Urgente">
                         <SelectTrigger className="w-full">
                           <SelectValue />
@@ -273,7 +289,7 @@ export default function AgendaPage() {
                     </div>
 
                     <div>
-                      <label className="text-sm mb-1 block">Categoria de Consulta</label>
+                      <label className="text-sm mb-1 block">{tFilter("label.categoryOfConsultation")}</label>
                       <Select defaultValue="Teleconsulta">
                         <SelectTrigger className="w-full">
                           <SelectValue />

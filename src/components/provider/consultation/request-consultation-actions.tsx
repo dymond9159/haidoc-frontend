@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
 import { CheckIcon, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 import { CancelConfirmModal } from "./cancel-confirm-modal"
@@ -16,6 +17,7 @@ interface RequestConsultationActionsProps {
 
 export const RequestConsultationActions = ({ consultation }: RequestConsultationActionsProps) => {
   const router = useRouter()
+  const t = useTranslations("pages.provider.consultation.consultationHome")
   const { toast } = useToast()
   const [showCancelConfirm, setShowCancelConfirm] = useState(false)
 
@@ -105,6 +107,8 @@ export const RequestConsultationActions = ({ consultation }: RequestConsultation
         onOpenChange={setShowCancelConfirm}
         onCancel={handleCancelDialog}
         onConfirm={handleConfirmCancel}
+        title={t("cancelConfirm.title")}
+        description={t("cancelConfirm.description")}
       />
     </div>
   )

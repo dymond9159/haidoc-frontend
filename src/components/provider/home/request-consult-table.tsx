@@ -100,7 +100,7 @@ export function RequestConsultationTable({
         type: "search",
         label: t("filter.label.search"),
         accessorKey: "name",
-        placeholder: t("filter.placeholder.search", { column: t("name") }),
+        placeholder: t("filter.placeholder.search", { column: t("columns.name") }),
         value: filters.name,
         onChange: (value) => handleFilterChange("name", value),
       },

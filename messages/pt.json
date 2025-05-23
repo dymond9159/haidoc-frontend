@@ -183,6 +183,38 @@
         "home": "Domicílio",
         "chat": "Chat",
         "teleconsultation": "Teleconsulta"
+      },
+      "months": {
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro"
+      },
+      "weekDays": {
+        "monday": "DOMINGO",
+        "tuesday": "SEGUNDA",
+        "wednesday": "TERÇA",
+        "thursday": "QUARTA",
+        "friday": "QUINTA",
+        "saturday": "SEXTA",
+        "sunday": "SÁBADO"
+      },
+      "shortWeekDays": {
+        "monday": "Dom",
+        "tuesday": "Seg",
+        "wednesday": "Ter",
+        "thursday": "Qua",
+        "friday": "Qui",
+        "saturday": "Sex",
+        "sunday": "Sáb"
       }
     },
     "error": {
@@ -232,6 +264,12 @@
     "error": {
       "title": "Erro",
       "message": "Ocorreu um erro ao realizar a ação."
+    },
+    "appointment": {
+      "success": {
+        "title": "Consulta marcada como realizada",
+        "message": "A consulta foi marcada como realizada com sucesso."
+      }
     }
   },
   "cta": {
@@ -255,7 +293,17 @@
     "loading": "Carregando...",
     "sendInstructions": "Enviar instruções",
     "backToLogin": "Voltar para login",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "newAppointment": "Novo Agendamento",
+    "availability": "Disponibilidade",
+    "viewDetails": "Ver detalhes",
+    "endConsultation": "Encerrar consulta",
+    "startCall": "Iniciar chamada",
+    "cancelCall": "Cancelar chamada",
+    "startConsultation": "Iniciar consulta",
+    "cancelConsultation": "Cancelar consulta",
+    "reschedule": "Reagendar Consulta",
+    "markAsCompleted": "Marcar como realizada"
   },
   "modal": {
     "quickChat": {
@@ -275,6 +323,35 @@
         "title": "Resumo da Consulta",
         "description": "Digite o resumo da consulta:",
         "send": "Enviar"
+      }
+    },
+    "consultationDetails": {
+      "title": "Informações da consulta",
+      "label": {
+        "idOf": "ID da paciente",
+        "date": "Data da consulta",
+        "startTime": "Hora inicial",
+        "endTime": "Hora final",
+        "specialty": "Especialidade",
+        "doctorName": "Médico",
+        "price": "Valor",
+        "reason": "Motivo da consulta"
+      },
+      "cancelConfirm": {
+        "title": "Você realmente deseja Cancelar essa Consulta?",
+        "description": "Escreva o motivo da recusa do cancelamento para o paciente"
+      }
+    },
+    "startConsultation": {
+      "title": "Iniciar consulta...",
+      "description": "Por favor, confirme a consulta para iniciar a chamada.",
+      "alert": {
+        "title": "Chamada segura",
+        "description": "Utilizamos tecnologia de criptografia avançada para garantir que todas as informações trocadas durante a consulta permaneçam privadas e protegidas."
+      },
+      "alert2": {
+        "title": "Aviso de Uso De Serviços Fora da Plataforma",
+        "description": "Para assegurar a segurança e a integridade dos nossos serviços, a HaiDoc declara que não se responsabiliza por quaisquer tentativas de contato com provedores de saúde fora da nossa plataforma. Recomendamos enfaticamente que todas as interações, consultas, transações e comunicações sejam conduzidas exclusivamente através da nossa plataforma, a fim de evitar fraudes, danos morais e outros inconvenientes. Ao clicar em &quot;Próximo&quot;, você afirma estar ciente do aviso."
       }
     }
   },
@@ -310,14 +387,20 @@
         "date": "Data",
         "status": "Status",
         "actions": "Ações",
-        "category": "Categoria"
+        "category": "Categoria",
+        "typeOfConsultation": "Tipo de Consulta",
+        "categoryOfConsultation": "Categoria de Consulta",
+        "typeOf": "Tipo de {column}"
       },
       "placeholder": {
         "search": "Pesquisar por {column}",
         "date": "Selecione uma data",
         "status": "Selecione um status",
         "actions": "Selecione uma ação",
-        "category": "Selecione uma categoria"
+        "category": "Selecione uma categoria",
+        "typeOfConsultation": "Selecione um tipo",
+        "typeOf": "Selecione um {column}",
+        "categoryOfConsultation": "Selecione uma categoria"
       }
     },
     "cta": {
@@ -495,26 +578,65 @@
           "canceled": "Consultas Canceladas"
         },
         "cta": {
-          "newAppointment": "Novo agendamento",
           "viewMessages": "Ver Mensagens",
           "viewAgenda": "Ver Agenda"
         }
       },
       "agenda": {
         "title": "Agenda",
-        "description": "Agenda de consultas"
+        "description": "Agenda de consultas",
+        "tabs": {
+          "agenda": "Agenda",
+          "history": "Histórico",
+          "month": "Mês",
+          "week": "Semana",
+          "day": "Dia"
+        },
+        "metricStatus": {
+          "home": "Consultas à Domicílio",
+          "chat": "Consultas em Chat Rápido",
+          "teleconsultation": "Consultas Telemáticas"
+        }
       },
       "consultation": {
         "title": "Consultas",
         "description": "Consultas médicas",
         "consultationsCompleted": "Consultas Realizadas",
         "consultationsCanceled": "Consultas Canceladas",
+        "tabs": {
+          "consultation": "Consultas",
+          "request": "Solicitações"
+        },
+        "metricStatus": {
+          "home": "Consultas à Domicílio",
+          "chat": "Consultas em Chat Rápido",
+          "teleconsultation": "Teleconsultas"
+        },
         "newAppointment": {
           "title": "Novo agendamento",
           "description": "Agende uma consulta com um de nossos profissionais de saúde",
           "followUpTooltip": "Consulta de seguimento é uma consulta de acompanhamento para pacientes que já realizaram uma consulta anterior.",
           "cta": {
             "backButton": "Novo Agendamento"
+          }
+        },
+        "consultationHome": {
+          "title": "Consulta a domicílio",
+          "description": "Consultas médicas",
+          "alert": {
+            "title": "Consulta a domicílio",
+            "description": "Por favor, dirija-se ao endereço indicado no horário agendado para a consulta. Lembre-se de revisar todas as informações antes de sair para garantir que tenha tudo o que precisa para o atendimento domiciliar."
+          },
+          "label": {
+            "day": "Segunda",
+            "hour": "Horário",
+            "address": "Link do endereço",
+            "contact": "Contato"
+          },
+          "cta": {},
+          "cancelConfirm": {
+            "title": "Você realmente deseja Cancelar essa Consulta?",
+            "description": "Escreva o motivo da recusa do cancelamento para o paciente"
           }
         },
         "featureBar": {

@@ -1,6 +1,6 @@
 "use client"
 import { cn } from "@/lib/utils"
-
+import { useTranslations } from "next-intl"
 interface Appointment {
   id: string
   patientName: string
@@ -17,13 +17,23 @@ interface DayViewProps {
 }
 
 export function DayView({ date, appointments, onAppointmentClick, onDateChange, className }: DayViewProps) {
+  const t = useTranslations("form")
+
   const hours = Array.from({ length: 14 }, (_, i) => i + 7) // 7:00 to 20:00
 
   const getAppointmentsForHour = (hour: number) => {
     return appointments.filter((appointment) => appointment.startTime.getHours() === hour)
   }
 
-  const weekDays = ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"]
+  const weekDays = [
+    t("category.weekDays.sunday"),
+    t("category.weekDays.monday"),
+    t("category.weekDays.tuesday"),
+    t("category.weekDays.wednesday"),
+    t("category.weekDays.thursday"),
+    t("category.weekDays.friday"),
+    t("category.weekDays.saturday"),
+  ]
   const dayOfWeek = weekDays[date.getDay()]
 
   const today = new Date()

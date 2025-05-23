@@ -6,6 +6,7 @@ import { RequestConsultationTable } from "@/components/provider/home/request-con
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { HomeIcon, MessageSquareTextIcon, PlusIcon, SlidersHorizontalIcon, VideoIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useSearchParams } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
@@ -17,6 +18,9 @@ export enum ConsultationOptions {
 
 export default function ConsultationsPage() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.consultation")
+  const tCta = useTranslations("cta")
+
   const query = useSearchParams()
   const [activeTab, setActiveTab] = useState(
     query.get("tab") === ConsultationOptions.Request ? ConsultationOptions.Request : ConsultationOptions.Consultation,
@@ -36,8 +40,8 @@ export default function ConsultationsPage() {
       >
         <div className="flex flex-col md:flex-row items-start md:items-center justify-start md:justify-between gap-4 mb-2">
           <TabsList>
-            <TabsTrigger value={ConsultationOptions.Consultation}>Consultas</TabsTrigger>
-            <TabsTrigger value={ConsultationOptions.Request}>Solicitações</TabsTrigger>
+            <TabsTrigger value={ConsultationOptions.Consultation}>{t("tabs.consultation")}</TabsTrigger>
+            <TabsTrigger value={ConsultationOptions.Request}>{t("tabs.request")}</TabsTrigger>
           </TabsList>
 
           <div className="w-full md:w-auto grid grid-cols-2 gap-2 md:gap-4">
@@ -46,7 +50,7 @@ export default function ConsultationsPage() {
               className="gap-2 w-full md:w-auto"
               onClick={() => router.push("/professional/profile/public/services")}
             >
-              Disponibilidade
+              {tCta("availability")}
               <SlidersHorizontalIcon />
             </Button>
             <Button
@@ -54,16 +58,16 @@ export default function ConsultationsPage() {
               onClick={() => router.push("/professional/consultations/new-appointment")}
             >
               <PlusIcon />
-              Novo agendamento
+              {tCta("newAppointment")}
             </Button>
           </div>
         </div>
 
         <TabsContent value={ConsultationOptions.Consultation}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            <StatCard title="Consultas à Domicílio" icon={<HomeIcon />} value="300" />
-            <StatCard title="Consultas em Chat Rápido" icon={<MessageSquareTextIcon />} value="300" />
-            <StatCard title="Teleconsultas" icon={<VideoIcon />} value="300" />
+            <StatCard title={t("metricStatus.home")} icon={<HomeIcon />} value="300" />
+            <StatCard title={t("metricStatus.chat")} icon={<MessageSquareTextIcon />} value="300" />
+            <StatCard title={t("metricStatus.teleconsultation")} icon={<VideoIcon />} value="300" />
           </div>
 
           <ConsultationHomeTable />

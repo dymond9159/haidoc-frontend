@@ -16,7 +16,6 @@ import LinkButton from "@/components/ui/link"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Switch } from "@/components/ui/switch"
-import { Months, WeekDays } from "@/lib/constants/index"
 import { mockHistoryMessages } from "@/lib/mock-data/professional/chat"
 import { mockAppointments } from "@/lib/mock-data/professional/home"
 import { useTranslations } from "next-intl"
@@ -25,6 +24,8 @@ import { useRouter } from "nextjs-toploader/app"
 export default function ProfessionalHomePage() {
   const router = useRouter()
   const t = useTranslations("pages.provider.home")
+  const tCta = useTranslations("cta")
+  const tCategory = useTranslations("form.category")
 
   const [selectedMonth, setSelectedMonth] = useState("Agosto")
   const [selectedDate, setSelectedDate] = useState(9) // Current date in the calendar
@@ -33,6 +34,29 @@ export default function ProfessionalHomePage() {
   const currentWeekDates = [4, 5, 6, 7, 8, 9, 10]
   const thisMonth = new Date().toLocaleDateString("pt-PT", { month: "long", year: "numeric" })
 
+  const Months = [
+    tCategory("months.january"),
+    tCategory("months.february"),
+    tCategory("months.march"),
+    tCategory("months.april"),
+    tCategory("months.may"),
+    tCategory("months.june"),
+    tCategory("months.july"),
+    tCategory("months.august"),
+    tCategory("months.september"),
+    tCategory("months.october"),
+    tCategory("months.november"),
+    tCategory("months.december"),
+  ]
+  const ShortWeekDays = [
+    tCategory("shortWeekDays.sunday"),
+    tCategory("shortWeekDays.monday"),
+    tCategory("shortWeekDays.tuesday"),
+    tCategory("shortWeekDays.wednesday"),
+    tCategory("shortWeekDays.thursday"),
+    tCategory("shortWeekDays.friday"),
+    tCategory("shortWeekDays.saturday"),
+  ]
   return (
     <div className="space-y-8">
       <div>
@@ -51,7 +75,7 @@ export default function ProfessionalHomePage() {
           onClick={() => router.push("/professional/consultations/new-appointment")}
         >
           <PlusIcon size={16} />
-          {t("cta.newAppointment")}
+          {tCta("newAppointment")}
         </Button>
       </div>
 
@@ -114,7 +138,7 @@ export default function ProfessionalHomePage() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-7 gap-2 mb-4 items-center justify-center">
-              {WeekDays.map((day, index) => (
+              {ShortWeekDays.map((day, index) => (
                 <div key={day} className="text-center text-xs font-medium">
                   {day}
                 </div>

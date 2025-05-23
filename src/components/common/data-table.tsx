@@ -85,7 +85,7 @@ export function DataTable<T>({
             {columns.map((column) => (
               <TableHead
                 key={String(column.accessorKey)}
-                className={cn("text-secondary", column.headerClassName)} // Apply specific or default class
+                className={cn("text-secondary uppercase", column.headerClassName)} // Apply specific or default class
               >
                 {column.header}
               </TableHead>
