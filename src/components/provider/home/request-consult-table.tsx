@@ -10,6 +10,7 @@ import { ConsultationCategoryList } from "@/lib/constants/consultations"
 import { mockConsultationRequests } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
 import { RequestConsultationColumns } from "@/types/provider/professional/interface-columns"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { RequestConsultationActions } from "../consultation"
 
@@ -32,6 +33,8 @@ export function RequestConsultationTable({
   onViewMoreClick,
 }: RequestConsultationTableProps) {
   const router = useRouter()
+  const t = useTranslations("table")
+
   const [allData, setAllData] = useState<RequestConsultationColumns[]>([])
   const [filters, setFilters] = useState<FilterOption>({}) // Initialize filter state
   const [isLoading, setIsLoading] = useState(true)
@@ -60,16 +63,16 @@ export function RequestConsultationTable({
     () => [
       {
         accessorKey: "name",
-        header: "NOME",
+        header: t("columns.name"),
       },
       {
         accessorKey: "category",
-        header: "CATEGORIA",
+        header: t("columns.category"),
         cell: (row) => <StatusLabel status={row?.category} />,
       },
       {
         accessorKey: "date",
-        header: "DATA E HORA",
+        header: t("columns.datetime"),
         cell: (row) => (
           <div>
             <span className="text-sm block">{row?.time}</span>
@@ -79,9 +82,13 @@ export function RequestConsultationTable({
       },
       {
         accessorKey: "actions",
-        header: "OPÇÕES",
+        header: t("columns.actions"),
         cell: (row) =>
-          row?.isAccepted ? <span className="text-sm">Aceito</span> : <RequestConsultationActions consultation={row} />,
+          row?.isAccepted ? (
+            <span className="text-sm">{t("cta.accepted")}</span>
+          ) : (
+            <RequestConsultationActions consultation={row} />
+          ),
       },
     ],
     [],
@@ -91,17 +98,17 @@ export function RequestConsultationTable({
     () => [
       {
         type: "search",
-        label: "Pesquisar Nome",
+        label: t("filter.label.search"),
         accessorKey: "name",
-        placeholder: "Pesquisar por Nome",
+        placeholder: t("filter.placeholder.search", { column: t("columns.name") }),
         value: filters.name,
         onChange: (value) => handleFilterChange("name", value),
       },
       {
         type: "select",
-        label: "Categoria",
+        label: t("filter.label.category"),
         accessorKey: "category",
-        placeholder: "Selecione uma categoria",
+        placeholder: t("filter.placeholder.category"),
         value: filters.category,
         onChange: (value) => handleFilterChange("category", value),
         options: ConsultationCategoryList.map((category) => ({

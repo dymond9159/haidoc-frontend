@@ -11,14 +11,15 @@ import { Card } from "@/components/ui/card"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { useScreen } from "@/hooks/use-screen"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 import { ExamsForm } from "./exams-form"
 import { PatientHistoryPanel } from "./patient-history-panel"
 import { PrescriptionForm } from "./prescription-form"
 
-export enum ConsultationFeatureBarTabs {
-  History = "Histórico",
-  Prescription = "Prescrição",
-  Exams = "Exames",
+enum ConsultationFeatureBarTabs {
+  History = "history",
+  Prescription = "prescription",
+  Exams = "exams",
 }
 
 interface ConsultationFeatureBarProps {
@@ -30,6 +31,7 @@ export const ConsultationFeatureBar = ({
   isOpenFeatureBar: isOpenFeatureBarProp,
   onOpenFeatureBarChange,
 }: ConsultationFeatureBarProps) => {
+  const t = useTranslations("pages.provider.consultation")
   const { isMobile } = useScreen()
   const [activeTab, setActiveTab] = useState<ConsultationFeatureBarTabs>(ConsultationFeatureBarTabs.History)
 
@@ -60,21 +62,21 @@ export const ConsultationFeatureBar = ({
                   className="h-full rounded-bl-none rounded-br-none rounded-tr-none"
                 >
                   <HistoryIcon size={16} />
-                  Histórico
+                  {t("featureBar.tabs.history")}
                 </TabsTrigger>
                 <TabsTrigger
                   value={ConsultationFeatureBarTabs.Prescription}
                   className="h-full rounded-bl-none rounded-br-none rounded-tr-none rounded-tl-none"
                 >
                   <Pill size={16} />
-                  Prescrição
+                  {t("featureBar.tabs.prescription")}
                 </TabsTrigger>
                 <TabsTrigger
                   value={ConsultationFeatureBarTabs.Exams}
                   className="h-full rounded-bl-none rounded-br-none rounded-tl-none"
                 >
                   <StethoscopeIcon size={16} />
-                  Exames
+                  {t("featureBar.tabs.exams")}
                 </TabsTrigger>
               </TabsList>
             </div>

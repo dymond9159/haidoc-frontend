@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -15,16 +16,37 @@ interface PriceOption {
   value: RecurrenceOption
   price: number
   displayPrice: string
+  period: string
 }
 
 export default function SubscriptionPage() {
   const router = useRouter()
   const [selectedOption, setSelectedOption] = useState<RecurrenceOption>("monthly")
+  const t = useTranslations("pages.subscription")
+  const tCta = useTranslations("cta")
 
   const priceOptions: PriceOption[] = [
-    { label: "Mensal", value: "monthly", price: 1499, displayPrice: "1.499 MZN/Mês" },
-    { label: "Semestral", value: "semiannual", price: 8000, displayPrice: "8.000 MZN/Semestre" },
-    { label: "Anual", value: "annual", price: 15200, displayPrice: "15.200 MZN/Ano" },
+    {
+      label: t("recurrence.monthly"),
+      value: "monthly",
+      price: 1499,
+      displayPrice: "1.499",
+      period: t("recurrence.shortMonthly"),
+    },
+    {
+      label: t("recurrence.semiannual"),
+      value: "semiannual",
+      price: 8000,
+      displayPrice: "8.000",
+      period: t("recurrence.shortSemiannual"),
+    },
+    {
+      label: t("recurrence.annual"),
+      value: "annual",
+      price: 15200,
+      displayPrice: "15.200",
+      period: t("recurrence.shortAnnual"),
+    },
   ]
 
   const selectedPrice = priceOptions.find((option) => option.value === selectedOption)
@@ -35,23 +57,25 @@ export default function SubscriptionPage() {
 
   return (
     <div>
-      <BackButton text="Escolha a recorrência do seu plano" />
+      <BackButton text={t("chooseRecurrence")} />
 
       <Card className="mt-4 border-0 p-0 sm:border-1 sm:p-6">
         <CardContent>
           <div className="space-y-6">
             <div>
-              <h2 className="text-sm font-medium text-gray-500">Plano escolhido</h2>
+              <h2 className="text-sm font-medium text-gray-500">{t("selectedPlan")}</h2>
               <p className="text-lg font-medium text-secondary">HaiDoc Business Plus</p>
             </div>
 
             <div>
-              <h2 className="text-sm font-medium text-gray-500">Valor total</h2>
-              <p className="text-xl font-bold">{selectedPrice?.displayPrice}</p>
+              <h2 className="text-sm font-medium text-gray-500">{t("totalValue")}</h2>
+              <p className="text-xl font-bold">
+                {selectedPrice?.displayPrice} {t("currency")}/{selectedPrice?.period}
+              </p>
             </div>
 
             <div>
-              <h2 className="mb-3 text-sm font-medium text-gray-500">Selecione a recorrência</h2>
+              <h2 className="mb-3 text-sm font-medium text-gray-500">{t("selectRecurrence")}</h2>
               <RadioGroup
                 value={selectedOption}
                 onValueChange={(value) => setSelectedOption(value as RecurrenceOption)}
@@ -72,7 +96,7 @@ export default function SubscriptionPage() {
             </div>
 
             <Button onClick={handleNext} className="w-full">
-              Próximo
+              {tCta("next")}
             </Button>
           </div>
         </CardContent>

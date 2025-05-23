@@ -1,18 +1,931 @@
 {
-  "common": {},
-  "pages": {
+  "common": {
+    "login": "Login",
+    "register": "Cadastro",
+    "loading": "Carregando...",
+    "home": "Home",
+    "about": "Sobre",
+    "aboutUs": "Sobre Nós",
+    "services": "Serviços",
+    "contact": "Contato",
+    "quickLinks": "Links Rápidos",
+    "legal": "Legal",
+    "privacyPolicy": "Política de Privacidade",
+    "termsOfService": "Termos de Serviço",
+    "cookiePolicy": "Política de Cookies",
+    "contactUs": "Contate-nos",
+    "contactUsAt": "Contate-nos em:",
+    "allRightsReserved": "Todos os direitos reservados.",
+    "logout": "Sair",
+    "myAccount": "Minha conta",
+    "termsAndConditions": "Termos e condições",
+    "termsAndConditionsDesc": "Li e concordo com os termos de uso",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "search": "Pesquisar",
+    "status": "Status",
+    "date": "Data",
+    "value": "Valor",
+    "id": "ID",
+    "type": "Tipo",
+    "select": "Selecione",
+    "filterByDate": "Filtrar por data",
+    "addFile": "Adicionar arquivo",
+    "maxFiles": "Apenas 5 arquivos permitidos",
+    "fileTypeError": "Apenas arquivos JPEG e PDF com tamanho máximo de 5MB são permitidos.",
+    "characters": "caracteres"
+  },
+  "sidebar": {
+    "home": "Home",
     "agenda": "Agenda",
     "consultations": "Consultas",
-    "onlineConsultation": "Consulta online",
     "quickChat": "Chat rápido",
     "finances": "Finanças",
     "support": "Suporte",
-    "notifications": "Notificações",
-    "configurations": "Configurações",
-    "publicProfile": "Perfil público",
-    "myAccount": "Minha conta",
-    "activityLog": "Log de Atividades",
-    "home": "Home",
     "collapse": "Recolher"
+  },
+  "form": {
+    "label": {
+      "email": "E-mail",
+      "password": "Senha",
+      "code": "Código",
+      "sms": "SMS",
+      "repeatPassword": "Repita a senha",
+      "fullName": "Nome completo",
+      "phone": "Número de telefone",
+      "birthDate": "Data de nascimento",
+      "gender": "Sexo",
+      "confirmPassword": "Confirme a senha",
+      "specialty": "Especialidade",
+      "institutionName": "Nome da instituição",
+      "professionalNumber": "Número de Carteira Profissional",
+      "nuit": "NUIT",
+      "street": "Rua ou avenida",
+      "number": "Número",
+      "neighborhood": "Bairro",
+      "city": "Cidade",
+      "country": "País",
+      "or": "ou",
+      "cardNumber": "Número do cartão",
+      "cvv": "CVV",
+      "expiryDate": "Data de validade",
+      "occurrenceType": "Tipo de ocorrência",
+      "description": "Descrição",
+      "patientName": "Nome do Paciente",
+      "date": "Data",
+      "timeSlots": "Horários disponíveis",
+      "reason": "Motivo do agendamento",
+      "consultationType": "Tipo de consulta"
+    },
+    "placeholder": {
+      "email": "mail.example@gmail.com",
+      "password": "••••••••",
+      "phone": "Ex: +55 (71) 99999-9999",
+      "fullName": "Seu nome completo",
+      "birthDate": "22/03/2002",
+      "confirmPassword": "••••••••",
+      "specialty": "Ginecologia",
+      "institutionName": "Hospital de Santo António",
+      "professionalNumber": "123456789",
+      "nuit": "123456789",
+      "street": "Rua Exemplo",
+      "number": "123",
+      "neighborhood": "Centro",
+      "city": "Maputo",
+      "country": "Moçambique",
+      "cardNumber": "**** **** **** ****",
+      "cvv": "123",
+      "expiryDate": "MM/AA",
+      "occurrenceType": "Exemplo: Dúvida sobre o pagamento",
+      "supportDescription": "Digite sua pergunta ou relate seu problema...",
+      "patientName": "Selecione um Paciente",
+      "date": "Selecione uma data",
+      "timeSlots": "Selecione um horário",
+      "reason": "Motivo do agendamento da consulta do paciente"
+    },
+    "category": {
+      "gender": {
+        "male": "Masculino",
+        "female": "Feminino",
+        "noIdentification": "Prefiro Não Identificar"
+      },
+      "provider": {
+        "professional": "Profissional de saúde",
+        "laboratory": "Laboratório",
+        "clinic": "Clínica",
+        "pharmacy": "Farmácia"
+      },
+      "specialty": {
+        "gynecology": "Ginecologia",
+        "cardiology": "Cardiologia",
+        "dermatology": "Dermatologia",
+        "pediatrics": "Pediatria",
+        "orthopedics": "Ortopedia"
+      },
+      "durationUnit": {
+        "days": "Dias",
+        "weeks": "Semanas",
+        "months": "Meses"
+      },
+      "administrationRoute": {
+        "oral": "Oral",
+        "intravenosa": "Intravenosa",
+        "intramuscular": "Intramuscular",
+        "subcutanea": "Subcutânea",
+        "topica": "Tópica"
+      },
+      "pharmaceuticalForm": {
+        "tablets": "Comprimidos",
+        "capsules": "Cápsulas",
+        "solution": "Solução",
+        "suspension": "Suspensão",
+        "ointment": "Pomada",
+        "cream": "Creme"
+      },
+      "consultationType": {
+        "normal": "Normal",
+        "urgent": "Urgente",
+        "followUp": "Seguimento"
+      },
+      "consultationCategory": {
+        "home": "Domicílio",
+        "chat": "Chat",
+        "teleconsultation": "Teleconsulta"
+      },
+      "months": {
+        "january": "Janeiro",
+        "february": "Fevereiro",
+        "march": "Março",
+        "april": "Abril",
+        "may": "Maio",
+        "june": "Junho",
+        "july": "Julho",
+        "august": "Agosto",
+        "september": "Setembro",
+        "october": "Outubro",
+        "november": "Novembro",
+        "december": "Dezembro"
+      },
+      "weekDays": {
+        "monday": "DOMINGO",
+        "tuesday": "SEGUNDA",
+        "wednesday": "TERÇA",
+        "thursday": "QUARTA",
+        "friday": "QUINTA",
+        "saturday": "SEXTA",
+        "sunday": "SÁBADO"
+      },
+      "shortWeekDays": {
+        "monday": "Dom",
+        "tuesday": "Seg",
+        "wednesday": "Ter",
+        "thursday": "Qua",
+        "friday": "Qui",
+        "saturday": "Sex",
+        "sunday": "Sáb"
+      }
+    },
+    "error": {
+      "fullNameRequired": "Nome completo é obrigatório",
+      "fullNameInvalid": "Nome deve conter apenas letras e espaços",
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "E-mail inválido",
+      "phoneRequired": "Número de telefone é obrigatório",
+      "phoneInvalid": "Telefone deve conter apenas números",
+      "birthDateRequired": "Data de nascimento é obrigatória",
+      "genderRequired": "Sexo é obrigatório",
+      "passwordRequired": "Senha é obrigatória",
+      "passwordShort": "Senha deve ter pelo menos 8 caracteres",
+      "confirmPasswordRequired": "Confirmação de senha é obrigatória",
+      "passwordsDontMatch": "As senhas não coincidem",
+      "filesRequired": "Pelo menos um documento é obrigatório",
+      "streetRequired": "Rua ou avenida é obrigatória",
+      "numberRequired": "Número é obrigatório",
+      "neighborhoodRequired": "Bairro é obrigatório",
+      "cityRequired": "Cidade é obrigatória",
+      "countryRequired": "País é obrigatório",
+      "providerTypeRequired": "Tipo de provedor é obrigatório",
+      "specialtyRequired": "Especialidade é obrigatória",
+      "institutionNameRequired": "Nome da instituição é obrigatório",
+      "professionalNumberRequired": "Número de Carteira Profissional é obrigatório",
+      "nuitRequired": "NUIT é obrigatório",
+      "professionalNumberLength": "Número de Carteira Profissional deve ter 9 dígitos",
+      "nuitLength": "NUIT deve ter 9 dígitos",
+      "termsRequired": "Você deve concordar com os termos e condições",
+      "occurrenceTypeRequired": "O tipo de ocorrência é obrigatório.",
+      "occurrenceTypeInvalid": "O tipo de ocorrência deve conter apenas letras e espaços.",
+      "occurrenceTypeLength": "O tipo de ocorrência deve ter no mínimo 3 caracteres e no máximo 255 caracteres.",
+      "descriptionRequired": "O campo descrição é obrigatório.",
+      "descriptionMinLength": "A descrição deve ter no mínimo 10 caracteres.",
+      "descriptionMaxLength": "A descrição deve ter no máximo 500 caracteres."
+    }
+  },
+  "notification": {
+    "success": {
+      "title": "Sucesso",
+      "message": "Sua ação foi realizada com sucesso!"
+    },
+    "warning": {
+      "title": "Atenção",
+      "message": "Ação não realizada."
+    },
+    "error": {
+      "title": "Erro",
+      "message": "Ocorreu um erro ao realizar a ação."
+    },
+    "appointment": {
+      "success": {
+        "title": "Consulta marcada como realizada",
+        "message": "A consulta foi marcada como realizada com sucesso."
+      }
+    }
+  },
+  "cta": {
+    "loginHero": "Fazer login",
+    "loginHere": "Faça login",
+    "login": "Login",
+    "register": "Cadastro",
+    "send": "Enviar",
+    "next": "Próximo",
+    "access": "Acessar",
+    "enter": "Entrar",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "tryAgain": "Tentar Novamente",
+    "forgotPassword": "Esqueci minha senha",
+    "signUp": "Cadastre-se",
+    "knowMore": "Quero saber mais",
+    "entering": "Entrando...",
+    "sending": "Enviando...",
+    "verifying": "Verificando...",
+    "loading": "Carregando...",
+    "sendInstructions": "Enviar instruções",
+    "backToLogin": "Voltar para login",
+    "continue": "Continuar",
+    "newAppointment": "Novo Agendamento",
+    "availability": "Disponibilidade",
+    "viewDetails": "Ver detalhes",
+    "endConsultation": "Encerrar consulta",
+    "startCall": "Iniciar chamada",
+    "cancelCall": "Cancelar chamada",
+    "startConsultation": "Iniciar consulta",
+    "cancelConsultation": "Cancelar consulta",
+    "reschedule": "Reagendar Consulta",
+    "markAsCompleted": "Marcar como realizada"
+  },
+  "modal": {
+    "quickChat": {
+      "endChat": {
+        "title": "Realmente deseja finalizar a consulta?",
+        "description": "Essa ação não poderá ser desfeita.",
+        "cta": {
+          "endChat": "Finalizar Conversa",
+          "cancel": "Cancelar"
+        },
+        "success": {
+          "title": "Chat finalizado",
+          "description": "A consulta foi finalizada com sucesso."
+        }
+      },
+      "summary": {
+        "title": "Resumo da Consulta",
+        "description": "Digite o resumo da consulta:",
+        "send": "Enviar"
+      }
+    },
+    "consultationDetails": {
+      "title": "Informações da consulta",
+      "label": {
+        "idOf": "ID da paciente",
+        "date": "Data da consulta",
+        "startTime": "Hora inicial",
+        "endTime": "Hora final",
+        "specialty": "Especialidade",
+        "doctorName": "Médico",
+        "price": "Valor",
+        "reason": "Motivo da consulta"
+      },
+      "cancelConfirm": {
+        "title": "Você realmente deseja Cancelar essa Consulta?",
+        "description": "Escreva o motivo da recusa do cancelamento para o paciente"
+      }
+    },
+    "startConsultation": {
+      "title": "Iniciar consulta...",
+      "description": "Por favor, confirme a consulta para iniciar a chamada.",
+      "alert": {
+        "title": "Chamada segura",
+        "description": "Utilizamos tecnologia de criptografia avançada para garantir que todas as informações trocadas durante a consulta permaneçam privadas e protegidas."
+      },
+      "alert2": {
+        "title": "Aviso de Uso De Serviços Fora da Plataforma",
+        "description": "Para assegurar a segurança e a integridade dos nossos serviços, a HaiDoc declara que não se responsabiliza por quaisquer tentativas de contato com provedores de saúde fora da nossa plataforma. Recomendamos enfaticamente que todas as interações, consultas, transações e comunicações sejam conduzidas exclusivamente através da nossa plataforma, a fim de evitar fraudes, danos morais e outros inconvenientes. Ao clicar em &quot;Próximo&quot;, você afirma estar ciente do aviso."
+      }
+    }
+  },
+  "table": {
+    "emptyStateMessage": "Nenhum registro encontrado",
+    "emptyStateDescription": "Nenhum registro encontrado para a consulta selecionada.",
+    "loadingMessage": "Carregando dados...",
+    "viewMoreButtonText": "Ver Todos",
+    "columns": {
+      "ID": "ID",
+      "type": "Tipo",
+      "status": "Status",
+      "consultation": "Consulta",
+      "typeOf": "Tipo de {column}",
+      "value": "Valor",
+      "name": "Nome",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "invoice": "Fatura",
+      "receipt": "Recibo",
+      "numberOf": "N° {column}",
+      "client": "Cliente",
+      "category": "Categoria",
+      "date": "Data",
+      "datetime": "Data e hora",
+      "issueDate": "Data de emissão",
+      "actions": "Ações",
+      "options": "Opções"
+    },
+    "filter": {
+      "label": {
+        "search": "Pesquisar",
+        "date": "Data",
+        "status": "Status",
+        "actions": "Ações",
+        "category": "Categoria",
+        "typeOfConsultation": "Tipo de Consulta",
+        "categoryOfConsultation": "Categoria de Consulta",
+        "typeOf": "Tipo de {column}"
+      },
+      "placeholder": {
+        "search": "Pesquisar por {column}",
+        "date": "Selecione uma data",
+        "status": "Selecione um status",
+        "actions": "Selecione uma ação",
+        "category": "Selecione uma categoria",
+        "typeOfConsultation": "Selecione um tipo",
+        "typeOf": "Selecione um {column}",
+        "categoryOfConsultation": "Selecione uma categoria"
+      }
+    },
+    "cta": {
+      "view": "Visualizar",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "previous": "Anterior",
+      "next": "Próximo",
+      "viewAllOrders": "Ver Todos os Pedidos",
+      "accepted": "Aceito",
+      "rejected": "Rejeitado",
+      "pending": "Pendente"
+    }
+  },
+  "pages": {
+    "auth": {
+      "login": {
+        "title": "Faça seu Login!",
+        "authentication": "Autenticação",
+        "chooseMethod": "Para completar seu Login com sucesso, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
+        "or": "ou",
+        "codeSentEmail": "Enviamos um código de autenticação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+        "codeSentSMS": "Enviamos um código de autenticação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+        "codeSentGeneric": "Enviamos um código de autenticação. Por favor, verifique a sua caixa de entrada.",
+        "enterCodeEmail": "Digite abaixo o código enviado para o seu e-mail.",
+        "enterCodeSMS": "Digite abaixo o código enviado para o seu número de telefone.",
+        "enterCodeGeneric": "Digite abaixo o código enviado.",
+        "success": "Parabéns! Autenticação efetuada com sucesso!",
+        "failed": "O código digitado está incorreto.",
+        "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
+        "noAccount": "Não tem uma conta?",
+        "business": "negócio",
+        "family": "família",
+        "benefits": {
+          "description": "Planos especialmente feitos para seu <bold>negócio</bold> ou para sua <bold>família</bold>"
+        }
+      },
+      "forgotPassword": {
+        "title": "Recuperar Senha",
+        "backLable": "Recuperar Senha",
+        "instructions": "Digite seu e-mail para receber instruções de redefinição de senha.",
+        "emailSent": "Se o e-mail informado estiver cadastrado, você receberá instruções para redefinir sua senha.",
+        "verification": {
+          "chooseMethod": "Para alterar sua senha, por favor efetue a autenticação de seus dados. Escolha por qual meio deseja receber o código.",
+          "or": "ou",
+          "codeSentEmail": "Enviamos um código de recuperação para o seu e-mail cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+          "codeSentSMS": "Enviamos um código de recuperação para o seu número cadastrado. Por favor, verifique a sua caixa de entrada e a pasta de spam, se necessário.",
+          "codeSentGeneric": "Enviamos um código de recuperação. Por favor, verifique a sua caixa de entrada.",
+          "enterCodeEmail": "Digite abaixo o código enviado para o seu e-mail.",
+          "enterCodeSMS": "Digite abaixo o código enviado para o seu número de telefone.",
+          "enterCodeGeneric": "Digite abaixo o código enviado.",
+          "invalidFormat": "O código deve conter 3 letras seguidas de 3 números.",
+          "failed": "O código digitado está incorreto.",
+          "newPassword": "Insira sua nova senha.",
+          "repeatPassword": "Repita a senha",
+          "passwordsMustMatch": "As novas senhas devem ser iguais.",
+          "success": "Parabéns! Sua nova senha foi redefinida com sucesso. Por favor, faça login novamente."
+        }
+      },
+      "register": {
+        "title": "Cadastro",
+        "chooseAccountType": "Como deseja se cadastrar?",
+        "patientFor": "Paciente",
+        "providerFor": "Prestador de Serviços",
+        "alreadyHaveAccount": "Já tem conta?",
+        "loginHere": "Faça login",
+        "steps": {
+          "basic": "Dados básicos",
+          "professional": "Detalhes profissionais",
+          "documentation": "Documentação"
+        },
+        "provider": {
+          "basicData": {
+            "fullName": "Nome completo",
+            "phone": "Número de telefone",
+            "birthDate": "Data de nascimento",
+            "gender": "Sexo",
+            "password": "Crie uma senha",
+            "confirmPassword": "Repita sua senha"
+          },
+          "professionalDetails": {
+            "providerType": "Tipo de provedor de saúde",
+            "specialty": "Especialidade",
+            "institutionName": "Nome da instituição",
+            "professionalNumber": "Número de Carteira Profissional",
+            "nuit": "NUIT",
+            "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+            "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+            "termsRequired": "Você deve concordar com os termos e condições"
+          },
+          "documentation": {
+            "licenseDocs": "Documentos de licença",
+            "licenseDesc": "Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição)",
+            "address": "Endereço",
+            "street": "Rua ou avenida",
+            "number": "Número",
+            "neighborhood": "Bairro",
+            "city": "Cidade",
+            "country": "País",
+            "fileLimit": "Apenas 5 documentos são permitidos",
+            "successTitle": "Cadastro realizado com sucesso!",
+            "successDesc": "Agora você pode acessar todas as funcionalidades da plataforma."
+          }
+        }
+      }
+    },
+    "patient": {
+      "title": "Paciente",
+      "description": "Página inicial do paciente",
+      "name": "Nome do Paciente",
+      "profile": {
+        "title": "Perfil do Paciente",
+        "description": "Perfil do paciente"
+      },
+      "consultations": {
+        "title": "Consultas",
+        "description": "Consultas médicas",
+        "completed": "Consultas Realizadas",
+        "canceled": "Consultas Canceladas"
+      },
+      "chats": {
+        "title": "Chats",
+        "description": "Chats finalizados",
+        "completed": "Chats Finalizados",
+        "canceled": "Chats Cancelados"
+      }
+    },
+    "provider": {
+      "professional": {
+        "title": "Profissional de saúde",
+        "description": "Página inicial do profissional de saúde"
+      },
+      "laboratory": {
+        "title": "Laboratório",
+        "description": "Página inicial do laboratório"
+      },
+      "clinic": {
+        "title": "Clínica",
+        "description": "Página inicial da clínica"
+      },
+      "home": {
+        "title": "Home",
+        "description": "Página inicial",
+        "welcome": "Bem-vindo de volta, {name}!",
+        "lastestMessages": "Últimas mensagens",
+        "consultationRequests": "Solicitações de Consulta",
+        "profileApproval": {
+          "pending": {
+            "title": "Cadastro concluído!",
+            "description": "Seus dados foram enviados para que o administrador da plataforma possa aprovar. A aprovação pode levar até <bold>48 horas</bold>, e notificaremos você assim que seu cadastro for aprovado!"
+          },
+          "approved": {
+            "title": "Sucesso!",
+            "description": "Seu perfil foi aprovado! Agora você pode usar sua conta, completar e ajustar todas as configurações necessárias. Certifique-se de revisar suas informações para garantir uma boa experiência.",
+            "cta": {
+              "label": "Personalizar meu perfil"
+            }
+          },
+          "rejected": {
+            "title": "Cadastro reprovado!",
+            "description": "Seu cadastro foi reprovado. Você tem até 3 tentativas para corrigir suas informações. Após editar, sua aplicação será reavaliada. Caso precise de suporte, estamos aqui para ajudar."
+          },
+          "cancelled": {
+            "title": "Cadastro cancelado!",
+            "description": "Seu cadastro foi cancelado. Você pode solicitar um novo cadastro a qualquer momento."
+          },
+          "suspended": {
+            "title": "Conta suspensa!",
+            "description": "Sua conta foi suspensa. Por favor, entre em contato com o suporte para mais informações."
+          }
+        },
+        "metricStatus": {
+          "marked": "Consultas Marcadas",
+          "completed": "Consultas Realizadas",
+          "canceled": "Consultas Canceladas"
+        },
+        "cta": {
+          "viewMessages": "Ver Mensagens",
+          "viewAgenda": "Ver Agenda"
+        }
+      },
+      "agenda": {
+        "title": "Agenda",
+        "description": "Agenda de consultas",
+        "tabs": {
+          "agenda": "Agenda",
+          "history": "Histórico",
+          "month": "Mês",
+          "week": "Semana",
+          "day": "Dia"
+        },
+        "metricStatus": {
+          "home": "Consultas à Domicílio",
+          "chat": "Consultas em Chat Rápido",
+          "teleconsultation": "Consultas Telemáticas"
+        }
+      },
+      "consultation": {
+        "title": "Consultas",
+        "description": "Consultas médicas",
+        "consultationsCompleted": "Consultas Realizadas",
+        "consultationsCanceled": "Consultas Canceladas",
+        "tabs": {
+          "consultation": "Consultas",
+          "request": "Solicitações"
+        },
+        "metricStatus": {
+          "home": "Consultas à Domicílio",
+          "chat": "Consultas em Chat Rápido",
+          "teleconsultation": "Teleconsultas"
+        },
+        "newAppointment": {
+          "title": "Novo agendamento",
+          "description": "Agende uma consulta com um de nossos profissionais de saúde",
+          "followUpTooltip": "Consulta de seguimento é uma consulta de acompanhamento para pacientes que já realizaram uma consulta anterior.",
+          "cta": {
+            "backButton": "Novo Agendamento"
+          }
+        },
+        "consultationHome": {
+          "title": "Consulta a domicílio",
+          "description": "Consultas médicas",
+          "alert": {
+            "title": "Consulta a domicílio",
+            "description": "Por favor, dirija-se ao endereço indicado no horário agendado para a consulta. Lembre-se de revisar todas as informações antes de sair para garantir que tenha tudo o que precisa para o atendimento domiciliar."
+          },
+          "label": {
+            "day": "Segunda",
+            "hour": "Horário",
+            "address": "Link do endereço",
+            "contact": "Contato"
+          },
+          "cta": {},
+          "cancelConfirm": {
+            "title": "Você realmente deseja Cancelar essa Consulta?",
+            "description": "Escreva o motivo da recusa do cancelamento para o paciente"
+          }
+        },
+        "featureBar": {
+          "tabs": {
+            "history": "Histórico",
+            "prescription": "Prescrição",
+            "exams": "Exames"
+          },
+          "history": {
+            "vitals": {
+              "title": "Pré avaliação do paciente",
+              "measuredOn": "Medido em",
+              "bloodPressure": "TA/FC (Tensão arterial)",
+              "temperature": "Temperatura",
+              "respiratoryRate": "Frequência respiratória",
+              "weight": "Peso",
+              "imc": "IMC",
+              "additionalInfoTitle": "Informação adicional",
+              "additionalInformation": "Se tiver preenchido vai aparecer assim"
+            },
+            "medicalHistory": {
+              "title": "Histórico médico",
+              "description": "Histórico médico do paciente",
+              "filledOn": "Preenchido em",
+              "weight": "Peso",
+              "height": "Altura",
+              "sex": "Sexo",
+              "imc": "IMC",
+              "additionalInfoTitle": "Informação adicional",
+              "additionalInformation": "Doenças hereditárias e condições médicas (diabetes, hipertensão, doenças cardíacas, câncer, etc.) de pais, irmãos e outros parentes próximos."
+            }
+          },
+          "prescription": {
+            "title": "Prescrição",
+            "description": "Prescrição médica",
+            "medicationName": "Nome do medicamento",
+            "medicationNamePlaceholder": "Digite aqui",
+            "medicationNameGenericName": "Opte por adicionar preferencialmente o nome genérico.",
+            "genericNamePlaceholder": "Digite aqui",
+            "dosage": "Dosagem",
+            "quantity": "Quantidade",
+            "dosageUnit": "Unidade",
+            "treatmentDuration": "Duração do tratamento",
+            "durationUnit": "Unidade",
+            "administrationRoute": "Via de administração",
+            "pharmaceuticalForm": "Forma farmacêutica",
+            "instructions": "Instrução de uso",
+            "instructionsMaxCharacters": "{chars} caracteres",
+            "signatureAndStampAdded": "Assinatura e carimbo adicionados",
+            "signatureAndStampAddedDescription": "Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.",
+            "addAnotherMedication": "Adicionar outro medicamento",
+            "send": "Enviar"
+          },
+          "exams": {}
+        }
+      },
+      "onlineConsultation": {
+        "title": "Consultas Online",
+        "description": "Consultas médicas online",
+        "medicalReport": "Relatório médico",
+        "provisionalDiagnosis": "Diagnóstico provisório",
+        "suspectedDiagnosis": "Diagnóstico suspeito",
+        "finalDiagnosis": "Diagnóstico final (opcional)",
+        "summary": "Resumo da consulta",
+        "close": "Encerrar",
+        "history": "Histórico",
+        "prescription": "Prescrição",
+        "exams": "Exames",
+        "endCall": "Encerrar chamada",
+        "turnOnVideo": "Ligar vídeo",
+        "turnOffVideo": "Desligar vídeo",
+        "turnOnAudio": "Ligar áudio",
+        "turnOffAudio": "Desligar áudio",
+        "features": "Funcionalidades"
+      },
+      "quickChat": {
+        "title": "Chat rápido",
+        "description": "Chat com o suporte",
+        "yourConversations": "Suas Conversas",
+        "patientProfile": "Perfil do Paciente",
+        "consultationHistory": "Histórico de Consultas",
+        "chatsFinalized": "Chats Finalizados",
+        "chatsFinalizedDesc": "Chats Finalizados em {datetime}",
+        "inProgress": "Em andamento",
+        "finalized": "Consultas finalizadas",
+        "unreadMessages": "Mensagens não lidas",
+        "readMessages": "Mensagens lidas",
+        "endChatTitle": "Realmente deseja finalizar a consulta?",
+        "endChatDesc": "Essa ação não poderá ser desfeita.",
+        "endChatCancel": "Cancelar",
+        "endChatConfirm": "Finalizar consulta",
+        "summaryTitle": "Resumo da Consulta",
+        "summaryPlaceholder": "Digite aqui...",
+        "summaryLabel": "Digite o resumo da consulta:",
+        "summarySend": "Enviar",
+        "cta": {
+          "completeChat": "Finalizar chat"
+        }
+      },
+      "finances": {
+        "title": "Finanças",
+        "description": "Gerenciamento de finanças",
+        "lastReceipts": "Últimos recibos",
+        "invoices": {
+          "title": "Faturas",
+          "description": "Faturas emitidas",
+          "details": {
+            "title": "Detalhes da fatura",
+            "description": "Detalhes da fatura",
+            "cta": {
+              "backButton": "Detalhes da fatura {invoiceNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Faturas"
+          }
+        },
+        "receipts": {
+          "title": "Recibos",
+          "description": "Recibos emitidos",
+          "details": {
+            "title": "Detalhes do Recibo",
+            "description": "Detalhes do recibo",
+            "cta": {
+              "backButton": "Detalhes do recibo {receiptNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Recibos"
+          }
+        },
+        "label": {
+          "receiptNumber": "Número do recibo",
+          "invoiceNumber": "Número da fatura",
+          "issueDate": "Emitido em",
+          "unitValue": "Valor unitário",
+          "plansCount": "Qtd. de planos",
+          "paymentMethod": "Método de pagamento",
+          "status": "Situação",
+          "issuerDetails": "Detalhes do emitente",
+          "issuerName": "Nome",
+          "issuerNuit": "NUIT",
+          "issuerAddress": "Endereço",
+          "issuerContact": "Contato",
+          "customerDetails": "Detalhes do cliente",
+          "customerName": "Nome",
+          "customerNuit": "NUIT",
+          "customerAddress": "Endereço",
+          "customerContact": "Contato",
+          "dueDate": "Vencimento",
+          "subtotal": "Subtotal",
+          "finalValue": "Valor final",
+          "totalWithTaxes": "Total com impostos",
+          "receiptReceived": "Informamos que o valor foi recebido pelo emitente.",
+          "qrCode": "Escaneie o QR code e acesse nossos termos e condições"
+        },
+        "cta": {
+          "backButton": "Finanças",
+          "export": "Exportar",
+          "exporting": "Exportando...",
+          "exportPdf": "Exportar PDF",
+          "exportJpeg": "Exportar JPEG"
+        }
+      },
+      "support": {
+        "title": "Suporte",
+        "description": "Suporte ao cliente",
+        "submitSuccessTitle": "Solicitação enviada",
+        "submitSuccessDesc": "Sua solicitação de suporte foi enviada com sucesso."
+      },
+      "profile": {
+        "title": "Minha conta",
+        "description": "Minha conta do usuário",
+        "configurations": {
+          "title": "Configurações",
+          "description": "Configurações do sistema"
+        },
+        "public": {
+          "title": "Perfil Público",
+          "description": "Perfil público do usuário"
+        }
+      },
+      "activityLog": {
+        "title": "Log de atividades",
+        "description": "Log de atividades do usuário"
+      }
+    },
+    "notifications": {
+      "title": "Notificações",
+      "description": "Notificações do sistema"
+    },
+    "plans": {
+      "pageTitle": "Conheça Nossos Planos",
+      "pageDescription": "Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.",
+      "featured": "EM DESTAQUE",
+      "free": "GRATUITO",
+      "business": {
+        "title": "HaiDoc Business",
+        "price": "GRATUITO",
+        "features": [
+          "Conta gratuita",
+          "Saque de fundos mensal após dedução de taxas",
+          "Acesso a serviços de business na plataforma",
+          "Ferramentas básicas de gerenciamento de agendamentos (consultas, marcações, etc.)"
+        ]
+      },
+      "businessPlus": {
+        "title": "HaiDoc Business Plus",
+        "price": "1.499",
+        "currency": "MZN",
+        "period": "Mês",
+        "features": [
+          "Todos os benefícios do plano HaiDoc Business +",
+          "Saque de fundos quinzenalmente após dedução de taxas",
+          "Gerenciamento de agenda personalizada para o seu negócio (consultas, marcações, etc.)",
+          "Análises de desempenho e relatórios personalizados",
+          "Destaque do provedor de saúde para todos os pacientes",
+          "Inclusão na lista de Serviços Recomendados da Plataforma aos pacientes",
+          "Acesso a uma linha de apoio ao cliente 24/7"
+        ]
+      },
+      "company": {
+        "title": "HaiDoc Company",
+        "price": "90",
+        "currency": "MZN",
+        "period": "Mês",
+        "features": [
+          "Todos os benefícios do plano HaiDoc Business Plus +",
+          "Saque de fundos semanalmente após dedução de taxas",
+          "Acesso simultâneo a todos os serviços (Farmácia, Laboratório, Clínica e Profissional de Saúde)",
+          "Consultoria para otimização de operações e serviços",
+          "Suporte prioritário 24/7",
+          "Participação em eventos de networking e treinamentos personalizados"
+        ]
+      }
+    },
+    "proposal": {
+      "title": "Proposta",
+      "description": "Proposta de serviços",
+      "back": "Fazer proposta",
+      "form": {
+        "label": {
+          "companyName": "Nome da empresa",
+          "email": "E-mail",
+          "phone": "Número de telefone",
+          "description": "Descrição",
+          "file": "Documento",
+          "fileHint": "Apenas 1 arquivo permitido"
+        },
+        "placeholder": {
+          "companyNamePlaceholder": "Digite aqui",
+          "emailPlaceholder": "email@example.com",
+          "phonePlaceholder": "82 123 4567",
+          "descriptionPlaceholder": "Digite aqui"
+        },
+        "description": {
+          "charCount": "{count} caracteres"
+        },
+        "errors": {
+          "companyNameMin": "O nome deve ter no mínimo 3 caracteres",
+          "companyNameMax": "O nome deve ter no máximo 255 caracteres",
+          "companyNameRegex": "O nome deve conter apenas letras e espaços",
+          "emailInvalid": "Insira um e-mail válido",
+          "emailMax": "O e-mail deve ter no máximo 255 caracteres",
+          "phoneInvalid": "Insira um número de telefone válido",
+          "descriptionMin": "A descrição deve ter no mínimo 10 caracteres",
+          "descriptionMax": "A descrição deve ter no máximo 500 caracteres"
+        }
+      },
+      "cta": {
+        "submitProposal": "Enviar proposta"
+      },
+      "success": {
+        "title": "Proposta enviada",
+        "description": "Sua proposta foi enviada com sucesso! Entraremos em contato em breve."
+      }
+    },
+    "subscription": {
+      "title": "Escolha o seu plano",
+      "description": "Escolha o plano que melhor se adapta às suas necessidades e ao seu negócio.",
+      "chooseRecurrence": "Escolha a recorrência do seu plano",
+      "selectedPlan": "Plano escolhido",
+      "totalValue": "Valor total",
+      "selectRecurrence": "Selecione a recorrência",
+      "currency": "MZN",
+      "recurrence": {
+        "monthly": "Mensal",
+        "semiannual": "Semestral",
+        "annual": "Anual",
+        "shortMonthly": "Mês",
+        "shortSemiannual": "Semestre",
+        "shortAnnual": "Ano"
+      },
+      "paymentMethod": "Método de pagamento",
+      "paymentType": "Forma de pagamento",
+      "paymentMethodOptions": {
+        "card": "Cartões de crédito e/ou débito",
+        "mpesa": "M-Pesa",
+        "emola": "E-Mola",
+        "paypal": "Paypal"
+      },
+      "cardType": {
+        "credit": "Cartão de crédito",
+        "debit": "Cartão de débito"
+      },
+      "autoRenewNotice": "Sua assinatura será renovada automaticamente, você tem este método de pagamento recorrente.",
+      "review": "Revisão",
+      "cardEnding": "Cartão de crédito terminando em {lastDigits}",
+      "success": "Seu cadastro e pagamento foram concluídos!"
+    }
+  },
+  "videoCall": {
+    "title": "Chamada de vídeo",
+    "description": "Chamada de vídeo com o paciente",
+    "endCall": "Encerrar",
+    "chatTooltip": "Chat",
+    "endCallTooltip": "Encerrar chamada",
+    "turnOnVideoTooltip": "Ligar vídeo",
+    "turnOffVideoTooltip": "Desligar vídeo",
+    "turnOnAudioTooltip": "Ligar áudio",
+    "turnOffAudioTooltip": "Desligar áudio",
+    "featuresTooltip": "Funcionalidades"
   }
 }

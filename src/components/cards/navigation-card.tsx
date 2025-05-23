@@ -27,6 +27,7 @@ export function NavigationCard({ title, description, icon, illustration, href, c
         className={cn(
           "h-full pr-0 transition-all hover:shadow-md",
           "hover:border-secondary hover:bg-secondary-2",
+          "max-h-[120px]",
           className,
         )}
       >
@@ -38,7 +39,9 @@ export function NavigationCard({ title, description, icon, illustration, href, c
             <h3 className="text-lg font-medium group-hover:text-secondary">{title}</h3>
             <p className="text-sm text-gray-500 group-hover:text-secondary">{description}</p>
           </div>
-          {illustration && <div className="flex-shrink-0 w-[100px] sm:w-[200px] md:w-[250px]">{illustration}</div>}
+          {illustration && (
+            <div className="flex-shrink-0 w-[100px] sm:w-[140px] md:w-[200px] overflow-clip">{illustration}</div>
+          )}
           <ChevronRightIcon size={20} className="group-hover:text-secondary" />
         </CardContent>
       </Card>

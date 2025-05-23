@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogTitle } from "@/components/ui/dialog"
 import { ConsultationCategory } from "@/types/provider/professional/types"
 import { ShieldCheck } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface StartConsultationModalProps {
   isOpen: boolean
@@ -15,6 +16,8 @@ interface StartConsultationModalProps {
 }
 
 export function StartConsultationModal({ isOpen, onClose, consultationType, onProceed }: StartConsultationModalProps) {
+  const t = useTranslations("modal.startConsultation")
+  const tCta = useTranslations("cta")
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
@@ -23,7 +26,7 @@ export function StartConsultationModal({ isOpen, onClose, consultationType, onPr
           <div className="bg-system-1 rounded-full p-2 mb-2">
             <CallingCenterIcon size={120} />
           </div>
-          <h2 className="text-xl font-semibold mb-3 text-secondary-12">Iniciando consulta...</h2>
+          <h2 className="text-xl font-semibold mb-3 text-secondary-12">{t("title")}</h2>
         </div>
         <div className="space-y-6">
           {consultationType === ConsultationCategory.Teleconsultation && (
@@ -31,38 +34,29 @@ export function StartConsultationModal({ isOpen, onClose, consultationType, onPr
               <div>
                 <AlertTitle className="flex flex-row items-center gap-2">
                   <ShieldCheck className="h-5 w-5 text-info-6 mt-0.5" />
-                  Chamada segura
+                  {t("alert.title")}
                 </AlertTitle>
-                <AlertDescription>
-                  Utilizamos tecnologia de criptografia avançada para garantir que todas as informações trocadas durante
-                  a consulta permaneçam privadas e protegidas.
-                </AlertDescription>
+                <AlertDescription>{t("alert.description")}</AlertDescription>
               </div>
             </Alert>
           )}
           <div className="flex flex-col gap-2">
             <Button variant="outline" colorVariant="error" onClick={onClose} className="w-full">
-              Cancelar
+              {tCta("cancel")}
             </Button>
           </div>
           <div>
             <Alert variant="warning">
               <div>
-                <AlertTitle>Aviso de Uso De Serviços Fora da Plataforma</AlertTitle>
-                <AlertDescription>
-                  Para assegurar a segurança e a integridade dos nossos serviços, a HaiDoc declara que não se
-                  responsabiliza por quaisquer tentativas de contato com provedores de saúde fora da nossa plataforma.
-                  Recomendamos enfaticamente que todas as interações, consultas, transações e comunicações sejam
-                  conduzidas exclusivamente através da nossa plataforma, a fim de evitar fraudes, danos morais e outros
-                  inconvenientes. Ao clicar em &quot;Próximo&quot;, você afirma estar ciente do aviso.
-                </AlertDescription>
+                <AlertTitle>{t("alert2.title")}</AlertTitle>
+                <AlertDescription>{t("alert2.description")}</AlertDescription>
               </div>
             </Alert>
           </div>
         </div>
         <DialogFooter className="flex justify-center">
           <Button onClick={onProceed} className="w-full bg-primary-9 hover:bg-primary-10 text-white">
-            {consultationType === ConsultationCategory.Teleconsultation ? "Iniciar chamada" : "Iniciar consulta"}
+            {consultationType === ConsultationCategory.Teleconsultation ? tCta("startCall") : tCta("startConsultation")}
           </Button>
         </DialogFooter>
       </DialogContent>

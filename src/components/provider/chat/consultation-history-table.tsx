@@ -10,6 +10,7 @@ import { mockConsultationHistory } from "@/lib/mock-data/professional/chat"
 import { formatDate } from "@/lib/utils"
 import { ConsultationHistoryColumns } from "@/types/provider/professional/interface-columns"
 import { ConsultationStatus } from "@/types/provider/professional/types"
+import { useTranslations } from "next-intl"
 import { DateFilterModal } from "./date-filter-modal"
 
 interface filterOption {
@@ -20,6 +21,8 @@ interface filterOption {
 }
 
 export function ConsultationHistoryTable() {
+  const t = useTranslations("table")
+
   const [allData, setAllData] = useState<ConsultationHistoryColumns[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<filterOption>({
@@ -50,23 +53,23 @@ export function ConsultationHistoryTable() {
     () => [
       {
         accessorKey: "id",
-        header: "ID",
+        header: t("columns.ID"),
         className: "font-medium",
       },
       {
         accessorKey: "consultationType",
-        header: "TIPO DE CONSULTA",
+        header: t("columns.typeOf", { column: t("columns.consultation") }),
         cell: (row) => <StatusLabel status={row?.consultationType} />,
       },
-      { accessorKey: "value", header: "VALOR" },
+      { accessorKey: "value", header: t("columns.value") },
       {
         accessorKey: "status",
-        header: "STATUS",
+        header: t("columns.status"),
         cell: (row) => <StatusLabel status={row?.status} />,
       },
       {
         accessorKey: "date",
-        header: "DATA E HORA",
+        header: t("columns.datetime"),
         cell: (row) => (
           <div>
             <span className="text-sm block">{row?.time}</span>
@@ -83,16 +86,16 @@ export function ConsultationHistoryTable() {
     () => [
       {
         type: "search",
-        label: "Pesquisar",
+        label: t("filter.label.search"),
         value: filters.id,
         accessorKey: "id",
-        placeholder: "Pesquisar",
+        placeholder: t("filter.placeholder.search", { column: t("columns.ID") }),
         onChange: (value) => handleFilterChange("id", value),
       },
       {
         type: "select",
-        label: "Status",
-        placeholder: "Selecione uma status",
+        label: t("filter.label.status"),
+        placeholder: t("filter.placeholder.status"),
         value: filters.status,
         accessorKey: "status",
         options: Object.values(ConsultationStatus).map((status) => ({
@@ -103,8 +106,8 @@ export function ConsultationHistoryTable() {
       },
       {
         type: "date-filter",
-        label: "Filtrar por Data",
-        placeholder: "Filtrar por data",
+        label: t("filter.label.date"),
+        placeholder: t("filter.placeholder.date"),
         accessorKey: "date",
         value: filters.dateFilter,
         onChange: (value) => handleFilterChange("dateFilter", value),

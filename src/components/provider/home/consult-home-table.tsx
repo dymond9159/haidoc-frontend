@@ -12,6 +12,7 @@ import { mockConsultations } from "@/lib/mock-data/professional/home"
 import { formatDate } from "@/lib/utils"
 import { ConsultationColumns } from "@/types/provider/professional/interface-columns"
 import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { ConsultationDetailsModal } from "../consultation/consultation-details-modal"
 import { StartConsultationModal } from "../consultation/start-consultation-modal"
@@ -36,6 +37,8 @@ export function ConsultationHomeTable({
   onViewMoreClick,
 }: ConsultationTableProps) {
   const router = useRouter()
+  const t = useTranslations("table")
+  const tCta = useTranslations("cta")
 
   const [allData, setAllData] = useState<ConsultationColumns[]>([])
   const [filters, setFilters] = useState<FilterOption>({}) // Initialize filter state
@@ -69,21 +72,21 @@ export function ConsultationHomeTable({
     () => [
       {
         accessorKey: "name",
-        header: "NOME",
+        header: t("columns.name"),
       },
       {
         accessorKey: "category",
-        header: "CATEGORIA",
+        header: t("columns.category"),
         cell: (row) => <StatusLabel status={row?.category} />,
       },
       {
         accessorKey: "consultationType",
-        header: "TIPO DE CONSULTA",
+        header: t("columns.typeOf", { column: t("columns.consultation") }),
         cell: (row) => <StatusLabel status={row?.consultationType} />,
       },
       {
         accessorKey: "date",
-        header: "DATA E HORA",
+        header: t("columns.datetime"),
         cell: (row) => (
           <div>
             <span className="text-sm block">{row?.time}</span>
@@ -93,7 +96,7 @@ export function ConsultationHomeTable({
       },
       {
         accessorKey: "actions",
-        header: "OPÇÕES",
+        header: t("columns.actions"),
         cell: (row) => (
           <Button
             variant="link"
@@ -102,7 +105,7 @@ export function ConsultationHomeTable({
               handleStartConsultation(row)
             }}
           >
-            {row?.category === ConsultationCategory.Teleconsultation ? "Iniciar chamada" : "Iniciar consulta"}
+            {row?.category === ConsultationCategory.Teleconsultation ? tCta("startCall") : tCta("startConsultation")}
           </Button>
         ),
       },
@@ -114,17 +117,17 @@ export function ConsultationHomeTable({
     () => [
       {
         type: "search",
-        label: "Pesquisar Nome",
+        label: t("filter.label.search"),
         accessorKey: "name",
-        placeholder: "Pesquisar por Nome",
+        placeholder: t("filter.placeholder.search", { column: t("columns.name") }),
         value: filters.name,
         onChange: (value) => handleFilterChange("name", value),
       },
       {
         type: "select",
-        label: "Categoria",
+        label: t("filter.label.category"),
         accessorKey: "category",
-        placeholder: "Selecione uma categoria",
+        placeholder: t("filter.placeholder.category"),
         value: filters.category,
         onChange: (value) => handleFilterChange("category", value),
         options: ConsultationCategoryList.map((category) => ({
@@ -134,9 +137,9 @@ export function ConsultationHomeTable({
       },
       {
         type: "select",
-        label: "Tipo de Consulta",
+        label: t("filter.label.typeOf", { column: t("columns.consultation") }),
         accessorKey: "consultationType",
-        placeholder: "Selecione um tipo de consulta",
+        placeholder: t("filter.placeholder.typeOf", { column: t("columns.consultation") }),
         value: filters.consultationType,
         onChange: (value) => handleFilterChange("consultationType", value),
         options: ConsultationTypeList.map((type) => ({

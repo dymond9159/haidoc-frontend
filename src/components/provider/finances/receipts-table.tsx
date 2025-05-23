@@ -9,6 +9,7 @@ import { FilterConfig } from "@/components/common/table-filter"
 import { Button } from "@/components/ui"
 import { mockInvoice } from "@/lib/mock-data/finances"
 import { ReceiptColumns } from "@/types/admin"
+import { useTranslations } from "next-intl"
 
 interface ReceiptsTableProps {
   maxRecords?: number
@@ -22,6 +23,7 @@ interface filterOption {
 
 export function ReceiptsTable({ maxRecords, filterable, viewMore }: ReceiptsTableProps) {
   const router = useRouter()
+  const t = useTranslations("table")
   const [allData, setAllData] = useState<ReceiptColumns[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<filterOption>({}) // Initialize filter state
@@ -54,18 +56,18 @@ export function ReceiptsTable({ maxRecords, filterable, viewMore }: ReceiptsTabl
     () => [
       {
         accessorKey: "id",
-        header: "N° RECIBO",
+        header: t("columns.numberOf", { column: t("columns.receipt") }),
         className: "font-medium",
       },
-      { accessorKey: "number", header: "CLIENTE" },
-      { accessorKey: "unitValue", header: "VALOR" },
-      { accessorKey: "issueDate", header: "DATA DA EMISSÃO" },
+      { accessorKey: "number", header: t("columns.client") },
+      { accessorKey: "unitValue", header: t("columns.value") },
+      { accessorKey: "issueDate", header: t("columns.issueDate") },
       {
         accessorKey: "actions",
-        header: "AÇÕES",
+        header: t("columns.actions"),
         cell: (row) => (
           <Button variant="link" className="text-primary-9 h-auto p-0" onClick={() => handleViewDetails(row.id)}>
-            Visualizar
+            {t("cta.view")}
           </Button>
         ),
       },
@@ -78,9 +80,11 @@ export function ReceiptsTable({ maxRecords, filterable, viewMore }: ReceiptsTabl
     () => [
       {
         type: "search",
-        label: "Pesquisar",
+        label: t("filter.label.search"),
         accessorKey: "id",
-        placeholder: "Pesquisar por N° Recibo...",
+        placeholder: t("filter.placeholder.search", {
+          column: t("columns.numberOf", { column: t("columns.receipt") }),
+        }),
         value: filters.receiptId,
         onChange: (value) => handleFilterChange("receiptId", value),
       },
@@ -97,7 +101,7 @@ export function ReceiptsTable({ maxRecords, filterable, viewMore }: ReceiptsTabl
       isLoading={isLoading}
       getRowId={(row) => row.id}
       viewMore={viewMore}
-      viewMoreButtonText="Ver Todos os Pedidos"
+      viewMoreButtonText={t("cta.viewAllOrders")}
       maxRecords={maxRecords}
       onViewMoreClick={handleViewMoreClick}
     />

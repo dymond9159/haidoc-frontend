@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface CancelConfirmModalProps {
@@ -14,16 +15,30 @@ interface CancelConfirmModalProps {
   onOpenChange: (open: boolean) => void
   onCancel: () => void
   onConfirm: (reason: string) => void
+  title: string
+  description: string
+  cancelButtonText?: string
+  confirmButtonText?: string
 }
 
-export function CancelConfirmModal({ isOpen, onOpenChange, onCancel, onConfirm }: CancelConfirmModalProps) {
+export function CancelConfirmModal({
+  isOpen,
+  onOpenChange,
+  onCancel,
+  onConfirm,
+  title,
+  description,
+  cancelButtonText,
+  confirmButtonText,
+}: CancelConfirmModalProps) {
+  const tCta = useTranslations("cta")
   const [reason, setReason] = useState("")
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Você realmente deseja Cancelar essa Consulta?</DialogTitle>
-          <DialogDescription>Escreva o motivo da recusa do cancelamento para o paciente</DialogDescription>
+          <DialogTitle>{title}</DialogTitle>
+          <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <div>
           <textarea
@@ -36,10 +51,10 @@ export function CancelConfirmModal({ isOpen, onOpenChange, onCancel, onConfirm }
         </div>
         <DialogFooter className="flex justify-between">
           <Button variant="outline" onClick={onCancel}>
-            Cancelar
+            {cancelButtonText || tCta("cancel")}
           </Button>
           <Button variant="destructive" onClick={() => onConfirm(reason)}>
-            Enviar
+            {confirmButtonText || tCta("submit")}
           </Button>
         </DialogFooter>
       </DialogContent>

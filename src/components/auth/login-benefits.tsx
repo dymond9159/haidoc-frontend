@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useEffect, useState } from "react"
 
@@ -10,6 +11,8 @@ import { cn } from "@/lib/utils"
 
 export function LoginBenefits() {
   const router = useRouter()
+  const t = useTranslations("pages.auth.login.benefits")
+  const tCta = useTranslations("cta")
   const [screenSize, setScreenSize] = useState<"mobile" | "tablet" | "desktop">("desktop")
 
   useEffect(() => {
@@ -48,10 +51,12 @@ export function LoginBenefits() {
 
         <div className="w-full mt-15 px-5">
           <p className="max-w-sm text-xl font-normal">
-            Planos especialmente feitos para seu <b>negócio</b> ou para sua <b>família</b>
+            {t.rich("description", {
+              bold: (chunks) => <b>{chunks}</b>,
+            })}
           </p>
           <Button variant="white" className="mt-6" onClick={() => router.push("/plans")}>
-            Quero saber mais
+            {tCta("knowMore")}
           </Button>
         </div>
       </div>

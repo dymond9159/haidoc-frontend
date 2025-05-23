@@ -13,6 +13,7 @@ import { Card } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { cn } from "@/lib/utils"
 import { Thermometer } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface PatientHistoryPanelProps {
@@ -32,6 +33,7 @@ enum PatientHistoryPanelSections {
 }
 
 export function PatientHistoryPanel({ onClose, className, patientId }: PatientHistoryPanelProps) {
+  const t = useTranslations("pages.provider.consultation.featureBar.history")
   const [activeSection, setActiveSection] = useState<PatientHistoryPanelSections>(PatientHistoryPanelSections.History)
 
   const renderMetricCard = (metric: MedicalMetric) => (
@@ -56,20 +58,20 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
         <AccordionItem value={PatientHistoryPanelSections.Vitals} className="border rounded-md overflow-hidden mb-4">
           <AccordionTrigger className="px-4 py-3 hover:no-underline rounded-none">
             <div className="flex items-center gap-2">
-              <span className="font-medium">Pré avaliação do paciente</span>
+              <span className="font-medium">{t("vitals.title")}</span>
             </div>
           </AccordionTrigger>
           <AccordionContent className="px-0 cursor-default">
             <Separator className="mb-4" />
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm text-gray-500">Medido em:</h3>
+                <h3 className="text-sm text-gray-500">{t("vitals.measuredOn")}</h3>
                 <p className="text-sm font-medium">12/05/2024 às 14:34</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5 truncate">TA/FC (Tensão arterial)</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5 truncate">{t("vitals.bloodPressure")}</h3>
                   {renderMetricCard({
                     icon: <HeartIcon size={20} />,
                     value: "120/70",
@@ -78,7 +80,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">Temperatura</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("vitals.temperature")}</h3>
                   {renderMetricCard({
                     icon: <Thermometer size={18} />,
                     value: 32,
@@ -86,7 +88,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                   })}
                 </div>
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5 truncate">Frequência respiratória</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5 truncate">{t("vitals.respiratoryRate")}</h3>
                   {renderMetricCard({
                     icon: <LungIcon size={20} />,
                     value: 30,
@@ -95,7 +97,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">Peso</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("vitals.weight")}</h3>
                   {renderMetricCard({
                     icon: <Spo2Icon size={20} />,
                     value: 95,
@@ -104,7 +106,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div className="col-span-2">
-                  <h3 className="text-sm text-gray-500 mb-1.5">IMC</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("vitals.imc")}</h3>
                   {renderMetricCard({
                     icon: <CalculatorIcon size={20} />,
                     value: 20.55,
@@ -115,10 +117,10 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
 
               <div>
                 <div className="flex items-center gap-1 mb-1.5">
-                  <h3 className="text-sm text-gray-500">Informação adicional</h3>
+                  <h3 className="text-sm text-gray-500">{t("vitals.additionalInfoTitle")}</h3>
                 </div>
                 <div className="bg-blue-50 p-3 rounded-md">
-                  <p className="text-sm">Se tiver preenchido vai aparecer assim</p>
+                  <p className="text-sm">{t("vitals.additionalInformation")}</p>
                 </div>
               </div>
             </div>
@@ -128,20 +130,20 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
         <AccordionItem value={PatientHistoryPanelSections.History} className="border rounded-md overflow-hidden mb-0">
           <AccordionTrigger className="px-4 py-3 hover:no-underline rounded-none">
             <div className="flex items-center gap-2">
-              <span className="font-medium ">Histórico médico</span>
+              <span className="font-medium">{t("medicalHistory.title")}</span>
             </div>
           </AccordionTrigger>
           <AccordionContent className="px-0 data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down cursor-default">
             <Separator className="mb-4" />
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm text-gray-500">Preenchido em:</h3>
+                <h3 className="text-sm text-gray-500">{t("medicalHistory.filledOn")}</h3>
                 <p className="text-sm font-medium">12/05/2024 às 14:34</p>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">Peso</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("medicalHistory.weight")}</h3>
                   {renderMetricCard({
                     icon: <ScaleIcon size={20} />,
                     value: 68,
@@ -150,7 +152,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">Altura</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("medicalHistory.height")}</h3>
                   {renderMetricCard({
                     icon: <ArrowUpDownIcon size={20} />,
                     value: 165,
@@ -159,7 +161,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">Sexo</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("medicalHistory.sex")}</h3>
                   {renderMetricCard({
                     icon: <GenderIcon size={20} />,
                     value: "Fem",
@@ -168,7 +170,7 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
                 </div>
 
                 <div>
-                  <h3 className="text-sm text-gray-500 mb-1.5">IMC</h3>
+                  <h3 className="text-sm text-gray-500 mb-1.5">{t("medicalHistory.imc")}</h3>
                   {renderMetricCard({
                     icon: <CalculatorIcon size={20} />,
                     value: 20.55,
@@ -178,12 +180,9 @@ export function PatientHistoryPanel({ onClose, className, patientId }: PatientHi
               </div>
 
               <div>
-                <h3 className="text-sm text-gray-500 mb-1.5">Informação adicional</h3>
+                <h3 className="text-sm text-gray-500 mb-1.5">{t("medicalHistory.additionalInfoTitle")}</h3>
                 <div className="bg-blue-50 p-3 rounded-md">
-                  <p className="text-sm">
-                    Doenças hereditárias e condições médicas (diabetes, hipertensão, doenças cardíacas, câncer, etc.) de
-                    pais, irmãos e outros parentes próximos.
-                  </p>
+                  <p className="text-sm">{t("medicalHistory.additionalInformation")}</p>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useRef, useState } from "react"
 
@@ -30,6 +31,9 @@ export default function ProviderDocumentationPage() {
     country: "",
   })
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const t = useTranslations("pages.auth.register.provider.documentation")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
 
   const handleChange = (field: string, value: string) => {
     setFormData({ ...formData, [field]: value })
@@ -87,32 +91,32 @@ export default function ProviderDocumentationPage() {
 
     // Validate files
     if (uploadedFiles.length === 0) {
-      newErrors.files = "Pelo menos um documento é obrigatório"
+      newErrors.files = tForm("error.filesRequired")
     }
 
     // Validate street
     if (!formData.street.trim()) {
-      newErrors.street = "Rua ou avenida é obrigatória"
+      newErrors.street = tForm("error.streetRequired")
     }
 
     // Validate number
     if (!formData.number.trim()) {
-      newErrors.number = "Número é obrigatório"
+      newErrors.number = tForm("error.numberRequired")
     }
 
     // Validate neighborhood
     if (!formData.neighborhood.trim()) {
-      newErrors.neighborhood = "Bairro é obrigatório"
+      newErrors.neighborhood = tForm("error.neighborhoodRequired")
     }
 
     // Validate city
     if (!formData.city.trim()) {
-      newErrors.city = "Cidade é obrigatória"
+      newErrors.city = tForm("error.cityRequired")
     }
 
     // Validate country
     if (!formData.country.trim()) {
-      newErrors.country = "País é obrigatório"
+      newErrors.country = tForm("error.countryRequired")
     }
 
     setErrors(newErrors)
@@ -123,8 +127,8 @@ export default function ProviderDocumentationPage() {
     if (validateForm()) {
       // In a real app, you would submit the form data to your backend here
       toast({
-        title: "Cadastro realizado com sucesso!",
-        description: "Agora você pode acessar todas as funcionalidades da plataforma.",
+        title: t("successTitle"),
+        description: t("successDesc"),
         variant: "success",
       })
 
@@ -143,14 +147,14 @@ export default function ProviderDocumentationPage() {
       >
         {/* Documentos de Licença */}
         <AccordionItem value={DocumentationOptions.License}>
-          <AccordionTrigger className="text-sm font-medium">Documentos de licença</AccordionTrigger>
+          <AccordionTrigger className="text-sm font-medium">{t("licenseDocs")}</AccordionTrigger>
           <AccordionContent className="cursor-default">
             <Separator className="mb-4" />
             <div className="space-y-2">
               <p className="text-sm">
-                Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição) <Asterisk />
+                {t("licenseDesc")} <Asterisk />
               </p>
-              <p className="text-xs text-system-9">Apenas 5 documentos são permitidos</p>
+              <p className="text-xs text-system-9">{t("fileLimit")}</p>
               <FileUploadBox
                 multiple={true}
                 uploadedFiles={uploadedFiles}
@@ -165,20 +169,20 @@ export default function ProviderDocumentationPage() {
         {/* Endereço */}
         <AccordionItem value={DocumentationOptions.Address}>
           <AccordionTrigger>
-            <Label className="text-sm font-medium">Endereço</Label>
+            <Label className="text-sm font-medium">{t("address")}</Label>
           </AccordionTrigger>
           <AccordionContent className="cursor-default">
             <Separator className="mb-4" />
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="space-y-2 col-span-1 md:col-span-3">
                 <Label htmlFor="street" className="text-xs">
-                  Rua ou avenida <Asterisk />
+                  {tForm("label.street")} <Asterisk />
                 </Label>
                 <Input
                   id="street"
                   value={formData.street}
                   onChange={(e) => handleChange("street", e.target.value)}
-                  placeholder="123 456 789"
+                  placeholder={tForm("placeholder.street")}
                   className={errors.street ? "border-error-5" : ""}
                 />
                 {errors.street && <p className="text-xs text-error-5">{errors.street}</p>}
@@ -186,13 +190,13 @@ export default function ProviderDocumentationPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-1">
                 <Label htmlFor="number" className="text-xs">
-                  Número <Asterisk />
+                  {tForm("label.number")} <Asterisk />
                 </Label>
                 <Input
                   id="number"
                   value={formData.number}
                   onChange={(e) => handleChange("number", e.target.value)}
-                  placeholder="123"
+                  placeholder={tForm("placeholder.number")}
                   className={errors.number ? "border-error-5" : ""}
                 />
                 {errors.number && <p className="text-xs text-error-5">{errors.number}</p>}
@@ -200,13 +204,13 @@ export default function ProviderDocumentationPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-2">
                 <Label htmlFor="neighborhood" className="text-xs">
-                  Bairro <Asterisk />
+                  {tForm("label.neighborhood")} <Asterisk />
                 </Label>
                 <Input
                   id="neighborhood"
                   value={formData.neighborhood}
                   onChange={(e) => handleChange("neighborhood", e.target.value)}
-                  placeholder="Polana"
+                  placeholder={tForm("placeholder.neighborhood")}
                   className={errors.neighborhood ? "border-error-5" : ""}
                 />
                 {errors.neighborhood && <p className="text-xs text-error-5">{errors.neighborhood}</p>}
@@ -214,13 +218,13 @@ export default function ProviderDocumentationPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-2">
                 <Label htmlFor="city" className="text-xs">
-                  Cidade <Asterisk />
+                  {tForm("label.city")} <Asterisk />
                 </Label>
                 <Input
                   id="city"
                   value={formData.city}
                   onChange={(e) => handleChange("city", e.target.value)}
-                  placeholder="Maputo"
+                  placeholder={tForm("placeholder.city")}
                   className={errors.city ? "border-error-5" : ""}
                 />
                 {errors.city && <p className="text-xs text-error-5">{errors.city}</p>}
@@ -228,13 +232,13 @@ export default function ProviderDocumentationPage() {
 
               <div className="space-y-2 col-span-1 md:col-span-4">
                 <Label htmlFor="country" className="text-xs">
-                  País <Asterisk />
+                  {tForm("label.country")} <Asterisk />
                 </Label>
                 <Input
                   id="country"
                   value={formData.country}
                   onChange={(e) => handleChange("country", e.target.value)}
-                  placeholder="Moçambique"
+                  placeholder={tForm("placeholder.country")}
                   className={errors.country ? "border-error-5" : ""}
                 />
                 {errors.country && <p className="text-xs text-error-5">{errors.country}</p>}
@@ -245,7 +249,7 @@ export default function ProviderDocumentationPage() {
       </Accordion>
 
       <Button onClick={handleSubmit} className="w-full bg-primary-9 hover:bg-primary-10 text-white">
-        Cadastrar-me
+        {tCta("register")}
       </Button>
     </div>
   )

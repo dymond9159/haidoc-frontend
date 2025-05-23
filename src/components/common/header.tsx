@@ -32,22 +32,23 @@ export function Header() {
   const dispatch = useAppDispatch()
   const { isMobile, isTablet, isDesktop } = useScreen()
   const t = useTranslations("pages")
+  const tCommon = useTranslations("common")
 
   const isCollapse = useSelector((state: RootState) => state.settings.isCollapse)
 
   const pageTitles: Record<string, string> = {
-    "/professional/agenda": t("agenda"),
-    "/professional/consultations": t("consultations"),
-    "/professional/online-consultation": t("onlineConsultation"),
-    "/professional/chat": t("quickChat"),
-    "/professional/finances": t("finances"),
-    "/professional/support": t("support"),
-    "/professional/notifications": t("notifications"),
-    "/profile/configurations": t("configurations"),
-    "/profile/public": t("publicProfile"),
-    "/profile": t("myAccount"),
-    "/my-activity": t("activityLog"),
-    "/professional": t("home"),
+    "/professional/agenda": t("provider.agenda.title"),
+    "/professional/consultations": t("provider.consultation.title"),
+    "/professional/online-consultation": t("provider.onlineConsultation.title"),
+    "/professional/chat": t("provider.quickChat.title"),
+    "/professional/finances": t("provider.finances.title"),
+    "/professional/support": t("provider.support.title"),
+    "/professional/profile/configurations": t("provider.profile.configurations.title"),
+    "/professional/profile/public": t("provider.profile.public.title"),
+    "/professional/profile": t("provider.profile.title"),
+    "/professional/my-activity": t("provider.activityLog.title"),
+    "/professional": t("provider.home.title"),
+    "/notifications": t("notifications.title"),
   }
 
   const pageTitle = getPageTitleFromPath(pageTitles, pathname)
@@ -99,17 +100,16 @@ export function Header() {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            {/* <DropdownMenuLabel>Minha Conta</DropdownMenuLabel> */}
             <DropdownMenuItem asChild>
-              <Link href="/profile" className="flex items-center gap-2">
+              <Link href="/professional/profile" className="flex items-center gap-2">
                 <CircleUserRoundIcon size="14" />
-                Minha conta
+                {tCommon("myAccount")}
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={() => router.push("/login")}>
               <LogOutIcon size="14" />
-              Sair
+              {tCommon("logout")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

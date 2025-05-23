@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { LucideCheckCircle2 } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface PrescriptionFormProps {
@@ -14,6 +15,8 @@ interface PrescriptionFormProps {
 }
 
 export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
+  const t = useTranslations("pages.provider.consultation.featureBar.prescription")
+  const tCategory = useTranslations("form.category")
   const [medications, setMedications] = useState<any[]>([])
   const [currentMedication, setCurrentMedication] = useState({
     medicationName: "",
@@ -61,24 +64,24 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
   }
 
   return (
-    <div className="h-full overflow-y-auto p-4 space-y-4">
+    <div className="w-full h-full overflow-y-auto p-4 space-y-4">
       <div>
         <label className="text-sm font-medium mb-1 block">
-          Nome do medicamento <Asterisk />
+          {t("medicationName")} <Asterisk />
         </label>
         <Input
           value={currentMedication.medicationName}
           onChange={(e) => handleChange("medicationName", e.target.value)}
-          placeholder="Digite aqui"
+          placeholder={t("medicationNamePlaceholder")}
         />
-        <p className="text-xs text-gray-500 mt-1 ml-1">Opte por adicionar preferencialmente o nome genérico.</p>
+        <p className="text-xs text-gray-500 mt-1 ml-1">{t("medicationNameGenericName")}</p>
       </div>
 
       <div>
-        <label className="text-sm font-medium mb-1 block">Dosagem</label>
+        <label className="text-sm font-medium mb-1 block">{t("dosage")}</label>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">Quantidade</label>
+            <label className="text-xs text-gray-500 mb-1 block">{t("quantity")}</label>
             <Select value={currentMedication.quantity} onValueChange={(value) => handleChange("quantity", value)}>
               <SelectTrigger className="w-full">
                 <SelectValue />
@@ -92,7 +95,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
             </Select>
           </div>
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">Dosagem</label>
+            <label className="text-xs text-gray-500 mb-1 block">{t("dosageUnit")}</label>
             <Select value={currentMedication.dosageUnit} onValueChange={(value) => handleChange("dosageUnit", value)}>
               <SelectTrigger className="w-full">
                 <SelectValue />
@@ -109,10 +112,10 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
       </div>
 
       <div>
-        <label className="text-sm font-medium mb-1 block">Duração do tratamento</label>
+        <label className="text-sm font-medium mb-1 block">{t("treatmentDuration")}</label>
         <div className="grid grid-cols-2 gap-2">
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">Quantidade</label>
+            <label className="text-xs text-gray-500 mb-1 block">{t("quantity")}</label>
             <Select
               value={currentMedication.treatmentDuration}
               onValueChange={(value) => handleChange("treatmentDuration", value)}
@@ -130,7 +133,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
             </Select>
           </div>
           <div>
-            <label className="text-xs text-gray-500 mb-1 block">Unidade</label>
+            <label className="text-xs text-gray-500 mb-1 block">{t("durationUnit")}</label>
             <Select
               value={currentMedication.durationUnit}
               onValueChange={(value) => handleChange("durationUnit", value)}
@@ -139,9 +142,9 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="dias">dias</SelectItem>
-                <SelectItem value="semanas">semanas</SelectItem>
-                <SelectItem value="meses">meses</SelectItem>
+                <SelectItem value="dias">{tCategory("durationUnit.days")}</SelectItem>
+                <SelectItem value="semanas">{tCategory("durationUnit.weeks")}</SelectItem>
+                <SelectItem value="meses">{tCategory("durationUnit.months")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -149,7 +152,7 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
       </div>
 
       <div>
-        <label className="text-sm font-medium mb-1 block">Via de administração</label>
+        <label className="text-sm font-medium mb-1 block">{t("administrationRoute")}</label>
         <Select
           value={currentMedication.administrationRoute}
           onValueChange={(value) => handleChange("administrationRoute", value)}
@@ -158,17 +161,17 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="oral">Oral</SelectItem>
-            <SelectItem value="intravenosa">Intravenosa</SelectItem>
-            <SelectItem value="intramuscular">Intramuscular</SelectItem>
-            <SelectItem value="subcutanea">Subcutânea</SelectItem>
-            <SelectItem value="topica">Tópica</SelectItem>
+            <SelectItem value="oral">{tCategory("administrationRoute.oral")}</SelectItem>
+            <SelectItem value="intravenosa">{tCategory("administrationRoute.intravenosa")}</SelectItem>
+            <SelectItem value="intramuscular">{tCategory("administrationRoute.intramuscular")}</SelectItem>
+            <SelectItem value="subcutanea">{tCategory("administrationRoute.subcutanea")}</SelectItem>
+            <SelectItem value="topica">{tCategory("administrationRoute.topica")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div>
-        <label className="text-sm font-medium mb-1 block">Forma farmacêutica</label>
+        <label className="text-sm font-medium mb-1 block">{t("pharmaceuticalForm")}</label>
         <Select
           value={currentMedication.pharmaceuticalForm}
           onValueChange={(value) => handleChange("pharmaceuticalForm", value)}
@@ -177,19 +180,19 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="Comprimidos">Comprimidos</SelectItem>
-            <SelectItem value="Cápsulas">Cápsulas</SelectItem>
-            <SelectItem value="Solução">Solução</SelectItem>
-            <SelectItem value="Suspensão">Suspensão</SelectItem>
-            <SelectItem value="Pomada">Pomada</SelectItem>
-            <SelectItem value="Creme">Creme</SelectItem>
+            <SelectItem value="Comprimidos">{tCategory("pharmaceuticalForm.tablets")}</SelectItem>
+            <SelectItem value="Cápsulas">{tCategory("pharmaceuticalForm.capsules")}</SelectItem>
+            <SelectItem value="Solução">{tCategory("pharmaceuticalForm.solution")}</SelectItem>
+            <SelectItem value="Suspensão">{tCategory("pharmaceuticalForm.suspension")}</SelectItem>
+            <SelectItem value="Pomada">{tCategory("pharmaceuticalForm.ointment")}</SelectItem>
+            <SelectItem value="Creme">{tCategory("pharmaceuticalForm.cream")}</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
       <div>
         <label className="text-sm font-medium mb-1 block">
-          Instrução de uso <Asterisk />
+          {t("instructions")} <Asterisk />
         </label>
         <Textarea
           value={currentMedication.instructions}
@@ -197,27 +200,25 @@ export function PrescriptionForm({ onClose }: PrescriptionFormProps) {
           placeholder="Default"
           rows={4}
         />
-        <p className="text-xs text-gray-500 mt-1">1000 caracteres</p>
+        <p className="text-xs text-gray-500 mt-1">{t("instructionsMaxCharacters", { chars: 1000 })}</p>
       </div>
 
       <Alert variant="info">
         <div>
           <AlertTitle className="flex items-center gap-2">
             <LucideCheckCircle2 className="h-6 w-6" fill="var(--info-5)" color="white" />
-            Assinatura e carimbo adicionados
+            {t("signatureAndStampAdded")}
           </AlertTitle>
-          <AlertDescription>
-            Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.
-          </AlertDescription>
+          <AlertDescription>{t("signatureAndStampAddedDescription")}</AlertDescription>
         </div>
       </Alert>
 
       <div className="space-y-2 pt-4">
         <Button onClick={handleSubmit} className="w-full">
-          Enviar
+          {t("send")}
         </Button>
         <Button variant="outline" className="w-full" onClick={handleAddMedication}>
-          Adicionar outro medicamento
+          {t("addAnotherMedication")}
         </Button>
       </div>
     </div>

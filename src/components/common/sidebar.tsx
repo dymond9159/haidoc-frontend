@@ -59,7 +59,7 @@ interface SidebarProps {
 }
 
 export function Sidebar({ homeLink, bottomCanvasImage }: SidebarProps) {
-  const t = useTranslations("pages")
+  const t = useTranslations("sidebar")
   const dispatch = useAppDispatch()
   const { isMobile, isTablet } = useScreen()
 

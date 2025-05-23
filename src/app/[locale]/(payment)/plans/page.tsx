@@ -1,6 +1,7 @@
 "use client"
 
 import { Check } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 
 import { PlanCard } from "@/components/cards"
@@ -9,6 +10,7 @@ import { PlanType } from "@/types"
 
 export default function PlansPage() {
   const router = useRouter()
+  const t = useTranslations("pages.plans")
 
   const handleContinue = (type: PlanType) => {
     switch (type) {
@@ -29,10 +31,8 @@ export default function PlansPage() {
       {/* Header with background */}
       <div className="h-[200px] md:h-[240px] py-10 px-2 md:px-10 bg-secondary-4 bg-[url(/images/haidoc-banner.svg)] bg-cover bg-center">
         <div className="relative z-10 text-center">
-          <h1 className="mb-4 text-xl sm:text-2xl md:text-3xl font-bold">Conheça Nossos Planos</h1>
-          <p className="mx-auto max-w-2xl text-center font-medium">
-            Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.
-          </p>
+          <h1 className="mb-4 text-xl sm:text-2xl md:text-3xl font-bold">{t("pageTitle")}</h1>
+          <p className="mx-auto max-w-2xl text-center font-medium">{t("pageDescription")}</p>
         </div>
       </div>
       {/* Plans Grid */}
@@ -40,9 +40,11 @@ export default function PlansPage() {
         {PlanList.map((plan, index) => (
           <PlanCard
             key={index}
-            title={plan.title}
-            price={plan.price}
-            features={plan.features}
+            titleKey={plan.titleKey}
+            priceKey={plan.priceKey}
+            currencyKey={plan?.currency}
+            periodKey={plan?.period}
+            featuresKeys={plan.featuresKeys}
             onContinue={() => handleContinue(plan.type)}
           />
         ))}

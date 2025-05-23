@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { z } from "zod"
@@ -43,6 +44,10 @@ export default function PrePaymentPage() {
     termsAccepted: false,
   })
   const [errors, setErrors] = useState<Partial<Record<keyof CardFormData, string>>>({})
+
+  const t = useTranslations("pages.subscription")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
 
   const handleInputChange = (field: keyof CardFormData, value: string | boolean) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
@@ -93,13 +98,13 @@ export default function PrePaymentPage() {
               <div className="flex flex-1 items-center rounded-md border border-gray-200 bg-gray-50 px-4 py-3">
                 <RadioGroupItem value="credit" id="credit" />
                 <Label htmlFor="credit" className="flex-1 cursor-pointer pl-2">
-                  Cartão de crédito
+                  {t("cardType.credit")}
                 </Label>
               </div>
               <div className="flex flex-1 items-center rounded-md border border-gray-200 bg-gray-50 px-4 py-3">
                 <RadioGroupItem value="debit" id="debit" />
                 <Label htmlFor="debit" className="flex-1 cursor-pointer pl-2">
-                  Cartão de débito
+                  {t("cardType.debit")}
                 </Label>
               </div>
             </RadioGroup>
@@ -107,11 +112,11 @@ export default function PrePaymentPage() {
             <div className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="cardNumber">
-                  Número do cartão <Asterisk />
+                  {tForm("label.cardNumber")} <Asterisk />
                 </Label>
                 <Input
                   id="cardNumber"
-                  placeholder="**** **** **** ****"
+                  placeholder={tForm("placeholder.cardNumber")}
                   value={formData.cardNumber}
                   onChange={(e) => handleInputChange("cardNumber", e.target.value)}
                   className={errors.cardNumber ? "border-error-5" : ""}
@@ -122,11 +127,11 @@ export default function PrePaymentPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="expiryDate">
-                    Data de validade <Asterisk />
+                    {tForm("label.expiryDate")} <Asterisk />
                   </Label>
                   <Input
                     id="expiryDate"
-                    placeholder="MM/AA"
+                    placeholder={tForm("placeholder.expiryDate")}
                     value={formData.expiryDate}
                     onChange={(e) => handleInputChange("expiryDate", e.target.value)}
                     className={errors.expiryDate ? "border-error-5" : ""}
@@ -136,11 +141,11 @@ export default function PrePaymentPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="cvv">
-                    CVV <Asterisk />
+                    {tForm("label.cvv")} <Asterisk />
                   </Label>
                   <Input
                     id="cvv"
-                    placeholder="123"
+                    placeholder={tForm("placeholder.cvv")}
                     value={formData.cvv}
                     onChange={(e) => handleInputChange("cvv", e.target.value)}
                     className={errors.cvv ? "border-error-5" : ""}
@@ -151,12 +156,12 @@ export default function PrePaymentPage() {
 
               <div className="space-y-2">
                 <Label htmlFor="email">
-                  E-mail <Asterisk />
+                  {tForm("label.email")} <Asterisk />
                 </Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="email@example.com"
+                  placeholder={tForm("placeholder.email")}
                   value={formData.email}
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   className={errors.email ? "border-error-5" : ""}
@@ -164,9 +169,7 @@ export default function PrePaymentPage() {
                 {errors.email && <p className="text-xs text-error-5">{errors.email}</p>}
               </div>
 
-              <p className="text-sm text-gray-600">
-                Sua assinatura será renovada automaticamente, você tem este método de pagamento recorrente.
-              </p>
+              <p className="text-sm text-gray-600">{t("autoRenewNotice")}</p>
 
               <TermsAndConditions
                 checked={formData.termsAccepted || false}
@@ -176,7 +179,7 @@ export default function PrePaymentPage() {
             </div>
 
             <Button onClick={handleNext} className="w-full">
-              Próximo
+              {tCta("next")}
             </Button>
           </div>
         </CardContent>

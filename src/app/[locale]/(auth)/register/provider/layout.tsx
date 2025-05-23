@@ -1,14 +1,16 @@
 "use client"
 
 import { RegistrationSteps } from "@/components/auth/registration-step"
+import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
 export default function ProviderRegistrationLayout({ children }: { children: ReactNode }) {
+  const t = useTranslations("pages.auth.register.steps")
   const registrationSteps = [
-    { id: "basic", number: 1, title: "Dados básicos", path: "/register/provider/basic-data" },
-    { id: "professional", number: 2, title: "Detalhes profissionais", path: "/register/provider/professional-details" },
-    { id: "documentation", number: 3, title: "Documentação", path: "/register/provider/documentation" },
+    { id: "basic", number: 1, title: t("basic"), path: "/register/provider/basic-data" },
+    { id: "professional", number: 2, title: t("professional"), path: "/register/provider/professional-details" },
+    { id: "documentation", number: 3, title: t("documentation"), path: "/register/provider/documentation" },
   ]
 
   const pathname = usePathname()

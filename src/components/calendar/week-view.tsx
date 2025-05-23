@@ -2,6 +2,7 @@
 
 import { useMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
+import { useTranslations } from "next-intl"
 import React from "react"
 
 interface Appointment {
@@ -20,8 +21,25 @@ interface WeekViewProps {
 }
 
 export function WeekView({ startDate, appointments, onAppointmentClick, onWeekChange, className }: WeekViewProps) {
-  const weekDays = ["DOMINGO", "SEGUNDA", "TERÇA", "QUARTA", "QUINTA", "SEXTA", "SÁBADO"]
-  const shortWeekDays = ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"]
+  const t = useTranslations("form")
+  const weekDays = [
+    t("category.weekDays.sunday"),
+    t("category.weekDays.monday"),
+    t("category.weekDays.tuesday"),
+    t("category.weekDays.wednesday"),
+    t("category.weekDays.thursday"),
+    t("category.weekDays.friday"),
+    t("category.weekDays.saturday"),
+  ]
+  const shortWeekDays = [
+    t("category.shortWeekDays.sunday"),
+    t("category.shortWeekDays.monday"),
+    t("category.shortWeekDays.tuesday"),
+    t("category.shortWeekDays.wednesday"),
+    t("category.shortWeekDays.thursday"),
+    t("category.shortWeekDays.friday"),
+    t("category.shortWeekDays.saturday"),
+  ]
 
   const isMobile = useMobile()
 

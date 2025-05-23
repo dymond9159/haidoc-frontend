@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { PaymentMethod } from "@/types"
+import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -17,12 +18,14 @@ interface PaymentOption {
 export default function PaymentMethodPage() {
   const router = useRouter()
   const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>(PaymentMethod.Card)
+  const t = useTranslations("pages.subscription")
+  const tCta = useTranslations("cta")
 
   const paymentOptions: PaymentOption[] = [
-    { label: "Cartões de crédito e/ou débito", value: PaymentMethod.Card },
-    { label: "M-Pesa", value: PaymentMethod.Mpesa },
-    { label: "E-Mola", value: PaymentMethod.Emola },
-    { label: "Paypal", value: PaymentMethod.Paypal },
+    { label: t("paymentMethodOptions.card"), value: PaymentMethod.Card },
+    { label: t("paymentMethodOptions.mpesa"), value: PaymentMethod.Mpesa },
+    { label: t("paymentMethodOptions.emola"), value: PaymentMethod.Emola },
+    { label: t("paymentMethodOptions.paypal"), value: PaymentMethod.Paypal },
   ]
 
   const handleNext = () => {
@@ -36,7 +39,7 @@ export default function PaymentMethodPage() {
 
   return (
     <div>
-      <BackButton text="Método de pagamento" />
+      <BackButton text={t("paymentMethod")} />
 
       <Card className="mt-4 border-0 p-0 sm:border-1 sm:p-6">
         <CardContent>
@@ -60,7 +63,7 @@ export default function PaymentMethodPage() {
             </RadioGroup>
 
             <Button onClick={handleNext} className="w-full">
-              Próximo
+              {tCta("next")}
             </Button>
           </div>
         </CardContent>

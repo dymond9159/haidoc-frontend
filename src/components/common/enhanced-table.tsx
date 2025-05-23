@@ -1,5 +1,6 @@
 "use client"
 
+import { useTranslations } from "next-intl"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { ColumnDef, DataTable } from "./data-table" // Assuming your DataTable component
 import { FilterConfig, TableFilters } from "./table-filter"
@@ -32,15 +33,17 @@ export function EnhancedTable<T>({
   onDataChange,
   isLoading = false,
   itemsPerPage = 7,
-  emptyStateMessage = "Nenhum item encontrado.",
-  loadingMessage = "Carregando dados...",
+  emptyStateMessage,
+  loadingMessage,
   viewMore = false,
-  viewMoreButtonText = "Ver Todos",
+  viewMoreButtonText,
   maxRecords,
   getRowId = (row: T, index: number) => (row as any)?.id ?? index,
   onViewMoreClick,
   onRowClick,
 }: Props<T>) {
+  const t = useTranslations("table")
+
   const [filters, setFilters] = useState(initialFilters)
   const [filteredData, setFilteredData] = useState(initialData)
 
@@ -109,10 +112,10 @@ export function EnhancedTable<T>({
         columns={columns}
         isLoading={isLoading}
         itemsPerPage={itemsPerPage}
-        emptyStateMessage={emptyStateMessage}
-        loadingMessage={loadingMessage}
+        emptyStateMessage={emptyStateMessage || t("emptyStateMessage")}
+        loadingMessage={loadingMessage || t("loadingMessage")}
         viewMore={viewMore}
-        viewAllText={viewMoreButtonText}
+        viewAllText={viewMoreButtonText || t("viewMoreButtonText")}
         getRowId={getRowId}
         onViewMoreClick={onViewMoreClick}
         onRowClick={onRowClick}

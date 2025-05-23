@@ -1,12 +1,15 @@
 import { MetricCard } from "@/components/cards"
 import { Avatar } from "@/components/ui/avatar"
 import { Card } from "@/components/ui/card"
+import { useTranslations } from "next-intl"
 
 interface PatientProfileProps {
   patientId: string
 }
 
 export function PatientProfile({ patientId }: PatientProfileProps) {
+  const t = useTranslations("pages.patient")
+
   // In a real app, you would fetch patient data from an API
   const patient = {
     id: patientId,
@@ -29,9 +32,17 @@ export function PatientProfile({ patientId }: PatientProfileProps) {
         <p className="text-gray-500 text-sm">ID: {patient.id}</p>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
-        <MetricCard className="w-full" title="Consultas Realizadas" value={patient.metrics.consultationsCompleted} />
-        <MetricCard className="w-full" title="Chats Finalizados" value={patient.metrics.chatsFinalized} />
-        <MetricCard className="w-full" title="Consultas Canceladas" value={patient.metrics.consultationsCanceled} />
+        <MetricCard
+          className="w-full"
+          title={t("consultations.completed")}
+          value={patient.metrics.consultationsCompleted}
+        />
+        <MetricCard className="w-full" title={t("chats.completed")} value={patient.metrics.chatsFinalized} />
+        <MetricCard
+          className="w-full"
+          title={t("consultations.canceled")}
+          value={patient.metrics.consultationsCanceled}
+        />
       </div>
     </Card>
   )
