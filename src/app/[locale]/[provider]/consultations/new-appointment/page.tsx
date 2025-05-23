@@ -19,10 +19,15 @@ import { Textarea } from "@/components/ui/textarea"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { TimeSlots } from "@/lib/constants/app"
 import { ConsultationCategory, ConsultationType } from "@/types/provider/professional/types"
+import { useTranslations } from "next-intl"
 import { toast } from "sonner"
 
 export default function NovoAgendamentoPage() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.consultation.newAppointment")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+
   const [date, setDate] = useState<Date>()
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string | null>(null)
   const [consultationType, setConsultationType] = useState<ConsultationType>(ConsultationType.Normal)
@@ -49,7 +54,7 @@ export default function NovoAgendamentoPage() {
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <BackButton text="Novo Agendamento" />
+        <BackButton text={t("cta.backButton")} />
       </div>
 
       <Card>
@@ -57,11 +62,11 @@ export default function NovoAgendamentoPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="col-span-1 md:col-span-2">
               <Label htmlFor="patient" className="block text-sm font-medium mb-1">
-                Nome do Paciente <Asterisk />
+                {tForm("label.patientName")} <Asterisk />
               </Label>
               <Select required>
                 <SelectTrigger id="patient" className="w-full">
-                  <SelectValue placeholder="Selecione um Paciente" />
+                  <SelectValue placeholder={tForm("placeholder.patientName")} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="patient1">Maria Silva</SelectItem>
@@ -73,14 +78,14 @@ export default function NovoAgendamentoPage() {
 
             <div className="col-span-1">
               <Label className="block text-sm font-medium mb-1">
-                Data
+                {tForm("label.date")}
                 <Asterisk />
               </Label>
               <SelectDatepicker
                 date={date}
                 setDate={setDate}
                 className="w-full"
-                placeholder="Selecione uma Data"
+                placeholder={tForm("placeholder.date")}
                 locale={ptBR}
               />
             </div>
@@ -88,8 +93,7 @@ export default function NovoAgendamentoPage() {
 
           <div>
             <Label className="block text-sm font-medium mb-1">
-              Horários disponíveis
-              <Asterisk />
+              {tForm("label.timeSlots")} <Asterisk />
             </Label>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-2">
               {TimeSlots.map((time) => (
@@ -112,19 +116,14 @@ export default function NovoAgendamentoPage() {
 
           <div>
             <Label htmlFor="reason" className="block text-sm font-medium mb-1">
-              Motivo do Agendamento <Asterisk />
+              {tForm("label.reason")} <Asterisk />
             </Label>
-            <Textarea
-              id="reason"
-              placeholder="Motivo do agendamento da consulta do paciente"
-              className="min-h-[100px]"
-              required
-            />
+            <Textarea id="reason" placeholder={tForm("placeholder.reason")} className="min-h-[100px]" required />
           </div>
 
           <div>
             <Label className="block text-sm font-medium mb-3">
-              Tipo de Consulta <Asterisk />
+              {tForm("label.consultationType")} <Asterisk />
             </Label>
             <RadioGroup
               value={consultationType}
@@ -133,25 +132,22 @@ export default function NovoAgendamentoPage() {
             >
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.Normal} id="normal" />
-                <Label htmlFor="normal">Normal</Label>
+                <Label htmlFor="normal">{tForm("category.consultationType.normal")}</Label>
               </div>
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.Urgent} id="urgente" />
-                <Label htmlFor="urgente">Urgente</Label>
+                <Label htmlFor="urgente">{tForm("category.consultationType.urgent")}</Label>
               </div>
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationType.FollowUp} id="seguimento" />
-                <Label htmlFor="seguimento">Seguimento</Label>
+                <Label htmlFor="seguimento">{tForm("category.consultationType.followUp")}</Label>
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <InfoIcon className="h-4 w-4 text-system-9" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="w-[200px] text-sm">
-                        Consulta de seguimento é uma consulta de acompanhamento para pacientes que já realizaram uma
-                        consulta anterior.
-                      </p>
+                      <p className="w-[200px] text-sm">{t("followUpTooltip")}</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -168,21 +164,21 @@ export default function NovoAgendamentoPage() {
             >
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Home} id="domicilio" />
-                <Label htmlFor="domicilio">Domicílio</Label>
+                <Label htmlFor="domicilio">{tForm("category.consultationCategory.home")}</Label>
               </div>
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Chat} id="chat" />
-                <Label htmlFor="chat">Chat</Label>
+                <Label htmlFor="chat">{tForm("category.consultationCategory.chat")}</Label>
               </div>
               <div className="flex items-center space-x-2 border px-4 py-3 rounded-md">
                 <RadioGroupItem value={ConsultationCategory.Teleconsultation} id="teleconsulta" />
-                <Label htmlFor="teleconsulta">Teleconsulta</Label>
+                <Label htmlFor="teleconsulta">{tForm("category.consultationCategory.teleconsultation")}</Label>
               </div>
             </RadioGroup>
           </div>
 
           <div className="flex justify-end">
-            <Button type="submit">Enviar</Button>
+            <Button type="submit">{tCta("submit")}</Button>
           </div>
         </form>
         <RestrictedAccessModal isOpen={showRestrictedModal} onClose={() => setShowRestrictedModal(false)} />

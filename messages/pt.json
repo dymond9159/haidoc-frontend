@@ -102,7 +102,12 @@
       "cvv": "CVV",
       "expiryDate": "Data de validade",
       "occurrenceType": "Tipo de ocorrência",
-      "description": "Descrição"
+      "description": "Descrição",
+      "patientName": "Nome do Paciente",
+      "date": "Data",
+      "timeSlots": "Horários disponíveis",
+      "reason": "Motivo do agendamento",
+      "consultationType": "Tipo de consulta"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -124,7 +129,11 @@
       "cvv": "123",
       "expiryDate": "MM/AA",
       "occurrenceType": "Exemplo: Dúvida sobre o pagamento",
-      "supportDescription": "Digite sua pergunta ou relate seu problema..."
+      "supportDescription": "Digite sua pergunta ou relate seu problema...",
+      "patientName": "Selecione um Paciente",
+      "date": "Selecione uma data",
+      "timeSlots": "Selecione um horário",
+      "reason": "Motivo do agendamento da consulta do paciente"
     },
     "category": {
       "gender": {
@@ -164,6 +173,16 @@
         "suspension": "Suspensão",
         "ointment": "Pomada",
         "cream": "Creme"
+      },
+      "consultationType": {
+        "normal": "Normal",
+        "urgent": "Urgente",
+        "followUp": "Seguimento"
+      },
+      "consultationCategory": {
+        "home": "Domicílio",
+        "chat": "Chat",
+        "teleconsultation": "Teleconsulta"
       }
     },
     "error": {
@@ -260,21 +279,12 @@
     }
   },
   "table": {
-    "cta": {
-      "view": "Ver",
-      "edit": "Editar",
-      "delete": "Excluir",
-      "previous": "Anterior",
-      "next": "Próximo"
-    },
     "emptyStateMessage": "Nenhum registro encontrado",
     "emptyStateDescription": "Nenhum registro encontrado para a consulta selecionada.",
     "loadingMessage": "Carregando dados...",
     "viewMoreButtonText": "Ver Todos",
     "columns": {
       "ID": "ID",
-      "date": "Data",
-      "datetime": "Data e hora",
       "type": "Tipo",
       "status": "Status",
       "consultation": "Consulta",
@@ -283,28 +293,46 @@
       "name": "Nome",
       "phone": "Telefone",
       "email": "E-mail",
-      "actions": "Ações"
+      "invoice": "Fatura",
+      "receipt": "Recibo",
+      "numberOf": "N° {column}",
+      "client": "Cliente",
+      "category": "Categoria",
+      "date": "Data",
+      "datetime": "Data e hora",
+      "issueDate": "Data de emissão",
+      "actions": "Ações",
+      "options": "Opções"
     },
     "filter": {
       "label": {
         "search": "Pesquisar",
         "date": "Data",
         "status": "Status",
-        "actions": "Ações"
+        "actions": "Ações",
+        "category": "Categoria"
       },
       "placeholder": {
         "search": "Pesquisar por {column}",
         "date": "Selecione uma data",
         "status": "Selecione um status",
-        "actions": "Selecione uma ação"
+        "actions": "Selecione uma ação",
+        "category": "Selecione uma categoria"
       }
+    },
+    "cta": {
+      "view": "Visualizar",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "previous": "Anterior",
+      "next": "Próximo",
+      "viewAllOrders": "Ver Todos os Pedidos",
+      "accepted": "Aceito",
+      "rejected": "Rejeitado",
+      "pending": "Pendente"
     }
   },
   "pages": {
-    "home": {
-      "title": "Home",
-      "description": "Página inicial"
-    },
     "auth": {
       "login": {
         "title": "Faça seu Login!",
@@ -430,6 +458,48 @@
         "title": "Clínica",
         "description": "Página inicial da clínica"
       },
+      "home": {
+        "title": "Home",
+        "description": "Página inicial",
+        "welcome": "Bem-vindo de volta, {name}!",
+        "lastestMessages": "Últimas mensagens",
+        "consultationRequests": "Solicitações de Consulta",
+        "profileApproval": {
+          "pending": {
+            "title": "Cadastro concluído!",
+            "description": "Seus dados foram enviados para que o administrador da plataforma possa aprovar. A aprovação pode levar até <bold>48 horas</bold>, e notificaremos você assim que seu cadastro for aprovado!"
+          },
+          "approved": {
+            "title": "Sucesso!",
+            "description": "Seu perfil foi aprovado! Agora você pode usar sua conta, completar e ajustar todas as configurações necessárias. Certifique-se de revisar suas informações para garantir uma boa experiência.",
+            "cta": {
+              "label": "Personalizar meu perfil"
+            }
+          },
+          "rejected": {
+            "title": "Cadastro reprovado!",
+            "description": "Seu cadastro foi reprovado. Você tem até 3 tentativas para corrigir suas informações. Após editar, sua aplicação será reavaliada. Caso precise de suporte, estamos aqui para ajudar."
+          },
+          "cancelled": {
+            "title": "Cadastro cancelado!",
+            "description": "Seu cadastro foi cancelado. Você pode solicitar um novo cadastro a qualquer momento."
+          },
+          "suspended": {
+            "title": "Conta suspensa!",
+            "description": "Sua conta foi suspensa. Por favor, entre em contato com o suporte para mais informações."
+          }
+        },
+        "metricStatus": {
+          "marked": "Consultas Marcadas",
+          "completed": "Consultas Realizadas",
+          "canceled": "Consultas Canceladas"
+        },
+        "cta": {
+          "newAppointment": "Novo agendamento",
+          "viewMessages": "Ver Mensagens",
+          "viewAgenda": "Ver Agenda"
+        }
+      },
       "agenda": {
         "title": "Agenda",
         "description": "Agenda de consultas"
@@ -439,6 +509,14 @@
         "description": "Consultas médicas",
         "consultationsCompleted": "Consultas Realizadas",
         "consultationsCanceled": "Consultas Canceladas",
+        "newAppointment": {
+          "title": "Novo agendamento",
+          "description": "Agende uma consulta com um de nossos profissionais de saúde",
+          "followUpTooltip": "Consulta de seguimento é uma consulta de acompanhamento para pacientes que já realizaram uma consulta anterior.",
+          "cta": {
+            "backButton": "Novo Agendamento"
+          }
+        },
         "featureBar": {
           "tabs": {
             "history": "Histórico",
@@ -538,7 +616,68 @@
       },
       "finances": {
         "title": "Finanças",
-        "description": "Gerenciamento de finanças"
+        "description": "Gerenciamento de finanças",
+        "lastReceipts": "Últimos recibos",
+        "invoices": {
+          "title": "Faturas",
+          "description": "Faturas emitidas",
+          "details": {
+            "title": "Detalhes da fatura",
+            "description": "Detalhes da fatura",
+            "cta": {
+              "backButton": "Detalhes da fatura {invoiceNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Faturas"
+          }
+        },
+        "receipts": {
+          "title": "Recibos",
+          "description": "Recibos emitidos",
+          "details": {
+            "title": "Detalhes do Recibo",
+            "description": "Detalhes do recibo",
+            "cta": {
+              "backButton": "Detalhes do recibo {receiptNumber}"
+            }
+          },
+          "cta": {
+            "backButton": "Recibos"
+          }
+        },
+        "label": {
+          "receiptNumber": "Número do recibo",
+          "invoiceNumber": "Número da fatura",
+          "issueDate": "Emitido em",
+          "unitValue": "Valor unitário",
+          "plansCount": "Qtd. de planos",
+          "paymentMethod": "Método de pagamento",
+          "status": "Situação",
+          "issuerDetails": "Detalhes do emitente",
+          "issuerName": "Nome",
+          "issuerNuit": "NUIT",
+          "issuerAddress": "Endereço",
+          "issuerContact": "Contato",
+          "customerDetails": "Detalhes do cliente",
+          "customerName": "Nome",
+          "customerNuit": "NUIT",
+          "customerAddress": "Endereço",
+          "customerContact": "Contato",
+          "dueDate": "Vencimento",
+          "subtotal": "Subtotal",
+          "finalValue": "Valor final",
+          "totalWithTaxes": "Total com impostos",
+          "receiptReceived": "Informamos que o valor foi recebido pelo emitente.",
+          "qrCode": "Escaneie o QR code e acesse nossos termos e condições"
+        },
+        "cta": {
+          "backButton": "Finanças",
+          "export": "Exportar",
+          "exporting": "Exportando...",
+          "exportPdf": "Exportar PDF",
+          "exportJpeg": "Exportar JPEG"
+        }
       },
       "support": {
         "title": "Suporte",

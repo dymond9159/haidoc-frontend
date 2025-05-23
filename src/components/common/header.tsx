@@ -47,7 +47,7 @@ export function Header() {
     "/professional/profile/public": t("provider.profile.public.title"),
     "/professional/profile": t("provider.profile.title"),
     "/professional/my-activity": t("provider.activityLog.title"),
-    "/professional": t("home.title"),
+    "/professional": t("provider.home.title"),
     "/notifications": t("notifications.title"),
   }
 

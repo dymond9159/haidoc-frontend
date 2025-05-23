@@ -19,15 +19,19 @@ import { Switch } from "@/components/ui/switch"
 import { Months, WeekDays } from "@/lib/constants/index"
 import { mockHistoryMessages } from "@/lib/mock-data/professional/chat"
 import { mockAppointments } from "@/lib/mock-data/professional/home"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 
 export default function ProfessionalHomePage() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.home")
+
   const [selectedMonth, setSelectedMonth] = useState("Agosto")
   const [selectedDate, setSelectedDate] = useState(9) // Current date in the calendar
   const [approvedAccount, setApprovedAccount] = useState(false)
 
   const currentWeekDates = [4, 5, 6, 7, 8, 9, 10]
+  const thisMonth = new Date().toLocaleDateString("pt-PT", { month: "long", year: "numeric" })
 
   return (
     <div className="space-y-8">
@@ -41,20 +45,20 @@ export default function ProfessionalHomePage() {
         </div>
       </div>
       <div className="flex flex-col justify-start sm:flex-row sm:justify-between items-center gap-4 mb-6">
-        <h1 className="text-2xl font-bold">Hi, doctor!</h1>
+        <h1 className="text-2xl font-bold">{t("welcome", { name: "doctor" })}</h1>
         <Button
           className="gap-2 w-full sm:w-fit"
           onClick={() => router.push("/professional/consultations/new-appointment")}
         >
           <PlusIcon size={16} />
-          Novo agendamento
+          {t("cta.newAppointment")}
         </Button>
       </div>
 
       {/* Metrics Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         <StatCard
-          title="Consultas Marcadas"
+          title={t("metricStatus.marked")}
           value={300}
           icon={<CalendarClockIcon />}
           action={
@@ -72,15 +76,15 @@ export default function ProfessionalHomePage() {
             </Select>
           }
         />
-        <StatCard title="Consultas Realizadas" icon={<CalendarCheckIcon />} value={300} />
-        <StatCard title="Consultas pendentes" icon={<StethoscopeIcon />} value={300} />
+        <StatCard title={t("metricStatus.completed")} icon={<CalendarCheckIcon />} value={300} />
+        <StatCard title={t("metricStatus.canceled")} icon={<StethoscopeIcon />} value={300} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         {/* Messages Section */}
         <Card>
           <CardHeader>
-            <CardTitle>Últimas Mensagens</CardTitle>
+            <CardTitle>{t("lastestMessages")}</CardTitle>
           </CardHeader>
           <CardContent className="flex-1">
             <div className="divide-y">
@@ -99,14 +103,14 @@ export default function ProfessionalHomePage() {
           </CardContent>
           <Separator className="my-0" />
           <CardFooter className="p-0 flex justify-end">
-            <LinkButton href="/professional/chat">Ver Mensagens</LinkButton>
+            <LinkButton href="/professional/chat">{t("cta.viewMessages")}</LinkButton>
           </CardFooter>
         </Card>
 
         {/* Calendar Section */}
         <Card>
           <CardHeader>
-            <CardTitle>Agosto 2024</CardTitle>
+            <CardTitle>{thisMonth}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-7 gap-2 mb-4 items-center justify-center">
@@ -146,14 +150,14 @@ export default function ProfessionalHomePage() {
           </CardContent>
           <Separator className="my-0" />
           <CardFooter className="p-0 flex justify-end">
-            <LinkButton href="/professional/agenda">Ver Agenda</LinkButton>
+            <LinkButton href="/professional/agenda">{t("cta.viewAgenda")}</LinkButton>
           </CardFooter>
         </Card>
       </div>
 
       {/* Consultation Requests Section */}
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold">Solicitações de Consulta</h3>
+        <h3 className="text-lg font-semibold">{t("consultationRequests")}</h3>
         <RequestConsultationTable
           maxRecords={5}
           viewMore

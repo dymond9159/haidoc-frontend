@@ -9,6 +9,7 @@ import { FilterConfig } from "@/components/common/table-filter"
 import { Button } from "@/components/ui"
 import { mockInvoice } from "@/lib/mock-data/finances"
 import { InvoiceColumns } from "@/types/admin"
+import { useTranslations } from "next-intl"
 
 interface InvoiceTableProps {
   maxRecords?: number
@@ -22,6 +23,8 @@ interface filterOption {
 
 export function InvoiceTable({ maxRecords, filterable, viewMore }: InvoiceTableProps) {
   const router = useRouter()
+  const t = useTranslations("table")
+
   const [allData, setAllData] = useState<InvoiceColumns[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [filters, setFilters] = useState<filterOption>({}) // Initialize filter state
@@ -54,18 +57,18 @@ export function InvoiceTable({ maxRecords, filterable, viewMore }: InvoiceTableP
     () => [
       {
         accessorKey: "id",
-        header: "N° FATURA",
+        header: t("columns.numberOf", { column: t("columns.invoice") }),
         className: "font-medium",
       },
-      { accessorKey: "number", header: "CLIENTE" },
-      { accessorKey: "unitValue", header: "VALOR" },
-      { accessorKey: "issueDate", header: "DATA DA EMISSÃO" },
+      { accessorKey: "number", header: t("columns.client") },
+      { accessorKey: "unitValue", header: t("columns.value") },
+      { accessorKey: "issueDate", header: t("columns.issueDate") },
       {
         accessorKey: "actions",
-        header: "AÇÕES",
+        header: t("columns.actions"),
         cell: (row) => (
           <Button variant="link" className="text-primary-9 h-auto p-0" onClick={() => handleViewDetails(row.id)}>
-            Visualizar
+            {t("cta.view")}
           </Button>
         ),
       },
@@ -78,9 +81,11 @@ export function InvoiceTable({ maxRecords, filterable, viewMore }: InvoiceTableP
     () => [
       {
         type: "search",
-        label: "Pesquisar",
+        label: t("filter.label.search"),
         accessorKey: "id",
-        placeholder: "Pesquisar por N° Fatura...",
+        placeholder: t("filter.placeholder.search", {
+          column: t("columns.numberOf", { column: t("columns.invoice") }),
+        }),
         value: filters.invoiceId,
         onChange: (value) => handleFilterChange("invoiceId", value),
       },
@@ -97,7 +102,7 @@ export function InvoiceTable({ maxRecords, filterable, viewMore }: InvoiceTableP
       isLoading={isLoading}
       getRowId={(row) => row.id}
       viewMore={viewMore}
-      viewMoreButtonText="Ver Todos os Pedidos"
+      viewMoreButtonText={t("cta.viewAllOrders")}
       maxRecords={maxRecords}
       onViewMoreClick={handleViewMoreClick}
     />
