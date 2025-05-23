@@ -1,5 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox" // Assuming these are your UI components
 import { Label } from "@/components/ui/label"
+import { routes } from "@/lib/routes"
 import { CheckboxProps } from "@radix-ui/react-checkbox"
 import { ChevronRight, ReceiptTextIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -12,11 +13,7 @@ interface TermsAndConditionsProps extends CheckboxProps {
   termsLink?: string
 }
 
-export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
-  termsLink = "/terms-of-service",
-  error,
-  ...props
-}) => {
+export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLink, error, ...props }) => {
   const tCom = useTranslations("common")
 
   const LinkComponent: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href, ...props }) => {
@@ -35,7 +32,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({
           <h3 className="text-sm font-medium">{tCom("termsAndConditions")}</h3>
         </div>
         {termsLink && (
-          <LinkComponent href={termsLink} target="_blank">
+          <LinkComponent href={termsLink || routes.termsOfService()} target="_blank">
             <ChevronRight size={18} className="text-secondary-11" />
           </LinkComponent>
         )}

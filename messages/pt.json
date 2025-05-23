@@ -35,38 +35,6 @@
     "fileTypeError": "Apenas arquivos JPEG e PDF com tamanho máximo de 5MB são permitidos.",
     "characters": "caracteres"
   },
-  "landing": {
-    "home": {
-      "cta": {
-        "login": "Fazer login",
-        "startNow": "Começar agora",
-        "createAccount": "Criar uma conta"
-      },
-      "heroTitle": "Cuidados de saúde simplificados para todos",
-      "heroDescription": "HaiDoc conecta você aos melhores profissionais de saúde, facilitando o agendamento de consultas e o acompanhamento do seu bem-estar.",
-      "whyChoose": "Por que escolher HaiDoc?",
-      "whyChooseDescription": "Nossa plataforma oferece uma experiência completa para pacientes e profissionais de saúde.",
-      "readyToStart": "Pronto para começar?",
-      "joinThousands": "Junte-se a milhares de usuários que já estão aproveitando os benefícios da HaiDoc.",
-      "features": {
-        "onlineConsultationsTitle": "Consultas Online",
-        "onlineConsultationsDesc": "Agende e realize consultas médicas diretamente do conforto da sua casa.",
-        "qualifiedProfessionalsTitle": "Profissionais Qualificados",
-        "qualifiedProfessionalsDesc": "Acesso a uma rede de médicos e especialistas altamente qualificados.",
-        "digitalRecordsTitle": "Prontuário Digital",
-        "digitalRecordsDesc": "Mantenha seu histórico médico organizado e acessível a qualquer momento.",
-        "digitalPrescriptionsTitle": "Receitas Digitais",
-        "digitalPrescriptionsDesc": "Receba suas prescrições médicas digitalmente, sem complicações.",
-        "medicationRemindersTitle": "Lembretes de Medicação",
-        "medicationRemindersDesc": "Nunca mais esqueça de tomar seus medicamentos com nossos lembretes.",
-        "examResultsTitle": "Resultados de Exames",
-        "examResultsDesc": "Visualize e compartilhe seus resultados de exames com seus médicos."
-      }
-    },
-    "footer": {
-      "description": "Fornecendo serviços de saúde de alta qualidade e soluções para pacientes e profissionais de saúde."
-    }
-  },
   "sidebar": {
     "home": "Home",
     "agenda": "Agenda",

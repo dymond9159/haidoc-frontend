@@ -35,38 +35,6 @@
     "fileTypeError": "Only JPEG and PDF files with a maximum size of 5MB are allowed.",
     "characters": "characters"
   },
-  "landing": {
-    "home": {
-      "cta": {
-        "login": "Login",
-        "startNow": "Start now",
-        "createAccount": "Create an account"
-      },
-      "heroTitle": "Healthcare simplified for everyone",
-      "heroDescription": "HaiDoc connects you to the best healthcare professionals, making it easy to schedule appointments and monitor your well-being.",
-      "whyChoose": "Why choose HaiDoc?",
-      "whyChooseDescription": "Our platform offers a complete experience for patients and healthcare professionals.",
-      "readyToStart": "Ready to start?",
-      "joinThousands": "Join thousands of users who are already enjoying the benefits of HaiDoc.",
-      "features": {
-        "onlineConsultationsTitle": "Online Consultations",
-        "onlineConsultationsDesc": "Schedule and conduct medical consultations directly from the comfort of your home.",
-        "qualifiedProfessionalsTitle": "Qualified Professionals",
-        "qualifiedProfessionalsDesc": "Access to a network of highly qualified doctors and specialists.",
-        "digitalRecordsTitle": "Digital Records",
-        "digitalRecordsDesc": "Keep your medical history organized and accessible at any time.",
-        "digitalPrescriptionsTitle": "Digital Prescriptions",
-        "digitalPrescriptionsDesc": "Receive your medical prescriptions digitally, without complications.",
-        "medicationRemindersTitle": "Medication Reminders",
-        "medicationRemindersDesc": "Never forget to take your medications again with our reminders.",
-        "examResultsTitle": "Exam Results",
-        "examResultsDesc": "View and share your exam results with your doctors."
-      }
-    },
-    "footer": {
-      "description": "Providing high-quality healthcare services and solutions for patients and healthcare professionals."
-    }
-  },
   "sidebar": {
     "home": "Home",
     "agenda": "Schedule",
