@@ -1,16 +1,16 @@
 {
-  "name": "haidoc-admin",
-  "description": "HaiDoc Admin, Next15, Typescript, shadcn UI, Redux",
+  "name": "haidoc-frontend",
+  "description": "HaiDoc Frontend, Next15, Typescript, shadcn UI, Redux",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev-turbo": "next dev --turbopack",
     "dev": "next dev -p 5000",
     "build": "next build",
     "start": "next start -p 5000",
     "lint": "next lint",
-    "add-ui": "npx shadcn@latest add"
+    "add-ui": "npx shadcn@latest add",
+    "pm2": "pm2 start ecosystem.config.js"
   },
   "dependencies": {
     "@faker-js/faker": "^9.7.0",
