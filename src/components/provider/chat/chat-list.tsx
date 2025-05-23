@@ -7,6 +7,7 @@ import { useMobile } from "@/hooks/use-mobile"
 import { mockChats } from "@/lib/mock-data/professional/chat"
 import { cn } from "@/lib/utils"
 import { MessageItem } from "@/types/provider/chat/types"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 export enum ChatListTabOptions {
@@ -20,6 +21,7 @@ interface ChatListProps {
 }
 
 export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
+  const t = useTranslations("pages.provider.quickChat")
   const isMobile = useMobile()
   const [activeTab, setActiveTab] = useState(ChatListTabOptions.InProgress)
 
@@ -31,10 +33,10 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
     >
       <TabsList className="grid grid-cols-2 h-12 w-full gap-0 p-0">
         <TabsTrigger variant="border" value={ChatListTabOptions.InProgress}>
-          Em andamento
+          {t("inProgress")}
         </TabsTrigger>
         <TabsTrigger variant="border" value={ChatListTabOptions.Finalized}>
-          Consultas finalizadas
+          {t("finalized")}
         </TabsTrigger>
       </TabsList>
 
@@ -42,7 +44,9 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
         <ScrollArea className="flex-1 h-full pr-2">
           {mockChats.unread.length > 0 && (
             <>
-              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens não lidas</h3>
+              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                {t("unreadMessages")}
+              </h3>
               {mockChats.unread.map((chat) => (
                 <ChatItem
                   key={chat.id}
@@ -57,7 +61,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
 
           {mockChats.read.length > 0 && (
             <>
-              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens lidas</h3>
+              <h3 className="py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">{t("readMessages")}</h3>
               {mockChats.read.map((chat) => (
                 <ChatItem
                   key={chat.id}
@@ -74,7 +78,7 @@ export function ChatList({ onSelectChat, selectedChat }: ChatListProps) {
 
       <TabsContent value={ChatListTabOptions.Finalized} className="flex-1 flex flex-col overflow-hidden p-0 m-0">
         <ScrollArea className="flex-1 h-full">
-          <h3 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">Mensagens lidas</h3>
+          <h3 className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wide">{t("readMessages")}</h3>
           {mockChats.finished.map((chat) => (
             <ChatItem
               key={chat.id}

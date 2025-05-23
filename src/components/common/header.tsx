@@ -38,15 +38,15 @@ export function Header() {
 
   const pageTitles: Record<string, string> = {
     "/professional/agenda": t("provider.agenda.title"),
-    "/professional/consultations": t("provider.consultations.title"),
+    "/professional/consultations": t("provider.consultation.title"),
     "/professional/online-consultation": t("provider.onlineConsultation.title"),
     "/professional/chat": t("provider.quickChat.title"),
     "/professional/finances": t("provider.finances.title"),
     "/professional/support": t("provider.support.title"),
-    "/professional/profile/configurations": t("configurations.title"),
-    "/professional/profile/public": t("publicProfile.title"),
-    "/professional/profile": t("myAccount.title"),
-    "/professional/my-activity": t("activityLog.title"),
+    "/professional/profile/configurations": t("provider.profile.configurations.title"),
+    "/professional/profile/public": t("provider.profile.public.title"),
+    "/professional/profile": t("provider.profile.title"),
+    "/professional/my-activity": t("provider.activityLog.title"),
     "/professional": t("home.title"),
     "/notifications": t("notifications.title"),
   }

@@ -19,7 +19,21 @@
     "logout": "Sair",
     "myAccount": "Minha conta",
     "termsAndConditions": "Termos e condições",
-    "termsAndConditionsDesc": "Li e concordo com os termos de uso"
+    "termsAndConditionsDesc": "Li e concordo com os termos de uso",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "search": "Pesquisar",
+    "status": "Status",
+    "date": "Data",
+    "value": "Valor",
+    "id": "ID",
+    "type": "Tipo",
+    "select": "Selecione",
+    "filterByDate": "Filtrar por data",
+    "addFile": "Adicionar arquivo",
+    "maxFiles": "Apenas 5 arquivos permitidos",
+    "fileTypeError": "Apenas arquivos JPEG e PDF com tamanho máximo de 5MB são permitidos.",
+    "characters": "caracteres"
   },
   "landing": {
     "home": {
@@ -86,7 +100,9 @@
       "or": "ou",
       "cardNumber": "Número do cartão",
       "cvv": "CVV",
-      "expiryDate": "Data de validade"
+      "expiryDate": "Data de validade",
+      "occurrenceType": "Tipo de ocorrência",
+      "description": "Descrição"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -106,7 +122,9 @@
       "country": "Moçambique",
       "cardNumber": "**** **** **** ****",
       "cvv": "123",
-      "expiryDate": "MM/AA"
+      "expiryDate": "MM/AA",
+      "occurrenceType": "Exemplo: Dúvida sobre o pagamento",
+      "supportDescription": "Digite sua pergunta ou relate seu problema..."
     },
     "category": {
       "gender": {
@@ -126,6 +144,26 @@
         "dermatology": "Dermatologia",
         "pediatrics": "Pediatria",
         "orthopedics": "Ortopedia"
+      },
+      "durationUnit": {
+        "days": "Dias",
+        "weeks": "Semanas",
+        "months": "Meses"
+      },
+      "administrationRoute": {
+        "oral": "Oral",
+        "intravenosa": "Intravenosa",
+        "intramuscular": "Intramuscular",
+        "subcutanea": "Subcutânea",
+        "topica": "Tópica"
+      },
+      "pharmaceuticalForm": {
+        "tablets": "Comprimidos",
+        "capsules": "Cápsulas",
+        "solution": "Solução",
+        "suspension": "Suspensão",
+        "ointment": "Pomada",
+        "cream": "Creme"
       }
     },
     "error": {
@@ -154,13 +192,28 @@
       "nuitRequired": "NUIT é obrigatório",
       "professionalNumberLength": "Número de Carteira Profissional deve ter 9 dígitos",
       "nuitLength": "NUIT deve ter 9 dígitos",
-      "termsRequired": "Você deve concordar com os termos e condições"
+      "termsRequired": "Você deve concordar com os termos e condições",
+      "occurrenceTypeRequired": "O tipo de ocorrência é obrigatório.",
+      "occurrenceTypeInvalid": "O tipo de ocorrência deve conter apenas letras e espaços.",
+      "occurrenceTypeLength": "O tipo de ocorrência deve ter no mínimo 3 caracteres e no máximo 255 caracteres.",
+      "descriptionRequired": "O campo descrição é obrigatório.",
+      "descriptionMinLength": "A descrição deve ter no mínimo 10 caracteres.",
+      "descriptionMaxLength": "A descrição deve ter no máximo 500 caracteres."
     }
   },
   "notification": {
-    "success": {},
-    "warning": {},
-    "error": {}
+    "success": {
+      "title": "Sucesso",
+      "message": "Sua ação foi realizada com sucesso!"
+    },
+    "warning": {
+      "title": "Atenção",
+      "message": "Ação não realizada."
+    },
+    "error": {
+      "title": "Erro",
+      "message": "Ocorreu um erro ao realizar a ação."
+    }
   },
   "cta": {
     "loginHero": "Fazer login",
@@ -172,6 +225,7 @@
     "access": "Acessar",
     "enter": "Entrar",
     "submit": "Enviar",
+    "cancel": "Cancelar",
     "tryAgain": "Tentar Novamente",
     "forgotPassword": "Esqueci minha senha",
     "signUp": "Cadastre-se",
@@ -183,6 +237,68 @@
     "sendInstructions": "Enviar instruções",
     "backToLogin": "Voltar para login",
     "continue": "Continuar"
+  },
+  "modal": {
+    "quickChat": {
+      "endChat": {
+        "title": "Realmente deseja finalizar a consulta?",
+        "description": "Essa ação não poderá ser desfeita.",
+        "cta": {
+          "endChat": "Finalizar Conversa",
+          "cancel": "Cancelar"
+        },
+        "success": {
+          "title": "Chat finalizado",
+          "description": "A consulta foi finalizada com sucesso."
+        }
+      },
+      "summary": {
+        "title": "Resumo da Consulta",
+        "description": "Digite o resumo da consulta:",
+        "send": "Enviar"
+      }
+    }
+  },
+  "table": {
+    "cta": {
+      "view": "Ver",
+      "edit": "Editar",
+      "delete": "Excluir",
+      "previous": "Anterior",
+      "next": "Próximo"
+    },
+    "emptyStateMessage": "Nenhum registro encontrado",
+    "emptyStateDescription": "Nenhum registro encontrado para a consulta selecionada.",
+    "loadingMessage": "Carregando dados...",
+    "viewMoreButtonText": "Ver Todos",
+    "columns": {
+      "ID": "ID",
+      "date": "Data",
+      "datetime": "Data e hora",
+      "type": "Tipo",
+      "status": "Status",
+      "consultation": "Consulta",
+      "typeOf": "Tipo de {column}",
+      "value": "Valor",
+      "name": "Nome",
+      "phone": "Telefone",
+      "email": "E-mail",
+      "actions": "Ações"
+    },
+    "filter": {
+      "label": {
+        "search": "Pesquisar",
+        "date": "Data",
+        "status": "Status",
+        "actions": "Ações"
+      },
+      "placeholder": {
+        "search": "Pesquisar por {column}",
+        "date": "Selecione uma data",
+        "status": "Selecione um status",
+        "actions": "Selecione uma ação"
+      }
+    }
   },
   "pages": {
     "home": {
@@ -282,7 +398,24 @@
     },
     "patient": {
       "title": "Paciente",
-      "description": "Página inicial do paciente"
+      "description": "Página inicial do paciente",
+      "name": "Nome do Paciente",
+      "profile": {
+        "title": "Perfil do Paciente",
+        "description": "Perfil do paciente"
+      },
+      "consultations": {
+        "title": "Consultas",
+        "description": "Consultas médicas",
+        "completed": "Consultas Realizadas",
+        "canceled": "Consultas Canceladas"
+      },
+      "chats": {
+        "title": "Chats",
+        "description": "Chats finalizados",
+        "completed": "Chats Finalizados",
+        "canceled": "Chats Cancelados"
+      }
     },
     "provider": {
       "professional": {
@@ -301,17 +434,107 @@
         "title": "Agenda",
         "description": "Agenda de consultas"
       },
-      "consultations": {
+      "consultation": {
         "title": "Consultas",
-        "description": "Consultas médicas"
+        "description": "Consultas médicas",
+        "consultationsCompleted": "Consultas Realizadas",
+        "consultationsCanceled": "Consultas Canceladas",
+        "featureBar": {
+          "tabs": {
+            "history": "Histórico",
+            "prescription": "Prescrição",
+            "exams": "Exames"
+          },
+          "history": {
+            "vitals": {
+              "title": "Pré avaliação do paciente",
+              "measuredOn": "Medido em",
+              "bloodPressure": "TA/FC (Tensão arterial)",
+              "temperature": "Temperatura",
+              "respiratoryRate": "Frequência respiratória",
+              "weight": "Peso",
+              "imc": "IMC",
+              "additionalInfoTitle": "Informação adicional",
+              "additionalInformation": "Se tiver preenchido vai aparecer assim"
+            },
+            "medicalHistory": {
+              "title": "Histórico médico",
+              "description": "Histórico médico do paciente",
+              "filledOn": "Preenchido em",
+              "weight": "Peso",
+              "height": "Altura",
+              "sex": "Sexo",
+              "imc": "IMC",
+              "additionalInfoTitle": "Informação adicional",
+              "additionalInformation": "Doenças hereditárias e condições médicas (diabetes, hipertensão, doenças cardíacas, câncer, etc.) de pais, irmãos e outros parentes próximos."
+            }
+          },
+          "prescription": {
+            "title": "Prescrição",
+            "description": "Prescrição médica",
+            "medicationName": "Nome do medicamento",
+            "medicationNamePlaceholder": "Digite aqui",
+            "medicationNameGenericName": "Opte por adicionar preferencialmente o nome genérico.",
+            "genericNamePlaceholder": "Digite aqui",
+            "dosage": "Dosagem",
+            "quantity": "Quantidade",
+            "dosageUnit": "Unidade",
+            "treatmentDuration": "Duração do tratamento",
+            "durationUnit": "Unidade",
+            "administrationRoute": "Via de administração",
+            "pharmaceuticalForm": "Forma farmacêutica",
+            "instructions": "Instrução de uso",
+            "instructionsMaxCharacters": "{chars} caracteres",
+            "signatureAndStampAdded": "Assinatura e carimbo adicionados",
+            "signatureAndStampAddedDescription": "Sua assinatura e seu carimbo serão adicionados automaticamente no momento do envio desta prescrição.",
+            "addAnotherMedication": "Adicionar outro medicamento",
+            "send": "Enviar"
+          },
+          "exams": {}
+        }
       },
       "onlineConsultation": {
         "title": "Consultas Online",
-        "description": "Consultas médicas online"
+        "description": "Consultas médicas online",
+        "medicalReport": "Relatório médico",
+        "provisionalDiagnosis": "Diagnóstico provisório",
+        "suspectedDiagnosis": "Diagnóstico suspeito",
+        "finalDiagnosis": "Diagnóstico final (opcional)",
+        "summary": "Resumo da consulta",
+        "close": "Encerrar",
+        "history": "Histórico",
+        "prescription": "Prescrição",
+        "exams": "Exames",
+        "endCall": "Encerrar chamada",
+        "turnOnVideo": "Ligar vídeo",
+        "turnOffVideo": "Desligar vídeo",
+        "turnOnAudio": "Ligar áudio",
+        "turnOffAudio": "Desligar áudio",
+        "features": "Funcionalidades"
       },
       "quickChat": {
         "title": "Chat rápido",
-        "description": "Chat com o suporte"
+        "description": "Chat com o suporte",
+        "yourConversations": "Suas Conversas",
+        "patientProfile": "Perfil do Paciente",
+        "consultationHistory": "Histórico de Consultas",
+        "chatsFinalized": "Chats Finalizados",
+        "chatsFinalizedDesc": "Chats Finalizados em {datetime}",
+        "inProgress": "Em andamento",
+        "finalized": "Consultas finalizadas",
+        "unreadMessages": "Mensagens não lidas",
+        "readMessages": "Mensagens lidas",
+        "endChatTitle": "Realmente deseja finalizar a consulta?",
+        "endChatDesc": "Essa ação não poderá ser desfeita.",
+        "endChatCancel": "Cancelar",
+        "endChatConfirm": "Finalizar consulta",
+        "summaryTitle": "Resumo da Consulta",
+        "summaryPlaceholder": "Digite aqui...",
+        "summaryLabel": "Digite o resumo da consulta:",
+        "summarySend": "Enviar",
+        "cta": {
+          "completeChat": "Finalizar chat"
+        }
       },
       "finances": {
         "title": "Finanças",
@@ -319,7 +542,9 @@
       },
       "support": {
         "title": "Suporte",
-        "description": "Suporte ao cliente"
+        "description": "Suporte ao cliente",
+        "submitSuccessTitle": "Solicitação enviada",
+        "submitSuccessDesc": "Sua solicitação de suporte foi enviada com sucesso."
       },
       "profile": {
         "title": "Minha conta",
@@ -461,5 +686,17 @@
       "cardEnding": "Cartão de crédito terminando em {lastDigits}",
       "success": "Seu cadastro e pagamento foram concluídos!"
     }
+  },
+  "videoCall": {
+    "title": "Chamada de vídeo",
+    "description": "Chamada de vídeo com o paciente",
+    "endCall": "Encerrar",
+    "chatTooltip": "Chat",
+    "endCallTooltip": "Encerrar chamada",
+    "turnOnVideoTooltip": "Ligar vídeo",
+    "turnOffVideoTooltip": "Desligar vídeo",
+    "turnOnAudioTooltip": "Ligar áudio",
+    "turnOffAudioTooltip": "Desligar áudio",
+    "featuresTooltip": "Funcionalidades"
   }
 }

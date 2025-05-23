@@ -13,6 +13,7 @@ import {
   ChevronRight, // Keep if used in PaginationPrevious/Next Link components
   MoreHorizontal,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 // --- Sub Components (PaginationContent, PaginationItem, PaginationLink, PaginationEllipsis, PaginationPrevious, PaginationNext) ---
 // --- No changes needed in these sub-components from the previous version ---
@@ -128,6 +129,8 @@ interface PaginationProps {
 }
 
 function Pagination({ currentPage = 1, totalPages, onPageChange, className }: PaginationProps) {
+  const t = useTranslations("table")
+
   // Use your custom useMobile hook
   const isMobile = useMobile() // Returns true if window.innerWidth < 768
 
@@ -213,7 +216,7 @@ function Pagination({ currentPage = 1, totalPages, onPageChange, className }: Pa
         >
           <ArrowLeftIcon className="h-4 w-4 flex-shrink-0" />
           {/* Text hidden below md (768px) */}
-          <span className="hidden md:inline">Anterior</span>
+          <span className="hidden md:inline">{t("cta.previous")}</span>
         </Button>
 
         {/* Page Numbers and Ellipsis */}
@@ -252,7 +255,7 @@ function Pagination({ currentPage = 1, totalPages, onPageChange, className }: Pa
           )}
         >
           {/* Text hidden below md (768px) */}
-          <span className="hidden md:inline">Proximo</span>
+          <span className="hidden md:inline">{t("cta.next")}</span>
           <ArrowRightIcon className="h-4 w-4 flex-shrink-0" />
         </Button>
       </PaginationContent>

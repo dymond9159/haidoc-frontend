@@ -9,6 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { useTranslations } from "next-intl"
 
 interface EndChatModalProps {
   isOpen: boolean
@@ -17,18 +18,20 @@ interface EndChatModalProps {
 }
 
 export function EndChatModal({ isOpen, onClose, onConfirm }: EndChatModalProps) {
+  const t = useTranslations("modal.quickChat.endChat")
+  const tCta = useTranslations("cta")
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Realmente deseja finalizar a consulta?</DialogTitle>
+          <DialogTitle>{t("title")}</DialogTitle>
         </DialogHeader>
-        <DialogDescription>Essa ação não poderá ser desfeita.</DialogDescription>
+        <DialogDescription>{t("description")}</DialogDescription>
         <DialogFooter className="flex justify-between sm:justify-end">
           <Button variant="outline" onClick={onClose}>
-            Cancelar
+            {t("cta.cancel")}
           </Button>
-          <Button onClick={onConfirm}>Finalizar consulta</Button>
+          <Button onClick={onConfirm}>{t("cta.endChat")}</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

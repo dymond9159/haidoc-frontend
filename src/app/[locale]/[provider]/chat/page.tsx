@@ -4,11 +4,13 @@ import { BackButton } from "@/components/common"
 import { ChatConversation, ChatList, ChatPlaceholder } from "@/components/provider/chat"
 import { useScreen } from "@/hooks/use-screen"
 import { MessageItem } from "@/types/provider/chat/types"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 export default function ChatPage() {
   const [selectedChat, setSelectedChat] = useState<MessageItem | null>(null)
   const screen = useScreen()
+  const t = useTranslations("pages.provider.quickChat")
 
   // Mobile/tablet: show only one panel at a time
   if (screen.isMobile) {
@@ -16,7 +18,7 @@ export default function ChatPage() {
       <div className="flex flex-col h-full">
         {!selectedChat ? (
           <div className="flex-1">
-            <BackButton text="Suas Conversas" />
+            <BackButton text={t("yourConversations")} />
             <ChatList onSelectChat={setSelectedChat} selectedChat={selectedChat} />
           </div>
         ) : (
@@ -36,7 +38,7 @@ export default function ChatPage() {
     >
       <div className="w-[320px] border-r flex flex-col">
         <div>
-          <BackButton text="Suas Conversas" />
+          <BackButton text={t("yourConversations")} />
         </div>
         <ChatList onSelectChat={setSelectedChat} selectedChat={selectedChat} />
       </div>

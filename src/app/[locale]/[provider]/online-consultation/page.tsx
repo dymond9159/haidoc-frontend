@@ -3,9 +3,11 @@
 import { Chatbot } from "@/components/provider/chat/chatbot"
 import { ConsultationFeatureBar, MedicalReportModal, VideoCallInterface } from "@/components/provider/consultation"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 export default function OnlineConsultationPage() {
+  const t = useTranslations("pages.provider.onlineConsultation")
   const [isVideoOn, setIsVideoOn] = useState(true)
   const [isAudioOn, setIsAudioOn] = useState(true)
   const [isEndCallModalOpen, setIsEndCallModalOpen] = useState(false)
@@ -31,10 +33,10 @@ export default function OnlineConsultationPage() {
         <div className="flex-1 flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <Avatar className="h-10 w-10">
-              <AvatarImage src="/images/placeholder.svg?height=24&width=24" alt="Nome do Médico" />
+              <AvatarImage src="/images/placeholder.svg?height=24&width=24" alt={"Nome do Médico"} />
               <AvatarFallback>NM</AvatarFallback>
             </Avatar>
-            <p className="text-base font-medium">Nome do Médico</p>
+            <p className="text-base font-medium">{"Nome do Médico"}</p>
           </div>
 
           <div className="flex-1 rounded-md overflow-hidden">

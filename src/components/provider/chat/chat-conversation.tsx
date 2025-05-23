@@ -6,15 +6,16 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useMobile } from "@/hooks/use-mobile"
+import { useToast } from "@/hooks/use-toast"
 import { mockMessages } from "@/lib/mock-data/professional/chat"
 import { cn } from "@/lib/utils"
 import { ChatMessage } from "@/types/provider/chat/interfaces"
 import { MessageItem } from "@/types/provider/chat/types"
 import { UserRole } from "@/types/user"
 import { Paperclip, Send } from "lucide-react"
+import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { ConsultationSummaryModal } from "./consultation-summary-modal"
 import { EndChatModal } from "./end-chat-modal"
 
 interface ChatConversationProps {
@@ -32,11 +33,14 @@ export function ChatConversation({
   onBack,
   isPopover = false,
 }: ChatConversationProps) {
+  const t = useTranslations("pages.provider.quickChat")
+  const tNotification = useTranslations("notification")
+  const { toast } = useToast()
+
   const isMobile = useMobile()
   const [message, setMessage] = useState("")
   const [isEndChatModalOpen, setIsEndChatModalOpen] = useState(false)
   const [isSummaryModalOpen, setIsSummaryModalOpen] = useState(false)
-  const [showSuccessToast, setShowSuccessToast] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -73,14 +77,11 @@ export function ChatConversation({
   }
 
   const handleEndChat = () => {
+    toast({
+      title: tNotification("success.title"),
+      description: tNotification("success.message"),
+    })
     setIsEndChatModalOpen(false)
-    setIsSummaryModalOpen(true)
-  }
-
-  const handleSubmitSummary = () => {
-    setIsSummaryModalOpen(false)
-    setShowSuccessToast(true)
-    setTimeout(() => setShowSuccessToast(false), 4000)
   }
 
   const handleFileUpload = () => {
@@ -186,7 +187,7 @@ export function ChatConversation({
 
             {isFinished && (
               <div className="text-center text-sm text-gray-500 mt-4 p-3 border-t bg-gray-50">
-                Consulta Finalizada em 24/12/2024 às 14:34
+                {t("chatsFinalizedDesc", { datetime: "24/12/2024 14:34" })}
               </div>
             )}
             <ScrollBar orientation="vertical" />
@@ -198,7 +199,7 @@ export function ChatConversation({
           <div className="p-2 border-t">
             <div className="mb-3 flex justify-center">
               <Button variant="link" size="sm" onClick={() => setIsEndChatModalOpen(true)}>
-                Finalizar Conversa
+                {t("cta.completeChat")}
               </Button>
             </div>
             <div className="flex items-center gap-2">
@@ -230,12 +231,6 @@ export function ChatConversation({
         isOpen={isEndChatModalOpen}
         onClose={() => setIsEndChatModalOpen(false)}
         onConfirm={handleEndChat}
-      />
-
-      <ConsultationSummaryModal
-        isOpen={isSummaryModalOpen}
-        onClose={() => setIsSummaryModalOpen(false)}
-        onSubmit={handleSubmitSummary}
       />
     </div>
   )

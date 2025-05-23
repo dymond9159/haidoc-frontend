@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 import { GripHorizontal, MessageCircleIcon, Mic, MicOff, PhoneIcon, Video, VideoOff } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 interface VideoCallInterfaceProps {
   isVideoOn: boolean
@@ -24,6 +25,8 @@ export function VideoCallInterface({
   onOpenChat,
   onOpenFeatureBar,
 }: VideoCallInterfaceProps) {
+  const t = useTranslations("videoCall")
+
   const isMobile = useMobile()
 
   const patientVideoUrl = "/images/placeholder.svg?height=720&width=1280&text=Patient"
@@ -47,7 +50,7 @@ export function VideoCallInterface({
             onClick={onOpenChat}
             variant="secondary"
             size="icon"
-            title={"Chat"}
+            title={t("chatTooltip")}
             className={cn("h-12 w-12 rounded-full bg-white/20 hover:bg-white/30 text-white")}
           >
             <MessageCircleIcon className="h-6 w-6" />
@@ -58,7 +61,7 @@ export function VideoCallInterface({
           onClick={onToggleVideo}
           variant="secondary"
           size="icon"
-          title={isVideoOn ? "Desligar vídeo" : "Ligar vídeo"}
+          title={isVideoOn ? t("turnOffVideoTooltip") : t("turnOnVideoTooltip")}
           className={cn(
             "h-12 w-12 rounded-full bg-white/20 hover:bg-white/30 text-white",
             !isVideoOn && "bg-red-500 hover:bg-red-600",
@@ -70,18 +73,18 @@ export function VideoCallInterface({
         <Button
           onClick={onEndCall}
           variant="destructive"
-          title="Encerrar chamada"
+          title={t("endCallTooltip")}
           className="h-12 min-w-12 px-6 rounded-full bg-red-500 hover:bg-red-600"
         >
           {isMobile && <PhoneIcon className="h-6 w-6" />}
-          {!isMobile && "Encerrar"}
+          {!isMobile && t("endCall")}
         </Button>
 
         <Button
           onClick={onToggleAudio}
           variant="secondary"
           size="icon"
-          title={isAudioOn ? "Desligar áudio" : "Ligar áudio"}
+          title={isAudioOn ? t("turnOffAudioTooltip") : t("turnOnAudioTooltip")}
           className={cn(
             "h-12 w-12 rounded-full bg-white/20 hover:bg-white/30 text-white",
             !isAudioOn && "bg-red-500 hover:bg-red-600",
@@ -95,7 +98,7 @@ export function VideoCallInterface({
             onClick={onOpenFeatureBar}
             variant="secondary"
             size="icon"
-            title={"Funcionalidades"}
+            title={t("featuresTooltip")}
             className={cn("h-12 w-12 rounded-full bg-white/20 hover:bg-white/30 text-white")}
           >
             <GripHorizontal className="h-6 w-6" />
