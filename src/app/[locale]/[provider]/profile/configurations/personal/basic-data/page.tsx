@@ -10,11 +10,17 @@ import { useToast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
 import { Gender, GenderLabel } from "@/types/provider/profile/types"
 import { ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function PersonalBasicData() {
   const { toast } = useToast()
+  const t = useTranslations("pages.provider.profile.configurations")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+  const tModal = useTranslations("modal")
+
   const router = useRouter()
   const [isFormChanged, setIsFormChanged] = useState(false)
   const [showConfirmationModal, setShowConfirmationModal] = useState(false)
@@ -73,69 +79,69 @@ export default function PersonalBasicData() {
     <div className="space-y-8">
       <div className="space-y-6">
         <div>
-          <h3 className="text-lg font-medium text-secondary">Dados básicos</h3>
+          <h3 className="text-lg font-medium text-secondary">{t("label.basicData.subTitle1")}</h3>
         </div>
         <div className="space-y-4 grid md:grid-cols-2 gap-4">
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="fullName" className="text-sm font-medium">
-              Nome completo <Asterisk />
+              {tForm("label.fullName")} <Asterisk />
             </Label>
             <Input
               id="fullName"
               value={formData.fullName}
               onChange={(e) => handleChange("fullName", e.target.value)}
-              placeholder="Default"
+              placeholder={tForm("placeholder.fullName")}
               className={errors.fullName ? "border-error-5" : ""}
             />
             {errors.fullName && <p className="text-xs text-error-5">{errors.fullName}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="email" className="text-sm font-medium">
-              E-mail <Asterisk />
+              {tForm("label.email")} <Asterisk />
             </Label>
             <Input
               id="email"
               type="email"
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              placeholder="email@example.com"
+              placeholder={tForm("placeholder.email")}
               className={errors.email ? "border-error-5" : ""}
             />
             {errors.email && <p className="text-xs text-error-5">{errors.email}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="phone" className="text-sm font-medium">
-              Número de telefone <Asterisk />
+              {tForm("label.phone")} <Asterisk />
             </Label>
             <Input
               id="phone"
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
-              placeholder="82 123 4567"
+              placeholder={tForm("placeholder.phone")}
               className={errors.phone ? "border-error-5" : ""}
             />
             {errors.phone && <p className="text-xs text-error-5">{errors.phone}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="birthDate" className="text-sm font-medium">
-              Data de nascimento <Asterisk />
+              {tForm("label.birthDate")} <Asterisk />
             </Label>
             <Input
               id="birthDate"
               value={formData.birthDate}
               onChange={(e) => handleChange("birthDate", e.target.value)}
-              placeholder="22/03/2002"
+              placeholder={tForm("placeholder.birthDate")}
               className={errors.birthDate ? "border-error-5" : ""}
             />
             {errors.birthDate && <p className="text-xs text-error-5">{errors.birthDate}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="gender" className="text-sm font-medium">
-              Sexo <Asterisk />
+              {tForm("label.gender")} <Asterisk />
             </Label>
             <Select value={formData.gender} onValueChange={(value) => handleChange("gender", value)}>
               <SelectTrigger id="gender" className={cn("w-full", errors.gender ? "border-error-5" : "")}>
-                <SelectValue placeholder={GenderLabel.Female} />
+                <SelectValue placeholder={tForm("placeholder.gender")} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value={Gender.Female}>{GenderLabel.Female}</SelectItem>
@@ -150,18 +156,18 @@ export default function PersonalBasicData() {
 
       <div className="space-y-6">
         <div>
-          <h3 className="text-lg font-medium text-secondary">Alterar senha</h3>
+          <h3 className="text-lg font-medium text-secondary">{t("label.basicData.subTitle2")}</h3>
         </div>
         <div className="space-y-4 grid md:grid-cols-2 gap-4">
           <div className="space-y-2 md:col-span-2">
             <Label htmlFor="current-password">
-              Senha atual <Asterisk />
+              {tForm("label.currentPassword")} <Asterisk />
             </Label>
             <div className="relative">
               <Input
                 id="current-password"
                 type={showCurrentPassword ? "text" : "password"}
-                placeholder="Digite aqui"
+                placeholder={tForm("placeholder.password")}
                 value={currentPassword}
                 onChange={(e) => {
                   setCurrentPassword(e.target.value)
@@ -179,17 +185,17 @@ export default function PersonalBasicData() {
                 {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </Button>
             </div>
-            <div className="text-sm text-cyan-600 hover:underline cursor-pointer">Esqueci minha senha</div>
+            <div className="text-sm text-cyan-600 hover:underline cursor-pointer">{tCta("forgotPassword")}</div>
           </div>
           <div className="space-y-2">
             <Label htmlFor="new-password">
-              Nova senha <Asterisk />
+              {tForm("label.newPassword")} <Asterisk />
             </Label>
             <div className="relative">
               <Input
                 id="new-password"
                 type={showNewPassword ? "text" : "password"}
-                placeholder="Digite aqui"
+                placeholder={tForm("placeholder.password")}
                 disabled={!isPasswordValid}
                 value={newPassword}
                 onChange={(e) => {
@@ -212,13 +218,13 @@ export default function PersonalBasicData() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="confirm-password">
-              Repita sua nova senha <Asterisk />
+              {tForm("label.repeatNewPassword")} <Asterisk />
             </Label>
             <div className="relative">
               <Input
                 id="confirm-password"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="Digite aqui"
+                placeholder={tForm("placeholder.password")}
                 disabled={!isPasswordValid}
                 value={confirmPassword}
                 onChange={(e) => {
@@ -245,7 +251,7 @@ export default function PersonalBasicData() {
           <div className="w-full flex items-center gap-4 justify-between">
             <Button variant="outline" className="gap-2" onClick={() => router.back()} disabled>
               <ChevronLeft />
-              Voltar
+              {tCta("back")}
             </Button>
 
             <Button
@@ -253,12 +259,12 @@ export default function PersonalBasicData() {
               className="gap-2"
               onClick={() => router.push("/professional/profile/configurations/personal/details")}
             >
-              Próxima
+              {tCta("next")}
               <ChevronRight />
             </Button>
           </div>
           <Button variant="default" disabled={!canSavePassword || !isFormChanged} onClick={handleSaveChanges}>
-            Salvar Alterações
+            {tCta("saveChanges")}
           </Button>
         </div>
       </div>
@@ -266,10 +272,10 @@ export default function PersonalBasicData() {
         isOpen={showConfirmationModal}
         onClose={() => setShowConfirmationModal(false)}
         onConfirm={confirmSaveChanges}
-        title="Tem certeza que deseja salvar alterações?"
-        description="Garanta que todas as informações estejam corretas."
-        confirmText="Sim, salvar alterações"
-        cancelText="Cancelar"
+        title={tModal("basicDataSaveChangesConfirm.title")}
+        description={tModal("basicDataSaveChangesConfirm.description")}
+        confirmText={tModal("basicDataSaveChangesConfirm.confirmText")}
+        cancelText={tModal("basicDataSaveChangesConfirm.cancelText")}
       />
     </div>
   )

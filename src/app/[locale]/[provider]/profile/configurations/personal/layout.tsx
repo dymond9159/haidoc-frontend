@@ -2,6 +2,7 @@
 
 import { FlowSteps } from "@/components/common/flow-steps"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
@@ -26,6 +27,7 @@ interface ConfigrationPersonalLayoutProps {
 }
 
 export default function ConfigrationPersonalLayout({ children }: ConfigrationPersonalLayoutProps) {
+  const t = useTranslations("pages.provider.profile.configurations")
   const pathname = usePathname()
   const currentStep = registrationSteps.find((step) => pathname.includes(step.path))?.number || 1
 
@@ -35,8 +37,9 @@ export default function ConfigrationPersonalLayout({ children }: ConfigrationPer
         <Alert variant="warning">
           <AlertDescription className="text-warning-5">
             <div>
-              Não é possível alterar estes dados cadastrais. Para mais informações, contate o{" "}
-              <span className="font-semibold">suporte</span>.
+              {t.rich("alert.personalDetails.description", {
+                bold: (chunk) => <span className="font-semibold">{chunk}</span>,
+              })}
             </div>
           </AlertDescription>
         </Alert>

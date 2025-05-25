@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { PaymentMethod, PaymentMethodDetails } from "@/types" // Adjust path
 import { CreditCard, PlusIcon, WalletMinimal } from "lucide-react" // Example brand icons
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 import { v4 as uuidv4 } from "uuid" // For generating unique IDs
 
@@ -49,6 +50,9 @@ const mockPaymentMethods: PaymentMethodDetails[] = [
 ]
 
 export default function PaymentDetailsConfigurationsPage() {
+  const t = useTranslations("pages.provider.profile.configurations")
+  const tCta = useTranslations("cta")
+
   const [paymentMethods, setPaymentMethods] = useState<PaymentMethodDetails[]>(mockPaymentMethods || [])
   const [isFormModalOpen, setIsFormModalOpen] = useState(false)
   const [formMode, setFormMode] = useState<"add" | "edit">("add")
@@ -150,10 +154,10 @@ export default function PaymentDetailsConfigurationsPage() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between items-start md:items-center">
-        <h3 className="text-lg font-medium text-secondary">Dados de pagamento</h3>
+        <h3 className="text-lg font-medium text-secondary">{t("label.paymentDetails.title")}</h3>
         <Button className="gap-2 w-full md:w-auto" onClick={handleOpenAddModal}>
           <PlusIcon size="16" />
-          Cadastrar novo método
+          {t("cta.addNewMethod")}
         </Button>
       </div>
 
@@ -176,8 +180,8 @@ export default function PaymentDetailsConfigurationsPage() {
       ) : (
         <div className="text-center text-muted-foreground py-8 border border-dashed rounded-md">
           <WalletMinimal size={48} className="mx-auto mb-2 opacity-50" />
-          <p>Nenhum método de pagamento cadastrado.</p>
-          <p className="text-xs mt-1">Clique em &quot;Cadastrar novo método&quot; para adicionar um.</p>
+          <p>{t("label.paymentDetails.empty.title")}</p>
+          <p className="text-xs mt-1">{t("label.paymentDetails.empty.description")}</p>
         </div>
       )}
       <div>

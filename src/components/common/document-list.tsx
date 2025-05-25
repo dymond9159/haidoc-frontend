@@ -8,6 +8,7 @@ import {
   FileTypeIcon,
   ImageIcon,
 } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { Button } from "../ui"
 import { ColumnDef, DataTable } from "./data-table"
 
@@ -26,6 +27,8 @@ interface DocumentListProps {
 }
 
 export function DocumentList({ documents }: DocumentListProps) {
+  const t = useTranslations("table")
+
   const getDocumentIcon = (docType: DocumentColumn["type"]) => {
     switch (docType) {
       case "pdf":
@@ -60,7 +63,7 @@ export function DocumentList({ documents }: DocumentListProps) {
   const columns: ColumnDef<DocumentColumn>[] = [
     {
       accessorKey: "name",
-      header: "NOME DO ARQUIVO",
+      header: t("columns.fileName"),
       headerClassName: "text-start",
       className: "text-start py-0",
       cell: (row) => {
@@ -75,7 +78,7 @@ export function DocumentList({ documents }: DocumentListProps) {
     },
     {
       accessorKey: "uploadedAt",
-      header: "DATA DE UPLOAD",
+      header: t("columns.uploadedAt"),
       className: "text-start py-0",
       cell: (row) => {
         const uploadedAt = row.uploadedAt
@@ -86,7 +89,7 @@ export function DocumentList({ documents }: DocumentListProps) {
     },
     {
       accessorKey: "actions",
-      header: "OPÇÕES",
+      header: t("columns.actions"),
       className: "text-center py-0",
       cell: (row) => {
         const doc = row

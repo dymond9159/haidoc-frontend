@@ -31,11 +31,9 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLin
           <ReceiptTextIcon size={18} />
           <h3 className="text-sm font-medium">{tCom("termsAndConditions")}</h3>
         </div>
-        {termsLink && (
-          <LinkComponent href={termsLink || routes.termsOfService()} target="_blank">
-            <ChevronRight size={18} className="text-secondary-11" />
-          </LinkComponent>
-        )}
+        <LinkComponent href={termsLink || routes.termsOfService()} target="_blank">
+          <ChevronRight size={18} className="text-secondary-11" />
+        </LinkComponent>
       </div>
       <div className="flex items-start space-x-2 mt-2">
         <Checkbox id="terms" {...props} />

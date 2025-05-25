@@ -10,6 +10,7 @@ import { useMobile } from "@/hooks/use-mobile"
 import { getActiveTabFromPath } from "@/lib/utils"
 import { TabItemType } from "@/types"
 import { BriefcaseMedicalIcon, ChevronRightIcon, Pencil, Star, StethoscopeIcon, UserRoundIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
 import { useEffect, useState } from "react"
@@ -19,26 +20,28 @@ export enum PublicProfileTabOptions {
   Services = "Serviços",
 }
 
-const tabItems: TabItemType<PublicProfileTabOptions>[] = [
-  {
-    value: PublicProfileTabOptions.About,
-    icon: <UserRoundIcon />,
-    label: "Sobre",
-    href: "/professional/profile/public",
-  },
-  {
-    value: PublicProfileTabOptions.Services,
-    icon: <BriefcaseMedicalIcon />,
-    label: "Serviços",
-    href: "/professional/profile/public/services",
-  },
-]
-
 export default function PublicProfileLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+  const t = useTranslations("pages.provider.profile.public")
+
   const [activeTab, setActiveTab] = useState<PublicProfileTabOptions>(PublicProfileTabOptions.About)
   const isMobile = useMobile()
   const tabOrientation = isMobile ? "horizontal" : "vertical"
+
+  const tabItems: TabItemType<PublicProfileTabOptions>[] = [
+    {
+      value: PublicProfileTabOptions.About,
+      icon: <UserRoundIcon />,
+      label: t("tabs.about"),
+      href: "/professional/profile/public",
+    },
+    {
+      value: PublicProfileTabOptions.Services,
+      icon: <BriefcaseMedicalIcon />,
+      label: t("tabs.services"),
+      href: "/professional/profile/public/services",
+    },
+  ]
 
   const currentPath = usePathname()
   const initialTab = getActiveTabFromPath(tabItems, currentPath)
@@ -52,7 +55,7 @@ export default function PublicProfileLayout({ children }: { children: React.Reac
   return (
     <div className="space-y-8">
       <div className="mb-6">
-        <BackButton text="Perfil público" />
+        <BackButton text={t("cta.backButton")} />
       </div>
       <div className="relative h-25 mb-6 rounded-lg bg-secondary-9 bg-[url('/images/public-profile-banner.svg')] bg-center p-6"></div>
       <div className="relative px-6 -mt-12">

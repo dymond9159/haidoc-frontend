@@ -8,8 +8,12 @@ import { ActivityLogColumns } from "@/types/admin"
 import { useState } from "react"
 
 import { activities as mockActivities } from "@/lib/mock-data/activity-log"
+import { useTranslations } from "next-intl"
 
 export default function AdminActivitiesPage() {
+  const t = useTranslations("pages.provider.activityLog")
+  const tCta = useTranslations("cta")
+
   const [currentPage, setCurrentPage] = useState(1)
   const [selectedActivity, setSelectedActivity] = useState<ActivityLogColumns | null>(null)
 
@@ -41,7 +45,7 @@ export default function AdminActivitiesPage() {
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <BackButton text="Minhas Atividades" />
+        <BackButton text={t("cta.backButton")} />
       </div>
 
       <div className="space-y-4">
@@ -58,14 +62,12 @@ export default function AdminActivitiesPage() {
                 </p>
               </div>
               <Button variant="link" className="text-primary h-auto p-0" onClick={() => handleViewActivity(activity)}>
-                Visualizar
+                {tCta("view")}
               </Button>
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500 dark:text-gray-400 py-8">
-            Nenhuma atividade registrada para este usuário.
-          </p>
+          <p className="text-center text-gray-500 dark:text-gray-400 py-8">{t("empty.title")}</p>
         )}
       </div>
 

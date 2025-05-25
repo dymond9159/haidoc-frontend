@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { cn, formatFileSize } from "@/lib/utils"
 import { FileTextIcon, Plus, UploadIcon, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { DragEvent, useRef, useState } from "react"
 
 export type UploadedFile = {
@@ -45,6 +46,8 @@ export const FileUploadBox = ({
   uploadLabel = `Adicionar arquivos (máx ${formatFileSize(maxSize)})`,
   className,
 }: FileUploadBoxProps) => {
+  const t = useTranslations("fileUploadBox")
+
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [isDraggingOver, setIsDraggingOver] = useState(false)
   const [localError, setLocalError] = useState<string | null>(null)
@@ -205,10 +208,8 @@ export const FileUploadBox = ({
             )}
           />
         </div>
-        <p className="text-sm text-system-11 mb-1">
-          {isDraggingOver && canAddMore ? "Solte os arquivos aqui!" : "Arraste e solte arquivos aqui!"}
-        </p>
-        <p className="text-xs text-system-9 mb-3">Ou, se preferir...</p>
+        <p className="text-sm text-system-11 mb-1">{isDraggingOver && canAddMore ? t("dropHere") : t("dragAndDrop")}</p>
+        <p className="text-xs text-system-9 mb-3">{t("or")}</p>
 
         <Button
           type="button"
@@ -220,9 +221,9 @@ export const FileUploadBox = ({
         >
           <Plus className={cn("h-3 w-3 mr-1", !multiple && hasFiles && "hidden")} />{" "}
           {/* Hide plus if single and file exists */}
-          {uploadLabel}
+          {t("cta.upload", { maxSize: formatFileSize(maxSize) })}
         </Button>
-        {!canAddMore && <p className="text-xs text-system-9 mt-2">Limite de {maxFiles} arquivo(s) atingido.</p>}
+        {!canAddMore && <p className="text-xs text-system-9 mt-2">{t("limit", { maxFiles })}</p>}
       </div>
 
       {/* Error Display - Prefers local error, falls back to parent error */}
@@ -275,7 +276,7 @@ export const FileUploadBox = ({
           onClick={handleClickUpload}
         >
           <Plus className="h-3 w-3 mr-1" />
-          Adicionar mais documentos
+          {t("cta.addMore")}
         </Button>
       )}
     </div>

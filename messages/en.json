@@ -50,12 +50,15 @@
       "password": "Password",
       "code": "Code",
       "sms": "SMS",
-      "repeatPassword": "Repeat password",
       "fullName": "Full name",
       "phone": "Phone number",
       "birthDate": "Birth date",
       "gender": "Gender",
       "confirmPassword": "Confirm password",
+      "currentPassword": "Current password",
+      "repeatPassword": "Repeat password",
+      "newPassword": "New password",
+      "repeatNewPassword": "Repeat new password",
       "specialty": "Specialty",
       "institutionName": "Institution name",
       "professionalNumber": "Professional License Number",
@@ -66,6 +69,7 @@
       "city": "City",
       "country": "Country",
       "or": "or",
+      "cardName": "Name on card",
       "cardNumber": "Card number",
       "cvv": "CVV",
       "expiryDate": "Expiry date",
@@ -75,7 +79,14 @@
       "date": "Date",
       "timeSlots": "Available time slots",
       "reason": "Reason for appointment",
-      "consultationType": "Consultation type"
+      "consultationType": "Consultation type",
+      "providerType": "Type of healthcare provider",
+      "aboutMe": "About me",
+      "address": "Address",
+      "otherInfo": "Other information",
+      "allowTeleconsulta": "Allow teleconsultations",
+      "allowHomeConsultation": "Allow home consultations",
+      "priceOfConsultation": "Price of consultation"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -83,8 +94,9 @@
       "phone": "Ex: +55 (71) 99999-9999",
       "fullName": "Your full name",
       "birthDate": "03/22/2002",
+      "gender": "Select a gender",
       "confirmPassword": "••••••••",
-      "specialty": "Gynecology",
+      "specialty": "Select a specialty",
       "institutionName": "Santo António Hospital",
       "professionalNumber": "123456789",
       "nuit": "123456789",
@@ -93,6 +105,7 @@
       "neighborhood": "Downtown",
       "city": "Maputo",
       "country": "Mozambique",
+      "cardName": "Your name as it appears on the card",
       "cardNumber": "**** **** **** ****",
       "cvv": "123",
       "expiryDate": "MM/YY",
@@ -101,7 +114,13 @@
       "patientName": "Select a Patient",
       "date": "Select a date",
       "timeSlots": "Select a time slot",
-      "reason": "Reason for the patient's consultation appointment"
+      "reason": "Reason for the patient's consultation appointment",
+      "providerType": "Select a provider",
+      "aboutMe": "About me",
+      "address": "Address",
+      "otherInfo": "Other information",
+      "allowTeleconsulta": "Allow teleconsultations",
+      "priceOfConsultation": "100.00 {currency}"
     },
     "category": {
       "gender": {
@@ -246,10 +265,13 @@
     "login": "Login",
     "register": "Register",
     "send": "Send",
+    "back": "Back",
     "next": "Next",
     "access": "Access",
     "enter": "Enter",
     "submit": "Submit",
+    "saveChanges": "Save Changes",
+    "save": "Save",
     "cancel": "Cancel",
     "tryAgain": "Try Again",
     "forgotPassword": "Forgot my password",
@@ -271,7 +293,29 @@
     "startConsultation": "Start consultation",
     "cancelConsultation": "Cancel consultation",
     "reschedule": "Reschedule Consultation",
-    "markAsCompleted": "Mark as completed"
+    "markAsCompleted": "Mark as completed",
+    "edit": "Edit",
+    "delete": "Delete",
+    "defineAsDefault": "Set as default",
+    "add": "Add",
+    "adding": "Adding...",
+    "addingCard": "Adding card...",
+    "saving": "Saving...",
+    "savingCard": "Saving card...",
+    "addCard": "Add Card",
+    "savingChanges": "Saving changes...",
+    "savingChangesCard": "Saving card changes...",
+    "view": "View"
+  },
+  "fileUploadBox": {
+    "dragAndDrop": "Drag and drop files here!",
+    "dropHere": "Drop files here!",
+    "or": "Or, if you prefer...",
+    "limit": "Limit of {maxFiles} file(s) reached.",
+    "cta": {
+      "upload": "Add files (max {maxSize})",
+      "addMore": "Add more documents"
+    }
   },
   "modal": {
     "quickChat": {
@@ -321,6 +365,92 @@
         "title": "Notice of Use of Services Outside the Platform",
         "description": "To ensure the security and integrity of our services, HaiDoc declares that it is not responsible for any attempts to contact healthcare providers outside our platform. We strongly recommend that all interactions, consultations, transactions, and communications be conducted exclusively through our platform in order to avoid fraud, moral damages, and other inconveniences. By clicking &quot;Next&quot;, you affirm that you are aware of this notice."
       }
+    },
+    "basicDataSaveChangesConfirm": {
+      "title": "Are you sure you want to save changes?",
+      "description": "Ensure all information is correct.",
+      "confirmText": "Yes, save changes",
+      "cancelText": "Cancel"
+    },
+    "documentSaveChangesConfirm": {
+      "title": "Are you sure you want to save changes?",
+      "description": "Ensure all information is correct.",
+      "confirmText": "Yes, save changes",
+      "cancelText": "Cancel"
+    },
+    "paymentMethodForm": {
+      "title": {
+        "add": "Register new payment method",
+        "edit": "Edit payment method"
+      },
+      "description": {
+        "add": "Add a new payment method to continue",
+        "edit": "Edit the payment method to continue"
+      },
+      "label": {
+        "recurring": "Your subscription will renew automatically; you have this recurring payment method."
+      }
+    },
+    "signatureCancel": {
+      "title": "Cancel subscription?",
+      "description": "Your plan will remain active until 08/20. After this date, you will no longer have access to the service.",
+      "cta": {
+        "confirm": "Cancel subscription"
+      }
+    },
+    "signatureCancelConfirm": {
+      "title": "Cancellation confirmation",
+      "description": "Enter your password to confirm the cancellation of your plan.",
+      "cta": {
+        "confirm": "Submit"
+      }
+    },
+    "signatureRemove": {
+      "title": "Remove recurrence?",
+      "description": "Your plan will remain active until 08/20. There will be no future charges unless you renew manually.",
+      "cta": {
+        "confirm": "Remove recurrence"
+      }
+    },
+    "signatureRemoveConfirm": {
+      "title": "Confirm removal of recurrence",
+      "description": "Enter your password to confirm the removal of recurrence from your plan.",
+      "cta": {
+        "confirm": "Submit"
+      }
+    },
+    "activityDetail": {
+      "title": "Activity details",
+      "description": "User activity details",
+      "label": {
+        "operationName": "Operation Name:",
+        "date": "Date:",
+        "time": "Time:",
+        "before": "Before:",
+        "after": "After:"
+      },
+      "empty": {
+        "before": "No previous document.",
+        "after": "No subsequent document."
+      },
+      "cta": {
+        "backButton": "Back",
+        "view": "View"
+      }
+    },
+    "editProfileModal": {
+      "title": "Edit profile",
+      "alertDialog": {
+        "title": "Cancel editing",
+        "description": "Are you sure you want to cancel? All changes will be lost.",
+        "cta": {
+          "confirm": "Yes, cancel",
+          "cancel": "Back"
+        }
+      },
+      "cta": {
+        "save": "Save"
+      }
     }
   },
   "table": {
@@ -346,6 +476,10 @@
       "date": "Date",
       "datetime": "Date and time",
       "issueDate": "Issue date",
+      "fileName": "File name",
+      "fileType": "File type",
+      "fileSize": "File size",
+      "uploadedAt": "Upload date",
       "actions": "Actions",
       "options": "Options"
     },
@@ -778,18 +912,162 @@
       "profile": {
         "title": "My account",
         "description": "User's my account",
+        "label": {
+          "address": "Address",
+          "identity": "Legal Identity",
+          "nuit": "NUIT"
+        },
+        "tabs": {
+          "configurations": "Settings",
+          "public": "Public profile",
+          "activityLog": "My Activities"
+        },
         "configurations": {
           "title": "Settings",
-          "description": "System settings"
+          "description": "System settings",
+          "alert": {
+            "personalDetails": {
+              "title": "Attention",
+              "description": "It is not possible to change this registration data. For more information, contact <bold>support</bold>."
+            }
+          },
+          "label": {
+            "basicData": {
+              "subTitle1": "Basic data",
+              "subTitle2": "Change password"
+            },
+            "document": {
+              "subTitle1": "Documentation",
+              "subTitle2": "Address"
+            },
+            "files": {
+              "subTitle1": "Signature registration for digital prescription",
+              "stamp": "Stamp",
+              "digitalSignature": "Digital signature",
+              "stampDescription": "Medical Order Card, Professional License, or Institution Permit",
+              "digitalSignatureDescription": "Medical Order Card, Professional License, or Institution Permit"
+            },
+            "paymentDetails": {
+              "title": "Payment details",
+              "description": "User payment details",
+              "empty": {
+                "title": "No payment method registered",
+                "description": "Click 'Register new method' to add a payment method."
+              }
+            },
+            "signature": {
+              "title": "My subscription",
+              "upgradeTitle": "Upgrade",
+              "upgradeDescription": "Take your business to the next level! Upgrade and access advanced tools to optimize your services and reach more customers."
+            }
+          },
+          "tabs": {
+            "dataRegistration": "Registration data",
+            "documents": "Files",
+            "paymentDetails": "Payment details",
+            "signature": "My subscription"
+          },
+          "cta": {
+            "backButton": "Settings",
+            "addNewMethod": "Register new method",
+            "addNewSignature": "Add subscription",
+            "cancelSignature": "Cancel subscription",
+            "removeSignature": "Remove subscription",
+            "knowMore": "Discover plans"
+          },
+          "notifications": {}
+        },
+        "share": {
+          "title": "Share Services",
+          "text": "Check out this profile on Haidoc",
+          "notification": {
+            "success": {
+              "title": "Success",
+              "description": "Service shared successfully!"
+            },
+            "error": {
+              "title": "Error",
+              "description": "An error occurred while sharing: {error}"
+            },
+            "unsupported": {
+              "title": "Not supported",
+              "description": "The sharing functionality is not supported on this device."
+            }
+          }
         },
         "public": {
           "title": "Public Profile",
-          "description": "User's public profile"
+          "description": "User's public profile",
+          "tabs": {
+            "about": "About",
+            "services": "Services"
+          },
+          "label": {
+            "about": {
+              "subTitle1": "About me",
+              "subTitle2": "Reviews"
+            }
+          },
+          "services": {
+            "category": {
+              "normalConsultation": "Normal Consultation",
+              "urgentConsultation": "Urgent Consultation",
+              "followUpConsultation": "Follow-up Consultation",
+              "quickChatConsultation": "Quick Chat Consultation"
+            },
+            "label": {
+              "teleconsulta": "Teleconsultation",
+              "domicilio": "Home Visit"
+            },
+            "edit": {
+              "title": "Edit service",
+              "description": "Edit the service to update the information",
+              "label": {
+                "startTime": "Start time",
+                "endTime": "End time"
+              },
+              "tabs": {
+                "teleconsulta": "Teleconsultation",
+                "domicilio": "Home Visit"
+              },
+              "alertDialog": {
+                "title": "Cancel editing",
+                "description": "Are you sure you want to cancel? All changes will be lost.",
+                "cta": {
+                  "cancel": "Back",
+                  "confirm": "Yes, cancel"
+                }
+              },
+              "notification": {
+                "success": {
+                  "title": "Service updated",
+                  "description": "The service settings have been updated successfully."
+                }
+              },
+              "cta": {
+                "backButton": "Category editing - {category}"
+              }
+            }
+          },
+          "cta": {
+            "backButton": "My account"
+          }
+        },
+        "cta": {
+          "backButton": "My account",
+          "shareButton": "Share services"
         }
       },
       "activityLog": {
         "title": "Activity log",
-        "description": "User's activity log"
+        "description": "User's activity log",
+        "empty": {
+          "title": "No activity registered for this user.",
+          "description": "Click 'View' to see the user's activities."
+        },
+        "cta": {
+          "backButton": "My activities"
+        }
       }
     },
     "notifications": {

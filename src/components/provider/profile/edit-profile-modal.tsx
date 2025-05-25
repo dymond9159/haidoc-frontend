@@ -16,6 +16,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface EditProfileModalProps {
@@ -25,6 +26,10 @@ interface EditProfileModalProps {
 }
 
 export function EditProfileModal({ isOpen, onClose, onSave }: EditProfileModalProps) {
+  const t = useTranslations("modal.editProfileModal")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+
   const [aboutMe, setAboutMe] = useState(
     "Lorem ipsum dolor sit amet consectetur. Sagittis felis praesent in elit netus quisque aliquam. Amet ut gravida elit vitae feugiat scelerisque mi urna.",
   )
@@ -51,16 +56,17 @@ export function EditProfileModal({ isOpen, onClose, onSave }: EditProfileModalPr
       <Dialog open={isOpen} onOpenChange={onClose}>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle>Editar</DialogTitle>
+            <DialogTitle>{t("title")}</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
               <Label htmlFor="about-me" className="flex items-center">
-                Sobre mim <Asterisk />
+                {tForm("label.aboutMe")} <Asterisk />
               </Label>
               <Textarea
                 id="about-me"
                 value={aboutMe}
+                placeholder={tForm("placeholder.aboutMe")}
                 onChange={(e) => setAboutMe(e.target.value)}
                 className="min-h-[100px]"
                 maxLength={5000}
@@ -69,20 +75,30 @@ export function EditProfileModal({ isOpen, onClose, onSave }: EditProfileModalPr
             </div>
             <div className="grid gap-2">
               <Label htmlFor="address" className="flex items-center">
-                Endereço <Asterisk />
+                {tForm("label.address")} <Asterisk />
               </Label>
-              <Input id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
+              <Input
+                id="address"
+                value={address}
+                placeholder={tForm("placeholder.address")}
+                onChange={(e) => setAddress(e.target.value)}
+              />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="other-info">Outras informações</Label>
-              <Input id="other-info" value={otherInfo} onChange={(e) => setOtherInfo(e.target.value)} />
+              <Label htmlFor="other-info">{tForm("label.otherInfo")}</Label>
+              <Input
+                id="other-info"
+                value={otherInfo}
+                placeholder={tForm("placeholder.otherInfo")}
+                onChange={(e) => setOtherInfo(e.target.value)}
+              />
             </div>
           </div>
           <DialogFooter className="flex justify-between sm:justify-end">
             <Button variant="outline" onClick={handleCancel}>
-              Cancelar
+              {tCta("cancel")}
             </Button>
-            <Button onClick={handleSave}>Salvar</Button>
+            <Button onClick={handleSave}>{tCta("save")}</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -90,14 +106,12 @@ export function EditProfileModal({ isOpen, onClose, onSave }: EditProfileModalPr
       <AlertDialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Cancelar edição</AlertDialogTitle>
-            <AlertDialogDescription>
-              Tem certeza que deseja cancelar? Todas as alterações serão perdidas.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t("alertDialog.title")}</AlertDialogTitle>
+            <AlertDialogDescription>{t("alertDialog.description")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Voltar</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmCancel}>Sim, cancelar</AlertDialogAction>
+            <AlertDialogCancel>{t("alertDialog.cta.cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmCancel}>{t("alertDialog.cta.confirm")}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

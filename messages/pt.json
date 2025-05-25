@@ -50,12 +50,15 @@
       "password": "Senha",
       "code": "Código",
       "sms": "SMS",
-      "repeatPassword": "Repita a senha",
       "fullName": "Nome completo",
       "phone": "Número de telefone",
       "birthDate": "Data de nascimento",
       "gender": "Sexo",
       "confirmPassword": "Confirme a senha",
+      "currentPassword": "Senha atual",
+      "repeatPassword": "Repita a senha",
+      "newPassword": "Nova senha",
+      "repeatNewPassword": "Repita a nova senha",
       "specialty": "Especialidade",
       "institutionName": "Nome da instituição",
       "professionalNumber": "Número de Carteira Profissional",
@@ -66,6 +69,7 @@
       "city": "Cidade",
       "country": "País",
       "or": "ou",
+      "cardName": "Nome no cartão",
       "cardNumber": "Número do cartão",
       "cvv": "CVV",
       "expiryDate": "Data de validade",
@@ -75,7 +79,14 @@
       "date": "Data",
       "timeSlots": "Horários disponíveis",
       "reason": "Motivo do agendamento",
-      "consultationType": "Tipo de consulta"
+      "consultationType": "Tipo de consulta",
+      "providerType": "Tipo de provedor de saúde",
+      "aboutMe": "Sobre mim",
+      "address": "Endereço",
+      "otherInfo": "Outras informações",
+      "allowTeleconsulta": "Permitir teleconsultas",
+      "allowHomeConsultation": "Permitir consultas à domicílio",
+      "priceOfConsultation": "Preço da consulta"
     },
     "placeholder": {
       "email": "mail.example@gmail.com",
@@ -83,8 +94,9 @@
       "phone": "Ex: +55 (71) 99999-9999",
       "fullName": "Seu nome completo",
       "birthDate": "22/03/2002",
+      "gender": "Selecione uma sexo",
       "confirmPassword": "••••••••",
-      "specialty": "Ginecologia",
+      "specialty": "Selecione uma especialidade",
       "institutionName": "Hospital de Santo António",
       "professionalNumber": "123456789",
       "nuit": "123456789",
@@ -93,6 +105,7 @@
       "neighborhood": "Centro",
       "city": "Maputo",
       "country": "Moçambique",
+      "cardName": "Seu nome como aparece no cartão",
       "cardNumber": "**** **** **** ****",
       "cvv": "123",
       "expiryDate": "MM/AA",
@@ -101,7 +114,13 @@
       "patientName": "Selecione um Paciente",
       "date": "Selecione uma data",
       "timeSlots": "Selecione um horário",
-      "reason": "Motivo do agendamento da consulta do paciente"
+      "reason": "Motivo do agendamento da consulta do paciente",
+      "providerType": "Selecione um provedor",
+      "aboutMe": "Sobre mim",
+      "address": "Endereço",
+      "otherInfo": "Outras informações",
+      "allowTeleconsulta": "Permitir teleconsultas",
+      "priceOfConsultation": "100,00 {currency}"
     },
     "category": {
       "gender": {
@@ -167,13 +186,13 @@
         "december": "Dezembro"
       },
       "weekDays": {
-        "monday": "DOMINGO",
-        "tuesday": "SEGUNDA",
-        "wednesday": "TERÇA",
-        "thursday": "QUARTA",
-        "friday": "QUINTA",
-        "saturday": "SEXTA",
-        "sunday": "SÁBADO"
+        "monday": "Domingo",
+        "tuesday": "Segunda",
+        "wednesday": "Terça",
+        "thursday": "Quarta",
+        "friday": "Quinta",
+        "saturday": "Sexta",
+        "sunday": "Sábado"
       },
       "shortWeekDays": {
         "monday": "Dom",
@@ -246,10 +265,13 @@
     "login": "Login",
     "register": "Cadastro",
     "send": "Enviar",
+    "back": "Voltar",
     "next": "Próximo",
     "access": "Acessar",
     "enter": "Entrar",
     "submit": "Enviar",
+    "saveChanges": "Salvar Alterações",
+    "save": "Salvar",
     "cancel": "Cancelar",
     "tryAgain": "Tentar Novamente",
     "forgotPassword": "Esqueci minha senha",
@@ -271,7 +293,29 @@
     "startConsultation": "Iniciar consulta",
     "cancelConsultation": "Cancelar consulta",
     "reschedule": "Reagendar Consulta",
-    "markAsCompleted": "Marcar como realizada"
+    "markAsCompleted": "Marcar como realizada",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "defineAsDefault": "Definir como padrão",
+    "add": "Adicionar",
+    "adding": "Adicionando...",
+    "addingCard": "Adicionando cartão...",
+    "saving": "Salvando...",
+    "savingCard": "Salvando cartão...",
+    "addCard": "Adicionar Cartão",
+    "savingChanges": "Salvando alterações...",
+    "savingChangesCard": "Salvando alterações do cartão...",
+    "view": "Visualizar"
+  },
+  "fileUploadBox": {
+    "dragAndDrop": "Arraste e solte arquivos aqui!",
+    "dropHere": "Solte os arquivos aqui!",
+    "or": "Ou, se preferir...",
+    "limit": "Limite de {maxFiles} arquivo(s) atingido.",
+    "cta": {
+      "upload": "Adicionar arquivos (máx {maxSize})",
+      "addMore": "Adicionar mais documentos"
+    }
   },
   "modal": {
     "quickChat": {
@@ -321,6 +365,92 @@
         "title": "Aviso de Uso De Serviços Fora da Plataforma",
         "description": "Para assegurar a segurança e a integridade dos nossos serviços, a HaiDoc declara que não se responsabiliza por quaisquer tentativas de contato com provedores de saúde fora da nossa plataforma. Recomendamos enfaticamente que todas as interações, consultas, transações e comunicações sejam conduzidas exclusivamente através da nossa plataforma, a fim de evitar fraudes, danos morais e outros inconvenientes. Ao clicar em &quot;Próximo&quot;, você afirma estar ciente do aviso."
       }
+    },
+    "basicDataSaveChangesConfirm": {
+      "title": "Tem certeza que deseja salvar alterações?",
+      "description": "Garanta que todas as informações estejam corretas.",
+      "confirmText": "Sim, salvar alterações",
+      "cancelText": "Cancelar"
+    },
+    "documentSaveChangesConfirm": {
+      "title": "Tem certeza que deseja salvar alterações?",
+      "description": "Garanta que todas as informações estejam corretas.",
+      "confirmText": "Sim, salvar alterações",
+      "cancelText": "Cancelar"
+    },
+    "paymentMethodForm": {
+      "title": {
+        "add": "Cadastrar novo método de pagamento",
+        "edit": "Editar método de pagamento"
+      },
+      "description": {
+        "add": "Adicione um novo método de pagamento para continuar",
+        "edit": "Edite o método de pagamento para continuar"
+      },
+      "label": {
+        "recurring": "Sua assinatura será renovada automaticamente, você tem este metodo de pagamento recorrente."
+      }
+    },
+    "signatureCancel": {
+      "title": "Cancelar assinatura?",
+      "description": "Seu plano continuará ativo até 20/08. Após essa data, você não terá mais acesso ao serviço.",
+      "cta": {
+        "confirm": "Cancelar assinatura"
+      }
+    },
+    "signatureCancelConfirm": {
+      "title": "Confirmação de cancelamento",
+      "description": "Digite sua senha para confirmar o cancelamento do seu plano.",
+      "cta": {
+        "confirm": "Enviar"
+      }
+    },
+    "signatureRemove": {
+      "title": "Remover recorrência?",
+      "description": "Seu plano continuará ativo até 20/08. Não haverá cobranças futuras a menos que você renove manualmente.",
+      "cta": {
+        "confirm": "Remover recorrência"
+      }
+    },
+    "signatureRemoveConfirm": {
+      "title": "Confirmar remoção de recorrência",
+      "description": "Digite sua senha para confirmar a remoção de recorrência do seu plano.",
+      "cta": {
+        "confirm": "Enviar"
+      }
+    },
+    "activityDetail": {
+      "title": "Detalhes da atividade",
+      "description": "Detalhes da atividade do usuário",
+      "label": {
+        "operationName": "Nome da Operação:",
+        "date": "Data:",
+        "time": "Horário:",
+        "before": "Antes:",
+        "after": "Depois:"
+      },
+      "empty": {
+        "before": "Nenhum documento anterior.",
+        "after": "Nenhum documento posterior."
+      },
+      "cta": {
+        "backButton": "Voltar",
+        "view": "Visualizar"
+      }
+    },
+    "editProfileModal": {
+      "title": "Editar perfil",
+      "alertDialog": {
+        "title": "Cancelar edição",
+        "description": "Tem certeza que deseja cancelar? Todas as alterações serão perdidas.",
+        "cta": {
+          "confirm": "Sim, cancelar",
+          "cancel": "Voltar"
+        }
+      },
+      "cta": {
+        "save": "Salvar"
+      }
     }
   },
   "table": {
@@ -346,6 +476,10 @@
       "date": "Data",
       "datetime": "Data e hora",
       "issueDate": "Data de emissão",
+      "fileName": "Nome do arquivo",
+      "fileType": "Tipo de arquivo",
+      "fileSize": "Tamanho do arquivo",
+      "uploadedAt": "Data de upload",
       "actions": "Ações",
       "options": "Opções"
     },
@@ -778,18 +912,162 @@
       "profile": {
         "title": "Minha conta",
         "description": "Minha conta do usuário",
+        "label": {
+          "address": "Endereço",
+          "identity": "Identidade Legal",
+          "nuit": "NUIT"
+        },
+        "tabs": {
+          "configurations": "Configurações",
+          "public": "Perfil público",
+          "activityLog": "Minhas Atividades"
+        },
         "configurations": {
           "title": "Configurações",
-          "description": "Configurações do sistema"
+          "description": "Configurações do sistema",
+          "alert": {
+            "personalDetails": {
+              "title": "Atenção",
+              "description": "Não é possível alterar estes dados cadastrais. Para mais informações, contate o <bold>suporte</bold>."
+            }
+          },
+          "label": {
+            "basicData": {
+              "subTitle1": "Dados básicos",
+              "subTitle2": "Alterar senha"
+            },
+            "document": {
+              "subTitle1": "Documentação",
+              "subTitle2": "Endereço"
+            },
+            "files": {
+              "subTitle1": "Cadastro de assinatura para prescrição de receita digital",
+              "stamp": "Carimbo",
+              "digitalSignature": "Assinatura digital",
+              "stampDescription": "Cartão da Ordem dos Médicos, Carteira Profissional, ou Alvará da Instutuição",
+              "digitalSignatureDescription": "Cartão da Ordem dos Médicos, Carteira Profissional, ou Alvará da Instutuição"
+            },
+            "paymentDetails": {
+              "title": "Dados de pagamento",
+              "description": "Dados de pagamento do usuário",
+              "empty": {
+                "title": "Nenhum método de pagamento cadastrado",
+                "description": "Clique em 'Cadastrar novo método' para adicionar um método de pagamento."
+              }
+            },
+            "signature": {
+              "title": "Minha assinatura",
+              "upgradeTitle": "Faça um upgrade",
+              "upgradeDescription": "Eleve seu negócio a um novo patamar! Faça um upgrade e acesse ferramentas avançadas para otimizar seus serviços e alcançar mais clientes."
+            }
+          },
+          "tabs": {
+            "dataRegistration": "Dados cadastrais",
+            "documents": "Ficheiros",
+            "paymentDetails": "Dados de pagamento",
+            "signature": "Minha assinatura"
+          },
+          "cta": {
+            "backButton": "Configurações",
+            "addNewMethod": "Cadastrar novo método",
+            "addNewSignature": "Adicionar assinatura",
+            "cancelSignature": "Cancelar assinatura",
+            "removeSignature": "Remover assinatura",
+            "knowMore": "Conhecer os planos"
+          },
+          "notifications": {}
+        },
+        "share": {
+          "title": "Compartilhar Serviços",
+          "text": "Confira este perfil no Haidoc",
+          "notification": {
+            "success": {
+              "title": "Sucesso",
+              "description": "Serviço compartilhado com sucesso!"
+            },
+            "error": {
+              "title": "Erro",
+              "description": "Ocorreu um erro ao compartilhar: {error}"
+            },
+            "unsupported": {
+              "title": "Não suportado",
+              "description": "A funcionalidade de compartilhamento não é suportada neste dispositivo."
+            }
+          }
         },
         "public": {
           "title": "Perfil Público",
-          "description": "Perfil público do usuário"
+          "description": "Perfil público do usuário",
+          "tabs": {
+            "about": "Sobre",
+            "services": "Serviços"
+          },
+          "label": {
+            "about": {
+              "subTitle1": "Sobre mim",
+              "subTitle2": "Avaliações"
+            }
+          },
+          "services": {
+            "category": {
+              "normalConsultation": "Consulta Normal",
+              "urgentConsultation": "Consulta Urgente",
+              "followUpConsultation": "Consulta de Seguimento",
+              "quickChatConsultation": "Consulta por Chat Rápido"
+            },
+            "label": {
+              "teleconsulta": "Teleconsulta",
+              "domicilio": "Domicílio"
+            },
+            "edit": {
+              "title": "Editar serviço",
+              "description": "Edite o serviço para atualizar as informações",
+              "label": {
+                "startTime": "Horário inicial",
+                "endTime": "Horário final"
+              },
+              "tabs": {
+                "teleconsulta": "Teleconsulta",
+                "domicilio": "Domicílio"
+              },
+              "alertDialog": {
+                "title": "Cancelar edição",
+                "description": "Tem certeza que deseja cancelar? Todas as alterações serão perdidas.",
+                "cta": {
+                  "cancel": "Voltar",
+                  "confirm": "Sim, cancelar"
+                }
+              },
+              "notification": {
+                "success": {
+                  "title": "Serviço atualizado",
+                  "description": "As configurações do serviço foram atualizadas com sucesso."
+                }
+              },
+              "cta": {
+                "backButton": "Edição de categoria - {category}"
+              }
+            }
+          },
+          "cta": {
+            "backButton": "Minha conta"
+          }
+        },
+        "cta": {
+          "backButton": "Minha conta",
+          "shareButton": "Compartilhar serviços"
         }
       },
       "activityLog": {
         "title": "Log de atividades",
-        "description": "Log de atividades do usuário"
+        "description": "Log de atividades do usuário",
+        "empty": {
+          "title": "Nenhuma atividade registrada para este usuário.",
+          "description": "Clique em 'Visualizar' para ver as atividades do usuário."
+        },
+        "cta": {
+          "backButton": "Minhas atividades"
+        }
       }
     },
     "notifications": {

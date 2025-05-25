@@ -108,48 +108,48 @@ export function ConsultationDetailsModal({
             </div>
 
             <div className="grid grid-cols-3 gap-4">
-              <div>
-                <p className="text-xs mb-1">{t("label.date")}</p>
+              <div className="space-y-2">
+                <p className="text-sm">{t("label.date")}</p>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  <span className="text-sm">{appointment.date}</span>
+                  <span className="text-sm font-medium">{appointment.date}</span>
                 </div>
               </div>
-              <div>
-                <p className="text-xs mb-1">{t("label.startTime")}</p>
+              <div className="space-y-2">
+                <p className="text-sm">{t("label.startTime")}</p>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-secondary-9" />
-                  <span className="text-sm">{appointment.startTime}</span>
+                  <span className="text-sm font-medium">{appointment.startTime}</span>
                 </div>
               </div>
-              <div>
-                <p className="text-xs mb-1">{t("label.endTime")}</p>
+              <div className="space-y-2">
+                <p className="text-xs">{t("label.endTime")}</p>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-secondary-9" />
-                  <span className="text-sm">{appointment.endTime}</span>
+                  <span className="text-sm font-medium">{appointment.endTime}</span>
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div>
-                <p className="text-xs mb-1">{t("label.specialty")}</p>
+              <div className="space-y-2">
+                <p className="text-xs">{t("label.specialty")}</p>
                 <p className="text-sm font-medium">{appointment.specialty}</p>
               </div>
-              <div>
-                <p className="text-xs mb-1">{t("label.doctorName")}</p>
+              <div className="space-y-2">
+                <p className="text-xs">{t("label.doctorName")}</p>
                 <p className="text-sm font-medium">{appointment.doctorName}</p>
               </div>
             </div>
 
-            <div>
-              <p className="text-xs mb-1">{t("label.price")}</p>
+            <div className="space-y-2">
+              <p className="text-sm">{t("label.price")}</p>
               <p className="text-sm font-medium">{appointment.price} MZN</p>
             </div>
 
-            <div>
-              <p className="text-xs mb-1">{t("label.reason")}</p>
-              <p className="text-sm">{appointment.reason}</p>
+            <div className="space-y-2">
+              <p className="text-sm">{t("label.reason")}</p>
+              <p className="text-sm font-medium">{appointment.reason}</p>
             </div>
           </div>
           <div className="space-y-2">

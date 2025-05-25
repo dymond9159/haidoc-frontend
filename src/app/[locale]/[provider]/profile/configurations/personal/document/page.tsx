@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { ChevronLeft } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
@@ -31,6 +32,11 @@ const mockDocuments: Document[] = [
 
 export default function PersonalDocument() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.profile.configurations")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+  const tModal = useTranslations("modal")
+
   const { toast } = useToast()
   const [formData, setFormData] = useState({
     street: "",
@@ -73,23 +79,23 @@ export default function PersonalDocument() {
     <div className="space-y-6">
       <Card>
         <div>
-          <h3 className="text-lg font-medium text-secondary">Documentação</h3>
+          <h3 className="text-lg font-medium text-secondary">{t("label.document.subTitle1")}</h3>
           <DocumentList documents={mockDocuments} />
         </div>
       </Card>
       <Card>
         <div className="space-y-4">
-          <h3 className="text-lg font-medium text-secondary">Endereço</h3>
+          <h3 className="text-lg font-medium text-secondary">{t("label.document.subTitle2")}</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="space-y-2 col-span-1 md:col-span-3">
               <Label htmlFor="street" className="text-xs">
-                Rua ou avenida <Asterisk />
+                {tForm("label.street")} <Asterisk />
               </Label>
               <Input
                 id="street"
                 value={formData.street}
                 onChange={(e) => handleChange("street", e.target.value)}
-                placeholder="123 456 789"
+                placeholder={tForm("placeholder.street")}
                 className={errors.street ? "border-error-5" : ""}
               />
               {errors.street && <p className="text-xs text-error-5">{errors.street}</p>}
@@ -97,13 +103,13 @@ export default function PersonalDocument() {
 
             <div className="space-y-2 col-span-1 md:col-span-1">
               <Label htmlFor="number" className="text-xs">
-                Número <Asterisk />
+                {tForm("label.number")} <Asterisk />
               </Label>
               <Input
                 id="number"
                 value={formData.number}
                 onChange={(e) => handleChange("number", e.target.value)}
-                placeholder="123"
+                placeholder={tForm("placeholder.number")}
                 className={errors.number ? "border-error-5" : ""}
               />
               {errors.number && <p className="text-xs text-error-5">{errors.number}</p>}
@@ -111,13 +117,13 @@ export default function PersonalDocument() {
 
             <div className="space-y-2 col-span-1 md:col-span-2">
               <Label htmlFor="neighborhood" className="text-xs">
-                Bairro <Asterisk />
+                {tForm("label.neighborhood")} <Asterisk />
               </Label>
               <Input
                 id="neighborhood"
                 value={formData.neighborhood}
                 onChange={(e) => handleChange("neighborhood", e.target.value)}
-                placeholder="Polana"
+                placeholder={tForm("placeholder.neighborhood")}
                 className={errors.neighborhood ? "border-error-5" : ""}
               />
               {errors.neighborhood && <p className="text-xs text-error-5">{errors.neighborhood}</p>}
@@ -125,13 +131,13 @@ export default function PersonalDocument() {
 
             <div className="space-y-2 col-span-1 md:col-span-2">
               <Label htmlFor="city" className="text-xs">
-                Cidade <Asterisk />
+                {tForm("label.city")} <Asterisk />
               </Label>
               <Input
                 id="city"
                 value={formData.city}
                 onChange={(e) => handleChange("city", e.target.value)}
-                placeholder="Maputo"
+                placeholder={tForm("placeholder.city")}
                 className={errors.city ? "border-error-5" : ""}
               />
               {errors.city && <p className="text-xs text-error-5">{errors.city}</p>}
@@ -139,13 +145,13 @@ export default function PersonalDocument() {
 
             <div className="space-y-2 col-span-1 md:col-span-4">
               <Label htmlFor="country" className="text-xs">
-                País <Asterisk />
+                {tForm("label.country")} <Asterisk />
               </Label>
               <Input
                 id="country"
                 value={formData.country}
                 onChange={(e) => handleChange("country", e.target.value)}
-                placeholder="Moçambique"
+                placeholder={tForm("placeholder.country")}
                 className={errors.country ? "border-error-5" : ""}
               />
               {errors.country && <p className="text-xs text-error-5">{errors.country}</p>}
@@ -157,21 +163,21 @@ export default function PersonalDocument() {
         <div className="w-full flex items-center gap-4 justify-between">
           <Button variant="outline" className="gap-2" onClick={() => router.back()}>
             <ChevronLeft />
-            Voltar
+            {tCta("back")}
           </Button>
         </div>
         <Button variant="default" disabled={!isFormChanged} onClick={handleSaveChanges}>
-          Salvar Alterações
+          {tCta("saveChanges")}
         </Button>
       </div>
       <ConfirmationDialog
         isOpen={showConfirmationModal}
         onClose={() => setShowConfirmationModal(false)}
         onConfirm={confirmSaveChanges}
-        title="Tem certeza que deseja salvar alterações?"
-        description="Garanta que todas as informações estejam corretas."
-        confirmText="Sim, salvar alterações"
-        cancelText="Cancelar"
+        title={tModal("documentSaveChangesConfirm.title")}
+        description={tModal("documentSaveChangesConfirm.description")}
+        confirmText={tModal("documentSaveChangesConfirm.confirmText")}
+        cancelText={tModal("documentSaveChangesConfirm.cancelText")}
       />
     </div>
   )

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface ConfirmationModalProps {
@@ -35,6 +36,8 @@ export function ConfirmationModal({
   cancelText = "Cancelar",
   showPasswordConfirmation = false,
 }: ConfirmationModalProps) {
+  const tForm = useTranslations("form")
+
   const [password, setPassword] = useState("")
   const [passwordError, setPasswordError] = useState("")
 
@@ -68,7 +71,7 @@ export function ConfirmationModal({
         {showPasswordConfirmation && (
           <div className="space-y-2 py-2">
             <Label htmlFor="passwordConfirm">
-              Senha <Asterisk />
+              {tForm("label.password")} <Asterisk />
             </Label>
             <Input
               id="passwordConfirm"
@@ -78,7 +81,7 @@ export function ConfirmationModal({
                 setPassword(e.target.value)
                 if (passwordError) setPasswordError("")
               }}
-              placeholder="Digite sua senha"
+              placeholder={tForm("placeholder.password")}
             />
             {passwordError && <p className="text-xs text-destructive mt-1">{passwordError}</p>}
           </div>

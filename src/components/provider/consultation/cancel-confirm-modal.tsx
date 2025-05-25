@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { Textarea } from "@/components/ui/textarea"
 import { useTranslations } from "next-intl"
 import { useState } from "react"
 
@@ -41,10 +42,10 @@ export function CancelConfirmModal({
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <div>
-          <textarea
-            className="w-full border border-system-5 rounded-md p-2 text-sm resize-none"
-            rows={4}
-            placeholder="Digite aqui"
+          <Textarea
+            className="w-full"
+            rows={6}
+            placeholder=""
             value={reason}
             onChange={(e) => setReason(e.target.value)}
           />

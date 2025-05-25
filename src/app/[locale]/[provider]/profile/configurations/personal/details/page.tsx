@@ -10,11 +10,16 @@ import { Select } from "@/components/ui/select"
 import { cn, formatCardNumber } from "@/lib/utils"
 import { ProviderOptions } from "@/types/enum-tab-options"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 export default function PersonalDetails() {
   const router = useRouter()
+  const t = useTranslations("pages.provider.profile.configurations")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+
   const [formData, setFormData] = useState({
     providerType: ProviderOptions.Professional,
     specialty: "",
@@ -45,49 +50,55 @@ export default function PersonalDetails() {
       <div className="grid md:grid-cols-3 gap-4">
         <div className="space-y-2">
           <Label htmlFor="providerType" className="text-sm font-medium">
-            Tipo de provedor de saúde <Asterisk />
+            {tForm("label.providerType")} <Asterisk />
           </Label>
           <Select value={formData.providerType} onValueChange={(value) => handleChange("providerType", value)} disabled>
             <SelectTrigger id="providerType" className={cn("w-full", errors.providerType ? "border-error-5" : "")}>
-              <SelectValue placeholder="Profissional de saúde" />
+              <SelectValue placeholder={tForm("placeholder.providerType")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value={ProviderOptions.Professional}>Profissional de Saúde</SelectItem>
-              <SelectItem value={ProviderOptions.Laboratory}>Laboratório</SelectItem>
-              <SelectItem value={ProviderOptions.Clinic}>Clínica</SelectItem>
-              <SelectItem value={ProviderOptions.Pharmacy}>Farmácia</SelectItem>
+              <SelectItem value={ProviderOptions.Professional}>{tForm("category.provider.professional")}</SelectItem>
+              <SelectItem value={ProviderOptions.Laboratory}>{tForm("category.provider.laboratory")}</SelectItem>
+              <SelectItem value={ProviderOptions.Clinic}>{tForm("category.provider.clinic")}</SelectItem>
+              <SelectItem value={ProviderOptions.Pharmacy}>{tForm("category.provider.pharmacy")}</SelectItem>
             </SelectContent>
           </Select>
           {errors.providerType && <p className="text-xs text-error-5">{errors.providerType}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="specialty" className="text-sm font-medium">
-            Especialidade <Asterisk />
+            {tForm("label.specialty")} <Asterisk />
           </Label>
           <Select value={formData.specialty} onValueChange={(value) => handleChange("specialty", value)} disabled>
             <SelectTrigger id="specialty" className={cn("w-full", errors.specialty ? "border-error-5" : "")}>
-              <SelectValue placeholder="Ginecologia" />
+              <SelectValue placeholder={tForm("placeholder.specialty")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="gynecology">Ginecologia</SelectItem>
-              <SelectItem value="cardiology">Cardiologia</SelectItem>
-              <SelectItem value="dermatology">Dermatologia</SelectItem>
-              <SelectItem value="pediatrics">Pediatria</SelectItem>
-              <SelectItem value="orthopedics">Ortopedia</SelectItem>
+              <SelectItem value="gynecology">{tForm("category.specialty.gynecology")}</SelectItem>
+              <SelectItem value="cardiology">{tForm("category.specialty.cardiology")}</SelectItem>
+              <SelectItem value="dermatology">{tForm("category.specialty.dermatology")}</SelectItem>
+              <SelectItem value="pediatrics">{tForm("category.specialty.pediatrics")}</SelectItem>
+              <SelectItem value="orthopedics">{tForm("category.specialty.orthopedics")}</SelectItem>
             </SelectContent>
           </Select>
           {errors.specialty && <p className="text-xs text-error-5">{errors.specialty}</p>}
         </div>
         <div className="space-y-2">
           <Label htmlFor="cardNumber" className="text-sm font-medium">
-            {formData.providerType === ProviderOptions.Professional ? "Número de Carteira Profissional" : "NUIT"}{" "}
+            {formData.providerType === ProviderOptions.Professional
+              ? tForm("label.professionalNumber")
+              : tForm("label.nuit")}{" "}
             <Asterisk />
           </Label>
           <Input
             id="cardNumber"
             value={formData.cardNumber}
             onChange={handleCardNumberChange}
-            placeholder={formData.providerType === ProviderOptions.Professional ? "123456789" : "123456789"}
+            placeholder={
+              formData.providerType === ProviderOptions.Professional
+                ? tForm("placeholder.professionalNumber")
+                : tForm("placeholder.nuit")
+            }
             maxLength={9}
             className={errors.cardNumber ? "border-error-5" : ""}
             disabled
@@ -98,7 +109,7 @@ export default function PersonalDetails() {
       <div className="w-full flex items-center gap-4 justify-between">
         <Button variant="outline" className="gap-2" onClick={() => router.back()}>
           <ChevronLeft />
-          Voltar
+          {tCta("back")}
         </Button>
 
         <Button
@@ -106,7 +117,7 @@ export default function PersonalDetails() {
           className="gap-2"
           onClick={() => router.push("/professional/profile/configurations/personal/document")}
         >
-          Próxima
+          {tCta("next")}
           <ChevronRight />
         </Button>
       </div>

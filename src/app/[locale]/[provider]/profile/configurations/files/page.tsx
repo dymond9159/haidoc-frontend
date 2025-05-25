@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useRef, useState } from "react"
 
 const mockDocuments: Document[] = [
@@ -35,6 +36,9 @@ const mockDocuments: Document[] = [
 
 export default function FilesConfigurationsPage() {
   const { toast } = useToast()
+  const t = useTranslations("pages.provider.profile.configurations")
+  const tCta = useTranslations("cta")
+
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [uploadedStampFiles, setUploadedStampFiles] = useState<UploadedFile[]>([])
   const [uploadedDigitalSignatureFiles, setUploadedDigitalSignatureFiles] = useState<UploadedFile[]>([])
@@ -118,13 +122,11 @@ export default function FilesConfigurationsPage() {
       <DocumentList documents={mockDocuments} />
       <Card className="space-y-4">
         <div>
-          <h3 className="text-lg font-medium text-secondary">
-            Cadastro de assinatura para prescrição de receita digital
-          </h3>
+          <h3 className="text-lg font-medium text-secondary">{t("label.files.subTitle1")}</h3>
         </div>
         <div className="space-y-2">
           <Label>
-            Carimbo <Asterisk />
+            {t("label.files.stamp")} <Asterisk />
           </Label>
           <FileUploadBox
             multiple
@@ -137,11 +139,9 @@ export default function FilesConfigurationsPage() {
         </div>
         <div className="space-y-2">
           <Label>
-            Assinatura digital <Asterisk />
+            {t("label.files.digitalSignature")} <Asterisk />
           </Label>
-          <p className="text-sm text-muted-foreground">
-            Cartão da Ordem dos Médicos, Carteira Profissional, ou Alvará da Instutuição
-          </p>
+          <p className="text-sm text-muted-foreground">{t("label.files.digitalSignatureDescription")}</p>
           <FileUploadBox
             className="digitalSignature"
             uploadedFiles={uploadedDigitalSignatureFiles}
@@ -152,9 +152,9 @@ export default function FilesConfigurationsPage() {
         </div>
         <div className="flex gap-2 items-center justify-end">
           <Button variant="outline" onClick={handleCancel}>
-            Cancelar
+            {tCta("cancel")}
           </Button>
-          <Button onClick={handleSave}>Salvar</Button>
+          <Button onClick={handleSave}>{tCta("save")}</Button>
         </div>
       </Card>
     </div>

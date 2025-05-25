@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { PaymentMethodDetails } from "@/types"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -49,6 +50,10 @@ interface PaymentMethodFormModalProps {
 }
 
 export function PaymentMethodFormModal({ isOpen, onClose, onSubmit, initialData, mode }: PaymentMethodFormModalProps) {
+  const t = useTranslations("modal.paymentMethodForm")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
+
   const {
     register,
     handleSubmit,
@@ -99,74 +104,70 @@ export function PaymentMethodFormModal({ isOpen, onClose, onSubmit, initialData,
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-[525px]">
         <DialogHeader>
-          <DialogTitle>
-            {mode === "add" ? "Cadastrar Novo Método de Pagamento" : "Editar Método de Pagamento"}
-          </DialogTitle>
-          <DialogDescription></DialogDescription>
+          <DialogTitle>{mode === "add" ? t("title.add") : t("title.edit")}</DialogTitle>
+          <DialogDescription>{mode === "add" ? t("description.add") : t("description.edit")}</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4 py-2">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="space-y-2 md:col-span-3">
               <Label htmlFor="cardName">
-                Nome no cartão
+                {tForm("label.cardName")}
                 <Asterisk />
               </Label>
-              <Input id="cardName" {...register("cardName")} placeholder="Seu nome como aparece no cartão" />
+              <Input id="cardName" {...register("cardName")} placeholder={tForm("placeholder.cardName")} />
               {errors.cardName && <p className="text-xs text-destructive mt-1">{errors.cardName.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="cardNumber">
-                Número do cartão
+                {tForm("label.cardNumber")}
                 <Asterisk />
               </Label>
-              <Input id="cardNumber" {...register("cardNumber")} placeholder="**** **** **** ****" />
+              <Input id="cardNumber" {...register("cardNumber")} placeholder={tForm("placeholder.cardNumber")} />
               {errors.cardNumber && <p className="text-xs text-destructive mt-1">{errors.cardNumber.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="expiryDate">
-                Data de validade
+                {tForm("label.expiryDate")}
                 <Asterisk />
               </Label>
-              <Input id="expiryDate" {...register("expiryDate")} placeholder="MM/AA" />
+              <Input id="expiryDate" {...register("expiryDate")} placeholder={tForm("placeholder.expiryDate")} />
               {errors.expiryDate && <p className="text-xs text-destructive mt-1">{errors.expiryDate.message}</p>}
             </div>
             <div className="space-y-2">
               <Label htmlFor="cvv">
-                CVV
+                {tForm("label.cvv")}
                 <Asterisk />
               </Label>
-              <Input id="cvv" {...register("cvv")} placeholder="123" type="password" />
+              <Input id="cvv" {...register("cvv")} placeholder={tForm("placeholder.cvv")} type="password" />
               {errors.cvv && <p className="text-xs text-destructive mt-1">{errors.cvv.message}</p>}
             </div>
             <div className="space-y-2 md:col-span-3">
               <Label htmlFor="email">
-                E-mail
+                {tForm("label.email")}
                 <Asterisk />
               </Label>
-              <Input id="email" {...register("email")} placeholder="email@example.com" type="email" />
+              <Input id="email" {...register("email")} placeholder={tForm("placeholder.email")} type="email" />
               {errors.email && <p className="text-xs text-destructive mt-1">{errors.email.message}</p>}
             </div>
           </div>
 
-          <p className="text-xs text-foreground">
-            Sua assinatura será renovada automaticamente, você tem este metodo de pagamento recorrente.
-          </p>
+          <p className="text-xs text-foreground">{t("label.recurring")}</p>
           {mode === "add" && <TermsAndConditions {...register("termsAccepted")} />}
 
           <DialogFooter className="pt-4">
             <DialogClose asChild>
               <Button type="button" variant="outline" onClick={onClose}>
-                Cancelar
+                {tCta("cancel")}
               </Button>
             </DialogClose>
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting
                 ? mode === "add"
-                  ? "Salvando..."
-                  : "Atualizando..."
+                  ? tCta("savingCard")
+                  : tCta("savingChangesCard")
                 : mode === "add"
-                  ? "Adicionar Cartão"
-                  : "Salvar Alterações"}
+                  ? tCta("addCard")
+                  : tCta("saveChangesCard")}
             </Button>
           </DialogFooter>
         </form>

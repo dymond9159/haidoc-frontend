@@ -7,6 +7,7 @@ import { useMobile } from "@/hooks/use-mobile"
 import { getActiveTabFromPath } from "@/lib/utils"
 import { TabItemType } from "@/types"
 import { ChevronRightIcon, CircleDollarSignIcon, FolderIcon, ReceiptIcon, UserRoundIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
 import { useEffect, useState } from "react"
@@ -18,38 +19,40 @@ const enum ConfigurationTabOptions {
   Signature = "Minha assinatura",
 }
 
-const tabItems: TabItemType<ConfigurationTabOptions>[] = [
-  {
-    value: ConfigurationTabOptions.DataRegistration,
-    icon: <UserRoundIcon />,
-    label: "Dados Cadastrais",
-    href: "/professional/profile/configurations/personal",
-  },
-  {
-    value: ConfigurationTabOptions.Documents,
-    icon: <FolderIcon />,
-    label: "Ficheiros",
-    href: "/professional/profile/configurations/files",
-  },
-  {
-    value: ConfigurationTabOptions.PaymentDetails,
-    icon: <CircleDollarSignIcon />,
-    label: "Dados de pagamento",
-    href: "/professional/profile/configurations/payment-details",
-  },
-  {
-    value: ConfigurationTabOptions.Signature,
-    icon: <ReceiptIcon />,
-    label: "Minha assinatura",
-    href: "/professional/profile/configurations/signature",
-  },
-]
-
 export default function ProfileConfigurationsLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
+  const t = useTranslations("pages.provider.profile.configurations")
+
   const [activeTab, setActiveTab] = useState<ConfigurationTabOptions>(ConfigurationTabOptions.DataRegistration)
   const isMobile = useMobile()
   const tabOrientation = isMobile ? "horizontal" : "vertical"
+
+  const tabItems: TabItemType<ConfigurationTabOptions>[] = [
+    {
+      value: ConfigurationTabOptions.DataRegistration,
+      icon: <UserRoundIcon />,
+      label: t("tabs.dataRegistration"),
+      href: "/professional/profile/configurations/personal",
+    },
+    {
+      value: ConfigurationTabOptions.Documents,
+      icon: <FolderIcon />,
+      label: t("tabs.documents"),
+      href: "/professional/profile/configurations/files",
+    },
+    {
+      value: ConfigurationTabOptions.PaymentDetails,
+      icon: <CircleDollarSignIcon />,
+      label: t("tabs.paymentDetails"),
+      href: "/professional/profile/configurations/payment-details",
+    },
+    {
+      value: ConfigurationTabOptions.Signature,
+      icon: <ReceiptIcon />,
+      label: t("tabs.signature"),
+      href: "/professional/profile/configurations/signature",
+    },
+  ]
 
   const currentPath = usePathname()
   const initialTab = getActiveTabFromPath(tabItems, currentPath)
@@ -63,7 +66,7 @@ export default function ProfileConfigurationsLayout({ children }: { children: Re
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <BackButton text="Configurações" onClick={() => router.push("/professional/profile")} />
+        <BackButton text={t("cta.backButton")} onClick={() => router.push("/professional/profile")} />
       </div>
       <Tabs
         defaultValue={ConfigurationTabOptions.DataRegistration}

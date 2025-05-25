@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { cn } from "@/lib/utils"
 import { DayAvailability } from "@/types"
+import { useTranslations } from "next-intl"
 
 interface ServiceCategoryCardProps {
   day: DayAvailability
@@ -12,6 +13,7 @@ interface ServiceCategoryCardProps {
 }
 
 export const ServiceCategoryCard = ({ day, onDayToggle, onTimeChange }: ServiceCategoryCardProps) => {
+  const t = useTranslations("pages.provider.profile.public.services.edit")
   return (
     <Card className="grid grid-cols-1 gap-4">
       <CardHeader>
@@ -25,7 +27,7 @@ export const ServiceCategoryCard = ({ day, onDayToggle, onTimeChange }: ServiceC
       <CardContent className={cn("grid grid-cols-2 gap-2", !day.enabled && "opacity-50")}>
         <div className="space-y-2">
           <Label htmlFor={`start-${day.id}`} className="text-xs text-gray-500">
-            Horário inicial
+            {t("label.startTime")}
           </Label>
           <Input
             id={`start-${day.id}`}
@@ -37,7 +39,7 @@ export const ServiceCategoryCard = ({ day, onDayToggle, onTimeChange }: ServiceC
         </div>
         <div className="space-y-2">
           <Label htmlFor={`end-${day.id}`} className="text-xs text-gray-500">
-            Horário final
+            {t("label.endTime")}
           </Label>
           <Input
             id={`end-${day.id}`}

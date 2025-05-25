@@ -18,7 +18,9 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useParams } from "next/navigation"
+import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 enum ServiceTabOptions {
@@ -28,29 +30,84 @@ enum ServiceTabOptions {
 
 export default function EditServiceCategoryPage() {
   const { toast } = useToast()
+  const router = useRouter()
+  const t = useTranslations("pages.provider.profile.public.services.edit")
+  const tForm = useTranslations("form")
+  const tCta = useTranslations("cta")
 
   const params = useParams()
   const [activeTab, setActiveTab] = useState<ServiceTabOptions>(ServiceTabOptions.OnlineConsultation)
   const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false)
   const [price, setPrice] = useState("100,00 MZN")
 
+  const daysOfWeek = [
+    {
+      id: "1",
+      name: tForm("category.weekDays.sunday"),
+      value: "sunday",
+      enabled: false,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "2",
+      name: tForm("category.weekDays.monday"),
+      value: "monday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "3",
+      name: tForm("category.weekDays.tuesday"),
+      value: "tuesday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "4",
+      name: tForm("category.weekDays.wednesday"),
+      value: "wednesday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "5",
+      name: tForm("category.weekDays.thursday"),
+      value: "thursday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "6",
+      name: tForm("category.weekDays.friday"),
+      value: "friday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+    {
+      id: "7",
+      name: tForm("category.weekDays.saturday"),
+      value: "saturday",
+      enabled: true,
+      startTime: "00:00",
+      endTime: "00:00",
+    },
+  ]
+
   // Days of week with availability settings
-  const [days, setDays] = useState([
-    { id: "segunda", name: "Segunda", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "terca", name: "Terça", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "quarta", name: "Quarta", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "quinta", name: "Quinta", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "sexta", name: "Sexta", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "sabado", name: "Sábado", enabled: true, startTime: "00:00", endTime: "00:00" },
-    { id: "domingo", name: "Domingo", enabled: false, startTime: "00:00", endTime: "00:00" },
-  ])
+  const [days, setDays] = useState(daysOfWeek)
 
   const categoryName = decodeURIComponent(params.category as string)
 
   const handleSave = () => {
     toast({
-      title: "Serviço atualizado",
-      description: "As configurações do serviço foram atualizadas com sucesso.",
+      title: t("notification.success.title"),
+      description: t("notification.success.description"),
       variant: "success",
     })
   }
@@ -61,6 +118,7 @@ export default function EditServiceCategoryPage() {
 
   const confirmCancel = () => {
     setIsConfirmDialogOpen(false)
+    router.back()
     // Navigate back
   }
 
@@ -89,7 +147,7 @@ export default function EditServiceCategoryPage() {
   return (
     <div className="space-y-8">
       <div>
-        <BackButton text={`Edição de categoria - ${categoryName}`} />
+        <BackButton text={t("cta.backButton", { category: categoryName })} />
       </div>
 
       <div>
@@ -100,8 +158,8 @@ export default function EditServiceCategoryPage() {
           className="w-full"
         >
           <TabsList className="mb-6 grid grid-cols-2">
-            <TabsTrigger value={ServiceTabOptions.OnlineConsultation}>Teleconsulta</TabsTrigger>
-            <TabsTrigger value={ServiceTabOptions.HomeConsultation}>Domicílio</TabsTrigger>
+            <TabsTrigger value={ServiceTabOptions.OnlineConsultation}>{t("tabs.teleconsulta")}</TabsTrigger>
+            <TabsTrigger value={ServiceTabOptions.HomeConsultation}>{t("tabs.domicilio")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value={ServiceTabOptions.OnlineConsultation} className="space-y-6">
@@ -109,16 +167,21 @@ export default function EditServiceCategoryPage() {
               <div className="flex items-center">
                 <Switch id="allow-teleconsulta" defaultChecked />
                 <Label htmlFor="allow-teleconsulta" className="ml-2">
-                  Permitir teleconsultas
+                  {tForm("label.allowTeleconsulta")}
                 </Label>
               </div>
             </div>
 
             <div className="space-y-2">
               <Label htmlFor="price" className="flex items-center">
-                Preço da consulta <Asterisk />
+                {tForm("label.priceOfConsultation")} <Asterisk />
               </Label>
-              <Input id="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+              <Input
+                id="price"
+                value={price}
+                placeholder={tForm("placeholder.priceOfConsultation", { currency: "MZN" })}
+                onChange={(e) => setPrice(e.target.value)}
+              />
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -138,7 +201,7 @@ export default function EditServiceCategoryPage() {
               <div className="flex items-center">
                 <Switch id="allow-teleconsulta" defaultChecked />
                 <Label htmlFor="allow-teleconsulta" className="ml-2">
-                  Permitir consultas à domicílio
+                  {tForm("label.allowHomeConsultation")}
                 </Label>
               </div>
             </div>
@@ -146,9 +209,14 @@ export default function EditServiceCategoryPage() {
             {/* Similar content for domicilio tab */}
             <div className="space-y-2">
               <Label htmlFor="price-domicilio" className="flex items-center">
-                Preço da consulta <Asterisk />
+                {tForm("label.priceOfConsultation")} <Asterisk />
               </Label>
-              <Input id="price-domicilio" value={price} onChange={(e) => setPrice(e.target.value)} />
+              <Input
+                id="price-domicilio"
+                value={price}
+                placeholder={tForm("placeholder.priceOfConsultation", { currency: "MZN" })}
+                onChange={(e) => setPrice(e.target.value)}
+              />
             </div>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -166,10 +234,10 @@ export default function EditServiceCategoryPage() {
 
         <div className="mt-8 flex justify-end space-x-4">
           <Button variant="outline" onClick={handleCancel}>
-            Cancelar
+            {tCta("cancel")}
           </Button>
           <Button onClick={handleSave} className="bg-red-500 hover:bg-red-600">
-            Salvar
+            {tCta("save")}
           </Button>
         </div>
       </div>
@@ -177,14 +245,12 @@ export default function EditServiceCategoryPage() {
       <AlertDialog open={isConfirmDialogOpen} onOpenChange={setIsConfirmDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Cancelar edição</AlertDialogTitle>
-            <AlertDialogDescription>
-              Tem certeza que deseja cancelar? Todas as alterações serão perdidas.
-            </AlertDialogDescription>
+            <AlertDialogTitle>{t("alertDialog.title")}</AlertDialogTitle>
+            <AlertDialogDescription>{t("alertDialog.description")}</AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Voltar</AlertDialogCancel>
-            <AlertDialogAction onClick={confirmCancel}>Sim, cancelar</AlertDialogAction>
+            <AlertDialogCancel>{t("alertDialog.cta.cancel")}</AlertDialogCancel>
+            <AlertDialogAction onClick={confirmCancel}>{t("alertDialog.cta.confirm")}</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

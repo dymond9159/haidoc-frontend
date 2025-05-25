@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { CreditCardIcon, EllipsisIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { ReactNode, useState } from "react"
 import { Button } from "../ui"
 
@@ -34,6 +35,8 @@ export function PaymentMethodCard({
   onSetDefault,
 }: PaymentMethodCardProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const tCta = useTranslations("cta")
+
   return (
     <Card className={isDefault ? "border-secondary ring-1 ring-secondary" : ""}>
       <CardContent className="p-0 md:p-4">
@@ -65,10 +68,10 @@ export function PaymentMethodCard({
                       onEdit(id)
                     }}
                   >
-                    Editar
+                    {tCta("edit")}
                   </DropdownMenuItem>
                   {onSetDefault && !isDefault && (
-                    <DropdownMenuItem onClick={() => onSetDefault(id)}>Definir como padrão</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => onSetDefault(id)}>{tCta("defineAsDefault")}</DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
@@ -78,7 +81,7 @@ export function PaymentMethodCard({
                     }}
                     className="text-destructive focus:text-destructive focus:bg-destructive/10"
                   >
-                    Excluir
+                    {tCta("delete")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

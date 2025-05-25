@@ -5,6 +5,7 @@ import { PdfFileIcon } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { ActivityLogColumns } from "@/types/admin"
+import { useTranslations } from "next-intl"
 import type React from "react"
 
 interface ActivityDetailDialogProps {
@@ -20,6 +21,8 @@ export const ActivityDetailDialog: React.FC<ActivityDetailDialogProps> = ({
   onOpenChange,
   onViewDocument,
 }) => {
+  const t = useTranslations("modal.activityDetail")
+
   // Prevent rendering if no activity data or wrong type
   if (!activity || activity.type !== 2) {
     return null
@@ -39,30 +42,30 @@ export const ActivityDetailDialog: React.FC<ActivityDetailDialogProps> = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle>Detalhes da Alteração</DialogTitle>
+          <DialogTitle>{t("title")}</DialogTitle>
         </DialogHeader>
 
         <div className="space-y-4 py-4">
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Nome da Operação:</p>
-            <p>{activity.name}</p>
+          <div className="space-y-2">
+            <p className="text-sm">{t("label.operationName")}</p>
+            <p className="text-sm font-medium">{activity.name}</p>
           </div>
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Data:</p>
-            <p>{activity.date}</p>
+          <div className="space-y-2">
+            <p className="text-sm">{t("label.date")}</p>
+            <p className="text-sm font-medium">{activity.date}</p>
           </div>
-          <div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">Horário:</p>
-            <p>{activity.time}</p>
+          <div className="space-y-2">
+            <p className="text-sm">{t("label.time")}</p>
+            <p className="text-sm font-medium">{activity.time}</p>
           </div>
 
           {/* Before Document Section */}
-          <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Antes:</p>
+          <div className="space-y-2">
+            <p className="text-sm">{t("label.before")}</p>
             {activity.beforeDocument ? (
               <div className="mt-1 flex items-center justify-between gap-2 bg-gray-100 dark:bg-gray-700 p-2 rounded border border-gray-200 dark:border-gray-600">
                 <div className="flex items-center gap-2 overflow-hidden">
-                  <PdfFileIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+                  <PdfFileIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
                   <span className="truncate text-sm text-gray-800 dark:text-gray-200" title={activity.beforeDocument}>
                     {activity.beforeDocument}
                   </span>
@@ -74,21 +77,21 @@ export const ActivityDetailDialog: React.FC<ActivityDetailDialogProps> = ({
                   onClick={() => handleViewClick(activity.beforeDocument, "before")}
                   disabled={!onViewDocument || !activity.beforeDocument}
                 >
-                  Visualizar
+                  {t("cta.view")}
                 </Button>
               </div>
             ) : (
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 italic">Nenhum documento anterior.</p>
+              <p className="mt-1 text-sm text-gray-500 italic">{t("empty.before")}</p>
             )}
           </div>
 
           {/* After Document Section */}
-          <div>
-            <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Depois:</p>
+          <div className="space-y-2">
+            <p className="text-sm">{t("label.after")}</p>
             {activity.afterDocument ? (
               <div className="mt-1 flex items-center justify-between gap-2 bg-gray-100 dark:bg-gray-700 p-2 rounded border border-gray-200 dark:border-gray-600">
                 <div className="flex items-center gap-2 overflow-hidden">
-                  <PdfFileIcon className="h-5 w-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+                  <PdfFileIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
                   <span className="truncate text-sm text-gray-800 dark:text-gray-200" title={activity.afterDocument}>
                     {activity.afterDocument}
                   </span>
@@ -100,11 +103,11 @@ export const ActivityDetailDialog: React.FC<ActivityDetailDialogProps> = ({
                   onClick={() => handleViewClick(activity.afterDocument, "after")}
                   disabled={!onViewDocument || !activity.afterDocument}
                 >
-                  Visualizar
+                  {t("cta.view")}
                 </Button>
               </div>
             ) : (
-              <p className="mt-1 text-sm text-gray-500 dark:text-gray-400 italic">Nenhum documento posterior.</p>
+              <p className="mt-1 text-sm text-gray-500 italic">{t("empty.after")}</p>
             )}
           </div>
         </div>

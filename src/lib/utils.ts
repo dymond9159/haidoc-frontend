@@ -125,6 +125,6 @@ export const getPageTitleFromPath = (pageTitles: Record<string, string>, path: s
 
 export const getActiveTabFromPath = (tabItems: TabItemType[], path: string) => {
   const sortedTabItems = [...tabItems].sort((a, b) => b.href.length - a.href.length)
-  const match = sortedTabItems.find((tab) => path.startsWith(tab.href))
+  const match = sortedTabItems.find((tab) => path.replace("/pt/", "/").startsWith(tab.href))
   return match?.value
 }

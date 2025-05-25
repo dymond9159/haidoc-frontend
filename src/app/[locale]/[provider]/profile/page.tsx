@@ -7,35 +7,38 @@ import { Button } from "@/components/ui/button"
 import { useToast } from "@/hooks/use-toast"
 import { cn } from "@/lib/utils"
 import { Loader2, LucideLayers2, Pencil, Share2, Trash2, UserRoundIcon } from "lucide-react"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB in bytes
 
-const profileOptions = [
-  {
-    href: "/professional/profile/configurations",
-    icon: <UserSettingsIcon />,
-    title: "Configurações",
-    description: "Atualize suas informações pessoais e senha",
-  },
-  {
-    href: "/professional/profile/public",
-    icon: <LucideLayers2 />,
-    title: "Perfil público",
-    description: "Veja como seu perfil aparece para outros usuários",
-  },
-  {
-    href: "/professional/my-activity",
-    icon: <HistoryIcon />,
-    title: "Minhas Atividades",
-    description: "Acompanhe seu histórico de ações e interações",
-  },
-]
-
 export default function ProfessionalProfilePage() {
+  const t = useTranslations("pages.provider.profile")
   const { toast } = useToast()
+
   const [avatarUrl, setAvatarUrl] = useState<string>("/images/placeholder.svg?height=120&width=120")
   const [isUploading, setIsUploading] = useState(false)
+
+  const profileOptions = [
+    {
+      href: "/professional/profile/configurations",
+      icon: <UserSettingsIcon />,
+      title: t("tabs.configurations"),
+      description: "Atualize suas informações pessoais e senha",
+    },
+    {
+      href: "/professional/profile/public",
+      icon: <LucideLayers2 />,
+      title: t("tabs.public"),
+      description: "Veja como seu perfil aparece para outros usuários",
+    },
+    {
+      href: "/professional/my-activity",
+      icon: <HistoryIcon />,
+      title: t("tabs.activityLog"),
+      description: "Acompanhe seu histórico de ações e interações",
+    },
+  ]
 
   const handleShareProfile = () => {
     if (navigator.share) {
@@ -47,20 +50,20 @@ export default function ProfessionalProfilePage() {
         })
         .then(() => {
           toast({
-            title: "Sucesso",
-            description: "Serviço compartilhado com sucesso!",
+            title: t("share.notification.success.title"),
+            description: t("share.notification.success.description"),
           })
         })
         .catch((error) => {
           toast({
-            title: "Erro",
-            description: "Ocorreu um erro ao compartilhar: " + error,
+            title: t("share.notification.error.title"),
+            description: t("share.notification.error.description", { error }),
           })
         })
     } else {
       toast({
-        title: "Compartilhar Serviços",
-        description: "A funcionalidade de compartilhamento não é suportada neste dispositivo.",
+        title: t("share.notification.unsupported.title"),
+        description: t("share.notification.unsupported.description"),
       })
     }
   }
@@ -181,7 +184,7 @@ export default function ProfessionalProfilePage() {
   return (
     <div className="space-y-6">
       <div className="mb-6">
-        <BackButton text="Minha conta" />
+        <BackButton text={t("cta.backButton")} />
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
@@ -237,7 +240,7 @@ export default function ProfessionalProfilePage() {
               <div className="mt-2">
                 <Button size="sm" onClick={handleShareProfile}>
                   <Share2 className="mr-2 h-4 w-4" />
-                  Compartilhar serviços
+                  {t("cta.shareButton")}
                 </Button>
               </div>
             </div>
@@ -247,15 +250,15 @@ export default function ProfessionalProfilePage() {
         <div className="md:col-span-3">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <p className="text-sm font-medium">Endereço:</p>
+              <p className="text-sm font-medium">{t("label.address")}</p>
               <p className="text-sm text-gray-500">Rua do Dão, nº49, 2º Andar, Bairro Central, Maputo, Moçambique</p>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium">Identidade Legal:</p>
+              <p className="text-sm font-medium">{t("label.identity")}</p>
               <p className="text-sm text-gray-500">123455557d8i586u</p>
             </div>
             <div className="space-y-2">
-              <p className="text-sm font-medium">NUIT:</p>
+              <p className="text-sm font-medium">{t("label.nuit")}</p>
               <p className="text-sm text-gray-500">12345678910</p>
             </div>
           </div>

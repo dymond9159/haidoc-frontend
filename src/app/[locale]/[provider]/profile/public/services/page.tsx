@@ -4,29 +4,43 @@ import { EditServiceModal } from "@/components/provider/profile/edit-service-mod
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
+export enum ServiceCategory {
+  NormalConsultation = "normalConsultation",
+  UrgentConsultation = "urgentConsultation",
+  FollowUpConsultation = "followUpConsultation",
+  QuickChatConsultation = "quickChatConsultation",
+}
+
 export default function PublicProfileServicesPage() {
   const router = useRouter()
-  const [services, setServices] = useState([
+  const t = useTranslations("pages.provider.profile.public.services")
+  const tCta = useTranslations("cta")
+
+  const mockService = [
     {
       id: 1,
-      name: "Consulta Normal",
+      name: t("category.normalConsultation"),
+      category: ServiceCategory.NormalConsultation,
       enabled: true,
       teleconsulta: { price: "100,00 MZN", enabled: true },
       domicilio: { price: "100,00 MZN", enabled: true },
     },
     {
       id: 2,
-      name: "Consulta Urgente",
+      name: t("category.urgentConsultation"),
+      category: ServiceCategory.UrgentConsultation,
       enabled: true,
       teleconsulta: { price: "100,00 MZN", enabled: true },
       domicilio: { price: "100,00 MZN", enabled: true },
     },
     {
       id: 3,
-      name: "Consulta de Seguimento",
+      name: t("category.followUpConsultation"),
+      category: ServiceCategory.FollowUpConsultation,
       description: "(leitura de exames, diagnóstico ou prescrição médica)",
       enabled: true,
       teleconsulta: { price: "100,00 MZN", enabled: true },
@@ -34,11 +48,14 @@ export default function PublicProfileServicesPage() {
     },
     {
       id: 4,
-      name: "Consulta por Chat Rápido",
+      name: t("category.quickChatConsultation"),
+      category: ServiceCategory.QuickChatConsultation,
       enabled: true,
       price: "100,00 MZN",
     },
-  ])
+  ]
+
+  const [services, setServices] = useState(mockService)
 
   const [editingService, setEditingService] = useState<any>(null)
   const { toast } = useToast()
@@ -58,7 +75,7 @@ export default function PublicProfileServicesPage() {
     if (service.id === 4) {
       setEditingService(true)
     } else {
-      router.push(`/profile/public/services/edit/${service.name}`)
+      router.push(`/professional/profile/public/services/edit/${service.category}`)
     }
   }
 
@@ -98,7 +115,7 @@ export default function PublicProfileServicesPage() {
                   className="mr-2 text-red-500 hover:bg-red-50 hover:text-red-600"
                   onClick={() => handleEditService(service)}
                 >
-                  Editar
+                  {tCta("edit")}
                 </Button>
                 <Switch checked={service.enabled} onCheckedChange={() => handleToggleService(service.id)} />
               </div>
@@ -107,11 +124,11 @@ export default function PublicProfileServicesPage() {
             {service.id !== 4 ? (
               <div className="flex flex-wrap gap-2">
                 <div className="w-fit flex flex-row items-center justify-start rounded-full bg-secondary-1 px-4 py-2 gap-2">
-                  <p className="text-sm">Teleconsulta</p>
+                  <p className="text-sm">{t("label.teleconsulta")}</p>
                   <p className="font-medium">{service.teleconsulta?.price}</p>
                 </div>
                 <div className="w-fit flex flex-row items-center justify-start rounded-full bg-secondary-1 px-4 py-2 gap-2">
-                  <p className="text-sm ">Domicílio</p>
+                  <p className="text-sm">{t("label.domicilio")}</p>
                   <p className="font-medium">{service.domicilio?.price}</p>
                 </div>
               </div>

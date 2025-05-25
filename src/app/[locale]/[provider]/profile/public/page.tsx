@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card"
 import { Rating } from "@/components/ui/rating"
 import { Separator } from "@/components/ui/separator"
 import { useToast } from "@/hooks/use-toast"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 
 interface MockReview {
@@ -33,9 +34,11 @@ const mockReviews: MockReview[] = [
 ]
 
 export default function PublicProfilePage() {
-  const [activeTab, setActiveTab] = useState<"about" | "services">("about")
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
   const { toast } = useToast()
+  const t = useTranslations("pages.provider.profile.public")
+  const tCta = useTranslations("cta")
+
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   const handleSaveProfile = () => {
     setIsEditModalOpen(false)
@@ -50,14 +53,14 @@ export default function PublicProfilePage() {
     <div className="space-y-8">
       <div>
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-medium">Sobre mim</h3>
+          <h3 className="text-lg font-medium">{t("label.about.subTitle1")}</h3>
           <Button
             variant="ghost"
             size="sm"
             className="text-red-500 hover:bg-red-50 hover:text-red-600"
             onClick={() => setIsEditModalOpen(true)}
           >
-            Editar
+            {tCta("edit")}
           </Button>
         </div>
         <Separator className="my-4" />
@@ -81,7 +84,7 @@ export default function PublicProfilePage() {
       </div>
 
       <div>
-        <h3 className="mb-4 text-lg font-medium">Avaliações</h3>
+        <h3 className="mb-4 text-lg font-medium">{t("label.about.subTitle2")}</h3>
         <Separator className="my-4" />
         <div className="space-y-6">
           {mockReviews.map((review) => (
