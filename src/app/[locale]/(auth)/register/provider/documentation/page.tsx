@@ -126,14 +126,8 @@ export default function ProviderDocumentationPage() {
   const handleSubmit = () => {
     if (validateForm()) {
       // In a real app, you would submit the form data to your backend here
-      toast({
-        title: t("successTitle"),
-        description: t("successDesc"),
-        variant: "success",
-      })
-
       setTimeout(() => {
-        router.push("/plans")
+        router.push("/register/success")
       }, 1000)
     }
   }

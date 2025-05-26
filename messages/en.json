@@ -626,10 +626,12 @@
             "neighborhood": "Neighborhood",
             "city": "City",
             "country": "Country",
-            "fileLimit": "Only 5 documents are allowed",
-            "successTitle": "Registration successful!",
-            "successDesc": "Your application will be reviewed within 48 hours. Once approved, you will have full access to all features."
+            "fileLimit": "Only 5 documents are allowed"
           }
+        },
+        "success": {
+          "title": "Registration successful!",
+          "desc": "Your application will be reviewed within <bold>48 hours</bold>. Once approved, you will have full access to all features."
         }
       }
     },

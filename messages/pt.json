@@ -626,10 +626,12 @@
             "neighborhood": "Bairro",
             "city": "Cidade",
             "country": "País",
-            "fileLimit": "Apenas 5 documentos são permitidos",
-            "successTitle": "Cadastro realizado com sucesso!",
-            "successDesc": "Seu processo será avaliado em até 48 horas. Após a aprovação, terá acesso total às funcionalidades."
+            "fileLimit": "Apenas 5 documentos são permitidos"
           }
+        },
+        "success": {
+          "title": "Cadastro realizado com sucesso!",
+          "desc": "Seu processo será avaliado em até <bold>48 horas</bold>. Após a aprovação, terá acesso total às funcionalidades."
         }
       }
     },
