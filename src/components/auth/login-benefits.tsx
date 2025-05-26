@@ -35,10 +35,10 @@ export function LoginBenefits() {
 
   return (
     <div className="bg-secondary-9 w-full h-full flex flex-col items-center justify-center">
-      <div className={cn("flex w-full max-w-lg flex-col items-center justify-center px-6 py-15 text-white")}>
+      <div className={cn("flex w-full max-w-xl flex-col items-center justify-center px-2 py-15 text-white")}>
         <div className="relative w-full">
           <Image
-            src={`/images/login-benifits-bg-${!["mobile", "tablet"].includes(screenSize) ? "desktop" : "mobile"}.png`}
+            src={`/images/login-benifits-bg-${!["mobile", "tablet"].includes(screenSize) ? "desktop" : "mobile"}.svg`}
             alt="Illustration showing the benefits of using HaiDoc"
             priority
             sizes="(max-width: 768px) 100vw, 50vw"

@@ -4,7 +4,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { ExamCategories } from "@/lib/constants/exam"
-import { SpecialtiesCategories } from "@/lib/constants/specialties"
 import { useState } from "react"
 
 interface ExamsFormProps {
@@ -43,7 +42,6 @@ export interface SpecialtyCategory {
 
 export function ExamsForm({ onClose }: ExamsFormProps) {
   const [examCategories, setExamCategories] = useState<ExamCategory[]>(ExamCategories || [])
-  const [specialtyCategories, setSpecialtyCategories] = useState<SpecialtyCategory[]>(SpecialtiesCategories || [])
 
   const toggleExam = (categoryId: string, examId: string) => {
     setExamCategories((categories) =>
@@ -60,37 +58,10 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
     )
   }
 
-  const toggleSpecialty = (categoryId: string, specialtyId: string) => {
-    setSpecialtyCategories((categories) =>
-      categories.map((category) =>
-        category.id === categoryId
-          ? {
-              ...category,
-              specialties: category.specialties.map((specialty) =>
-                specialty.id === specialtyId ? { ...specialty, isSelected: !specialty.isSelected } : specialty,
-              ),
-            }
-          : category,
-      ),
-    )
-  }
-
   const handleSubmit = () => {
     const selectedExams = examCategories.flatMap((category) =>
       category.exams.filter((exam) => exam.isSelected).map((exam) => ({ category: category.name, name: exam.name })),
     )
-
-    const selectedSpecialties = specialtyCategories.flatMap((category) =>
-      category.specialties
-        .filter((specialty) => specialty.isSelected)
-        .map((specialty) => ({
-          category: category.name,
-          name: specialty.name,
-        })),
-    )
-
-    console.log("Selected exams:", selectedExams)
-    console.log("Selected specialties:", selectedSpecialties)
     // In a real app, you would send this data to your backend
     if (onClose) onClose()
   }
@@ -119,37 +90,6 @@ export function ExamsForm({ onClose }: ExamsFormProps) {
                       className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       {exam.name}
-                    </label>
-                  </div>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-
-      <div className="p-4">
-        <h3 className="text-sm font-medium mb-2">Especialidades</h3>
-
-        <Accordion type="multiple" className="w-full space-y-2" defaultValue={["biochemistry"]}>
-          {specialtyCategories.map((category) => (
-            <AccordionItem key={category.id} value={category.id} className="border rounded-md overflow-hidden">
-              <AccordionTrigger className="px-4 py-3 hover:no-underline hover:bg-gray-50">
-                <span className="font-medium text-secondary">{category.name}</span>
-              </AccordionTrigger>
-              <AccordionContent className="px-0 py-2 border-t space-y-2">
-                {category.specialties.map((specialty) => (
-                  <div key={specialty.id} className="flex items-center space-x-2">
-                    <Checkbox
-                      id={specialty.id}
-                      checked={specialty.isSelected}
-                      onCheckedChange={() => toggleSpecialty(category.id, specialty.id)}
-                    />
-                    <label
-                      htmlFor={specialty.id}
-                      className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      {specialty.name}
                     </label>
                   </div>
                 ))}

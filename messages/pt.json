@@ -61,7 +61,7 @@
       "repeatNewPassword": "Repita a nova senha",
       "specialty": "Especialidade",
       "institutionName": "Nome da instituição",
-      "professionalNumber": "Número de Carteira Profissional",
+      "professionalNumber": "Número de Carteira Profissional/Número da Ordem dos Médicos",
       "nuit": "NUIT",
       "street": "Rua ou avenida",
       "number": "Número",
@@ -139,7 +139,31 @@
         "cardiology": "Cardiologia",
         "dermatology": "Dermatologia",
         "pediatrics": "Pediatria",
-        "orthopedics": "Ortopedia"
+        "orthopedics": "Ortopedia",
+        "general-practice": "Clínica Geral / Medicina Interna",
+        "gynecology-obstetrics": "Ginecologia e Obstetrícia",
+        "neurology": "Neurologia",
+        "psychology": "Psicologia",
+        "psychiatry": "Psiquiatria",
+        "nutrition": "Nutrição",
+        "endocrinology": "Endocrinologia",
+        "gastroenterology": "Gastroenterologia",
+        "infectious-disease": "Doenças Infecciosas",
+        "ent": "Otorrinolaringologia",
+        "urology": "Urologia",
+        "hematology": "Hematologia",
+        "oncology": "Oncologia",
+        "pulmonology": "Pneumologia",
+        "nephrology": "Nefrologia",
+        "radiology": "Radiologia",
+        "anesthesiology": "Anestesiologia",
+        "physical-medicine": "Medicina Física e Reabilitação",
+        "occupational-medicine": "Medicina do Trabalho",
+        "sports-medicine": "Medicina Esportiva",
+        "surgery": "Cirurgia (Geral, Pediátrica, Torácica, Vascular, Plástica)",
+        "emergency-medicine": "Medicina de Emergência",
+        "immunology-allergology": "Imunologia e Alergologia",
+        "public-health": "Saúde Pública"
       },
       "durationUnit": {
         "days": "Dias",
@@ -587,7 +611,7 @@
             "providerType": "Tipo de provedor de saúde",
             "specialty": "Especialidade",
             "institutionName": "Nome da instituição",
-            "professionalNumber": "Número de Carteira Profissional",
+            "professionalNumber": "Número de Carteira Profissional/Número da Ordem dos Médicos",
             "nuit": "NUIT",
             "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
             "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
@@ -604,7 +628,7 @@
             "country": "País",
             "fileLimit": "Apenas 5 documentos são permitidos",
             "successTitle": "Cadastro realizado com sucesso!",
-            "successDesc": "Agora você pode acessar todas as funcionalidades da plataforma."
+            "successDesc": "Seu processo será avaliado em até 48 horas. Após a aprovação, terá acesso total às funcionalidades."
           }
         }
       }

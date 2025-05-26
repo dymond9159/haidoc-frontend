@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Specialites } from "@/lib/constants"
 import { cn, formatCardNumber } from "@/lib/utils"
 import { ProviderOptions } from "@/types"
 
@@ -119,11 +120,11 @@ export default function ProviderProfessionalDetailsPage() {
               <SelectValue placeholder={tForm("placeholder.specialty")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="gynecology">{tForm("category.specialty.gynecology")}</SelectItem>
-              <SelectItem value="cardiology">{tForm("category.specialty.cardiology")}</SelectItem>
-              <SelectItem value="dermatology">{tForm("category.specialty.dermatology")}</SelectItem>
-              <SelectItem value="pediatrics">{tForm("category.specialty.pediatrics")}</SelectItem>
-              <SelectItem value="orthopedics">{tForm("category.specialty.orthopedics")}</SelectItem>
+              {Specialites.map((specialty) => (
+                <SelectItem key={specialty} value={specialty}>
+                  {tForm(`category.specialty.${specialty}`)}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
           {errors.specialty && <p className="text-xs text-error-5">{errors.specialty}</p>}

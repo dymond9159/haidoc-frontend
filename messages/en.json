@@ -139,7 +139,31 @@
         "cardiology": "Cardiology",
         "dermatology": "Dermatology",
         "pediatrics": "Pediatrics",
-        "orthopedics": "Orthopedics"
+        "orthopedics": "Orthopedics",
+        "general-practice": "General Practice / Internal Medicine",
+        "gynecology-obstetrics": "Gynecology & Obstetrics",
+        "neurology": "Neurology",
+        "psychology": "Psychology",
+        "psychiatry": "Psychiatry",
+        "nutrition": "Nutrition",
+        "endocrinology": "Endocrinology",
+        "gastroenterology": "Gastroenterology",
+        "infectious-disease": "Infectious Disease",
+        "ent": "ENT (Otorhinolaryngology)",
+        "urology": "Urology",
+        "hematology": "Hematology",
+        "oncology": "Oncology",
+        "pulmonology": "Pulmonology",
+        "nephrology": "Nephrology",
+        "radiology": "Radiology",
+        "anesthesiology": "Anesthesiology",
+        "physical-medicine": "Physical Medicine & Rehabilitation",
+        "occupational-medicine": "Occupational Medicine",
+        "sports-medicine": "Sports Medicine",
+        "surgery": "Surgery (General, Pediatric, Thoracic, Vascular, Plastic)",
+        "emergency-medicine": "Emergency Medicine",
+        "immunology-allergology": "Immunology & Allergology",
+        "public-health": "Public Health"
       },
       "durationUnit": {
         "days": "Days",
@@ -604,7 +628,7 @@
             "country": "Country",
             "fileLimit": "Only 5 documents are allowed",
             "successTitle": "Registration successful!",
-            "successDesc": "Now you can access all platform functionalities."
+            "successDesc": "Your application will be reviewed within 48 hours. Once approved, you will have full access to all features."
           }
         }
       }
