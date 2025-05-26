@@ -83,8 +83,9 @@ export function Sidebar({ homeLink, bottomCanvasImage }: SidebarProps) {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "bottom left",
     backgroundSize: "100% auto",
+    opacity: 0.8,
   }
-  const backgroundHeightClass = "h-[120px]"
+  const backgroundHeightClass = "h-[240px]"
 
   useEffect(() => {
     // Keep sidebar open on non-mobile unless manually closed

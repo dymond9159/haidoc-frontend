@@ -3,13 +3,12 @@
 import { MetricCard } from "@/components/cards/metric-card"
 import { BackButton } from "@/components/common"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useMobile } from "@/hooks/use-mobile"
 import { getActiveTabFromPath } from "@/lib/utils"
 import { TabItemType } from "@/types"
-import { BriefcaseMedicalIcon, ChevronRightIcon, Pencil, Star, StethoscopeIcon, UserRoundIcon } from "lucide-react"
+import { BriefcaseMedicalIcon, ChevronRightIcon, Star, StethoscopeIcon, UserRoundIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { useRouter } from "nextjs-toploader/app"
@@ -68,12 +67,12 @@ export default function PublicProfileLayout({ children }: { children: React.Reac
                   <UserRoundIcon />
                 </AvatarFallback>
               </Avatar>
-              <div className="absolute right-1 top-1 flex flex-col gap-1">
+              {/* <div className="absolute right-1 top-1 flex flex-col gap-1">
                 <Button size="icon" variant="outline" className="h-7 w-7 rounded-full bg-white text-primary">
                   <Pencil className="h-3.5 w-3.5" />
                   <span className="sr-only">Substituir imagem</span>
                 </Button>
-              </div>
+              </div> */}
             </div>
             <div>
               <h3 className="text-lg font-medium">Dr. João da Silva</h3>
