@@ -15,9 +15,10 @@ import { useFormValidation } from "@/hooks/use-validation-form"
 import { cn } from "@/lib/utils"
 import { AccountType, Gender } from "@/types"
 
-export default function ProviderBasicInfoPage() {
+export default function PatientBasicInfoPage() {
   const router = useRouter()
   const routes = useRoutes()
+  const t = useTranslations("pages.auth.register.patient.basicData")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
 
@@ -30,6 +31,7 @@ export default function ProviderBasicInfoPage() {
       email: "",
       phone: "",
       birthDate: "",
+      nuit: "",
       gender: "",
       password: "",
       confirmPassword: "",
@@ -39,7 +41,7 @@ export default function ProviderBasicInfoPage() {
 
   const handleNext = () => {
     if (validate()) {
-      router.push(routes.professionalDetails(AccountType.Provider))
+      router.push(routes.personalInformation(AccountType.Patient))
     }
   }
 
@@ -87,6 +89,20 @@ export default function ProviderBasicInfoPage() {
           {errors.phone && <p className="text-xs text-error-5">{errors.phone}</p>}
         </div>
         <div className="space-y-2">
+          <Label htmlFor="nuit" className="text-sm font-medium">
+            {tForm("label.nuit")} <Asterisk />
+          </Label>
+          <Input
+            id="nuit"
+            value={formData.nuit}
+            onChange={(e) => handleChange("nuit", e.target.value)}
+            placeholder={tForm("placeholder.nuit")}
+            maxLength={9}
+            className={errors.nuit ? "border-error-5" : ""}
+          />
+          {errors.nuit && <p className="text-xs text-error-5">{errors.nuit}</p>}
+        </div>
+        <div className="space-y-2">
           <Label htmlFor="birthDate" className="text-sm font-medium">
             {tForm("label.birthDate")} <Asterisk />
           </Label>
@@ -119,7 +135,7 @@ export default function ProviderBasicInfoPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="password" className="text-sm font-medium">
-            {tForm("password")} <Asterisk />
+            {t("password")} <Asterisk />
           </Label>
           <div className="relative">
             <Input
@@ -142,7 +158,7 @@ export default function ProviderBasicInfoPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-sm font-medium">
-            {tForm("confirmPassword")} <Asterisk />
+            {t("confirmPassword")} <Asterisk />
           </Label>
           <div className="relative">
             <Input

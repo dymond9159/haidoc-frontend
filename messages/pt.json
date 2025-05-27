@@ -59,6 +59,7 @@
       "repeatPassword": "Repita a senha",
       "newPassword": "Nova senha",
       "repeatNewPassword": "Repita a nova senha",
+      "providerType": "Tipo de provedor de saúde",
       "specialty": "Especialidade",
       "institutionName": "Nome da instituição",
       "professionalNumber": "Número de Carteira Profissional/Número da Ordem dos Médicos",
@@ -68,6 +69,9 @@
       "neighborhood": "Bairro",
       "city": "Cidade",
       "country": "País",
+      "maritalStatus": "Estado Civil",
+      "birthPlace": "Naturalidade",
+      "profession": "Profissão",
       "or": "ou",
       "cardName": "Nome no cartão",
       "cardNumber": "Número do cartão",
@@ -80,7 +84,6 @@
       "timeSlots": "Horários disponíveis",
       "reason": "Motivo do agendamento",
       "consultationType": "Tipo de consulta",
-      "providerType": "Tipo de provedor de saúde",
       "aboutMe": "Sobre mim",
       "address": "Endereço",
       "otherInfo": "Outras informações",
@@ -105,6 +108,9 @@
       "neighborhood": "Centro",
       "city": "Maputo",
       "country": "Moçambique",
+      "maritalStatus": "Seu nome civil",
+      "birthPlace": "Maputo",
+      "profession": "Engenheiro Civil",
       "cardName": "Seu nome como aparece no cartão",
       "cardNumber": "**** **** **** ****",
       "cvv": "123",
@@ -127,6 +133,13 @@
         "male": "Masculino",
         "female": "Feminino",
         "noIdentification": "Prefiro Não Identificar"
+      },
+      "maritalStatus": {
+        "single": "Solteiro",
+        "married": "Casado",
+        "divorced": "Divorciado",
+        "widow": "Viúvo",
+        "stableUnion": "União Estável"
       },
       "provider": {
         "professional": "Profissional de saúde",
@@ -260,7 +273,10 @@
       "occurrenceTypeLength": "O tipo de ocorrência deve ter no mínimo 3 caracteres e no máximo 255 caracteres.",
       "descriptionRequired": "O campo descrição é obrigatório.",
       "descriptionMinLength": "A descrição deve ter no mínimo 10 caracteres.",
-      "descriptionMaxLength": "A descrição deve ter no máximo 500 caracteres."
+      "descriptionMaxLength": "A descrição deve ter no máximo 500 caracteres.",
+      "maritalStatusRequired": "Estado civil é obrigatório",
+      "birthPlaceRequired": "Naturalidade é obrigatório",
+      "professionRequired": "Profissão é obrigatório"
     }
   },
   "notification": {
@@ -595,39 +611,25 @@
         "loginHere": "Faça login",
         "steps": {
           "basic": "Dados básicos",
+          "personal": "Informações pessoais",
           "professional": "Detalhes profissionais",
           "documentation": "Documentação"
         },
-        "provider": {
-          "basicData": {
-            "fullName": "Nome completo",
-            "phone": "Número de telefone",
-            "birthDate": "Data de nascimento",
-            "gender": "Sexo",
-            "password": "Crie uma senha",
-            "confirmPassword": "Repita sua senha"
-          },
-          "professionalDetails": {
-            "providerType": "Tipo de provedor de saúde",
-            "specialty": "Especialidade",
-            "institutionName": "Nome da instituição",
-            "professionalNumber": "Número de Carteira Profissional/Número da Ordem dos Médicos",
-            "nuit": "NUIT",
-            "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
-            "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
-            "termsRequired": "Você deve concordar com os termos e condições"
-          },
-          "documentation": {
-            "licenseDocs": "Documentos de licença",
-            "licenseDesc": "Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição)",
-            "address": "Endereço",
-            "street": "Rua ou avenida",
-            "number": "Número",
-            "neighborhood": "Bairro",
-            "city": "Cidade",
-            "country": "País",
-            "fileLimit": "Apenas 5 documentos são permitidos"
-          }
+        "professionalDetails": {
+          "permanentInfoProfessional": "As informações de tipo de provedor de saúde, especialidade e o seu número de Carteira Profissional serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+          "permanentInfoOther": "As informações de tipo de provedor de saúde e NUIT serão permanentes. Caso necessite de alterações futuras, entre em contato com o suporte.",
+          "termsRequired": "Você deve concordar com os termos e condições"
+        },
+        "documentation": {
+          "licenseDocs": "Documentos de licença",
+          "licenseDesc": "Licença (Cartão da Ordem dos Médicos ou Alvará da Instituição)",
+          "address": "Endereço",
+          "street": "Rua ou avenida",
+          "number": "Número",
+          "neighborhood": "Bairro",
+          "city": "Cidade",
+          "country": "País",
+          "fileLimit": "Apenas 5 documentos são permitidos"
         },
         "success": {
           "title": "Cadastro realizado com sucesso!",

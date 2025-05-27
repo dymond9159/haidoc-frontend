@@ -68,6 +68,9 @@
       "neighborhood": "Neighborhood",
       "city": "City",
       "country": "Country",
+      "maritalStatus": "Civil status",
+      "birthPlace": "Birth place",
+      "profession": "Profession",
       "or": "or",
       "cardName": "Name on card",
       "cardNumber": "Card number",
@@ -96,6 +99,7 @@
       "birthDate": "03/22/2002",
       "gender": "Select a gender",
       "confirmPassword": "••••••••",
+      "providerType": "Select a provider",
       "specialty": "Select a specialty",
       "institutionName": "Santo António Hospital",
       "professionalNumber": "123456789",
@@ -105,6 +109,9 @@
       "neighborhood": "Downtown",
       "city": "Maputo",
       "country": "Mozambique",
+      "maritalStatus": "Select one status",
+      "birthPlace": "Maputo",
+      "profession": "Engineer",
       "cardName": "Your name as it appears on the card",
       "cardNumber": "**** **** **** ****",
       "cvv": "123",
@@ -115,7 +122,6 @@
       "date": "Select a date",
       "timeSlots": "Select a time slot",
       "reason": "Reason for the patient's consultation appointment",
-      "providerType": "Select a provider",
       "aboutMe": "About me",
       "address": "Address",
       "otherInfo": "Other information",
@@ -127,6 +133,13 @@
         "male": "Male",
         "female": "Female",
         "noIdentification": "Prefer Not to Identify"
+      },
+      "maritalStatus": {
+        "single": "Single",
+        "married": "Married",
+        "divorced": "Divorced",
+        "widow": "Widow",
+        "stableUnion": "Stable Union"
       },
       "provider": {
         "professional": "Healthcare professional",
@@ -260,7 +273,10 @@
       "occurrenceTypeLength": "The type of occurrence must be at least 3 characters and at most 255 characters long.",
       "descriptionRequired": "The description field is required.",
       "descriptionMinLength": "The description must be at least 10 characters long.",
-      "descriptionMaxLength": "The description must be at most 500 characters long."
+      "descriptionMaxLength": "The description must be at most 500 characters long.",
+      "maritalStatusRequired": "Marital status is required",
+      "birthPlaceRequired": "Birth place is required",
+      "professionRequired": "Profession is required"
     }
   },
   "notification": {
@@ -595,24 +611,13 @@
         "loginHere": "Login here",
         "steps": {
           "basic": "Basic data",
+          "personal": "Personal information",
           "professional": "Professional details",
           "documentation": "Documentation"
         },
+        "patient": {},
         "provider": {
-          "basicData": {
-            "fullName": "Full name",
-            "phone": "Phone number",
-            "birthDate": "Birth date",
-            "gender": "Gender",
-            "password": "Create a password",
-            "confirmPassword": "Repeat your password"
-          },
           "professionalDetails": {
-            "providerType": "Type of healthcare provider",
-            "specialty": "Specialty",
-            "institutionName": "Institution name",
-            "professionalNumber": "Professional License Number",
-            "nuit": "NUIT",
             "permanentInfoProfessional": "The information regarding type of healthcare provider, specialty, and your Professional License Number will be permanent. If future changes are needed, please contact support.",
             "permanentInfoOther": "The information regarding type of healthcare provider and NUIT will be permanent. If future changes are needed, please contact support.",
             "termsRequired": "You must agree to the terms and conditions"

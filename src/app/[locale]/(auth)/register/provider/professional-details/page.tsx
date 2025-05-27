@@ -3,90 +3,44 @@
 import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import type React from "react"
-import { useState } from "react"
 
 import { Asterisk, TermsAndConditions } from "@/components/common"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { useRoutes } from "@/hooks/use-localized-routes"
+import { useFormValidation } from "@/hooks/use-validation-form"
 import { Specialites } from "@/lib/constants"
 import { cn, formatCardNumber } from "@/lib/utils"
-import { ProviderOptions } from "@/types"
+import { AccountType, ProviderOptions } from "@/types"
 
 export default function ProviderProfessionalDetailsPage() {
   const router = useRouter()
-  const t = useTranslations("pages.auth.register.provider.professionalDetails")
+  const routes = useRoutes()
+  const t = useTranslations("pages.auth.register.professionalDetails")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
-  const [formData, setFormData] = useState({
-    providerType: ProviderOptions.Professional,
-    specialty: "",
-    institutionName: "",
-    professionalNumber: "",
-    termsAccepted: false,
+
+  const { formData, validate, handleChange, errors } = useFormValidation({
+    initialData: {
+      providerType: ProviderOptions.Professional,
+      specialty: "",
+      institutionName: "",
+      professionalNumber: "",
+      termsAccepted: false,
+    },
+    tForm,
   })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-
-  const handleChange = (field: string, value: any) => {
-    setFormData({ ...formData, [field]: value })
-
-    // Clear error when field is edited
-    if (errors[field]) {
-      const newErrors = { ...errors }
-      delete newErrors[field]
-      setErrors(newErrors)
-    }
-  }
 
   const handleCardNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatCardNumber(e.target.value)
     handleChange("professionalNumber", formatted)
   }
 
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    // Validate provider type
-    if (!formData.providerType) {
-      newErrors.providerType = tForm("error.providerTypeRequired")
-    }
-
-    // Validate specialty
-    if (formData.providerType === ProviderOptions.Professional && !formData.specialty) {
-      newErrors.specialty = tForm("error.specialtyRequired")
-    }
-
-    // Validate institution name
-    if (formData.providerType !== ProviderOptions.Professional && !formData.institutionName) {
-      newErrors.institutionName = tForm("error.institutionNameRequired")
-    }
-
-    // Validate card number/NUIT
-    if (!formData.professionalNumber) {
-      newErrors.professionalNumber =
-        formData.providerType === ProviderOptions.Professional
-          ? tForm("error.professionalNumberRequired")
-          : tForm("error.nuitRequired")
-    } else if (formData.professionalNumber.replace(/\D/g, "").length !== 9) {
-      newErrors.professionalNumber =
-        formData.providerType === ProviderOptions.Professional
-          ? tForm("error.professionalNumberLength")
-          : tForm("error.nuitLength")
-    }
-
-    // Validate terms
-    if (!formData.termsAccepted) {
-      newErrors.termsAccepted = tForm("error.termsRequired")
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
-
   const handleNext = () => {
-    if (validateForm()) {
-      router.push("/register/provider/documentation")
+    if (validate()) {
+      router.push(routes.documentation(AccountType.Provider))
     }
   }
 
@@ -94,11 +48,11 @@ export default function ProviderProfessionalDetailsPage() {
     <div className="space-y-6">
       <div className="space-y-2">
         <Label htmlFor="providerType" className="text-sm font-medium">
-          {t("providerType")} <Asterisk />
+          {tForm("providerType")} <Asterisk />
         </Label>
         <Select value={formData.providerType} onValueChange={(value) => handleChange("providerType", value)}>
           <SelectTrigger id="providerType" className={cn("w-full", errors.providerType ? "border-error-5" : "")}>
-            <SelectValue placeholder={t("providerType")} />
+            <SelectValue placeholder={tForm("providerType")} />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value={ProviderOptions.Professional}>{tForm("category.provider.professional")}</SelectItem>

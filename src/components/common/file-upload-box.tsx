@@ -2,15 +2,10 @@
 
 import { Button } from "@/components/ui/button"
 import { cn, formatFileSize } from "@/lib/utils"
+import { UploadedFile } from "@/types"
 import { FileTextIcon, Plus, UploadIcon, X } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { DragEvent, useRef, useState } from "react"
-
-export type UploadedFile = {
-  id: string // Consider using a more robust ID like a UUID if needed
-  name: string
-  size: number
-}
 
 interface FileUploadBoxProps {
   uploadedFiles: UploadedFile[]

@@ -2,16 +2,19 @@
 
 import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 import { Asterisk } from "@/components/common"
-import { FileUploadBox, UploadedFile } from "@/components/common/file-upload-box"
+import { FileUploadBox } from "@/components/common/file-upload-box"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
+import { useRoutes } from "@/hooks/use-localized-routes"
 import { useToast } from "@/hooks/use-toast"
+import { useFormValidation } from "@/hooks/use-validation-form"
+import { UploadedFile } from "@/types"
 
 enum DocumentationOptions {
   License = "license",
@@ -20,38 +23,32 @@ enum DocumentationOptions {
 
 export default function ProviderDocumentationPage() {
   const router = useRouter()
-  const { toast } = useToast()
-  const fileInputRef = useRef<HTMLInputElement>(null)
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([])
-  const [formData, setFormData] = useState({
-    street: "",
-    number: "",
-    neighborhood: "",
-    city: "",
-    country: "",
-  })
-  const [errors, setErrors] = useState<Record<string, string>>({})
-  const t = useTranslations("pages.auth.register.provider.documentation")
+  const routes = useRoutes()
+  const t = useTranslations("pages.auth.register.documentation")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
 
-  const handleChange = (field: string, value: string) => {
-    setFormData({ ...formData, [field]: value })
+  const { toast } = useToast()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
-    // Clear error when field is edited
-    if (errors[field]) {
-      const newErrors = { ...errors }
-      delete newErrors[field]
-      setErrors(newErrors)
-    }
-  }
+  const { formData, setFormData, validate, handleChange, errors, setErrors } = useFormValidation({
+    initialData: {
+      files: [],
+      street: "",
+      number: "",
+      neighborhood: "",
+      city: "",
+      country: "",
+    },
+    tForm,
+  })
 
   const handleFileUpload = (files: FileList) => {
     if (files.length > 0) {
       const newFiles: UploadedFile[] = []
 
       Array.from(files).forEach((file) => {
-        if (uploadedFiles.length + newFiles.length < 5) {
+        if (formData?.files?.length || 0 + newFiles.length < 5) {
           newFiles.push({
             id: Math.random().toString(36).substring(2, 9),
             name: file.name,
@@ -60,7 +57,7 @@ export default function ProviderDocumentationPage() {
         }
       })
 
-      setUploadedFiles([...uploadedFiles, ...newFiles])
+      setFormData({ ...formData, files: [...(formData?.files || []), ...newFiles] })
 
       // Clear file input
       if (fileInputRef.current) {
@@ -77,57 +74,14 @@ export default function ProviderDocumentationPage() {
   }
 
   const handleRemoveFile = (id: string) => {
-    setUploadedFiles(uploadedFiles.filter((file) => file.id !== id))
-  }
-
-  const formatFileSize = (bytes: number): string => {
-    if (bytes < 1024) return bytes + " B"
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + " KB"
-    return (bytes / (1024 * 1024)).toFixed(1) + " MB"
-  }
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {}
-
-    // Validate files
-    if (uploadedFiles.length === 0) {
-      newErrors.files = tForm("error.filesRequired")
-    }
-
-    // Validate street
-    if (!formData.street.trim()) {
-      newErrors.street = tForm("error.streetRequired")
-    }
-
-    // Validate number
-    if (!formData.number.trim()) {
-      newErrors.number = tForm("error.numberRequired")
-    }
-
-    // Validate neighborhood
-    if (!formData.neighborhood.trim()) {
-      newErrors.neighborhood = tForm("error.neighborhoodRequired")
-    }
-
-    // Validate city
-    if (!formData.city.trim()) {
-      newErrors.city = tForm("error.cityRequired")
-    }
-
-    // Validate country
-    if (!formData.country.trim()) {
-      newErrors.country = tForm("error.countryRequired")
-    }
-
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    setFormData({ ...formData, files: formData?.files?.filter((file) => file.id !== id) })
   }
 
   const handleSubmit = () => {
-    if (validateForm()) {
+    if (validate()) {
       // In a real app, you would submit the form data to your backend here
       setTimeout(() => {
-        router.push("/register/success")
+        router.push(routes.registerSuccess())
       }, 1000)
     }
   }
@@ -151,7 +105,7 @@ export default function ProviderDocumentationPage() {
               <p className="text-xs text-system-9">{t("fileLimit")}</p>
               <FileUploadBox
                 multiple={true}
-                uploadedFiles={uploadedFiles}
+                uploadedFiles={formData?.files || []}
                 onUpload={handleFileUpload}
                 onRemove={handleRemoveFile}
                 error={errors?.files}

@@ -7,14 +7,13 @@ import { useTranslations } from "next-intl"
 import { usePathname } from "next/navigation"
 import { ReactNode } from "react"
 
-export default function ProviderRegistrationLayout({ children }: { children: ReactNode }) {
+export default function PatientRegistrationLayout({ children }: { children: ReactNode }) {
   const t = useTranslations("pages.auth.register.steps")
   const routes = useRoutes()
 
   const registrationSteps = [
-    { id: "basic", number: 1, title: t("basic"), path: routes.basicData(AccountType.Provider) },
-    { id: "professional", number: 2, title: t("professional"), path: routes.professionalDetails(AccountType.Provider) },
-    { id: "documentation", number: 3, title: t("documentation"), path: routes.documentation(AccountType.Provider) },
+    { id: "basic", number: 1, title: t("basic"), path: routes.basicData(AccountType.Patient) },
+    { id: "personal", number: 2, title: t("personal"), path: routes.personalInformation(AccountType.Patient) },
   ]
 
   const pathname = usePathname()

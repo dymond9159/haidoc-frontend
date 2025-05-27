@@ -11,6 +11,12 @@ export enum PlanType {
   Company = "company",
 }
 
+export enum PlanTypeForPatient {
+  Individual = "individual",
+  Patient = "patient",
+  Family = "family",
+}
+
 export interface PlanProps {
   type: PlanType
   title: string

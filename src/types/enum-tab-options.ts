@@ -17,3 +17,11 @@ export enum ProviderOptions {
   Clinic = "clinic",
   Pharmacy = "pharmacy",
 }
+
+export enum MaritalStatus {
+  Single = "single",
+  Married = "married",
+  Divorced = "divorced",
+  Widow = "widow",
+  StableUnion = "stableUnion",
+}
