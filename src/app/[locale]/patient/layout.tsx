@@ -7,8 +7,8 @@ import { Suspense, type ReactNode } from "react"
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Provider Portal",
-    default: "HaiDoc Provider Portal",
+    template: "%s | Patient Portal",
+    default: "HaiDoc Patient Portal",
   },
   description:
     "Acesso profissional à plataforma HaiDoc para gerenciamento de usuários, aplicações, finanças, saúde e operações clínicas.",
@@ -18,20 +18,21 @@ export const metadata: Metadata = {
   publisher: "HaiDoc",
 }
 
-export default async function ProviderLayout({ children }: { children: ReactNode }) {
+export default async function PatientLayout({ children }: { children: ReactNode }) {
   // nav items at sidebar
   const navItems: NavItem[] = [
-    { iconName: "HomeIcon", label: "home", href: "/professional" },
-    { iconName: "CalendarDaysIcon", label: "agenda", href: "/professional/agenda" },
-    { iconName: "StethoscopeIcon", label: "consultations", href: "/professional/consultations" },
-    { iconName: "MessageSquareTextIcon", label: "quickChat", href: "/professional/chat" },
-    { iconName: "DollarIcon", label: "finances", href: "/professional/finances" },
-    { iconName: "SupportAgentIcon", label: "support", href: "/professional/support" },
+    { iconName: "HomeIcon", label: "home", href: "/patient" },
+    { iconName: "StethoscopeIcon", label: "consultations", href: "/patient/consultations" },
+    { iconName: "MicroscopeIcon", label: "exams", href: "/patient/exams" },
+    { iconName: "TruckIcon", label: "orders", href: "/patient/orders" },
+    { iconName: "ReceiptIcon", label: "healthPlan", href: "/patient/health-plan" },
+    { iconName: "MessageSquareTextIcon", label: "quickChat", href: "/patient/chat" },
+    { iconName: "SupportAgentIcon", label: "support", href: "/support" },
   ]
 
   return (
     <div className="flex flex-col h-screen bg-system-0">
-      <Sidebar accountType={AccountType.Provider} navItems={navItems} />
+      <Sidebar accountType={AccountType.Patient} navItems={navItems} />
       <div className="w-screen h-screen flex-1 flex flex-col">
         <Header />
         <Suspense fallback={<Loading />}>

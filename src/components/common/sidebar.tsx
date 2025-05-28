@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { useParams, usePathname } from "next/navigation"
 import { useEffect } from "react"
 
 import {
@@ -12,6 +12,8 @@ import {
   ClockIcon,
   HomeIcon,
   MessageSquareTextIcon,
+  MicroscopeIcon,
+  ReceiptIcon,
   StethoscopeIcon,
   TruckIcon,
   UserCheckIcon,
@@ -28,6 +30,7 @@ import { useScreen } from "@/hooks/use-screen"
 import { cn } from "@/lib/utils"
 import { RootState } from "@/store"
 import { setSideBarOpen, toggleCollapse } from "@/store/reducers/settings-slice"
+import { AccountType } from "@/types"
 import { useTranslations } from "next-intl"
 import { useSelector } from "react-redux"
 import { DashboardIcon, DollarIcon, Edit1Icon, SupportAgentIcon, TaxIcon, UserSettingsIcon } from "../icons"
@@ -47,6 +50,8 @@ const iconMap: Record<string, React.ElementType | null> = {
   StethoscopeIcon: StethoscopeIcon,
   MessageSquareTextIcon: MessageSquareTextIcon,
   SupportAgentIcon: SupportAgentIcon,
+  MicroscopeIcon: MicroscopeIcon,
+  ReceiptIcon: ReceiptIcon,
 }
 export interface NavItem {
   label: string
@@ -54,25 +59,21 @@ export interface NavItem {
   iconName?: keyof typeof iconMap
 }
 interface SidebarProps {
-  homeLink: string
-  bottomCanvasImage: string
+  accountType: AccountType
+  navItems: NavItem[]
 }
 
-export function Sidebar({ homeLink, bottomCanvasImage }: SidebarProps) {
+const bottomCanvasImage = "/images/side-bottom-canvas.svg"
+
+export function Sidebar({ accountType, navItems }: SidebarProps) {
   const t = useTranslations("sidebar")
+
+  const params = useParams()
   const dispatch = useAppDispatch()
   const { isMobile, isTablet } = useScreen()
 
   const pathname = usePathname().replace("/pt/", "/")
-
-  const navItems: NavItem[] = [
-    { iconName: "HomeIcon", label: t("home"), href: "/professional" },
-    { iconName: "CalendarDaysIcon", label: t("agenda"), href: "/professional/agenda" },
-    { iconName: "StethoscopeIcon", label: t("consultations"), href: "/professional/consultations" },
-    { iconName: "MessageSquareTextIcon", label: t("quickChat"), href: "/professional/chat" },
-    { iconName: "DollarIcon", label: t("finances"), href: "/professional/finances" },
-    { iconName: "SupportAgentIcon", label: t("support"), href: "/professional/support" },
-  ]
+  const homeLink = accountType === AccountType.Provider ? `/${params.provider}` : "/patient"
 
   // Use Redux store instead of local state
   const isCollapsed = useSelector((state: RootState) => state.settings.isCollapse)
@@ -119,7 +120,7 @@ export function Sidebar({ homeLink, bottomCanvasImage }: SidebarProps) {
         onClick={closeSheet}
       >
         {Icon && <Icon className="h-5 w-5 flex-shrink-0" />}
-        {!isTabletView && <span className="break-words">{item.label}</span>}
+        {!isTabletView && <span className="break-words">{t(item.label)}</span>}
       </Link>
     )
   }

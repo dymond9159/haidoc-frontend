@@ -18,7 +18,6 @@ import { AccountType, Gender } from "@/types"
 export default function PatientBasicInfoPage() {
   const router = useRouter()
   const routes = useRoutes()
-  const t = useTranslations("pages.auth.register.patient.basicData")
   const tForm = useTranslations("form")
   const tCta = useTranslations("cta")
 
@@ -135,7 +134,7 @@ export default function PatientBasicInfoPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="password" className="text-sm font-medium">
-            {t("password")} <Asterisk />
+            {tForm("label.password")} <Asterisk />
           </Label>
           <div className="relative">
             <Input
@@ -158,7 +157,7 @@ export default function PatientBasicInfoPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-sm font-medium">
-            {t("confirmPassword")} <Asterisk />
+            {tForm("label.confirmPassword")} <Asterisk />
           </Label>
           <div className="relative">
             <Input

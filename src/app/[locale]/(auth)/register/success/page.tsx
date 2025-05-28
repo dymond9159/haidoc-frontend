@@ -4,16 +4,19 @@ import { CheckCircle } from "lucide-react"
 import { useRouter } from "nextjs-toploader/app"
 
 import { Button } from "@/components/ui/button"
+import { useRoutes } from "@/hooks/use-localized-routes"
+import { AccountType } from "@/types"
 import { useTranslations } from "next-intl"
 
 export default function RegisterProviderSuccess() {
   const router = useRouter()
+  const routes = useRoutes()
   const t = useTranslations("pages.auth.register.success")
   const tCta = useTranslations("cta")
 
   const handleAccess = () => {
     // In a real app, you would set authentication tokens here
-    router.push("/plans")
+    router.push(routes.plans(AccountType.Provider))
   }
 
   return (

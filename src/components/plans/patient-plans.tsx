@@ -8,7 +8,7 @@ import { PlanCard } from "../cards"
 export const PatientPlans = () => {
   const router = useRouter()
   const routes = useRoutes()
-  const t = useTranslations("pricing.patient")
+  const t = useTranslations("pages.plans.patient")
 
   const handleContinue = (type: PlanTypeForPatient) => {
     switch (type) {

@@ -50,6 +50,8 @@ export const useFormValidation = ({ initialData, tForm }: UseFormValidationProps
   const validate = () => {
     const newErrors: Errors = {}
 
+    const hasKey = (key: keyof FormData) => key in initialData
+
     if (!formData.fullName?.trim()) {
       newErrors.fullName = tForm("error.fullNameRequired")
     } else if (!/^[A-Za-z\s]+$/.test(formData.fullName)) {
@@ -172,8 +174,16 @@ export const useFormValidation = ({ initialData, tForm }: UseFormValidationProps
       newErrors.profession = tForm("error.professionRequired")
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    const validErrors = Object.entries(newErrors).reduce((acc, [key, value]) => {
+      if (hasKey(key as keyof FormData)) {
+        acc[key] = value
+      }
+      return acc
+    }, {} as Errors)
+
+    setErrors(validErrors)
+
+    return Object.keys(validErrors).length === 0
   }
 
   return {

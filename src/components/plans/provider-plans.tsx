@@ -9,7 +9,7 @@ export const ProviderPlans = () => {
   const router = useRouter()
   const routes = useRoutes()
 
-  const t = useTranslations("pricing.provider")
+  const t = useTranslations("pages.plans.provider")
 
   const handleContinue = (type: PlanType) => {
     switch (type) {

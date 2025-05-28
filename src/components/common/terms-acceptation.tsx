@@ -1,6 +1,6 @@
 import { Checkbox } from "@/components/ui/checkbox" // Assuming these are your UI components
 import { Label } from "@/components/ui/label"
-import { routes } from "@/lib/routes"
+import { useLocalizedRoutes } from "@/hooks/use-localized-routes"
 import { CheckboxProps } from "@radix-ui/react-checkbox"
 import { ChevronRight, ReceiptTextIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
@@ -15,6 +15,7 @@ interface TermsAndConditionsProps extends CheckboxProps {
 
 export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLink, error, ...props }) => {
   const tCom = useTranslations("common")
+  const routes = useLocalizedRoutes()
 
   const LinkComponent: React.FC<AnchorHTMLAttributes<HTMLAnchorElement>> = ({ children, href, ...props }) => {
     return (
@@ -31,7 +32,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLin
           <ReceiptTextIcon size={18} />
           <h3 className="text-sm font-medium">{tCom("termsAndConditions")}</h3>
         </div>
-        <LinkComponent href={termsLink || routes.termsOfService()} target="_blank">
+        <LinkComponent href={termsLink || routes.terms()} target="_blank">
           <ChevronRight size={18} className="text-secondary-11" />
         </LinkComponent>
       </div>
@@ -41,7 +42,7 @@ export const TermsAndConditions: React.FC<TermsAndConditionsProps> = ({ termsLin
           {tCom("termsAndConditionsDesc")} <Asterisk />
         </Label>
       </div>
-      {/* {error && <p className="text-xs text-error-5 mt-1">{error}</p>} */}
+      {error && <p className="text-xs text-error-5 mt-1">{error}</p>}
     </div>
   )
 }

@@ -119,7 +119,7 @@ export default function ProviderBasicInfoPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="password" className="text-sm font-medium">
-            {tForm("password")} <Asterisk />
+            {tForm("label.password")} <Asterisk />
           </Label>
           <div className="relative">
             <Input
@@ -142,7 +142,7 @@ export default function ProviderBasicInfoPage() {
         </div>
         <div className="space-y-2">
           <Label htmlFor="confirmPassword" className="text-sm font-medium">
-            {tForm("confirmPassword")} <Asterisk />
+            {tForm("label.confirmPassword")} <Asterisk />
           </Label>
           <div className="relative">
             <Input

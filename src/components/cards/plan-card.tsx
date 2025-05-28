@@ -56,7 +56,7 @@ export const PlanCard: React.FC<PlanCardProps> = ({
   onContinue,
   priceColor = "text-foreground",
 }) => {
-  const t = useTranslations("pricing")
+  const t = useTranslations("pages.plans")
 
   return (
     <Card className="flex flex-col p-6 bg-white rounded-lg max-w-[320px] mx-auto md:w-full md:h-fit">

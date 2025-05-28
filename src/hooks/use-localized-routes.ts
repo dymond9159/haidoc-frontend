@@ -18,7 +18,7 @@ export const useRoutes = () => {
     professionalDetails: (accountType: AccountType) => `/register/${accountType}/professional-details`,
     documentation: (accountType: AccountType) => `/register/${accountType}/documentation`,
     // signature
-    plans: (accountType: AccountType) => `/${accountType}/plans/`,
+    plans: (accountType: AccountType) => `/plans/${accountType}`,
     subscription: () => `/subscription`,
     proposal: () => `/proposal`,
     // provider feature pages
@@ -26,6 +26,12 @@ export const useRoutes = () => {
 
     // patient feature pages
     patientHome: () => `/patient`,
+    patientConsultations: () => `/patient/consultations`,
+    patientExams: () => `/patient/exams`,
+    patientOrders: () => `/patient/orders`,
+    patientHealthProfile: () => `/patient/health-plan`,
+    patientChat: () => `/patient/chat`,
+    patientSupport: () => `/support`,
   }
 }
 

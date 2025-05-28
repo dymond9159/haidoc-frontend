@@ -1103,48 +1103,101 @@
       "description": "Notificações do sistema"
     },
     "plans": {
-      "pageTitle": "Conheça Nossos Planos",
-      "pageDescription": "Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.",
-      "featured": "EM DESTAQUE",
-      "free": "GRATUITO",
-      "business": {
-        "title": "HaiDoc Business",
-        "price": "GRATUITO",
-        "features": [
-          "Conta gratuita",
-          "Saque de fundos mensal após dedução de taxas",
-          "Acesso a serviços de business na plataforma",
-          "Ferramentas básicas de gerenciamento de agendamentos (consultas, marcações, etc.)"
-        ]
+      "freeServices": "Serviços grátis",
+      "provider": {
+        "pageTitle": "Conheça Nossos Planos",
+        "pageDescription": "Explore soluções personalizadas para otimizar seus serviços e impulsionar seus negócios.",
+        "business": {
+          "title": "HaiDoc Business",
+          "price": "GRATUITO",
+          "features": [
+            "Conta gratuita",
+            "Saque de fundos mensal após dedução de taxas",
+            "Acesso a serviços de business na plataforma",
+            "Ferramentas básicas de gerenciamento de agendamentos (consultas, marcações, etc.)"
+          ],
+          "cta": "Continuar"
+        },
+        "businessPlus": {
+          "title": "HaiDoc Business Plus",
+          "featured": "EM DESTAQUE",
+          "price": "1.499",
+          "currency": "MZN",
+          "period": "Mês",
+          "features": [
+            "Todos os benefícios do plano HaiDoc Business +",
+            "Saque de fundos quinzenalmente após dedução de taxas",
+            "Gerenciamento de agenda personalizada para o seu negócio (consultas, marcações, etc.)",
+            "Análises de desempenho e relatórios personalizados",
+            "Destaque do provedor de saúde para todos os pacientes",
+            "Inclusão na lista de Serviços Recomendados da Plataforma aos pacientes",
+            "Acesso a uma linha de apoio ao cliente 24/7"
+          ],
+          "cta": "Continuar"
+        },
+        "company": {
+          "title": "HaiDoc Company",
+          "featured": "EM DESTAQUE",
+          "price": "90",
+          "currency": "MZN",
+          "period": "Mês",
+          "features": [
+            "Todos os benefícios do plano HaiDoc Business Plus +",
+            "Saque de fundos semanalmente após dedução de taxas",
+            "Acesso simultâneo a todos os serviços (Farmácia, Laboratório, Clínica e Profissional de Saúde)",
+            "Consultoria para otimização de operações e serviços",
+            "Suporte prioritário 24/7",
+            "Participação em eventos de networking e treinamentos personalizados"
+          ],
+          "cta": "Continuar"
+        }
       },
-      "businessPlus": {
-        "title": "HaiDoc Business Plus",
-        "price": "1.499",
-        "currency": "MZN",
-        "period": "Mês",
-        "features": [
-          "Todos os benefícios do plano HaiDoc Business +",
-          "Saque de fundos quinzenalmente após dedução de taxas",
-          "Gerenciamento de agenda personalizada para o seu negócio (consultas, marcações, etc.)",
-          "Análises de desempenho e relatórios personalizados",
-          "Destaque do provedor de saúde para todos os pacientes",
-          "Inclusão na lista de Serviços Recomendados da Plataforma aos pacientes",
-          "Acesso a uma linha de apoio ao cliente 24/7"
-        ]
-      },
-      "company": {
-        "title": "HaiDoc Company",
-        "price": "90",
-        "currency": "MZN",
-        "period": "Mês",
-        "features": [
-          "Todos os benefícios do plano HaiDoc Business Plus +",
-          "Saque de fundos semanalmente após dedução de taxas",
-          "Acesso simultâneo a todos os serviços (Farmácia, Laboratório, Clínica e Profissional de Saúde)",
-          "Consultoria para otimização de operações e serviços",
-          "Suporte prioritário 24/7",
-          "Participação em eventos de networking e treinamentos personalizados"
-        ]
+      "patient": {
+        "pageTitle": "Conheça Nossos Planos",
+        "pageDescription": "Descubra cuidados personalizados para melhorar sua saúde e bem-estar. Encontre o plano ideal para acompanhar sua jornada de saúde com segurança e eficiência.",
+        "individual": {
+          "title": "HaiDoc Individual",
+          "price": "GRATUITO",
+          "features": [
+            "Conta gratuita",
+            "1 Usuário",
+            "Acesso à todos serviços disponíveis na plataforma",
+            "Descontos em consultas de seguimento",
+            "1 Consulta grátis por cada paciente activo referido pelo usuário"
+          ],
+          "cta": "Continuar"
+        },
+        "patient": {
+          "title": "HaiDoc Patient",
+          "price": "4,989",
+          "currency": "MZN",
+          "period": "Mês",
+          "features": [
+            "1 Usuário",
+            "Todos benefícios do plano HaiDoc Individual +",
+            "Prioridade de atendimento nas consultas urgentes e chat rápido ",
+            "Acesso a uma linha de apoio ao cliente 24/7",
+            "Entrega de medicamentos na cidade de Maputo",
+            "Colheita ao domicílio na Cidade de Maputo",
+            "2 Consultas Chat Rápido",
+            "1 Consulta Online Mensal",
+            "1 Consulta ao domicílio Mensal"
+          ],
+          "cta": "Assinar"
+        },
+        "family": {
+          "title": "HaiDoc Family",
+          "price": "6,780",
+          "currency": "MZN",
+          "period": "Mês",
+          "features": [
+            "2-6 Usuários (Usuários afiliados devem estar cadastrados na plataforma)",
+            "Todos benefícios do plano HaiDoc Individual +",
+            "Prioridade de atendimento nas consultas urgentes e chat rápido",
+            "Acesso a uma linha de apoio ao cliente 24/7"
+          ],
+          "cta": "Assinar"
+        }
       }
     },
     "proposal": {

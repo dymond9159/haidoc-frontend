@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useRoutes } from "@/hooks/use-localized-routes"
 import { useFormValidation } from "@/hooks/use-validation-form"
 import { cn } from "@/lib/utils"
-import { MaritalStatus } from "@/types"
+import { AccountType, MaritalStatus } from "@/types"
 
 export default function PatientPersonalInformationPage() {
   const router = useRouter()
@@ -31,57 +31,59 @@ export default function PatientPersonalInformationPage() {
 
   const handleNext = () => {
     if (validate()) {
-      router.push("/register/provider/documentation")
+      router.push(routes.plans(AccountType.Patient))
     }
   }
 
   return (
     <div className="space-y-6">
-      <div className="space-y-2">
-        <Label htmlFor="maritalStatus" className="text-sm font-medium">
-          {tForm("maritalStatus")} <Asterisk />
-        </Label>
-        <Select value={formData.maritalStatus} onValueChange={(value) => handleChange("maritalStatus", value)}>
-          <SelectTrigger id="maritalStatus" className={cn("w-full", errors.maritalStatus ? "border-error-5" : "")}>
-            <SelectValue placeholder={tForm("maritalStatus")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value={MaritalStatus.Single}>{tForm("category.maritalStatus.single")}</SelectItem>
-            <SelectItem value={MaritalStatus.Married}>{tForm("category.maritalStatus.married")}</SelectItem>
-            <SelectItem value={MaritalStatus.Divorced}>{tForm("category.maritalStatus.divorced")}</SelectItem>
-            <SelectItem value={MaritalStatus.Widow}>{tForm("category.maritalStatus.widow")}</SelectItem>
-            <SelectItem value={MaritalStatus.StableUnion}>{tForm("category.maritalStatus.stableUnion")}</SelectItem>
-          </SelectContent>
-        </Select>
-        {errors.maritalStatus && <p className="text-xs text-error-5">{errors.maritalStatus}</p>}
-      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-2 sm:col-span-2">
+          <Label htmlFor="maritalStatus" className="text-sm font-medium">
+            {tForm("label.maritalStatus")} <Asterisk />
+          </Label>
+          <Select value={formData.maritalStatus} onValueChange={(value) => handleChange("maritalStatus", value)}>
+            <SelectTrigger id="maritalStatus" className={cn("w-full", errors.maritalStatus ? "border-error-5" : "")}>
+              <SelectValue placeholder={tForm("placeholder.maritalStatus")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value={MaritalStatus.Single}>{tForm("category.maritalStatus.single")}</SelectItem>
+              <SelectItem value={MaritalStatus.Married}>{tForm("category.maritalStatus.married")}</SelectItem>
+              <SelectItem value={MaritalStatus.Divorced}>{tForm("category.maritalStatus.divorced")}</SelectItem>
+              <SelectItem value={MaritalStatus.Widow}>{tForm("category.maritalStatus.widow")}</SelectItem>
+              <SelectItem value={MaritalStatus.StableUnion}>{tForm("category.maritalStatus.stableUnion")}</SelectItem>
+            </SelectContent>
+          </Select>
+          {errors.maritalStatus && <p className="text-xs text-error-5">{errors.maritalStatus}</p>}
+        </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="birthPlace" className="text-sm font-medium">
-          {tForm("birthPlace")} <Asterisk />
-        </Label>
-        <Input
-          id="birthPlace"
-          value={formData.birthPlace}
-          onChange={(e) => handleChange("birthPlace", e.target.value)}
-          placeholder={tForm("placeholder.birthPlace")}
-          className={errors.birthPlace ? "border-error-5" : ""}
-        />
-        {errors.birthPlace && <p className="text-xs text-error-5">{errors.birthPlace}</p>}
-      </div>
+        <div className="space-y-2">
+          <Label htmlFor="birthPlace" className="text-sm font-medium">
+            {tForm("label.birthPlace")} <Asterisk />
+          </Label>
+          <Input
+            id="birthPlace"
+            value={formData.birthPlace}
+            onChange={(e) => handleChange("birthPlace", e.target.value)}
+            placeholder={tForm("placeholder.birthPlace")}
+            className={errors.birthPlace ? "border-error-5" : ""}
+          />
+          {errors.birthPlace && <p className="text-xs text-error-5">{errors.birthPlace}</p>}
+        </div>
 
-      <div className="space-y-2">
-        <Label htmlFor="profession" className="text-sm font-medium">
-          {tForm("profession")} <Asterisk />
-        </Label>
-        <Input
-          id="profession"
-          value={formData.profession}
-          onChange={(e) => handleChange("profession", e.target.value)}
-          placeholder={tForm("placeholder.profession")}
-          className={errors.profession ? "border-error-5" : ""}
-        />
-        {errors.profession && <p className="text-xs text-error-5">{errors.profession}</p>}
+        <div className="space-y-2">
+          <Label htmlFor="profession" className="text-sm font-medium">
+            {tForm("label.profession")} <Asterisk />
+          </Label>
+          <Input
+            id="profession"
+            value={formData.profession}
+            onChange={(e) => handleChange("profession", e.target.value)}
+            placeholder={tForm("placeholder.profession")}
+            className={errors.profession ? "border-error-5" : ""}
+          />
+          {errors.profession && <p className="text-xs text-error-5">{errors.profession}</p>}
+        </div>
       </div>
 
       <TermsAndConditions

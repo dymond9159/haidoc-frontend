@@ -1106,48 +1106,105 @@
       "description": "System notifications"
     },
     "plans": {
-      "pageTitle": "Discover Our Plans",
-      "pageDescription": "Explore personalized solutions to optimize your services and boost your business.",
-      "featured": "FEATURED",
-      "free": "FREE",
-      "business": {
-        "title": "HaiDoc Business",
-        "price": "FREE",
-        "features": [
-          "Free account",
-          "Monthly fund withdrawal after deduction of fees",
-          "Access to business services on the platform",
-          "Basic appointment management tools (consultations, bookings, etc.)"
-        ]
+      "tabs": {
+        "provider": "Healthcare Professional",
+        "patient": "Patient"
       },
-      "businessPlus": {
-        "title": "HaiDoc Business Plus",
-        "price": "1,499",
-        "currency": "MZN",
-        "period": "Month",
-        "features": [
-          "All HaiDoc Business plan benefits +",
-          "Bi-weekly fund withdrawal after deduction of fees",
-          "Personalized schedule management for your business (consultations, bookings, etc.)",
-          "Performance analytics and personalized reports",
-          "Healthcare provider spotlight for all patients",
-          "Inclusion in the Platform's Recommended Services list for patients",
-          "Access to a 24/7 customer support line"
-        ]
+      "freeServices": "Free Services",
+      "provider": {
+        "pageTitle": "Explore Our Plans",
+        "pageDescription": "Discover tailored solutions to optimize your services and grow your business.",
+        "business": {
+          "title": "HaiDoc Business",
+          "price": "FREE",
+          "features": [
+            "Free account",
+            "Monthly fund withdrawals after fee deductions",
+            "Access to business services on the platform",
+            "Basic scheduling management tools (appointments, bookings, etc.)"
+          ],
+          "cta": "Continue"
+        },
+        "businessPlus": {
+          "title": "HaiDoc Business Plus",
+          "featured": "FEATURED",
+          "price": "1,499",
+          "currency": "MZN",
+          "period": "Month",
+          "features": [
+            "All HaiDoc Business plan benefits +",
+            "Biweekly fund withdrawals after fee deductions",
+            "Customized scheduling management for your business (appointments, bookings, etc.)",
+            "Performance analytics and personalized reports",
+            "Highlighted provider visibility to all patients",
+            "Included in the platform’s Recommended Services list for patients",
+            "24/7 customer support access"
+          ],
+          "cta": "Continue"
+        },
+        "company": {
+          "title": "HaiDoc Company",
+          "featured": "FEATURED",
+          "price": "90",
+          "currency": "MZN",
+          "period": "Month",
+          "features": [
+            "All HaiDoc Business Plus plan benefits +",
+            "Weekly fund withdrawals after fee deductions",
+            "Simultaneous access to all services (Pharmacy, Laboratory, Clinic, and Healthcare Professional)",
+            "Consulting for operations and service optimization",
+            "Priority 24/7 support",
+            "Participation in networking events and personalized training"
+          ],
+          "cta": "Continue"
+        }
       },
-      "company": {
-        "title": "HaiDoc Company",
-        "price": "90",
-        "currency": "MZN",
-        "period": "Month",
-        "features": [
-          "All HaiDoc Business Plus plan benefits +",
-          "Weekly fund withdrawal after deduction of fees",
-          "Simultaneous access to all services (Pharmacy, Laboratory, Clinic, and Healthcare Professional)",
-          "Consulting for operations and service optimization",
-          "24/7 priority support",
-          "Participation in networking events and personalized training"
-        ]
+      "patient": {
+        "pageTitle": "Explore Our Plans",
+        "pageDescription": "Find personalized care to improve your health and well-being. Choose the perfect plan to support your health journey safely and efficiently.",
+        "individual": {
+          "title": "HaiDoc Individual",
+          "price": "FREE",
+          "features": [
+            "Free account",
+            "1 User",
+            "Access to all available services on the platform",
+            "Discounts on follow-up consultations",
+            "1 Free consultation for each active referred patient"
+          ],
+          "cta": "Continue"
+        },
+        "patient": {
+          "title": "HaiDoc Patient",
+          "price": "4,989",
+          "currency": "MZN",
+          "period": "Month",
+          "features": [
+            "1 User",
+            "All HaiDoc Individual plan benefits +",
+            "Priority in urgent consultations and quick chat",
+            "24/7 customer support access",
+            "Medication delivery in Maputo City",
+            "At-home sample collection in Maputo City",
+            "2 Quick Chat Consultations",
+            "1 Online Consultation per Month",
+            "1 At-Home Consultation per Month"
+          ],
+          "cta": "Subscribe"
+        },
+        "family": {
+          "title": "HaiDoc Family",
+          "price": "6,780",
+          "currency": "MZN",
+          "period": "Month",
+          "features": [
+            "2–6 Users (Affiliated users must be registered on the platform)",
+            "All HaiDoc Individual plan benefits +",
+            "Priority in urgent consultations and quick chat",
+            "24/7 customer support access"
+          ],
+          "cta": "Subscribe"
+        }
       }
     },
     "proposal": {
