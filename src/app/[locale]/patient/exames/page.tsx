@@ -1,7 +1,6 @@
 "use client"
 
-import { CalendarIcon } from "@/components/icons/calendar-icon"
-import { ClockIcon } from "@/components/icons/clock-icon"
+import { CalendarIcon, ClockIcon } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { ChevronDownIcon } from "lucide-react"
 import Image from "next/image"
@@ -12,14 +11,28 @@ import { useState } from "react"
 const upcomingAppointments = [
   {
     id: "1",
-    clinicName: "Clínica da Mulher",
+    labName: "Laboratório de Maputo",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectangle%20767-VR7jOvQ24dE0sHDsUMLDa3mxdeYv7o.png",
     date: "Segunda 28/Julho",
     time: "09:00 - 10:00",
   },
   {
     id: "2",
-    clinicName: "Matheus Azevedo da Cruz",
+    labName: "Laboratório de Maputo",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectangle%20767-VR7jOvQ24dE0sHDsUMLDa3mxdeYv7o.png",
+    date: "Segunda 28/Julho",
+    time: "09:00 - 10:00",
+  },
+  {
+    id: "3",
+    labName: "Laboratório de Maputo",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectangle%20767-VR7jOvQ24dE0sHDsUMLDa3mxdeYv7o.png",
+    date: "Segunda 28/Julho",
+    time: "09:00 - 10:00",
+  },
+  {
+    id: "4",
+    labName: "Laboratório de Maputo",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectangle%20767-VR7jOvQ24dE0sHDsUMLDa3mxdeYv7o.png",
     date: "Segunda 28/Julho",
     time: "09:00 - 10:00",
@@ -45,13 +58,13 @@ const pendingRequests = [
 
 const historyAppointments = Array.from({ length: 9 }, (_, i) => ({
   id: `history-${i + 1}`,
-  clinicName: "Nome da clínica/médico",
+  labName: "Nome do laboratório",
   image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Rectangle%20767-VR7jOvQ24dE0sHDsUMLDa3mxdeYv7o.png",
   date: "Segunda 28/Julho",
   value: "100 MZN",
 }))
 
-export default function ConsultasPage() {
+export default function ExamesPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 9
   const totalPages = Math.ceil(historyAppointments.length / itemsPerPage)
@@ -63,9 +76,8 @@ export default function ConsultasPage() {
   }
 
   return (
-    <>
-      {/* Upcoming Appointments */}
-      <section className="space-y-8">
+    <div className="space-y-8">
+      <section className="space-y-6">
         <h2 className="text-lg font-medium mb-4">Próximo Agendamento</h2>
         <div className="flex gap-4 overflow-x-auto pb-2">
           {upcomingAppointments.map((appointment) => (
@@ -74,14 +86,14 @@ export default function ConsultasPage() {
                 <div className="w-12 h-12 rounded-full bg-system-4 overflow-hidden">
                   <Image
                     src={appointment.image || "/placeholder.svg"}
-                    alt={appointment.clinicName}
+                    alt={appointment.labName}
                     width={48}
                     height={48}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-medium text-sm">{appointment.clinicName}</h3>
+                  <h3 className="font-medium text-sm">{appointment.labName}</h3>
                 </div>
                 <ChevronDownIcon className="w-4 h-4 text-system-10 rotate-[-90deg]" />
               </div>
@@ -101,12 +113,13 @@ export default function ConsultasPage() {
       </section>
 
       {/* Pending Requests */}
-      <section className="mb-8">
+      <section className="space-y-6">
         <h2 className="text-lg font-medium mb-4">Pendentes</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {pendingRequests.map((request) => (
-            <div
+            <Link
               key={request.id}
+              href={`/exames/cotacoes/${request.id}`}
               className="bg-white border border-system-6 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-3">
@@ -125,19 +138,19 @@ export default function ConsultasPage() {
                   {request.statusText}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
       {/* History */}
-      <section className="mb-8">
+      <section className="space-y-6">
         <h2 className="text-lg font-medium mb-4">Histórico</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
           {getCurrentPageItems().map((appointment) => (
             <Link
               key={appointment.id}
-              href={`/consultas/history/${appointment.id}`}
+              href={`/exames/historico/${appointment.id}`}
               className="bg-white border border-system-6 rounded-lg p-4 hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-3">
@@ -145,13 +158,13 @@ export default function ConsultasPage() {
                   <div className="w-10 h-10 rounded-full bg-system-4 overflow-hidden">
                     <Image
                       src={appointment.image || "/placeholder.svg"}
-                      alt={appointment.clinicName}
+                      alt={appointment.labName}
                       width={40}
                       height={40}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <h3 className="font-medium text-sm">{appointment.clinicName}</h3>
+                  <h3 className="font-medium text-sm">{appointment.labName}</h3>
                 </div>
                 <ChevronDownIcon className="w-4 h-4 text-system-10 rotate-[-90deg]" />
               </div>
@@ -213,6 +226,6 @@ export default function ConsultasPage() {
           </Button>
         </div>
       </section>
-    </>
+    </div>
   )
 }
