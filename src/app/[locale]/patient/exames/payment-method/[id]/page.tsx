@@ -18,7 +18,7 @@ export default function MetodoPagamentoPage() {
 
   const handleNext = () => {
     if (selectedMethod) {
-      router.push(`/exames/dados-pagamento/${params.id}`)
+      router.push(`/exames/payment-data/${params.id}`)
     }
   }
 

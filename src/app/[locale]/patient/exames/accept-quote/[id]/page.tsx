@@ -38,7 +38,7 @@ export default function AcceptQuotePage() {
   const [showRejectModal, setShowRejectModal] = useState(false)
 
   const handleAccept = () => {
-    router.push(`/exames/metodo-pagamento/${params.id}`)
+    router.push(`/exames/payment-method/${params.id}`)
   }
 
   const handleReject = () => {

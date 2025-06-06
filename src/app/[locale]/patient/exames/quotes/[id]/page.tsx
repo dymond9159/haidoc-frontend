@@ -41,7 +41,7 @@ export default function QuotesPage() {
 
   const handleQuoteClick = (quoteId: string, isExpanded: boolean) => {
     if (isExpanded) {
-      router.push(`/exames/aceitar-cotacao/${quoteId}`)
+      router.push(`/exames/accept-quote/${quoteId}`)
     }
   }
 

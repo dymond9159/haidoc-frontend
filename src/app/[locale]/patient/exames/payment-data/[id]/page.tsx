@@ -24,7 +24,7 @@ export default function DadosPagamentoPage() {
 
   const handleNext = () => {
     if (formData.cardNumber && formData.expiryDate && formData.cvv && formData.email && termsAccepted) {
-      router.push(`/exames/revisao-pagamento/${params.id}`)
+      router.push(`/exames/payment-revision/${params.id}`)
     }
   }
 

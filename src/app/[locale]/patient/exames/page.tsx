@@ -119,7 +119,7 @@ export default function ExamesPage() {
           {pendingRequests.map((request) => (
             <Link
               key={request.id}
-              href={`/exames/cotacoes/${request.id}`}
+              href={`/exames/quotes/${request.id}`}
               className="bg-white border border-system-6 rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow"
             >
               <div className="flex items-center justify-between mb-3">
