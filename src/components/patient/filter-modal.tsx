@@ -5,7 +5,6 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { XIcon } from "lucide-react"
 import { useState } from "react"
 
 interface FilterModalProps {
@@ -42,13 +41,6 @@ export function FilterModal({ open, onOpenChange, onApplyFilters }: FilterModalP
         <div className="p-6">
           <DialogHeader className="relative">
             <DialogTitle className="text-left">Filtros</DialogTitle>
-            <button
-              onClick={() => onOpenChange(false)}
-              className="absolute right-0 top-0 p-1 rounded-full hover:bg-system-3"
-            >
-              <XIcon className="h-4 w-4" />
-              <span className="sr-only">Close</span>
-            </button>
           </DialogHeader>
           <div className="space-y-6 py-4">
             <div className="space-y-2">
@@ -89,7 +81,7 @@ export function FilterModal({ open, onOpenChange, onApplyFilters }: FilterModalP
               />
             </div>
           </div>
-          <Button className="w-full bg-haidoc-red hover:bg-primary-11 text-white" onClick={handleApply}>
+          <Button className="w-full" onClick={handleApply}>
             Aplicar filtros
           </Button>
         </div>

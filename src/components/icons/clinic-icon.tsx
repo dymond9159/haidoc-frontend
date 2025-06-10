@@ -3,22 +3,17 @@ import { LucideProps } from "lucide-react"
 export function ClinicIcon(props: LucideProps) {
   return (
     <svg
-      width={props?.size || "24"}
-      height={props?.size || "24"}
-      viewBox="0 0 24 24"
+      width={props?.size || "34"}
+      height={props?.size || "38"}
+      viewBox="0 0 34 38"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M14.1875 26.6933C14.1875 27.7978 15.0829 28.6933 16.1875 28.6933H17.8125C18.9171 28.6933 19.8125 27.7978 19.8125 26.6933V23.0683H23.4375C24.5421 23.0683 25.4375 22.1728 25.4375 21.0683V19.4433C25.4375 18.3387 24.5421 17.4433 23.4375 17.4433H19.8125V13.8183C19.8125 12.7137 18.9171 11.8182 17.8125 11.8182H16.1875C15.0829 11.8182 14.1875 12.7137 14.1875 13.8182V17.4433H10.5625C9.45793 17.4433 8.5625 18.3387 8.5625 19.4433V21.0683C8.5625 22.1728 9.45793 23.0683 10.5625 23.0683H14.1875V26.6933ZM4.125 37.1308C1.91586 37.1308 0.125 35.3399 0.125 33.1308V13.8162C0.125 12.5583 0.716709 11.3737 1.72241 10.6182L14.5974 0.945613C16.0207 -0.123648 17.9793 -0.123649 19.4026 0.945612L32.2776 10.6182C33.2833 11.3737 33.875 12.5583 33.875 13.8162V33.1308C33.875 35.3399 32.0841 37.1308 29.875 37.1308H4.125Z"
+        fill="#51B2CB"
       />
-      <path d="M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
