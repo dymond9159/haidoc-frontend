@@ -6,15 +6,15 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
-import { PlanList } from "@/lib/constants"
+import { PlanListForProvider } from "@/lib/constants"
 import { cn } from "@/lib/utils"
-import { PlanType } from "@/types"
+import { PlanTypeForProvider } from "@/types"
 import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
 
 // const currentPlan = {
-//   type: PlanType.Business,
+//   type: PlanTypeForProvider.Business,
 //   title: "HaiDoc Business",
 //   price: "GRATUITO",
 //   features: [
@@ -38,8 +38,8 @@ export default function MySignatureConfigurationsPage() {
   const [isRemoveRecurrenceModalOpen, setIsRemoveRecurrenceModalOpen] = useState(false)
   const [isRemoveRecurrenceWithPasswordModalOpen, setIsRemoveRecurrenceWithPasswordModalOpen] = useState(false)
 
-  const currentPlanType = PlanType.Business
-  const currentPlan = PlanList.find((plan) => plan.type === currentPlanType)
+  const currentPlanTypeForProvider = PlanTypeForProvider.Business
+  const currentPlan = PlanListForProvider.find((plan) => plan.type === currentPlanTypeForProvider)
 
   // Cancel signature
   const handleCancelSignature = () => {
@@ -110,7 +110,7 @@ export default function MySignatureConfigurationsPage() {
               <CardContent className="space-y-3 px-0">
                 <div className="space-y-3">
                   {currentPlan?.featuresKeys.map((feature, index) => (
-                    <FeatureItem key={index} text={tPlans(feature)} />
+                    <FeatureItem key={index} text={tPlans(feature)} type={currentPlan.type} />
                   ))}
                 </div>
 

@@ -6,9 +6,9 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
-import { PlanList } from "@/lib/constants"
+import { PlanListForPatient } from "@/lib/constants"
 import { cn } from "@/lib/utils"
-import { PlanType } from "@/types"
+import { PlanTypeForPatient } from "@/types"
 import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { useState } from "react"
@@ -28,7 +28,7 @@ import { useState } from "react"
 export default function MySignatureConfigurationsPage() {
   const { toast } = useToast()
   const router = useRouter()
-  const t = useTranslations("pages.provider.profile.configurations")
+  const t = useTranslations("pages.patient.profile.configurations")
   const tPlans = useTranslations()
   const tModal = useTranslations("modal")
 
@@ -38,8 +38,8 @@ export default function MySignatureConfigurationsPage() {
   const [isRemoveRecurrenceModalOpen, setIsRemoveRecurrenceModalOpen] = useState(false)
   const [isRemoveRecurrenceWithPasswordModalOpen, setIsRemoveRecurrenceWithPasswordModalOpen] = useState(false)
 
-  const currentPlanType = PlanType.Business
-  const currentPlan = PlanList.find((plan) => plan.type === currentPlanType)
+  const currentPlanType = PlanTypeForPatient.Individual
+  const currentPlan = PlanListForPatient.find((plan) => plan.type === currentPlanType)
 
   // Cancel signature
   const handleCancelSignature = () => {
@@ -110,7 +110,7 @@ export default function MySignatureConfigurationsPage() {
               <CardContent className="space-y-3 px-0">
                 <div className="space-y-3">
                   {currentPlan?.featuresKeys.map((feature, index) => (
-                    <FeatureItem key={index} text={tPlans(feature)} />
+                    <FeatureItem key={index} text={tPlans(feature)} type={currentPlan.type} />
                   ))}
                 </div>
 

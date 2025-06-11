@@ -3,17 +3,56 @@ import { LucideProps } from "lucide-react"
 export function LaboratoryIcon(props: LucideProps) {
   return (
     <svg
-      width={props?.size || "24"}
-      height={props?.size || "24"}
-      viewBox="0 0 24 24"
+      width={props?.size || "43"}
+      height={props?.size || "43"}
+      viewBox="0 0 43 43"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M9 3H15M10 3V9.34C10 9.98 9.64 10.56 9.12 10.88L4.88 13.12C4.36 13.44 4 14.02 4 14.66V17C4 17.5304 4.21071 18.0391 4.58579 18.4142C4.96086 18.7893 5.46957 19 6 19H18C18.5304 19 19.0391 18.7893 19.4142 18.4142C19.7893 18.0391 20 17.5304 20 17V14.66C20 14.02 19.64 13.44 19.12 13.12L14.88 10.88C14.36 10.56 14 9.98 14 9.34V3"
-        stroke="currentColor"
+        d="M32.25 3.57812L39.4167 10.7448"
+        stroke="#51B2CB"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M30.4531 12.5391L35.8281 7.16406"
+        stroke="#51B2CB"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M15.5807 34.5818C13.7891 36.3734 11.1016 36.3734 9.48906 34.5818L8.41406 33.5068C6.6224 31.7151 6.6224 29.0276 8.41406 27.4151L15.222 20.6068L22.3887 27.7734L15.5807 34.5818Z"
+        fill="#51B2CB"
+      />
+      <path
+        d="M34.0349 16.1276L22.3887 27.7734M26.8682 8.96094L15.222 20.6068M15.222 20.6068L8.41406 27.4151C6.6224 29.0276 6.6224 31.7151 8.41406 33.5068L9.48906 34.5818C11.1016 36.3734 13.7891 36.3734 15.5807 34.5818L22.3887 27.7734M15.222 20.6068L22.3887 27.7734"
+        stroke="#51B2CB"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.125 19.7031L23.2917 26.8698"
+        stroke="#51B2CB"
         strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8.95312 34.0391L3.57812 39.4141"
+        stroke="#51B2CB"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M25.0781 7.16406L35.8281 17.9141"
+        stroke="#51B2CB"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

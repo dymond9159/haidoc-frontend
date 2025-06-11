@@ -3,22 +3,17 @@ import { LucideProps } from "lucide-react"
 export function PharmacyIcon(props: LucideProps) {
   return (
     <svg
-      width={props?.size || "24"}
-      height={props?.size || "24"}
-      viewBox="0 0 24 24"
+      width={props?.size || "40"}
+      height={props?.size || "40"}
+      viewBox="0 0 40 40"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
+      xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M4.5 16.5C4.5 17.8807 5.61929 19 7 19H17C18.3807 19 19.5 17.8807 19.5 16.5V7.5C19.5 6.11929 18.3807 5 17 5H7C5.61929 5 4.5 6.11929 4.5 7.5V16.5Z"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M29.3848 26.9576L35.7371 20.5709C36.8216 19.4864 37.6573 18.2407 38.2441 16.8337C38.8314 15.4263 39.125 13.9505 39.125 12.4062C39.125 9.19475 38.0053 6.47 35.7658 4.232C33.5266 1.994 30.8002 0.875 27.5864 0.875C26.0482 0.875 24.5752 1.16862 23.1674 1.75587C21.7597 2.34275 20.5136 3.17844 19.4291 4.26294L13.0424 10.6152L29.3848 26.9576ZM12.4136 39.125C13.9518 39.125 15.4248 38.8314 16.8326 38.2441C18.2403 37.6572 19.4864 36.8216 20.5709 35.7371L26.9576 29.3848L10.6152 13.0424L4.26294 19.4291C3.17844 20.5136 2.34275 21.7593 1.75588 23.1663C1.16863 24.5737 0.875 26.0495 0.875 27.5937C0.875 30.8052 1.99475 33.53 4.23425 35.768C6.47337 38.006 9.19981 39.125 12.4136 39.125Z"
+        fill="#51B2CB"
       />
-      <path d="M12 8V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M8 12H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }

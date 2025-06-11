@@ -211,7 +211,7 @@ export function Sidebar({ accountType, navItems }: SidebarProps) {
   }
 
   return (
-    <div className={cn("hidden md:block h-screen border-r border-system-5 bg-white", sidebarWidth)}>
+    <div className={cn(sidebarWidth)}>
       <div className={cn("fixed h-full flex flex-col bg-white border-r z-50 overflow-hidden", sidebarWidth)}>
         <div className={cn("px-2", isTabletViewMode ? "px-1" : "px-3")}>
           <div className="flex items-center border-b py-6 h-[89px]">

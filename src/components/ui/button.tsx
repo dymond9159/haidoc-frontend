@@ -4,6 +4,11 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+export type ButtonVariant = "default" | "destructive" | "outline" | "outline-destructive" | "secondary" | "ghost"
+
+export type ButtonSize = "default" | "sm" | "lg" | "icon"
+export type ButtonColorVariant = "success" | "error" | "warning" | "info" | "default" | "primary" | "secondary"
+
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
   {
@@ -19,7 +24,7 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground hover:border-accent-foreground dark:hover:bg-accent/50",
         "ghost-destructive": "hover:bg-error-2 hover:text-error-5 dark:hover:bg-error-2/90",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "bg-transparent text-primary underline-offset-4 hover:underline",
         primary: "shadow-xs hover:bg-primary/90 h-12 bg-primary-9 hover:bg-primary-10 text-white font-medium",
         white: "bg-white font-medium text-primary-9 hover:bg-white/90",
         "primary-outline": "bg-background border-primary-9 text-primary-9",
@@ -27,17 +32,18 @@ const buttonVariants = cva(
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        md: "h-9 rounded-md px-5 has-[>svg]:px-3",
         lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
         icon: "size-9",
       },
       colorVariant: {
-        success: "bg-transparent text-success-6 hover:bg-success-2 hover:text-success-6 hover:border-success-6",
-        error: "hover:bg-error-2 bg-transparent text-error-5 hover:text-error-5 hover:border-error-5",
-        warning: "hover:bg-warning-2 bg-transparent text-warning-5 hover:text-warning-5 hover:border-warning-5",
-        info: "hover:bg-info-2 bg-transparent text-info-5 hover:text-info-5 hover:border-info-5",
-        default: "hover:bg-system-6 bg-transparent text-system-11 hover:text-system-11 hover:border-system-11",
-        primary: "hover:bg-primary bg-primary-11 text-white hover:text-white",
-        secondary: "hover:bg-secondary bg-transparent text-white hover:text-secondary-foreground",
+        success: "bg-success-2 text-success-5 hover:bg-success-3 hover:text-success-5 hover:border-success-6",
+        error: "bg-error-2 text-error-5 hover:bg-error-3 hover:text-error-5 hover:border-error-6",
+        warning: "bg-warning-2 text-warning-5 hover:bg-warning-3 hover:text-warning-5 hover:border-warning-6",
+        info: "bg-info-2 text-info-5 hover:bg-info-3 hover:text-info-5 hover:border-info-6",
+        default: "bg-system-2 text-system-5 hover:bg-system-3 hover:text-system-5 hover:border-system-6",
+        primary: "bg-primary-11 text-white hover:bg-primary-11 hover:text-white",
+        secondary: "bg-transparent text-white hover:text-secondary-foreground",
       },
     },
     defaultVariants: {

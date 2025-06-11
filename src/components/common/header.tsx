@@ -76,7 +76,7 @@ export function Header() {
   )
 
   return (
-    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-1 px-6">
+    <header className="sticky top-0 z-30 flex h-20 items-center justify-between bg-system-0 px-6 py-6">
       <div className="flex items-center">
         <MenuButton />
         {!isMobile && <h1 className="text-xl font-semibold">{pageTitle}</h1>}

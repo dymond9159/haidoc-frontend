@@ -1,8 +1,8 @@
-import { PlanType, PlanTypeForPatient } from "@/types"
+import { PlanTypeForPatient, PlanTypeForProvider } from "@/types"
 
 export const PlanListForProvider = [
   {
-    type: PlanType.Business,
+    type: PlanTypeForProvider.Business,
     titleKey: "provider.business.title",
     priceKey: "provider.business.price",
     ctaKey: "provider.business.cta",
@@ -14,7 +14,7 @@ export const PlanListForProvider = [
     ],
   },
   {
-    type: PlanType.BusinessPlus,
+    type: PlanTypeForProvider.BusinessPlus,
     titleKey: "provider.businessPlus.title",
     featured: "provider.businessPlus.featured",
     priceKey: "provider.businessPlus.price",
@@ -32,7 +32,7 @@ export const PlanListForProvider = [
     period: "provider.businessPlus.period",
   },
   {
-    type: PlanType.Company,
+    type: PlanTypeForProvider.Company,
     titleKey: "provider.company.title",
     featured: "provider.company.featured",
     priceKey: "provider.company.price",

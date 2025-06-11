@@ -1,6 +1,6 @@
 "use client"
 
-import { StarFillIcon } from "@/components/icons"
+import { CheckCircleIcon, StarFillIcon } from "@/components/icons"
 import Image from "next/image"
 
 interface DoctorCardProps {
@@ -12,27 +12,26 @@ interface DoctorCardProps {
 
 export function DoctorCard({ name, image, address, rating }: DoctorCardProps) {
   return (
-    <div className="bg-white rounded-lg overflow-hidden border border-system-6 relative">
-      <div className="absolute top-2 left-2 bg-error-5 text-white text-xs px-2 py-1 rounded-md flex items-center gap-1">
+    <div className="bg-white rounded-lg overflow-hidden relative">
+      <div className="absolute top-0 left-0 bg-primary-5 text-primary-10 text-xs px-2 py-1 rounded-md flex items-center gap-1 rounded-bl-none rounded-tr-none">
         Plus Service
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <circle cx="6" cy="6" r="5" fill="white" />
-          <path d="M6 3v6M3 6h6" stroke="#FF4242" strokeWidth="1.5" strokeLinecap="round" />
-        </svg>
+        <CheckCircleIcon className="w-4 h-4" />
       </div>
       <Image
-        src={image || "/placeholder.svg"}
+        src={image || "/images/placeholder.svg"}
         alt={name}
         width={200}
         height={120}
-        className="w-full h-30 object-cover"
+        className="w-full h-30 object-cover rounded-lg"
       />
-      <div className="p-3">
+      <div className="px-0 py-3">
         <h3 className="font-medium text-sm mb-1">{name}</h3>
-        <p className="text-xs text-system-10 mb-2">{address}</p>
-        <div className="flex items-center gap-1">
-          <StarFillIcon className="w-4 h-4" />
-          <span className="text-sm">{rating}</span>
+        <div className="flex flex-row gap-2">
+          <p className="flex-1 text-xs text-system-10 mb-2">{address}</p>
+          <div className="flex items-center gap-1 text-rating-4 flex-shrink-0">
+            <StarFillIcon className="w-4 h-4" />
+            <span className="text-sm font-medium">{rating}</span>
+          </div>
         </div>
       </div>
     </div>
