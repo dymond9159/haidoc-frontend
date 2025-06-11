@@ -48,6 +48,15 @@ export function Header() {
     "/professional/profile": t("provider.profile.title"),
     "/professional/my-activity": t("provider.activityLog.title"),
     "/professional": t("provider.home.title"),
+    "/patient/support": t("patient.support.title"),
+    "/patient/my-activity": t("patient.activityLog.title"),
+    "/patient/chat": t("patient.quickChat.title"),
+    "/patient/myHealthPlan": t("patient.myHealthPlan.title"),
+    "/patient/orders": t("patient.orders.title"),
+    "/patient/exams": t("patient.exams.title"),
+    "/patient/consultations": t("patient.consultations.title"),
+    "/patient/services": t("patient.services.title"),
+    "/patient": t("patient.home.title"),
     "/notifications": t("notifications.title"),
   }
 

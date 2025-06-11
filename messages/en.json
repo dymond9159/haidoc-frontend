@@ -646,22 +646,50 @@
     "patient": {
       "title": "Patient",
       "description": "Patient's home page",
-      "name": "Patient Name",
-      "profile": {
-        "title": "Patient Profile",
-        "description": "Patient's profile"
+      "name": "Patient's name",
+      "home": {
+        "title": "Home",
+        "description": "Patient's home page"
+      },
+      "services": {
+        "title": "Services feed",
+        "description": "Services feed of the patient"
       },
       "consultations": {
         "title": "Consultations",
         "description": "Medical consultations",
-        "completed": "Completed Consultations",
-        "canceled": "Canceled Consultations"
+        "completed": "Completed consultations",
+        "canceled": "Canceled consultations"
       },
-      "chats": {
+      "exams": {
+        "title": "Exams",
+        "description": "Patient's exams"
+      },
+      "orders": {
+        "title": "Orders",
+        "description": "Patient's orders"
+      },
+      "myHealthPlan": {
+        "title": "My Health Plan",
+        "description": "My Health Plan of the patient"
+      },
+      "support": {
+        "title": "Support",
+        "description": "Patient's support"
+      },
+      "profile": {
+        "title": "Patient's profile",
+        "description": "Patient's profile"
+      },
+      "quickChat": {
         "title": "Chats",
-        "description": "Ended chats",
-        "completed": "Ended Chats",
-        "canceled": "Canceled Chats"
+        "description": "Finalized chats",
+        "completed": "Finalized chats",
+        "canceled": "Canceled chats"
+      },
+      "activityLog": {
+        "title": "My activity",
+        "description": "My activity"
       }
     },
     "provider": {
