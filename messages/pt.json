@@ -644,9 +644,13 @@
       "title": "Paciente",
       "description": "Página inicial do paciente",
       "name": "Nome do Paciente",
-      "profile": {
-        "title": "Perfil do Paciente",
-        "description": "Perfil do paciente"
+      "home": {
+        "title": "Home",
+        "description": "Página inicial do paciente"
+      },
+      "services": {
+        "title": "Feed de serviços",
+        "description": "Feed de serviços do paciente"
       },
       "consultations": {
         "title": "Consultas",
@@ -654,11 +658,35 @@
         "completed": "Consultas Realizadas",
         "canceled": "Consultas Canceladas"
       },
-      "chats": {
+      "exams": {
+        "title": "Exames",
+        "description": "Exames do paciente"
+      },
+      "orders": {
+        "title": "Pedidos",
+        "description": "Pedidos do paciente"
+      },
+      "myHealthPlan": {
+        "title": "Meu Plano de Saúde",
+        "description": "Meu Plano de Saúde do paciente"
+      },
+      "support": {
+        "title": "Suporte",
+        "description": "Suporte do paciente"
+      },
+      "profile": {
+        "title": "Perfil do Paciente",
+        "description": "Perfil do paciente"
+      },
+      "quickChat": {
         "title": "Chats",
         "description": "Chats finalizados",
         "completed": "Chats Finalizados",
         "canceled": "Chats Cancelados"
+      },
+      "activityLog": {
+        "title": "Minha de atividade",
+        "description": "Minha de atividade"
       }
     },
     "provider": {
