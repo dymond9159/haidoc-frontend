@@ -1,6 +1,6 @@
 import { useRoutes } from "@/hooks/use-localized-routes"
 import { PlanListForProvider } from "@/lib/constants"
-import { PlanType, ProviderOptions } from "@/types"
+import { PlanTypeForProvider, ProviderOptions } from "@/types"
 import { useTranslations } from "next-intl"
 import { useRouter } from "nextjs-toploader/app"
 import { PlanCard } from "../cards"
@@ -11,16 +11,16 @@ export const ProviderPlans = () => {
 
   const t = useTranslations("pages.plans.provider")
 
-  const handleContinue = (type: PlanType) => {
+  const handleContinue = (type: PlanTypeForProvider) => {
     switch (type) {
-      case PlanType.Business:
+      case PlanTypeForProvider.Business:
         const targetHome = ProviderOptions.Professional
         router.push(routes.providerHome(targetHome))
         break
-      case PlanType.BusinessPlus:
+      case PlanTypeForProvider.BusinessPlus:
         router.push(routes.subscription())
         break
-      case PlanType.Company:
+      case PlanTypeForProvider.Company:
         router.push(routes.proposal())
         break
     }

@@ -42,7 +42,10 @@
     "quickChat": "Chat rápido",
     "finances": "Finanças",
     "support": "Suporte",
-    "collapse": "Recolher"
+    "collapse": "Recolher",
+    "exams": "Exames",
+    "orders": "Pedidos",
+    "myHealthPlan": "Meu plano de saúde"
   },
   "form": {
     "label": {

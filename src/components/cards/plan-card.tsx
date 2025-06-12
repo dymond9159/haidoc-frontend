@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button" // Assuming these are your UI components
 import { cn } from "@/lib/utils"
-import { PlanType, PlanTypeForPatient } from "@/types"
+import { PlanTypeForPatient, PlanTypeForProvider } from "@/types"
 import { CheckCircle } from "lucide-react"
 import { useTranslations } from "next-intl"
 import React from "react"
@@ -32,7 +32,7 @@ export const FeatureItem: React.FC<FeatureItemProps> = ({ text, type }) => {
 }
 
 interface PlanCardProps {
-  type: PlanType | PlanTypeForPatient
+  type: PlanTypeForProvider | PlanTypeForPatient
   featured?: string
   titleKey: string
   priceKey: string
@@ -63,10 +63,10 @@ export const PlanCard: React.FC<PlanCardProps> = ({
       <CardHeader className="mb-4 px-0">
         <h3 className="text-xl font-bold text-secondary mb-3">{t(titleKey)}</h3>
         {featured && <Badge className="w-fit text-xs">{t(featured)}</Badge>}
-        {(type === PlanType.Business || type === PlanTypeForPatient.Individual) && (
+        {(type === PlanTypeForProvider.Business || type === PlanTypeForPatient.Individual) && (
           <div className={cn("mt-2 text-xl font-bold text-primary")}>{t(priceKey)}</div>
         )}
-        {type !== PlanType.Business && type !== PlanTypeForPatient.Individual && (
+        {type !== PlanTypeForProvider.Business && type !== PlanTypeForPatient.Individual && (
           <div className={cn("mt-2 text-xl font-bold", priceColor)}>
             {t(priceKey)} <span className="text-md">{t(currencyKey || "")}</span>/
             <span className="text-sm">{t(periodKey || "")}</span>

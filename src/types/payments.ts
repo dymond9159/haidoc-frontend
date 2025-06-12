@@ -5,7 +5,7 @@ export enum PaymentMethod {
   Paypal = "paypal",
 }
 
-export enum PlanType {
+export enum PlanTypeForProvider {
   Business = "business",
   BusinessPlus = "business_plus",
   Company = "company",
@@ -18,7 +18,7 @@ export enum PlanTypeForPatient {
 }
 
 export interface PlanProps {
-  type: PlanType
+  type: PlanTypeForProvider | PlanTypeForPatient
   title: string
   price: string
   features: string[]

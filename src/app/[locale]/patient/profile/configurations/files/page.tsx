@@ -2,11 +2,12 @@
 
 import { Asterisk } from "@/components/common"
 import { Document, DocumentList } from "@/components/common/document-list"
-import { FileUploadBox, UploadedFile } from "@/components/common/file-upload-box"
+import { FileUploadBox } from "@/components/common/file-upload-box"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
+import { UploadedFile } from "@/types"
 import { useTranslations } from "next-intl"
 import { useRef, useState } from "react"
 

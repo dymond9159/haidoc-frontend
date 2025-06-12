@@ -30,18 +30,20 @@ export default async function ProviderLayout({ children }: { children: ReactNode
   ]
 
   return (
-    <div className="flex flex-col h-screen bg-system-0">
+    <div className="flex flex-row h-screen bg-system-0">
       <Sidebar accountType={AccountType.Provider} navItems={navItems} />
-      <div className="w-screen h-screen flex-1 flex flex-col">
-        <Header />
-        <Suspense fallback={<Loading />}>
-          <main className="overflow-y-hidden">
-            <ScrollArea className="h-full">
-              {children}
-              <ScrollBar orientation="vertical" />
-            </ScrollArea>
-          </main>
-        </Suspense>
+      <div className="flex-1">
+        <div className="flex flex-col h-full">
+          <Header />
+          <Suspense fallback={<Loading />}>
+            <main className="overflow-y-hidden">
+              <ScrollArea className="h-full px-6 py-6">
+                {children}
+                <ScrollBar orientation="vertical" />
+              </ScrollArea>
+            </main>
+          </Suspense>
+        </div>
       </div>
     </div>
   )
